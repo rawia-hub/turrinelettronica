@@ -523,10 +523,26 @@
 
         const next =
             document.querySelector('.carousel-arrow.next');
+      
+        const updateCards =
+        Array.from(
+            document.querySelectorAll('.te-update-card')
+        );
+
+        const dotsContainer =
+            document.getElementById('updateDots');
+
+        const updatesSection =
+            document.querySelector('.te-updates');
 
         if (!track)
             return;
-
+        if (
+                updateCards.length === 0 ||
+                !dotsContainer
+            ) {
+                return;
+            }
 
         /* Salviamo SOLO i 6 prodotti originali */
         const originalCards =
@@ -574,12 +590,226 @@
 
         /* Velocità scorrimento */
         const speed = 22;
-
+        let currentPage = 0;
+        let itemsPerPage = 3;
+        let autoTimer = null;
 
         /* =========================
            CALCOLO LOOP
            ========================= */
+        function calculateItemsPerPage() {
+    
+            if (window.innerWidth <= 600) {
+    
+                itemsPerPage = 1;
+    
+            }
+            else if (window.innerWidth <= 900) {
+    
+                itemsPerPage = 2;
+    
+            }
+            else {
+    
+                itemsPerPage = 3;
+            }
+        }
+      
+       /* ==========================
+       NUMERO PAGINE
+       ========================== */
+        function getTotalPages() {
+        
+                return Math.ceil(
+                    updateCards.length /
+                    itemsPerPage
+                );
+            }
+       /* ==========================
+       MOSTRA AGGIORNAMENTI
+       ========================== */
+       function showUpdates() {
+      
+              const totalPages =
+                  getTotalPages();
+      
+      
+              if (currentPage >= totalPages) {
+                  currentPage = 0;
+              }
+      
+      
+              updateCards.forEach(card => {
+      
+                  card.classList.remove(
+                      'visible'
+                  );
+              });
+      
+      
+              const start =
+                  currentPage *
+                  itemsPerPage;
+      
+      
+              const end =
+                  start +
+                  itemsPerPage;
+      
+      
+              updateCards
+                  .slice(start, end)
+                  .forEach(card => {
+      
+                      card.classList.add(
+                          'visible'
+                      );
+                  });
+      
+      
+              createDots();
+          }
+       /* ==========================
+       CREA PALLINI
+       ========================== */
+      function createDots() {
+      
+              const totalPages =
+                  getTotalPages();
+      
+      
+              dotsContainer.innerHTML = '';
+      
+      
+              if (totalPages <= 1) {
+                  return;
+              }
+      
+      
+              for (
+                  let i = 0;
+                  i < totalPages;
+                  i++
+              ) {
+      
+                  const dot =
+                      document.createElement(
+                          'button'
+                      );
+      
+      
+                  dot.className =
+                      'te-update-dot';
+      
+      
+                  dot.type =
+                      'button';
+      
+      
+                  dot.setAttribute(
+                      'aria-label',
+                      'Pagina ' + (i + 1)
+                  );
+      
+      
+                  if (i === currentPage) {
+      
+                      dot.classList.add(
+                          'active'
+                      );
+                  }
+      
+      
+                  dot.addEventListener(
+                      'click',
+                      () => {
+      
+                          currentPage = i;
+      
+                          showUpdates();
+      
+                          restartAuto();
+                      }
+                  );
+      
+      
+                  dotsContainer.appendChild(
+                      dot
+                  );
+              }
+          }
+/* ==========================
+       PAGINA SUCCESSIVA
+       ========================== */
 
+    function nextPage() {
+
+        const totalPages =
+            getTotalPages();
+
+
+        currentPage =
+            (currentPage + 1) %
+            totalPages;
+
+
+        showUpdates();
+    }
+/* ==========================
+       AUTOPLAY
+       ========================== */
+
+    function startAuto() {
+
+        stopAuto();
+
+
+        autoTimer =
+            setInterval(
+                nextPage,
+                6000
+            );
+    }
+
+
+    function stopAuto() {
+
+        if (autoTimer) {
+
+            clearInterval(
+                autoTimer
+            );
+
+            autoTimer = null;
+        }
+    }
+
+
+    function restartAuto() {
+
+        stopAuto();
+
+        startAuto();
+    }
+    /* ==========================
+       PAUSA CON MOUSE
+       ========================== */
+
+    if (updatesSection) {
+
+        updatesSection.addEventListener(
+            'mouseenter',
+            stopAuto
+        );
+
+
+        updatesSection.addEventListener(
+            'mouseleave',
+            startAuto
+        );
+    }
+      
+      
         function calculateLoopWidth() {
 
             const firstOriginal =
@@ -960,19 +1190,34 @@
         window.addEventListener(
             'resize',
             () => {
-
+               const oldItemsPerPage =
+                            itemsPerPage;
+                calculateItemsPerPage();
                 calculateLoopWidth();
 
                 normalizePosition();
 
                 updatePosition();
+              if (
+                oldItemsPerPage !==
+                itemsPerPage
+            ) {
+
+                currentPage = 0;
+
+                showUpdates();
+
+                restartAuto();
+            }
             }
         );
-
-
      
         calculateLoopWidth();
-
+        calculateItemsPerPage();
+      
+          showUpdates();
+      
+          startAuto();
      
         requestAnimationFrame(() => {
 
