@@ -14,17 +14,786 @@
         Dashboard | Turrin Elettronica
     </title>
 
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            color: #162033;
+            background: #f5f8fc;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        .admin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 20px 32px;
+
+            background: #071b3a;
+            color: #ffffff;
+        }
+
+
+        .admin-header h1 {
+            margin: 0;
+
+            font-size: 22px;
+        }
+
+
+        .logout-button {
+            padding: 10px 18px;
+
+            border: 1px solid
+                rgba(255,255,255,.35);
+
+            border-radius: 6px;
+
+            background: transparent;
+            color: #ffffff;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .logout-button:hover {
+            background:
+                rgba(255,255,255,.1);
+        }
+
+
+        .container {
+            width: min(
+                1150px,
+                calc(100% - 40px)
+            );
+
+            margin: 0 auto;
+        }
+
+
+        .dashboard-top {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 38px 0 24px;
+        }
+
+
+        .dashboard-top h2 {
+            margin: 0;
+
+            color: #071b3a;
+
+            font-size: 28px;
+        }
+
+
+        .dashboard-top p {
+            margin: 6px 0 0;
+
+            color: #687487;
+
+            font-size: 14px;
+        }
+
+
+        .new-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 44px;
+
+            padding: 0 20px;
+
+            border: 0;
+            border-radius: 7px;
+
+            color: #ffffff;
+            background: #0759d8;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+
+        .new-button:hover {
+            background: #064ab0;
+        }
+
+
+        .updates-panel {
+            overflow: hidden;
+
+            border: 1px solid #dde5ef;
+            border-radius: 10px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 8px 30px
+                rgba(21, 42, 75, .07);
+        }
+
+
+        .updates-table {
+            width: 100%;
+
+            border-collapse: collapse;
+        }
+
+
+        .updates-table th,
+        .updates-table td {
+            padding: 15px 16px;
+
+            border-bottom:
+                1px solid #e7edf4;
+
+            text-align: left;
+
+            vertical-align: middle;
+        }
+
+
+        .updates-table th {
+            color: #58677a;
+            background: #f8fafc;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .04em;
+        }
+
+
+        .updates-table td {
+            font-size: 13px;
+        }
+
+
+        .updates-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+
+        .status {
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        .status.published {
+            color: #16713a;
+            background: #e9f8ef;
+        }
+
+
+        .status.draft {
+            color: #8a6515;
+            background: #fff6d9;
+        }
+
+
+        .actions {
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .action-button {
+            padding: 7px 10px;
+
+            border: 1px solid #d6e0eb;
+            border-radius: 5px;
+
+            background: #ffffff;
+
+            color: #344258;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .action-button:hover {
+            border-color: #0759d8;
+            color: #0759d8;
+        }
+
+
+        .action-button.delete:hover {
+            border-color: #cf3838;
+            color: #cf3838;
+        }
+
+
+        .empty-message,
+        .loading-message,
+        .error-message {
+            padding: 35px;
+
+            text-align: center;
+
+            color: #687487;
+
+            font-size: 14px;
+        }
+
+
+        .error-message {
+            color: #b02b2b;
+        }
+
+
+        @media (max-width: 800px) {
+
+            .dashboard-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+
+            .updates-panel {
+                overflow-x: auto;
+            }
+
+
+            .updates-table {
+                min-width: 760px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <h1>
-        Dashboard Turrin Elettronica
-    </h1>
+    <header class="admin-header">
 
-    <p>
-        Login effettuato correttamente.
-    </p>
+        <h1>
+            Turrin Elettronica — Admin
+        </h1>
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+            type="button">
+            Esci
+        </button>
+
+    </header>
+
+
+    <main class="container">
+
+        <div class="dashboard-top">
+
+            <div>
+
+                <h2>
+                    Aggiornamenti
+                </h2>
+
+                <p>
+                    Gestisci gli aggiornamenti pubblicati sul sito.
+                </p>
+
+            </div>
+
+
+            <button
+                id="newUpdateButton"
+                class="new-button"
+                type="button">
+                + Nuovo aggiornamento
+            </button>
+
+        </div>
+
+
+        <section
+            class="updates-panel"
+            id="updatesPanel">
+
+            <div class="loading-message">
+                Caricamento aggiornamenti...
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+    </script>
+
+
+    <script>
+
+        /* =====================================
+           CONFIGURAZIONE SUPABASE
+           ===================================== */
+
+        const SUPABASE_URL =
+            'https://gxlquwudampvcuxiocmh.supabase.co';
+
+
+        const SUPABASE_KEY =
+            'sb_publishable_TXv6HGzmzYe2c-CFD2hkkQ_qzkOa4XR';
+
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /* =====================================
+           ELEMENTI
+           ===================================== */
+
+        const updatesPanel =
+            document.getElementById(
+                'updatesPanel'
+            );
+
+
+        const logoutButton =
+            document.getElementById(
+                'logoutButton'
+            );
+
+
+        const newUpdateButton =
+            document.getElementById(
+                'newUpdateButton'
+            );
+
+
+        /* =====================================
+           CONTROLLO LOGIN
+           ===================================== */
+
+        async function checkSession() {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .auth
+                    .getSession();
+
+
+            if (
+                error ||
+                !data.session
+            ) {
+
+                window.location.href =
+                    'index.html';
+
+                return false;
+            }
+
+
+            return true;
+        }
+
+
+        /* =====================================
+           CARICA AGGIORNAMENTI
+           ===================================== */
+
+        async function loadUpdates() {
+
+            updatesPanel.innerHTML =
+                `
+                <div class="loading-message">
+                    Caricamento aggiornamenti...
+                </div>
+                `;
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from('updates')
+                    .select(`
+                        id,
+                        product_name,
+                        version,
+                        title,
+                        published_at,
+                        published
+                    `)
+                    .order(
+                        'published_at',
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(error);
+
+                updatesPanel.innerHTML =
+                    `
+                    <div class="error-message">
+                        Errore durante il caricamento
+                        degli aggiornamenti.
+                    </div>
+                    `;
+
+                return;
+            }
+
+
+            if (
+                !data ||
+                data.length === 0
+            ) {
+
+                updatesPanel.innerHTML =
+                    `
+                    <div class="empty-message">
+                        Nessun aggiornamento presente.
+                    </div>
+                    `;
+
+                return;
+            }
+
+
+            renderUpdates(data);
+        }
+
+
+        /* =====================================
+           CREA TABELLA
+           ===================================== */
+
+        function renderUpdates(updates) {
+
+            const rows =
+                updates.map(update => {
+
+                    const date =
+                        new Date(
+                            update.published_at
+                        )
+                        .toLocaleDateString(
+                            'it-IT'
+                        );
+
+
+                    const statusClass =
+                        update.published
+                            ? 'published'
+                            : 'draft';
+
+
+                    const statusText =
+                        update.published
+                            ? 'Pubblicato'
+                            : 'Bozza';
+
+
+                    return `
+                        <tr>
+
+                            <td>
+                                ${escapeHtml(
+                                    update.product_name
+                                )}
+                            </td>
+
+                            <td>
+                                ${escapeHtml(
+                                    update.version || '-'
+                                )}
+                            </td>
+
+                            <td>
+                                ${escapeHtml(
+                                    update.title
+                                )}
+                            </td>
+
+                            <td>
+                                ${date}
+                            </td>
+
+                            <td>
+
+                                <span
+                                    class="status ${statusClass}">
+                                    ${statusText}
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <div class="actions">
+
+                                    <button
+                                        class="action-button edit"
+                                        data-id="${update.id}"
+                                        type="button">
+                                        Modifica
+                                    </button>
+
+                                    <button
+                                        class="action-button delete"
+                                        data-id="${update.id}"
+                                        type="button">
+                                        Elimina
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    `;
+
+                }).join('');
+
+
+            updatesPanel.innerHTML =
+                `
+                <table class="updates-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Prodotto</th>
+
+                            <th>Versione</th>
+
+                            <th>Titolo</th>
+
+                            <th>Data</th>
+
+                            <th>Stato</th>
+
+                            <th>Azioni</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${rows}
+
+                    </tbody>
+
+                </table>
+                `;
+
+
+            attachActionEvents();
+        }
+
+
+        /* =====================================
+           PROTEZIONE HTML
+           ===================================== */
+
+        function escapeHtml(value) {
+
+            return String(value ?? '')
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+
+        /* =====================================
+           PULSANTI
+           ===================================== */
+
+        function attachActionEvents() {
+
+            document
+                .querySelectorAll(
+                    '.action-button.edit'
+                )
+                .forEach(button => {
+
+                    button.addEventListener(
+                        'click',
+                        () => {
+
+                            const id =
+                                button.dataset.id;
+
+
+                            console.log(
+                                'Modifica aggiornamento:',
+                                id
+                            );
+
+
+                            /*
+                             * Nel prossimo passo:
+                             *
+                             * edit.html?id=1
+                             */
+                        }
+                    );
+                });
+
+
+            document
+                .querySelectorAll(
+                    '.action-button.delete'
+                )
+                .forEach(button => {
+
+                    button.addEventListener(
+                        'click',
+                        () => {
+
+                            const id =
+                                button.dataset.id;
+
+
+                            console.log(
+                                'Elimina aggiornamento:',
+                                id
+                            );
+
+
+                            /*
+                             * Nel prossimo passo
+                             * renderemo questo
+                             * pulsante realmente
+                             * funzionante.
+                             */
+                        }
+                    );
+                });
+        }
+
+
+        /* =====================================
+           NUOVO AGGIORNAMENTO
+           ===================================== */
+
+        newUpdateButton.addEventListener(
+            'click',
+            () => {
+
+                console.log(
+                    'Nuovo aggiornamento'
+                );
+
+
+                /*
+                 * Nel prossimo passo:
+                 *
+                 * window.location.href =
+                 * 'new.html';
+                 */
+            }
+        );
+
+
+        /* =====================================
+           LOGOUT
+           ===================================== */
+
+        logoutButton.addEventListener(
+            'click',
+            async () => {
+
+                await supabaseClient
+                    .auth
+                    .signOut({
+                        scope: 'local'
+                    });
+
+
+                window.location.href =
+                    'index.html';
+            }
+        );
+
+
+        /* =====================================
+           AVVIO
+           ===================================== */
+
+        async function startDashboard() {
+
+            const loggedIn =
+                await checkSession();
+
+
+            if (!loggedIn)
+                return;
+
+
+            await loadUpdates();
+        }
+
+
+        startDashboard();
+
+    </script>
 
 </body>
 
