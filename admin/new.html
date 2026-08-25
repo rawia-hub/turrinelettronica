@@ -112,7 +112,13 @@
 
             font-size: 14px;
         }
-
+        .form-group small {
+            display: block;
+            margin-top: 6px;
+        
+            color: #7b8797;
+            font-size: 11px;
+        }
 
         .form-card {
             padding: 30px;
@@ -441,7 +447,24 @@
                     >
 
                 </div>
-
+                
+                <div class="form-group full">
+                
+                    <label for="image">
+                        Immagine aggiornamento
+                    </label>
+                
+                    <input
+                        id="image"
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp"
+                    >
+                
+                    <small>
+                        JPG, PNG o WebP. Massimo 5 MB.
+                    </small>
+                
+                </div>
 
                 <div class="form-group">
 
@@ -635,7 +658,8 @@
             document.getElementById(
                 'message'
             );
-
+        const imageInput =
+            document.getElementById('image');
 
         /* =====================================
            DATA DI OGGI
@@ -832,7 +856,142 @@
                     )
                     .toISOString();
 
+let imagePath = null;
 
+
+/* =====================================
+   UPLOAD IMMAGINE
+   ===================================== */
+
+const imageFile =
+    imageInput.files[0];
+
+
+if (imageFile) {
+
+    const allowedTypes = [
+        'image/jpeg',
+        'image/png',
+        'image/webp'
+    ];
+
+
+    if (
+        !allowedTypes.includes(
+            imageFile.type
+        )
+    ) {
+
+        showMessage(
+            'Formato immagine non valido.',
+            'error'
+        );
+
+        saveButton.disabled = false;
+
+        saveButton.textContent =
+            'Salva aggiornamento';
+
+        return;
+    }
+
+
+    const maxSize =
+        5 * 1024 * 1024;
+
+
+    if (
+        imageFile.size >
+        maxSize
+    ) {
+
+        showMessage(
+            'L’immagine supera i 5 MB.',
+            'error'
+        );
+
+        saveButton.disabled = false;
+
+        saveButton.textContent =
+            'Salva aggiornamento';
+
+        return;
+    }
+
+
+    /*
+     * Creiamo un nome file unico.
+     */
+
+    const extension =
+        imageFile.name
+            .split('.')
+            .pop()
+            .toLowerCase();
+
+
+    const safeProduct =
+        productKey
+            .replace(
+                /[^a-z0-9_-]/gi,
+                '-'
+            );
+
+
+    const fileName =
+        safeProduct +
+        '-' +
+        Date.now() +
+        '.' +
+        extension;
+
+
+    const {
+        data: uploadData,
+        error: uploadError
+    } =
+        await supabaseClient
+            .storage
+            .from('updates')
+            .upload(
+                fileName,
+                imageFile,
+                {
+                    cacheControl: '3600',
+                    upsert: false
+                }
+            );
+
+
+    if (uploadError) {
+
+        console.error(
+            uploadError
+        );
+
+
+        showMessage(
+            'Errore durante il caricamento dell’immagine: ' +
+            uploadError.message,
+            'error'
+        );
+
+
+        saveButton.disabled =
+            false;
+
+
+        saveButton.textContent =
+            'Salva aggiornamento';
+
+
+        return;
+    }
+
+
+    imagePath =
+        uploadData.path;
+}
                 const newUpdate = {
 
                     product_key:
@@ -857,7 +1016,7 @@
                         || null,
 
                     image_path:
-                        null,
+                        imagePath,
 
                     published_at:
                         publishedAt,
