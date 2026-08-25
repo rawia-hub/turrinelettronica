@@ -149,84 +149,137 @@
     <div class="container footer-bottom"><span>© 2026 Turrin Elettronica S.r.l. – Tutti i diritti riservati</span><div><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a></div></div>
   </footer>
 
-  <script>
-    const track = document.getElementById('productTrack');
-    const prev = document.querySelector('.carousel-arrow.prev');
-    const next = document.querySelector('.carousel-arrow.next');
-    let autoScroll;
-    function cardStep() {
-        const card = track.querySelector('.product-card');
-        const gap = parseFloat(getComputedStyle(track).gap) || 15;
-    
-        return card.getBoundingClientRect().width + gap;
-    }
-    
-    function nextProduct() {
-        const maxScroll = track.scrollWidth - track.clientWidth;
-    
-        if (track.scrollLeft >= maxScroll - 10) {
-            track.scrollTo({
-                left: 0,
-                behavior: 'smooth'
-            });
-        }
-        else {
-            track.scrollBy({
-                left: cardStep(),
-                behavior: 'smooth'
-            });
-        }
-    }
-    
-    function prevProduct() {
-        if (track.scrollLeft <= 10) {
-            track.scrollTo({
-                left: track.scrollWidth,
-                behavior: 'smooth'
-            });
-        }
-        else {
-            track.scrollBy({
-                left: -cardStep(),
-                behavior: 'smooth'
-            });
-        }
-    }
-    
-    function startAutoScroll() {
-        autoScroll = setInterval(nextProduct, 3000);
-    }
-    
-    function stopAutoScroll() {
-        clearInterval(autoScroll);
-    }
-    
-    next.addEventListener('click', () => {
-        stopAutoScroll();
-        nextProduct();
-        startAutoScroll();
-    });
-    
-    prev.addEventListener('click', () => {
-        stopAutoScroll();
-        prevProduct();
-        startAutoScroll();
-    });
-    
-    track.addEventListener('mouseenter', stopAutoScroll);
-    track.addEventListener('mouseleave', startAutoScroll);
-    
-    track.addEventListener('touchstart', stopAutoScroll);
-    track.addEventListener('touchend', startAutoScroll);
-    
-    startAutoScroll();
-
-    const menuToggle = document.querySelector('.menu-toggle');
+<script>
+     const menuButton = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.main-nav');
-    menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', nav.classList.contains('open'));
-    });
-  </script>
+
+    if (menuButton && nav) {
+        menuButton.addEventListener('click', () => {
+            nav.classList.toggle('open');
+
+            menuButton.setAttribute(
+                'aria-expanded',
+                nav.classList.contains('open')
+            );
+        });
+    }
+
+
+  
+    const track = document.getElementById('product-track');
+
+    if (track) {
+
+        const originalCards =
+            Array.from(track.querySelectorAll('.product-card'));
+
+        const originalCount = originalCards.length;
+
+        originalCards.forEach(card => {
+
+        const clone = card.cloneNode(true);
+
+        clone.setAttribute('aria-hidden', 'true');
+
+        track.appendChild(clone);
+        });
+
+
+        let running = true;
+
+        let lastTime = performance.now();
+
+        let loopWidth = 0;
+
+        const speed = 25;
+
+        function calculateLoopWidth() {
+
+            const firstCard =
+                track.children[0];
+
+            const firstClone =
+                track.children[originalCount];
+
+            if (!firstCard || !firstClone)
+                return;
+
+            loopWidth =
+                firstClone.offsetLeft -
+                firstCard.offsetLeft;
+        }
+
+
+        function animateProducts(currentTime) {
+
+            const deltaTime =
+                (currentTime - lastTime) / 1000;
+
+            lastTime = currentTime;
+
+
+            if (running && loopWidth > 0) {
+
+                track.scrollLeft +=
+                    speed * deltaTime;
+
+                if (track.scrollLeft >= loopWidth) {
+
+                    track.scrollLeft -= loopWidth;
+                }
+            }
+
+
+            requestAnimationFrame(animateProducts);
+        }
+
+
+        track.addEventListener('mouseenter', () => {
+
+            running = false;
+        });
+
+
+        track.addEventListener('mouseleave', () => {
+
+            running = true;
+
+            lastTime = performance.now();
+        });
+
+
+        track.addEventListener('pointerdown', () => {
+
+            running = false;
+        });
+
+
+        track.addEventListener('pointerup', () => {
+
+            running = true;
+
+            lastTime = performance.now();
+        });
+
+
+        track.addEventListener('pointercancel', () => {
+
+            running = true;
+
+            lastTime = performance.now();
+        });
+
+
+        window.addEventListener('resize', () => {
+
+            calculateLoopWidth();
+        });
+
+
+        calculateLoopWidth();
+
+        requestAnimationFrame(animateProducts);
+    }
+</script>
 </body>
 </html>
