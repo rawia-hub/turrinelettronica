@@ -445,7 +445,26 @@
               }
           );
         }
-
+    [prev, next].forEach(button => {
+  
+      if (!button)
+          return;
+  
+      button.addEventListener('pointerenter', (event) => {
+  
+          if (event.pointerType === 'mouse') {
+              running = false;
+          }
+      });
+  
+      button.addEventListener('pointerleave', (event) => {
+  
+          if (event.pointerType === 'mouse') {
+              running = true;
+              lastTime = performance.now();
+          }
+      });
+      });
 
         /* =========================
            PAUSA CON IL MOUSE
@@ -512,7 +531,20 @@
       
           track.setPointerCapture(event.pointerId);
       });
+      track.addEventListener('pointerenter', (event) => {
       
+          if (event.pointerType === 'mouse') {
+              running = false;
+          }
+      });
+      
+      track.addEventListener('pointerleave', (event) => {
+      
+          if (event.pointerType === 'mouse') {
+              running = true;
+              lastTime = performance.now();
+          }
+      }); 
       
       track.addEventListener('pointermove', (event) => {
       
