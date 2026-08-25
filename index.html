@@ -153,13 +153,73 @@
     const track = document.getElementById('productTrack');
     const prev = document.querySelector('.carousel-arrow.prev');
     const next = document.querySelector('.carousel-arrow.next');
-    function step() {
-      const card = track.querySelector('.product-card');
-      const styles = getComputedStyle(track);
-      return card.getBoundingClientRect().width + (parseFloat(styles.gap) || 16);
+    let autoScroll;
+    function cardStep() {
+        const card = track.querySelector('.product-card');
+        const gap = parseFloat(getComputedStyle(track).gap) || 15;
+    
+        return card.getBoundingClientRect().width + gap;
     }
-    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
-    next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+    
+    function nextProduct() {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+    
+        if (track.scrollLeft >= maxScroll - 10) {
+            track.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+        }
+        else {
+            track.scrollBy({
+                left: cardStep(),
+                behavior: 'smooth'
+            });
+        }
+    }
+    
+    function prevProduct() {
+        if (track.scrollLeft <= 10) {
+            track.scrollTo({
+                left: track.scrollWidth,
+                behavior: 'smooth'
+            });
+        }
+        else {
+            track.scrollBy({
+                left: -cardStep(),
+                behavior: 'smooth'
+            });
+        }
+    }
+    
+    function startAutoScroll() {
+        autoScroll = setInterval(nextProduct, 3000);
+    }
+    
+    function stopAutoScroll() {
+        clearInterval(autoScroll);
+    }
+    
+    next.addEventListener('click', () => {
+        stopAutoScroll();
+        nextProduct();
+        startAutoScroll();
+    });
+    
+    prev.addEventListener('click', () => {
+        stopAutoScroll();
+        prevProduct();
+        startAutoScroll();
+    });
+    
+    track.addEventListener('mouseenter', stopAutoScroll);
+    track.addEventListener('mouseleave', startAutoScroll);
+    
+    track.addEventListener('touchstart', stopAutoScroll);
+    track.addEventListener('touchend', startAutoScroll);
+    
+    startAutoScroll();
 
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.main-nav');
