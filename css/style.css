@@ -141,11 +141,11 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{f
 
 .te-update-image {
     height: 160px;
-
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    background: #f3f6fa;
     overflow: hidden;
 
     color: #ffffff;
@@ -155,7 +155,15 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{f
 
     letter-spacing: -0.03em;
 }
+.te-update-image img {
+    width: 100%;
+    height: 100%;
 
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+}
 
 .te-update-image span {
     padding: 9px 16px;
@@ -171,7 +179,41 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{f
     backdrop-filter: blur(5px);
 }
 
+.te-update-image-label {
+    position: absolute;
 
+    left: 14px;
+    bottom: 14px;
+
+    padding: 6px 10px;
+
+    border-radius: 5px;
+
+    color: #ffffff;
+
+    background:
+        rgba(7, 27, 58, .86);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    backdrop-filter: blur(4px);
+}
+.te-updates-loading,
+.te-updates-error {
+    grid-column: 1 / -1;
+
+    padding: 45px;
+
+    text-align: center;
+
+    color: #687487;
+
+    font-size: 14px;
+}
+.te-updates-error {
+    color: #b52c2c;
+}
 .te-mc3 {
     background:
         linear-gradient(
