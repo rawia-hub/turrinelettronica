@@ -150,7 +150,10 @@
   </footer>
 
 <script>
-    
+    /* =========================
+       MENU MOBILE
+       ========================= */
+
     const menuToggle =
         document.querySelector('.menu-toggle');
 
@@ -158,9 +161,7 @@
         document.querySelector('.main-nav');
 
     if (menuToggle && nav) {
-
         menuToggle.addEventListener('click', () => {
-
             nav.classList.toggle('open');
 
             menuToggle.setAttribute(
@@ -171,28 +172,36 @@
     }
 
 
-    const productTrack =
-        document.getElementById('productTrack');
+    /* =========================
+       CAROUSEL PRODOTTI INFINITO
+       ========================= */
 
-    const prevButton =
-        document.querySelector('.carousel-arrow.prev');
+    window.addEventListener('load', () => {
 
-    const nextButton =
-        document.querySelector('.carousel-arrow.next');
+        const track =
+            document.getElementById('productTrack');
+
+        const prev =
+            document.querySelector('.carousel-arrow.prev');
+
+        const next =
+            document.querySelector('.carousel-arrow.next');
+
+        if (!track)
+            return;
 
 
-    if (productTrack) {
-
-      
+        /* Salviamo SOLO i 6 prodotti originali */
         const originalCards =
             Array.from(
-                productTrack.querySelectorAll('.product-card')
+                track.querySelectorAll('.product-card')
             );
 
         const originalCount =
             originalCards.length;
 
 
+        /* Duplichiamo i 6 prodotti */
         originalCards.forEach(card => {
 
             const clone =
@@ -203,113 +212,172 @@
                 'true'
             );
 
-            productTrack.appendChild(clone);
+            track.appendChild(clone);
         });
 
-        let position = 0;
 
-      
+        /*
+         * Adesso internamente abbiamo:
+         *
+         * 1 2 3 4 5 6 | 1 2 3 4 5 6
+         */
+
+
+        let position = 0;
         let loopWidth = 0;
+
+        let running = true;
 
         let lastTime =
             performance.now();
 
 
-        const speed = 25;
+        /* Velocità scorrimento */
+        const speed = 22;
+
+
+        /* =========================
+           CALCOLO LOOP
+           ========================= */
 
         function calculateLoopWidth() {
 
-            const firstCard =
-                productTrack.children[0];
+            const firstOriginal =
+                track.children[0];
 
             const firstClone =
-                productTrack.children[originalCount];
+                track.children[originalCount];
 
-            if (!firstCard || !firstClone)
+            if (!firstOriginal ||
+                !firstClone) {
                 return;
+            }
+
 
             loopWidth =
                 firstClone.offsetLeft -
-                firstCard.offsetLeft;
+                firstOriginal.offsetLeft;
         }
+
+
+        /* =========================
+           POSIZIONE
+           ========================= */
 
         function updatePosition() {
 
-            productTrack.style.transform =
+            track.style.transform =
                 `translate3d(${-position}px, 0, 0)`;
         }
 
 
-        function animateProducts(currentTime) {
+        /* =========================
+           LOOP INFINITO
+           ========================= */
 
-            const deltaTime =
-                (currentTime - lastTime) / 1000;
+        function normalizePosition() {
+
+            if (loopWidth <= 0)
+                return;
+
+
+            /*
+             * Se superiamo il gruppo originale,
+             * torniamo nella posizione equivalente.
+             *
+             * Visivamente:
+             *
+             * 1 2 3 4 5 6 | 1 2 3 4...
+             *
+             * non cambia niente.
+             */
+
+            while (position >= loopWidth) {
+                position -= loopWidth;
+            }
+
+
+            while (position < 0) {
+                position += loopWidth;
+            }
+        }
+
+
+        /* =========================
+           ANIMAZIONE
+           ========================= */
+
+        function animate(currentTime) {
+
+            const delta =
+                Math.min(
+                    (currentTime - lastTime) / 1000,
+                    0.05
+                );
 
             lastTime =
                 currentTime;
 
 
-            if (loopWidth > 0) {
+            if (running &&
+                loopWidth > 0) {
 
-          
                 position +=
-                    speed * deltaTime;
+                    speed * delta;
 
-                if (position >= loopWidth) {
-
-                    position -= loopWidth;
-                }
-
+                normalizePosition();
 
                 updatePosition();
             }
 
 
             requestAnimationFrame(
-                animateProducts
+                animate
             );
         }
 
 
+        /* =========================
+           DIMENSIONE DI UNA CARD
+           ========================= */
+
         function cardStep() {
 
             const card =
-                productTrack.querySelector(
-                    '.product-card'
-                );
+                track.querySelector('.product-card');
 
             if (!card)
                 return 0;
 
-            const styles =
-                getComputedStyle(productTrack);
+
+            const style =
+                getComputedStyle(track);
 
             const gap =
-                parseFloat(styles.gap) || 16;
+                parseFloat(style.gap) || 16;
 
 
             return (
-                card.getBoundingClientRect().width +
+                card.offsetWidth +
                 gap
             );
         }
 
 
-        /*
-         * FRECCIA DESTRA
-         */
-        if (nextButton) {
+        /* =========================
+           FRECCIA DESTRA
+           ========================= */
 
-            nextButton.addEventListener(
+        if (next) {
+
+            next.addEventListener(
                 'click',
                 () => {
 
-                    position += cardStep();
+                    position +=
+                        cardStep();
 
-                    if (position >= loopWidth) {
-
-                        position -= loopWidth;
-                    }
+                    normalizePosition();
 
                     updatePosition();
                 }
@@ -317,26 +385,91 @@
         }
 
 
-        /*
-         * FRECCIA SINISTRA
-         */
-        if (prevButton) {
+        /* =========================
+           FRECCIA SINISTRA
+           ========================= */
 
-            prevButton.addEventListener(
+        if (prev) {
+
+            prev.addEventListener(
                 'click',
                 () => {
 
-                    position -= cardStep();
+                    position -=
+                        cardStep();
 
-                    if (position < 0) {
-
-                        position += loopWidth;
-                    }
+                    normalizePosition();
 
                     updatePosition();
                 }
             );
         }
+
+
+        /* =========================
+           PAUSA CON IL MOUSE
+           ========================= */
+
+        track.addEventListener(
+            'mouseenter',
+            () => {
+
+                running = false;
+            }
+        );
+
+
+        track.addEventListener(
+            'mouseleave',
+            () => {
+
+                running = true;
+
+                /*
+                 * Evita un salto quando
+                 * l'animazione riparte.
+                 */
+                lastTime =
+                    performance.now();
+            }
+        );
+
+
+        /* =========================
+           TOUCH / MOBILE
+           ========================= */
+
+        track.addEventListener(
+            'pointerdown',
+            () => {
+
+                running = false;
+            }
+        );
+
+
+        track.addEventListener(
+            'pointerup',
+            () => {
+
+                running = true;
+
+                lastTime =
+                    performance.now();
+            }
+        );
+
+
+        track.addEventListener(
+            'pointercancel',
+            () => {
+
+                running = true;
+
+                lastTime =
+                    performance.now();
+            }
+        );
 
 
         window.addEventListener(
@@ -345,21 +478,31 @@
 
                 calculateLoopWidth();
 
-                if (position >= loopWidth) {
-                    position = 0;
-                }
+                normalizePosition();
 
                 updatePosition();
             }
         );
 
 
+     
         calculateLoopWidth();
 
+     
+        requestAnimationFrame(() => {
+
+            calculateLoopWidth();
+
+            normalizePosition();
+
+            updatePosition();
+        });
+
+
         requestAnimationFrame(
-            animateProducts
+            animate
         );
-    }
+    });
 </script>
 </body>
 </html>
