@@ -150,7 +150,9 @@
   </footer>
 
 <script>
-     const menuButton = document.querySelector('.menu-toggle');
+    /* MENU MOBILE */
+
+    const menuButton = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.main-nav');
 
     if (menuButton && nav) {
@@ -165,7 +167,8 @@
     }
 
 
-  
+    /* CAROUSEL PRODOTTI CONTINUO */
+
     const track = document.getElementById('product-track');
 
     if (track) {
@@ -175,110 +178,110 @@
 
         const originalCount = originalCards.length;
 
+        /*
+         * Duplica i 6 prodotti
+         *
+         * 1 2 3 4 5 6 | 1 2 3 4 5 6
+         */
         originalCards.forEach(card => {
 
-        const clone = card.cloneNode(true);
+            const clone = card.cloneNode(true);
 
-        clone.setAttribute('aria-hidden', 'true');
+            clone.setAttribute('aria-hidden', 'true');
 
-        track.appendChild(clone);
+            track.appendChild(clone);
         });
 
 
-        let running = true;
-
+        let isRunning = true;
         let lastTime = performance.now();
-
         let loopWidth = 0;
 
+        /*
+         * Velocità:
+         * 20 = lenta
+         * 25 = consigliata
+         * 35 = veloce
+         */
         const speed = 25;
+
 
         function calculateLoopWidth() {
 
-            const firstCard =
-                track.children[0];
+            const firstOriginal = track.children[0];
+            const firstClone = track.children[originalCount];
 
-            const firstClone =
-                track.children[originalCount];
-
-            if (!firstCard || !firstClone)
+            if (!firstOriginal || !firstClone)
                 return;
 
             loopWidth =
                 firstClone.offsetLeft -
-                firstCard.offsetLeft;
+                firstOriginal.offsetLeft;
         }
 
 
-        function animateProducts(currentTime) {
+        function animate(currentTime) {
 
-            const deltaTime =
+            const delta =
                 (currentTime - lastTime) / 1000;
 
             lastTime = currentTime;
 
+            if (isRunning && loopWidth > 0) {
 
-            if (running && loopWidth > 0) {
+                track.scrollLeft += speed * delta;
 
-                track.scrollLeft +=
-                    speed * deltaTime;
-
+                /*
+                 * Arrivati alla copia, torniamo
+                 * alla posizione equivalente.
+                 * Non si vede nessun salto.
+                 */
                 if (track.scrollLeft >= loopWidth) {
-
                     track.scrollLeft -= loopWidth;
                 }
             }
 
-
-            requestAnimationFrame(animateProducts);
+            requestAnimationFrame(animate);
         }
 
 
+        /* Pausa passando il mouse */
+
         track.addEventListener('mouseenter', () => {
-
-            running = false;
+            isRunning = false;
         });
-
 
         track.addEventListener('mouseleave', () => {
-
-            running = true;
-
+            isRunning = true;
             lastTime = performance.now();
         });
 
+
+        /* Mobile */
 
         track.addEventListener('pointerdown', () => {
-
-            running = false;
+            isRunning = false;
         });
 
-
         track.addEventListener('pointerup', () => {
-
-            running = true;
-
+            isRunning = true;
             lastTime = performance.now();
         });
 
-
         track.addEventListener('pointercancel', () => {
-
-            running = true;
-
+            isRunning = true;
             lastTime = performance.now();
         });
 
 
         window.addEventListener('resize', () => {
-
             calculateLoopWidth();
         });
 
 
         calculateLoopWidth();
 
-        requestAnimationFrame(animateProducts);
+        requestAnimationFrame(animate);
     }
 </script>
 </body>
