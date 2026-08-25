@@ -464,44 +464,35 @@
             },
             true
         );
-/* =========================
-   PAUSA HOVER SOLO DESKTOP
-   ========================= */
-
-      const hasRealMouse =
-          window.matchMedia(
-              '(hover: hover) and (pointer: fine)'
-          ).matches;
+      /* =========================
+         PAUSA QUANDO IL MOUSE
+         È SOPRA I PRODOTTI
+         ========================= */
       
+      track.addEventListener(
+          'mouseenter',
+          () => {
       
-      if (hasRealMouse) {
-      
-          track.addEventListener(
-              'mouseenter',
-              () => {
-      
-                  if (!isDragging) {
-                      running = false;
-                  }
+              if (!isDragging) {
+                  running = false;
               }
-          );
+          }
+      );
       
       
-          track.addEventListener(
-              'mouseleave',
-              () => {
+      track.addEventListener(
+          'mouseleave',
+          () => {
       
-                  if (!isDragging) {
+              if (!isDragging) {
       
-                      running = true;
+                  running = true;
       
-                      lastTime =
-                          performance.now();
-                  }
+                  lastTime =
+                      performance.now();
               }
-          );
-      }
-
+          }
+      );
 
        /* =========================
          DRAG CON IL MOUSE
