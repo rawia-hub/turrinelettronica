@@ -150,69 +150,68 @@
   </footer>
 
 <script>
-    /* MENU MOBILE */
+  
 
-    const menuButton = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.main-nav');
+    const track =
+        document.getElementById('productTrack');
 
-    if (menuButton && nav) {
-        menuButton.addEventListener('click', () => {
-            nav.classList.toggle('open');
+    const prev =
+        document.querySelector('.carousel-arrow.prev');
 
-            menuButton.setAttribute(
-                'aria-expanded',
-                nav.classList.contains('open')
-            );
-        });
-    }
+    const next =
+        document.querySelector('.carousel-arrow.next');
 
-
-    /* CAROUSEL PRODOTTI CONTINUO */
-
-    const track = document.getElementById('product-track');
 
     if (track) {
 
+     
         const originalCards =
-            Array.from(track.querySelectorAll('.product-card'));
+            Array.from(
+                track.querySelectorAll('.product-card')
+            );
 
-        const originalCount = originalCards.length;
+        const originalCount =
+            originalCards.length;
 
-        /*
-         * Duplica i 6 prodotti
-         *
-         * 1 2 3 4 5 6 | 1 2 3 4 5 6
-         */
+
+     
         originalCards.forEach(card => {
 
-            const clone = card.cloneNode(true);
+            const clone =
+                card.cloneNode(true);
 
-            clone.setAttribute('aria-hidden', 'true');
+            clone.setAttribute(
+                'aria-hidden',
+                'true'
+            );
 
             track.appendChild(clone);
         });
 
 
-        let isRunning = true;
-        let lastTime = performance.now();
         let loopWidth = 0;
 
-        /*
-         * Velocità:
-         * 20 = lenta
-         * 25 = consigliata
-         * 35 = veloce
-         */
+        let lastTime =
+            performance.now();
+
+        let running = true;
+
         const speed = 25;
 
 
         function calculateLoopWidth() {
 
-            const firstOriginal = track.children[0];
-            const firstClone = track.children[originalCount];
+            const firstOriginal =
+                track.children[0];
 
-            if (!firstOriginal || !firstClone)
+            const firstClone =
+                track.children[originalCount];
+
+            if (!firstOriginal ||
+                !firstClone) {
+
                 return;
+            }
 
             loopWidth =
                 firstClone.offsetLeft -
@@ -220,68 +219,163 @@
         }
 
 
-        function animate(currentTime) {
+   
+        function normalizePosition() {
 
-            const delta =
+            if (loopWidth <= 0)
+                return;
+
+            if (track.scrollLeft >= loopWidth) {
+
+                track.scrollLeft -= loopWidth;
+            }
+
+            if (track.scrollLeft < 0) {
+
+                track.scrollLeft += loopWidth;
+            }
+        }
+
+
+        /*
+         * Animazione continua.
+         */
+        function animateProducts(currentTime) {
+
+            const deltaTime =
                 (currentTime - lastTime) / 1000;
 
             lastTime = currentTime;
 
-            if (isRunning && loopWidth > 0) {
 
-                track.scrollLeft += speed * delta;
+            if (running &&
+                loopWidth > 0) {
 
-                /*
-                 * Arrivati alla copia, torniamo
-                 * alla posizione equivalente.
-                 * Non si vede nessun salto.
-                 */
-                if (track.scrollLeft >= loopWidth) {
-                    track.scrollLeft -= loopWidth;
-                }
+                track.scrollLeft +=
+                    speed * deltaTime;
+
+                normalizePosition();
             }
 
-            requestAnimationFrame(animate);
+
+            requestAnimationFrame(
+                animateProducts
+            );
         }
 
 
-        /* Pausa passando il mouse */
+        function cardStep() {
 
-        track.addEventListener('mouseenter', () => {
-            isRunning = false;
-        });
+            const card =
+                track.querySelector('.product-card');
 
-        track.addEventListener('mouseleave', () => {
-            isRunning = true;
-            lastTime = performance.now();
-        });
+            if (!card)
+                return 0;
 
+            const styles =
+                getComputedStyle(track);
 
-        /* Mobile */
+            const gap =
+                parseFloat(styles.gap) || 16;
 
-        track.addEventListener('pointerdown', () => {
-            isRunning = false;
-        });
-
-        track.addEventListener('pointerup', () => {
-            isRunning = true;
-            lastTime = performance.now();
-        });
-
-        track.addEventListener('pointercancel', () => {
-            isRunning = true;
-            lastTime = performance.now();
-        });
+            return (
+                card.getBoundingClientRect().width +
+                gap
+            );
+        }
 
 
-        window.addEventListener('resize', () => {
-            calculateLoopWidth();
-        });
+        /*
+         * FRECCIA DESTRA
+         */
+        if (next) {
+
+            next.addEventListener(
+                'click',
+                () => {
+
+                    track.scrollLeft +=
+                        cardStep();
+
+                    normalizePosition();
+                }
+            );
+        }
 
 
+        /*
+         * FRECCIA SINISTRA
+         */
+        if (prev) {
+
+            prev.addEventListener(
+                'click',
+                () => {
+
+         
+                    if (track.scrollLeft <
+                        cardStep()) {
+
+                        track.scrollLeft +=
+                            loopWidth;
+                    }
+
+
+                    track.scrollLeft -=
+                        cardStep();
+
+                    normalizePosition();
+                }
+            );
+        }
+
+
+        window.addEventListener(
+            'resize',
+            () => {
+
+                calculateLoopWidth();
+                normalizePosition();
+            }
+        );
+
+
+        /*
+         * Avvio
+         */
         calculateLoopWidth();
 
-        requestAnimationFrame(animate);
+        requestAnimationFrame(
+            animateProducts
+        );
+    }
+
+
+    /* ============================
+       MENU MOBILE
+       ============================ */
+
+    const menuToggle =
+        document.querySelector('.menu-toggle');
+
+    const nav =
+        document.querySelector('.main-nav');
+
+
+    if (menuToggle && nav) {
+
+        menuToggle.addEventListener(
+            'click',
+            () => {
+
+                nav.classList.toggle('open');
+
+                menuToggle.setAttribute(
+                    'aria-expanded',
+                    nav.classList.contains('open')
+                );
+            }
+        );
     }
 </script>
 </body>
