@@ -382,6 +382,20 @@
                     updatePosition();
                 }
             );
+          next.addEventListener(
+                'mouseenter',
+                () => {
+                    running = false;
+                }
+            );
+        
+            next.addEventListener(
+                'mouseleave',
+                () => {
+                    running = true;
+                    lastTime = performance.now();
+                }
+            );
         }
 
 
@@ -403,6 +417,20 @@
                     updatePosition();
                 }
             );
+          prev.addEventListener(
+              'mouseenter',
+              () => {
+                  running = false;
+              }
+          );
+      
+          prev.addEventListener(
+              'mouseleave',
+              () => {
+                  running = true;
+                  lastTime = performance.now();
+              }
+          );
         }
 
 
