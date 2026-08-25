@@ -179,9 +179,11 @@
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
 </script>
 <script>
-    /* =========================
-       MENU MOBILE
-       ========================= */
+/* =========================================================
+   MENU MOBILE
+   ========================================================= */
+
+(() => {
 
     const menuToggle =
         document.querySelector('.menu-toggle');
@@ -189,40 +191,469 @@
     const nav =
         document.querySelector('.main-nav');
 
-    if (menuToggle && nav) {
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('open');
+    if (!menuToggle || !nav)
+        return;
 
-            menuToggle.setAttribute(
-                'aria-expanded',
-                nav.classList.contains('open')
+    menuToggle.addEventListener('click', () => {
+
+        nav.classList.toggle('open');
+
+        menuToggle.setAttribute(
+            'aria-expanded',
+            nav.classList.contains('open')
+        );
+    });
+
+})();
+
+
+/* =========================================================
+   CAROUSEL PRODOTTI
+   ========================================================= */
+
+(() => {
+
+    const track =
+        document.getElementById('productTrack');
+
+    const prev =
+        document.querySelector('.carousel-arrow.prev');
+
+    const next =
+        document.querySelector('.carousel-arrow.next');
+
+    if (!track)
+        return;
+
+
+    /* Prodotti originali */
+    const originalCards =
+        Array.from(
+            track.querySelectorAll('.product-card')
+        );
+
+    const originalCount =
+        originalCards.length;
+
+
+    /* Duplica i 6 prodotti */
+
+    originalCards.forEach(card => {
+
+        const clone =
+            card.cloneNode(true);
+
+        clone.setAttribute(
+            'aria-hidden',
+            'true'
+        );
+
+        clone.dataset.clone =
+            'true';
+
+        track.appendChild(clone);
+    });
+
+
+    let position = 0;
+    let loopWidth = 0;
+
+    let running = true;
+    let isDragging = false;
+    let didDrag = false;
+
+    let dragStartX = 0;
+    let dragStartPosition = 0;
+
+    let lastTime =
+        performance.now();
+
+    const speed = 22;
+
+
+    function calculateLoopWidth() {
+
+        const firstOriginal =
+            track.children[0];
+
+        const firstClone =
+            track.children[originalCount];
+
+        if (!firstOriginal || !firstClone)
+            return;
+
+        loopWidth =
+            firstClone.offsetLeft -
+            firstOriginal.offsetLeft;
+    }
+
+
+    function normalizePosition() {
+
+        if (loopWidth <= 0)
+            return;
+
+        while (position >= loopWidth) {
+            position -= loopWidth;
+        }
+
+        while (position < 0) {
+            position += loopWidth;
+        }
+    }
+
+
+    function updatePosition() {
+
+        track.style.transform =
+            `translate3d(${-position}px, 0, 0)`;
+    }
+
+
+    function animate(currentTime) {
+
+        const delta =
+            Math.min(
+                (currentTime - lastTime) / 1000,
+                0.05
             );
-        });
+
+        lastTime =
+            currentTime;
+
+        if (
+            running &&
+            !isDragging &&
+            loopWidth > 0
+        ) {
+
+            position +=
+                speed * delta;
+
+            normalizePosition();
+
+            updatePosition();
+        }
+
+        requestAnimationFrame(
+            animate
+        );
+    }
+
+
+    function cardStep() {
+
+        const card =
+            track.querySelector('.product-card');
+
+        if (!card)
+            return 0;
+
+        const style =
+            getComputedStyle(track);
+
+        const gap =
+            parseFloat(style.gap) || 16;
+
+        return (
+            card.offsetWidth +
+            gap
+        );
     }
 
 
     /* =========================
-       CAROUSEL PRODOTTI INFINITO
+       FRECCE
        ========================= */
 
-    window.addEventListener('load', () => {
+    if (next) {
 
-        const track =
-            document.getElementById('productTrack');
+        next.addEventListener(
+            'click',
+            () => {
 
-        const prev =
-            document.querySelector('.carousel-arrow.prev');
+                position +=
+                    cardStep();
 
-        const next =
-            document.querySelector('.carousel-arrow.next');
-      
-        const updateCards =
-        Array.from(
-            document.querySelectorAll('.te-update-card')
+                normalizePosition();
+
+                updatePosition();
+            }
         );
-/* =====================================
-       CONFIGURAZIONE SUPABASE
-       ===================================== */
+
+
+        next.addEventListener(
+            'mouseenter',
+            () => {
+                running = false;
+            }
+        );
+
+
+        next.addEventListener(
+            'mouseleave',
+            () => {
+
+                running = true;
+
+                lastTime =
+                    performance.now();
+            }
+        );
+    }
+
+
+    if (prev) {
+
+        prev.addEventListener(
+            'click',
+            () => {
+
+                position -=
+                    cardStep();
+
+                normalizePosition();
+
+                updatePosition();
+            }
+        );
+
+
+        prev.addEventListener(
+            'mouseenter',
+            () => {
+                running = false;
+            }
+        );
+
+
+        prev.addEventListener(
+            'mouseleave',
+            () => {
+
+                running = true;
+
+                lastTime =
+                    performance.now();
+            }
+        );
+    }
+
+
+    /* =========================
+       PAUSA MOUSE
+       ========================= */
+
+    track.addEventListener(
+        'mouseenter',
+        () => {
+
+            if (!isDragging) {
+                running = false;
+            }
+        }
+    );
+
+
+    track.addEventListener(
+        'mouseleave',
+        () => {
+
+            if (!isDragging) {
+
+                running = true;
+
+                lastTime =
+                    performance.now();
+            }
+        }
+    );
+
+
+    /* =========================
+       DRAG
+       ========================= */
+
+    track.addEventListener(
+        'pointerdown',
+        event => {
+
+            isDragging = true;
+            didDrag = false;
+
+            running = false;
+
+            dragStartX =
+                event.clientX;
+
+            dragStartPosition =
+                position;
+
+            track.classList.add(
+                'is-dragging'
+            );
+
+            track.setPointerCapture(
+                event.pointerId
+            );
+        }
+    );
+
+
+    track.addEventListener(
+        'pointermove',
+        event => {
+
+            if (!isDragging)
+                return;
+
+            const deltaX =
+                event.clientX -
+                dragStartX;
+
+            if (
+                Math.abs(deltaX) > 5
+            ) {
+                didDrag = true;
+            }
+
+            position =
+                dragStartPosition -
+                deltaX;
+
+            normalizePosition();
+
+            updatePosition();
+        }
+    );
+
+
+    track.addEventListener(
+        'pointerup',
+        event => {
+
+            if (!isDragging)
+                return;
+
+            isDragging = false;
+
+            track.classList.remove(
+                'is-dragging'
+            );
+
+
+            if (
+                track.hasPointerCapture(
+                    event.pointerId
+                )
+            ) {
+
+                track.releasePointerCapture(
+                    event.pointerId
+                );
+            }
+
+
+            lastTime =
+                performance.now();
+
+
+            /*
+             * Su touch/tablet
+             * riparte subito.
+             */
+            if (
+                event.pointerType === 'touch' ||
+                event.pointerType === 'pen'
+            ) {
+                running = true;
+            }
+        }
+    );
+
+
+    track.addEventListener(
+        'pointercancel',
+        () => {
+
+            isDragging = false;
+            running = true;
+
+            track.classList.remove(
+                'is-dragging'
+            );
+
+            lastTime =
+                performance.now();
+        }
+    );
+
+
+    /* Evita click sui link dopo drag */
+
+    track.addEventListener(
+        'click',
+        event => {
+
+            if (didDrag) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                didDrag = false;
+            }
+        },
+        true
+    );
+
+
+    /* Responsive */
+
+    window.addEventListener(
+        'resize',
+        () => {
+
+            calculateLoopWidth();
+
+            normalizePosition();
+
+            updatePosition();
+        }
+    );
+
+
+    window.addEventListener(
+        'load',
+        () => {
+
+            calculateLoopWidth();
+
+            normalizePosition();
+
+            updatePosition();
+        }
+    );
+
+
+    calculateLoopWidth();
+
+    requestAnimationFrame(
+        animate
+    );
+
+})();
+
+
+
+/* =========================================================
+   UPDATES DA SUPABASE
+   ========================================================= */
+
+(async () => {
+
+    /* =========================
+       SUPABASE
+       ========================= */
 
     const SUPABASE_URL =
         'https://gxlquwudampvcuxiocmh.supabase.co';
@@ -237,21 +668,21 @@
             SUPABASE_URL,
             SUPABASE_KEY
         );
-       /* =====================================
+
+
+    /* =========================
        ELEMENTI
-       ===================================== */
+       ========================= */
 
     const updatesGrid =
         document.getElementById(
             'updatesGrid'
         );
 
-
     const dotsContainer =
         document.getElementById(
             'updateDots'
         );
-
 
     const updatesSection =
         document.querySelector(
@@ -274,9 +705,11 @@
     let itemsPerPage = 3;
 
     let autoTimer = null;
- /* =====================================
-       PROTEZIONE TESTI HTML
-       ===================================== */
+
+
+    /* =========================
+       UTILITY
+       ========================= */
 
     function escapeHtml(value) {
 
@@ -287,19 +720,15 @@
             .replaceAll('"', '&quot;')
             .replaceAll("'", '&#039;');
     }
-      /* =====================================
-       FORMATTA DATA
-       ===================================== */
 
-    function formatDate(dateValue) {
 
-        if (!dateValue)
+    function formatDate(value) {
+
+        if (!value)
             return '';
 
-
         const date =
-            new Date(dateValue);
-
+            new Date(value);
 
         return date.toLocaleDateString(
             'it-IT',
@@ -310,17 +739,38 @@
             }
         );
     }
- /* =====================================
-       URL IMMAGINE
-       ===================================== */
 
-    function getUpdateImageUrl(
+
+    function getProductClass(
+        productKey
+    ) {
+
+        switch (productKey) {
+
+            case 'mc3':
+                return 'te-mc3';
+
+            case 'trace':
+                return 'te-trace';
+
+            case 'tuning':
+                return 'te-tuning';
+
+            case 'check':
+                return 'te-check';
+
+            default:
+                return 'te-mc3';
+        }
+    }
+
+
+    function getImageUrl(
         imagePath
     ) {
 
         if (!imagePath)
             return null;
-
 
         const {
             data
@@ -332,55 +782,49 @@
                     imagePath
                 );
 
-
-        return data.publicUrl;
+        return (
+            data &&
+            data.publicUrl
+        )
+            ? data.publicUrl
+            : null;
     }
-       /* =====================================
-       CREA UNA CARD
-       ===================================== */
+
+
+    /* =========================
+       CREA CARD
+       ========================= */
 
     function createUpdateCard(
         update
     ) {
-
-        const imageUrl =
-            getUpdateImageUrl(
-                update.image_path
-            );
-
 
         const productName =
             escapeHtml(
                 update.product_name
             );
 
-
         const title =
             escapeHtml(
                 update.title
             );
-
 
         const description =
             escapeHtml(
                 update.description || ''
             );
 
-
         const date =
             formatDate(
                 update.published_at
             );
 
+        const imageUrl =
+            getImageUrl(
+                update.image_path
+            );
 
-        /*
-         * Se abbiamo una foto:
-         * mostriamo la foto.
-         *
-         * Se non c'è:
-         * mostriamo ancora
-         * il rettangolo colorato.
-         */
+
         let imageHtml;
 
 
@@ -391,14 +835,16 @@
                 <div class="te-update-image">
 
                     <img
-                        src="${imageUrl}"
+                        src="${escapeHtml(imageUrl)}"
                         alt="${title}"
                         loading="lazy"
                     >
 
                     <span
                         class="te-update-image-label">
+
                         ${productName}
+
                     </span>
 
                 </div>
@@ -411,7 +857,6 @@
                 getProductClass(
                     update.product_key
                 );
-
 
             imageHtml = `
 
@@ -440,21 +885,17 @@
                         ${productName}
                     </span>
 
-
                     <h3>
                         ${title}
                     </h3>
-
 
                     <time>
                         ${date}
                     </time>
 
-
                     <p>
                         ${description}
                     </p>
-
 
                     <a href="#">
                         Leggi di più →
@@ -465,44 +906,239 @@
             </article>
         `;
     }
-    /* =====================================
-       COLORE PLACEHOLDER
-       ===================================== */
 
-    function getProductClass(
-        productKey
-    ) {
 
-        switch (productKey) {
+    /* =========================
+       RESPONSIVE
+       ========================= */
 
-            case 'mc3':
-                return 'te-mc3';
+    function calculateItemsPerPage() {
 
-            case 'trace':
-                return 'te-trace';
-
-            case 'tuning':
-                return 'te-tuning';
-
-            case 'check':
-                return 'te-check';
-
-            default:
-                return 'te-mc3';
+        if (
+            window.innerWidth <= 600
+        ) {
+            itemsPerPage = 1;
+        }
+        else if (
+            window.innerWidth <= 900
+        ) {
+            itemsPerPage = 2;
+        }
+        else {
+            itemsPerPage = 3;
         }
     }
-    /* =====================================
-       CARICA DATI DA SUPABASE
-       ===================================== */
+
+
+    function getTotalPages() {
+
+        return Math.ceil(
+            updateCards.length /
+            itemsPerPage
+        );
+    }
+
+
+    /* =========================
+       MOSTRA CARD
+       ========================= */
+
+    function showUpdates() {
+
+        const totalPages =
+            getTotalPages();
+
+        if (totalPages <= 0)
+            return;
+
+        if (
+            currentPage >=
+            totalPages
+        ) {
+            currentPage = 0;
+        }
+
+
+        updateCards.forEach(card => {
+
+            card.classList.remove(
+                'visible'
+            );
+        });
+
+
+        const start =
+            currentPage *
+            itemsPerPage;
+
+        const end =
+            start +
+            itemsPerPage;
+
+
+        updateCards
+            .slice(
+                start,
+                end
+            )
+            .forEach(card => {
+
+                card.classList.add(
+                    'visible'
+                );
+            });
+
+
+        createDots();
+    }
+
+
+    /* =========================
+       PALLINI
+       ========================= */
+
+    function createDots() {
+
+        const totalPages =
+            getTotalPages();
+
+        dotsContainer.innerHTML =
+            '';
+
+
+        if (totalPages <= 1)
+            return;
+
+
+        for (
+            let i = 0;
+            i < totalPages;
+            i++
+        ) {
+
+            const dot =
+                document.createElement(
+                    'button'
+                );
+
+            dot.type =
+                'button';
+
+            dot.className =
+                'te-update-dot';
+
+            dot.setAttribute(
+                'aria-label',
+                'Pagina ' +
+                (i + 1)
+            );
+
+
+            if (
+                i === currentPage
+            ) {
+                dot.classList.add(
+                    'active'
+                );
+            }
+
+
+            dot.addEventListener(
+                'click',
+                () => {
+
+                    currentPage = i;
+
+                    showUpdates();
+
+                    restartAuto();
+                }
+            );
+
+
+            dotsContainer.appendChild(
+                dot
+            );
+        }
+    }
+
+
+    /* =========================
+       AUTOPLAY
+       ========================= */
+
+    function nextPage() {
+
+        const totalPages =
+            getTotalPages();
+
+        if (totalPages <= 1)
+            return;
+
+
+        currentPage =
+            (
+                currentPage + 1
+            ) %
+            totalPages;
+
+
+        showUpdates();
+    }
+
+
+    function stopAuto() {
+
+        if (autoTimer) {
+
+            clearInterval(
+                autoTimer
+            );
+
+            autoTimer = null;
+        }
+    }
+
+
+    function startAuto() {
+
+        stopAuto();
+
+        if (
+            getTotalPages() <= 1
+        ) {
+            return;
+        }
+
+
+        autoTimer =
+            setInterval(
+                nextPage,
+                6000
+            );
+    }
+
+
+    function restartAuto() {
+
+        stopAuto();
+
+        startAuto();
+    }
+
+
+    /* =========================
+       CARICA SUPABASE
+       ========================= */
 
     async function loadUpdates() {
 
-        updatesGrid.innerHTML = `
-
+        updatesGrid.innerHTML =
+            `
             <div class="te-updates-loading">
                 Caricamento aggiornamenti...
             </div>
-        `;
+            `;
 
 
         const {
@@ -541,18 +1177,21 @@
                 error
             );
 
-
-            updatesGrid.innerHTML = `
-
+            updatesGrid.innerHTML =
+                `
                 <div class="te-updates-error">
-                    Impossibile caricare
-                    gli aggiornamenti.
+                    Impossibile caricare gli aggiornamenti.
                 </div>
-            `;
-
+                `;
 
             return;
         }
+
+
+        console.log(
+            'Aggiornamenti ricevuti:',
+            data
+        );
 
 
         if (
@@ -560,37 +1199,35 @@
             data.length === 0
         ) {
 
-            updatesGrid.innerHTML = `
-
+            updatesGrid.innerHTML =
+                `
                 <div class="te-updates-loading">
                     Nessun aggiornamento disponibile.
                 </div>
-            `;
-
+                `;
 
             return;
         }
 
 
-        /*
-         * Genera tutte le card
-         */
         updatesGrid.innerHTML =
             data
-                .map(createUpdateCard)
+                .map(
+                    createUpdateCard
+                )
                 .join('');
 
 
         updateCards =
             Array.from(
-                updatesGrid.querySelectorAll(
-                    '.te-update-card'
-                )
+                updatesGrid
+                    .querySelectorAll(
+                        '.te-update-card'
+                    )
             );
 
 
         currentPage = 0;
-
 
         calculateItemsPerPage();
 
@@ -598,272 +1235,11 @@
 
         startAuto();
     }
-      
-        const dotsContainer =
-            document.getElementById('updateDots');
-
-        const updatesSection =
-            document.querySelector('.te-updates');
-
-        if (!track)
-            return;
-        if (
-                updateCards.length === 0 ||
-                !dotsContainer
-            ) {
-                return;
-            }
-
-        /* Salviamo SOLO i 6 prodotti originali */
-        const originalCards =
-            Array.from(
-                track.querySelectorAll('.product-card')
-            );
-
-        const originalCount =
-            originalCards.length;
 
 
-        /* Duplichiamo i 6 prodotti */
-        originalCards.forEach(card => {
-
-            const clone =
-                card.cloneNode(true);
-
-            clone.setAttribute(
-                'aria-hidden',
-                'true'
-            );
-
-            track.appendChild(clone);
-        });
-
-
-        /*
-         * Adesso internamente abbiamo:
-         *
-         * 1 2 3 4 5 6 | 1 2 3 4 5 6
-         */
-
-
-        let position = 0;
-        let loopWidth = 0;
-
-        let running = true;
-
-        let lastTime =
-            performance.now();
-        let isDragging = false;
-        let dragStartX = 0;
-        let dragStartPosition = 0;
-        let didDrag = false;
-
-        /* Velocità scorrimento */
-        const speed = 22;
-        let currentPage = 0;
-        let itemsPerPage = 3;
-        let autoTimer = null;
-
-        /* =========================
-           CALCOLO LOOP
-           ========================= */
-        function calculateItemsPerPage() {
-    
-            if (window.innerWidth <= 600) {
-    
-                itemsPerPage = 1;
-    
-            }
-            else if (window.innerWidth <= 900) {
-    
-                itemsPerPage = 2;
-    
-            }
-            else {
-    
-                itemsPerPage = 3;
-            }
-        }
-      
-       /* ==========================
-       NUMERO PAGINE
-       ========================== */
-        function getTotalPages() {
-        
-                return Math.ceil(
-                    updateCards.length /
-                    itemsPerPage
-                );
-            }
-       /* ==========================
-       MOSTRA AGGIORNAMENTI
-       ========================== */
-       function showUpdates() {
-      
-              const totalPages =
-                  getTotalPages();
-      
-      
-              if (currentPage >= totalPages) {
-                  currentPage = 0;
-              }
-      
-      
-              updateCards.forEach(card => {
-      
-                  card.classList.remove(
-                      'visible'
-                  );
-              });
-      
-      
-              const start =
-                  currentPage *
-                  itemsPerPage;
-      
-      
-              const end =
-                  start +
-                  itemsPerPage;
-      
-      
-              updateCards
-                  .slice(start, end)
-                  .forEach(card => {
-      
-                      card.classList.add(
-                          'visible'
-                      );
-                  });
-      
-      
-              createDots();
-          }
-       /* ==========================
-       CREA PALLINI
-       ========================== */
-      function createDots() {
-      
-              const totalPages =
-                  getTotalPages();
-      
-      
-              dotsContainer.innerHTML = '';
-      
-      
-              if (totalPages <= 1) {
-                  return;
-              }
-      
-      
-              for (
-                  let i = 0;
-                  i < totalPages;
-                  i++
-              ) {
-      
-                  const dot =
-                      document.createElement(
-                          'button'
-                      );
-      
-      
-                  dot.className =
-                      'te-update-dot';
-      
-      
-                  dot.type =
-                      'button';
-      
-      
-                  dot.setAttribute(
-                      'aria-label',
-                      'Pagina ' + (i + 1)
-                  );
-      
-      
-                  if (i === currentPage) {
-      
-                      dot.classList.add(
-                          'active'
-                      );
-                  }
-      
-      
-                  dot.addEventListener(
-                      'click',
-                      () => {
-      
-                          currentPage = i;
-      
-                          showUpdates();
-      
-                          restartAuto();
-                      }
-                  );
-      
-      
-                  dotsContainer.appendChild(
-                      dot
-                  );
-              }
-          }
-/* ==========================
-       PAGINA SUCCESSIVA
-       ========================== */
-
-    function nextPage() {
-
-        const totalPages =
-            getTotalPages();
-
-
-        currentPage =
-            (currentPage + 1) %
-            totalPages;
-
-
-        showUpdates();
-    }
-/* ==========================
-       AUTOPLAY
-       ========================== */
-
-    function startAuto() {
-
-        stopAuto();
-
-
-        autoTimer =
-            setInterval(
-                nextPage,
-                6000
-            );
-    }
-
-
-    function stopAuto() {
-
-        if (autoTimer) {
-
-            clearInterval(
-                autoTimer
-            );
-
-            autoTimer = null;
-        }
-    }
-
-
-    function restartAuto() {
-
-        stopAuto();
-
-        startAuto();
-    }
-    /* ==========================
-       PAUSA CON MOUSE
-       ========================== */
+    /* =========================
+       HOVER UPDATES
+       ========================= */
 
     if (updatesSection) {
 
@@ -872,404 +1248,29 @@
             stopAuto
         );
 
-
         updatesSection.addEventListener(
             'mouseleave',
             startAuto
         );
     }
-      
-      
-        function calculateLoopWidth() {
-
-            const firstOriginal =
-                track.children[0];
-
-            const firstClone =
-                track.children[originalCount];
-
-            if (!firstOriginal ||
-                !firstClone) {
-                return;
-            }
 
 
-            loopWidth =
-                firstClone.offsetLeft -
-                firstOriginal.offsetLeft;
-        }
+    /* =========================
+       RESIZE
+       ========================= */
+
+    window.addEventListener(
+        'resize',
+        () => {
+
+            const previous =
+                itemsPerPage;
+
+            calculateItemsPerPage();
 
 
-        /* =========================
-           POSIZIONE
-           ========================= */
-
-        function updatePosition() {
-
-            track.style.transform =
-                `translate3d(${-position}px, 0, 0)`;
-        }
-
-
-        /* =========================
-           LOOP INFINITO
-           ========================= */
-
-        function normalizePosition() {
-
-            if (loopWidth <= 0)
-                return;
-
-
-            /*
-             * Se superiamo il gruppo originale,
-             * torniamo nella posizione equivalente.
-             *
-             * Visivamente:
-             *
-             * 1 2 3 4 5 6 | 1 2 3 4...
-             *
-             * non cambia niente.
-             */
-
-            while (position >= loopWidth) {
-                position -= loopWidth;
-            }
-
-
-            while (position < 0) {
-                position += loopWidth;
-            }
-        }
-
-
-        /* =========================
-           ANIMAZIONE
-           ========================= */
-
-        function animate(currentTime) {
-
-            const delta =
-                Math.min(
-                    (currentTime - lastTime) / 1000,
-                    0.05
-                );
-
-            lastTime =
-                currentTime;
-
-
-            if (running &&
-                loopWidth > 0) {
-
-                position +=
-                    speed * delta;
-
-                normalizePosition();
-
-                updatePosition();
-            }
-
-
-            requestAnimationFrame(
-                animate
-            );
-        }
-
-
-        /* =========================
-           DIMENSIONE DI UNA CARD
-           ========================= */
-
-        function cardStep() {
-
-            const card =
-                track.querySelector('.product-card');
-
-            if (!card)
-                return 0;
-
-
-            const style =
-                getComputedStyle(track);
-
-            const gap =
-                parseFloat(style.gap) || 16;
-
-
-            return (
-                card.offsetWidth +
-                gap
-            );
-        }
-
-
-        /* =========================
-           FRECCIA DESTRA
-           ========================= */
-
-        if (next) {
-
-            next.addEventListener(
-                'click',
-                () => {
-
-                    position +=
-                        cardStep();
-
-                    normalizePosition();
-
-                    updatePosition();
-                }
-            );
-          next.addEventListener(
-                'mouseenter',
-                () => {
-                    running = false;
-                }
-            );
-        
-            next.addEventListener(
-                'mouseleave',
-                () => {
-                    running = true;
-                    lastTime = performance.now();
-                }
-            );
-        }
-
-
-        /* =========================
-           FRECCIA SINISTRA
-           ========================= */
-
-        if (prev) {
-
-            prev.addEventListener(
-                'click',
-                () => {
-
-                    position -=
-                        cardStep();
-
-                    normalizePosition();
-
-                    updatePosition();
-                }
-            );
-          prev.addEventListener(
-              'mouseenter',
-              () => {
-                  running = false;
-              }
-          );
-      
-          prev.addEventListener(
-              'mouseleave',
-              () => {
-                  running = true;
-                  lastTime = performance.now();
-              }
-          );
-        }
-    [prev, next].forEach(button => {
-  
-      if (!button)
-          return;
-  
-      button.addEventListener('pointerenter', (event) => {
-  
-          if (event.pointerType === 'mouse') {
-              running = false;
-          }
-      });
-  
-      button.addEventListener('pointerleave', (event) => {
-  
-          if (event.pointerType === 'mouse') {
-              running = true;
-              lastTime = performance.now();
-          }
-      });
-      });
-
-        /* =========================
-           PAUSA CON IL MOUSE
-           ========================= */
-        track.addEventListener(
-            'click',
-            (event) => {
-        
-                if (didDrag) {
-        
-                    event.preventDefault();
-                    event.stopPropagation();
-        
-                    didDrag = false;
-                }
-            },
-            true
-        );
-      /* =========================
-         PAUSA QUANDO IL MOUSE
-         È SOPRA I PRODOTTI
-         ========================= */
-      
-      track.addEventListener(
-          'mouseenter',
-          () => {
-      
-              if (!isDragging) {
-                  running = false;
-              }
-          }
-      );
-      
-      
-      track.addEventListener(
-          'mouseleave',
-          () => {
-      
-              if (!isDragging) {
-      
-                  running = true;
-      
-                  lastTime =
-                      performance.now();
-              }
-          }
-      );
-
-       /* =========================
-         DRAG CON IL MOUSE
-         ========================= */
-      
-      track.addEventListener('pointerdown', (event) => {
-      
-          isDragging = true;
-          didDrag = false;
-      
-          running = false;
-      
-          dragStartX = event.clientX;
-          dragStartPosition = position;
-      
-          track.classList.add('is-dragging');
-      
-          track.setPointerCapture(event.pointerId);
-      });
-      track.addEventListener('pointerenter', (event) => {
-      
-          if (event.pointerType === 'mouse') {
-              running = false;
-          }
-      });
-      
-      track.addEventListener('pointerleave', (event) => {
-      
-          if (event.pointerType === 'mouse') {
-              running = true;
-              lastTime = performance.now();
-          }
-      }); 
-      
-      track.addEventListener('pointermove', (event) => {
-      
-          if (!isDragging)
-              return;
-      
-          const deltaX =
-              event.clientX - dragStartX;
-      
-          /*
-           * Piccolo movimento:
-           * lo consideriamo ancora un click.
-           */
-          if (Math.abs(deltaX) > 5) {
-              didDrag = true;
-          }
- 
-          position =
-              dragStartPosition - deltaX;
-      
-          normalizePosition();
-      
-          updatePosition();
-      });
-      
-      
-      track.addEventListener(
-        'pointerup',
-        (event) => {
-    
-            if (!isDragging)
-                return;
-    
-    
-            isDragging = false;
-    
-            track.classList.remove(
-                'is-dragging'
-            );
-    
-    
             if (
-                track.hasPointerCapture(
-                    event.pointerId
-                )
-            ) {
-    
-                track.releasePointerCapture(
-                    event.pointerId
-                );
-            }
-    
-    
-            lastTime =
-                performance.now();
-    
-            if (
-                event.pointerType === 'touch' ||
-                event.pointerType === 'pen'
-            ) {
-    
-                running = true;
-            }
-        }
-      );
-      
-      
-      track.addEventListener(
-          'pointercancel',
-          () => {
-      
-              isDragging = false;
-      
-              track.classList.remove(
-                  'is-dragging'
-              );
-      
-              running = true;
-      
-              lastTime =
-                  performance.now();
-          }
-        );
-
-
-        window.addEventListener(
-            'resize',
-            () => {
-               const oldItemsPerPage =
-                            itemsPerPage;
-                calculateItemsPerPage();
-                calculateLoopWidth();
-
-                normalizePosition();
-
-                updatePosition();
-              if (
-                oldItemsPerPage !==
+                previous !==
                 itemsPerPage
             ) {
 
@@ -1279,30 +1280,17 @@
 
                 restartAuto();
             }
-            }
-        );
-     
-        calculateLoopWidth();
-        calculateItemsPerPage();
-      
-          showUpdates();
-      
-          startAuto();
-     
-        requestAnimationFrame(() => {
+        }
+    );
 
-            calculateLoopWidth();
 
-            normalizePosition();
+    /* =========================
+       AVVIO
+       ========================= */
 
-            updatePosition();
-        });
+    await loadUpdates();
 
-       await loadUpdates();
-        requestAnimationFrame(
-            animate
-        );
-    });
+})();
 </script>
 </body>
 </html>
