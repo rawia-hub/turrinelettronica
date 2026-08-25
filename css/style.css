@@ -76,7 +76,9 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{f
 .product-track::-webkit-scrollbar {
     display: none;
 }
-
+.product-track.is-dragging .product-card {
+    pointer-events: none;
+}
 .product-card {
     flex: 0 0 calc((100% - 48px) / 4);
     min-width: calc((100% - 48px) / 4);
