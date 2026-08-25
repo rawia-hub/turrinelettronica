@@ -240,7 +240,10 @@
 
         let lastTime =
             performance.now();
-
+        let isDragging = false;
+        let dragStartX = 0;
+        let dragStartPosition = 0;
+        let didDrag = false;
 
         /* Velocità scorrimento */
         const speed = 22;
@@ -447,7 +450,20 @@
         /* =========================
            PAUSA CON IL MOUSE
            ========================= */
-
+        track.addEventListener(
+            'click',
+            (event) => {
+        
+                if (didDrag) {
+        
+                    event.preventDefault();
+                    event.stopPropagation();
+        
+                    didDrag = false;
+                }
+            },
+            true
+        );
         track.addEventListener(
             'mouseenter',
             () => {
@@ -457,57 +473,89 @@
         );
 
 
-        track.addEventListener(
-            'mouseleave',
-            () => {
-
-                running = true;
-
-                /*
-                 * Evita un salto quando
-                 * l'animazione riparte.
-                 */
-                lastTime =
-                    performance.now();
-            }
-        );
+      track.addEventListener(
+          'mouseleave',
+          () => {
+      
+              if (!isDragging) {
+      
+                  running = true;
+                  lastTime = performance.now();
+              }
+          }
+      );
 
 
-        /* =========================
-           TOUCH / MOBILE
-           ========================= */
-
-        track.addEventListener(
-            'pointerdown',
-            () => {
-
-                running = false;
-            }
-        );
-
-
-        track.addEventListener(
-            'pointerup',
-            () => {
-
-                running = true;
-
-                lastTime =
-                    performance.now();
-            }
-        );
-
-
-        track.addEventListener(
-            'pointercancel',
-            () => {
-
-                running = true;
-
-                lastTime =
-                    performance.now();
-            }
-        );
+       /* =========================
+         DRAG CON IL MOUSE
+         ========================= */
+      
+      track.addEventListener('pointerdown', (event) => {
+      
+          isDragging = true;
+          didDrag = false;
+      
+          running = false;
+      
+          dragStartX = event.clientX;
+          dragStartPosition = position;
+      
+          track.classList.add('is-dragging');
+      
+          track.setPointerCapture(event.pointerId);
+      });
+      
+      
+      track.addEventListener('pointermove', (event) => {
+      
+          if (!isDragging)
+              return;
+      
+          const deltaX =
+              event.clientX - dragStartX;
+      
+          /*
+           * Piccolo movimento:
+           * lo consideriamo ancora un click.
+           */
+          if (Math.abs(deltaX) > 5) {
+              didDrag = true;
+          }
+ 
+          position =
+              dragStartPosition - deltaX;
+      
+          normalizePosition();
+      
+          updatePosition();
+      });
+      
+      
+      track.addEventListener('pointerup', (event) => {
+      
+          if (!isDragging)
+              return;
+      
+          isDragging = false;
+      
+          track.classList.remove('is-dragging');
+      
+          if (track.hasPointerCapture(event.pointerId)) {
+              track.releasePointerCapture(event.pointerId);
+          }
+    
+          lastTime = performance.now();
+      });
+      
+      
+      track.addEventListener('pointercancel', () => {
+      
+          isDragging = false;
+      
+          track.classList.remove('is-dragging');
+      
+          lastTime = performance.now();
+      });
 
 
         window.addEventListener(
