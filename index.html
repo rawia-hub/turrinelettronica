@@ -464,26 +464,43 @@
             },
             true
         );
-        track.addEventListener(
-            'mouseenter',
-            () => {
+/* =========================
+   PAUSA HOVER SOLO DESKTOP
+   ========================= */
 
-                running = false;
-            }
-        );
-
-
-      track.addEventListener(
-          'mouseleave',
-          () => {
+      const hasRealMouse =
+          window.matchMedia(
+              '(hover: hover) and (pointer: fine)'
+          ).matches;
       
-              if (!isDragging) {
       
-                  running = true;
-                  lastTime = performance.now();
+      if (hasRealMouse) {
+      
+          track.addEventListener(
+              'mouseenter',
+              () => {
+      
+                  if (!isDragging) {
+                      running = false;
+                  }
               }
-          }
-      );
+          );
+      
+      
+          track.addEventListener(
+              'mouseleave',
+              () => {
+      
+                  if (!isDragging) {
+      
+                      running = true;
+      
+                      lastTime =
+                          performance.now();
+                  }
+              }
+          );
+      }
 
 
        /* =========================
@@ -531,31 +548,63 @@
       });
       
       
-      track.addEventListener('pointerup', (event) => {
-      
-          if (!isDragging)
-              return;
-      
-          isDragging = false;
-      
-          track.classList.remove('is-dragging');
-      
-          if (track.hasPointerCapture(event.pointerId)) {
-              track.releasePointerCapture(event.pointerId);
-          }
+      track.addEventListener(
+        'pointerup',
+        (event) => {
     
-          lastTime = performance.now();
-      });
+            if (!isDragging)
+                return;
+    
+    
+            isDragging = false;
+    
+            track.classList.remove(
+                'is-dragging'
+            );
+    
+    
+            if (
+                track.hasPointerCapture(
+                    event.pointerId
+                )
+            ) {
+    
+                track.releasePointerCapture(
+                    event.pointerId
+                );
+            }
+    
+    
+            lastTime =
+                performance.now();
+    
+            if (
+                event.pointerType === 'touch' ||
+                event.pointerType === 'pen'
+            ) {
+    
+                running = true;
+            }
+        }
+      );
       
       
-      track.addEventListener('pointercancel', () => {
+      track.addEventListener(
+          'pointercancel',
+          () => {
       
-          isDragging = false;
+              isDragging = false;
       
-          track.classList.remove('is-dragging');
+              track.classList.remove(
+                  'is-dragging'
+              );
       
-          lastTime = performance.now();
-      });
+              running = true;
+      
+              lastTime =
+                  performance.now();
+          }
+        );
 
 
         window.addEventListener(
