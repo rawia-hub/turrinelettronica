@@ -150,31 +150,49 @@
   </footer>
 
 <script>
-  
+    
+    const menuToggle =
+        document.querySelector('.menu-toggle');
 
-    const track =
+    const nav =
+        document.querySelector('.main-nav');
+
+    if (menuToggle && nav) {
+
+        menuToggle.addEventListener('click', () => {
+
+            nav.classList.toggle('open');
+
+            menuToggle.setAttribute(
+                'aria-expanded',
+                nav.classList.contains('open')
+            );
+        });
+    }
+
+
+    const productTrack =
         document.getElementById('productTrack');
 
-    const prev =
+    const prevButton =
         document.querySelector('.carousel-arrow.prev');
 
-    const next =
+    const nextButton =
         document.querySelector('.carousel-arrow.next');
 
 
-    if (track) {
+    if (productTrack) {
 
-     
+      
         const originalCards =
             Array.from(
-                track.querySelectorAll('.product-card')
+                productTrack.querySelectorAll('.product-card')
             );
 
         const originalCount =
             originalCards.length;
 
 
-     
         originalCards.forEach(card => {
 
             const clone =
@@ -185,76 +203,65 @@
                 'true'
             );
 
-            track.appendChild(clone);
+            productTrack.appendChild(clone);
         });
 
+        let position = 0;
 
+      
         let loopWidth = 0;
 
         let lastTime =
             performance.now();
 
-        let running = true;
 
         const speed = 25;
 
-
         function calculateLoopWidth() {
 
-            const firstOriginal =
-                track.children[0];
+            const firstCard =
+                productTrack.children[0];
 
             const firstClone =
-                track.children[originalCount];
+                productTrack.children[originalCount];
 
-            if (!firstOriginal ||
-                !firstClone) {
-
+            if (!firstCard || !firstClone)
                 return;
-            }
 
             loopWidth =
                 firstClone.offsetLeft -
-                firstOriginal.offsetLeft;
+                firstCard.offsetLeft;
+        }
+
+        function updatePosition() {
+
+            productTrack.style.transform =
+                `translate3d(${-position}px, 0, 0)`;
         }
 
 
-   
-        function normalizePosition() {
-
-            if (loopWidth <= 0)
-                return;
-
-            if (track.scrollLeft >= loopWidth) {
-
-                track.scrollLeft -= loopWidth;
-            }
-
-            if (track.scrollLeft < 0) {
-
-                track.scrollLeft += loopWidth;
-            }
-        }
-
-
-        /*
-         * Animazione continua.
-         */
         function animateProducts(currentTime) {
 
             const deltaTime =
                 (currentTime - lastTime) / 1000;
 
-            lastTime = currentTime;
+            lastTime =
+                currentTime;
 
 
-            if (running &&
-                loopWidth > 0) {
+            if (loopWidth > 0) {
 
-                track.scrollLeft +=
+          
+                position +=
                     speed * deltaTime;
 
-                normalizePosition();
+                if (position >= loopWidth) {
+
+                    position -= loopWidth;
+                }
+
+
+                updatePosition();
             }
 
 
@@ -267,16 +274,19 @@
         function cardStep() {
 
             const card =
-                track.querySelector('.product-card');
+                productTrack.querySelector(
+                    '.product-card'
+                );
 
             if (!card)
                 return 0;
 
             const styles =
-                getComputedStyle(track);
+                getComputedStyle(productTrack);
 
             const gap =
                 parseFloat(styles.gap) || 16;
+
 
             return (
                 card.getBoundingClientRect().width +
@@ -288,16 +298,20 @@
         /*
          * FRECCIA DESTRA
          */
-        if (next) {
+        if (nextButton) {
 
-            next.addEventListener(
+            nextButton.addEventListener(
                 'click',
                 () => {
 
-                    track.scrollLeft +=
-                        cardStep();
+                    position += cardStep();
 
-                    normalizePosition();
+                    if (position >= loopWidth) {
+
+                        position -= loopWidth;
+                    }
+
+                    updatePosition();
                 }
             );
         }
@@ -306,25 +320,20 @@
         /*
          * FRECCIA SINISTRA
          */
-        if (prev) {
+        if (prevButton) {
 
-            prev.addEventListener(
+            prevButton.addEventListener(
                 'click',
                 () => {
 
-         
-                    if (track.scrollLeft <
-                        cardStep()) {
+                    position -= cardStep();
 
-                        track.scrollLeft +=
-                            loopWidth;
+                    if (position < 0) {
+
+                        position += loopWidth;
                     }
 
-
-                    track.scrollLeft -=
-                        cardStep();
-
-                    normalizePosition();
+                    updatePosition();
                 }
             );
         }
@@ -335,46 +344,20 @@
             () => {
 
                 calculateLoopWidth();
-                normalizePosition();
+
+                if (position >= loopWidth) {
+                    position = 0;
+                }
+
+                updatePosition();
             }
         );
 
 
-        /*
-         * Avvio
-         */
         calculateLoopWidth();
 
         requestAnimationFrame(
             animateProducts
-        );
-    }
-
-
-    /* ============================
-       MENU MOBILE
-       ============================ */
-
-    const menuToggle =
-        document.querySelector('.menu-toggle');
-
-    const nav =
-        document.querySelector('.main-nav');
-
-
-    if (menuToggle && nav) {
-
-        menuToggle.addEventListener(
-            'click',
-            () => {
-
-                nav.classList.toggle('open');
-
-                menuToggle.setAttribute(
-                    'aria-expanded',
-                    nav.classList.contains('open')
-                );
-            }
         );
     }
 </script>
