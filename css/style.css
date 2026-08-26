@@ -867,3 +867,40 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{f
     }
 
 }
+.updates-load-more {
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 40px;
+}
+
+
+.load-more-button {
+    min-width: 160px;
+
+    padding: 13px 24px;
+
+    border: 1px solid #0067e8;
+    border-radius: 7px;
+
+    background: #0067e8;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+
+.load-more-button:hover {
+    background: #0056c7;
+
+    transform:
+        translateY(-1px);
+}
