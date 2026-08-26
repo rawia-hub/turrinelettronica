@@ -14,7 +14,10 @@
         Nuovo aggiornamento | Turrin Elettronica
     </title>
 
-
+    <link
+        href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+        rel="stylesheet"
+    >
     <style>
 
         * {
@@ -325,7 +328,36 @@
             }
 
         }
-
+        #contentEditor {
+            min-height: 280px;
+        
+            background: #ffffff;
+        
+            font-size: 14px;
+        }
+        
+        
+        #contentEditor.ql-container {
+            border-radius: 0 0 7px 7px;
+        
+            border-color: #ccd7e4;
+        }
+        
+        
+        #contentToolbar.ql-toolbar {
+            border-color: #ccd7e4;
+        
+            border-radius: 7px 7px 0 0;
+        
+            background: #f8fafc;
+        }
+        
+        
+        #contentEditor .ql-editor {
+            min-height: 280px;
+        
+            line-height: 1.7;
+        }
     </style>
 
 </head>
@@ -517,17 +549,52 @@
                 </div>
 
 
-                <div class="form-group full">
+              <div class="form-group full">
 
-                    <label for="content">
+                    <label>
                         Contenuto completo
                     </label>
-
-                    <textarea
-                        id="content"
-                        placeholder="Testo completo dell'aggiornamento."
-                    ></textarea>
-
+                
+                
+                    <div id="contentToolbar">
+                
+                        <select class="ql-header">
+                            <option selected></option>
+                            <option value="2"></option>
+                            <option value="3"></option>
+                        </select>
+                
+                
+                        <button class="ql-bold"></button>
+                
+                        <button class="ql-italic"></button>
+                
+                        <button class="ql-underline"></button>
+                
+                
+                        <button
+                            class="ql-list"
+                            value="ordered">
+                        </button>
+                
+                        <button
+                            class="ql-list"
+                            value="bullet">
+                        </button>
+                
+                
+                        <button
+                            class="ql-link">
+                        </button>
+                
+                
+                        <button class="ql-clean"></button>
+                
+                    </div>
+                
+                
+                    <div id="contentEditor"></div>
+                
                 </div>
 
 
@@ -563,7 +630,9 @@
 
     </main>
 
-
+<script
+    src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js">
+</script>
     <script
         src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
     </script>
@@ -636,9 +705,18 @@
             );
 
 
-        const contentInput =
-            document.getElementById(
-                'content'
+        const contentEditor =
+            new Quill(
+                '#contentEditor',
+                {
+                    theme: 'snow',
+        
+                    modules: {
+        
+                        toolbar:
+                            '#contentToolbar'
+                    }
+                }
             );
 
 
@@ -1012,7 +1090,9 @@ if (imageFile) {
                         || null,
 
                     content:
-                        contentInput.value.trim()
+                        contentEditor
+                        .getSemanticHTML()
+                        .trim()
                         || null,
 
                     image_path:
