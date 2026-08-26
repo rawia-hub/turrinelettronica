@@ -535,10 +535,38 @@
                 );
 
 
-            const content =
-                DOMPurify.sanitize(
-                    update.content || ''
-                );
+           const content =
+    DOMPurify.sanitize(
+        update.content || '',
+        {
+            ALLOWED_TAGS: [
+                'p',
+                'br',
+                'strong',
+                'b',
+                'em',
+                'i',
+                'u',
+                'h2',
+                'h3',
+                'h4',
+                'ul',
+                'ol',
+                'li',
+                'a'
+            ],
+
+            ALLOWED_ATTR: [
+                'href',
+                'target'
+            ],
+
+            FORBID_ATTR: [
+                'style',
+                'class'
+            ]
+        }
+    );
 
 
             const date =
