@@ -408,6 +408,74 @@
     margin:
         8px 0 16px;
 }
+/* =========================================
+   PREVIEW IMMAGINE
+   ========================================= */
+
+.current-image-box,
+.new-image-box {
+    margin-bottom: 18px;
+}
+
+
+.current-image-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #687487;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.current-image-preview {
+    display: block;
+
+    width: 100%;
+    max-width: 420px;
+    height: 220px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border: 1px solid #dbe3ec;
+    border-radius: 8px;
+
+    background: #f4f7fa;
+}
+
+
+.no-current-image {
+    display: none;
+
+    padding: 25px;
+
+    max-width: 420px;
+
+    border: 1px dashed #ccd7e4;
+    border-radius: 8px;
+
+    color: #7b8797;
+    background: #f8fafc;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+.replace-image-label {
+    margin-top: 18px;
+}
+
+
+.new-image-box {
+    display: none;
+
+    margin-top: 18px;
+}
     </style>
 
 </head>
@@ -530,23 +598,80 @@
 
                 </div>
                 
-                <div class="form-group full">
-                
-                    <label for="image">
-                        Immagine aggiornamento
-                    </label>
-                
-                    <input
-                        id="image"
-                        type="file"
-                        accept="image/jpeg,image/png,image/webp"
-                    >
-                
-                    <small>
-                        JPG, PNG o WebP. Massimo 5 MB.
-                    </small>
-                
+        <div class="form-group full">
+        
+            <label>
+                Immagine aggiornamento
+            </label>
+        
+        
+            <div
+                id="currentImageBox"
+                class="current-image-box">
+        
+                <span class="current-image-label">
+                    Immagine attuale
+                </span>
+        
+                <img
+                    id="currentImagePreview"
+                    class="current-image-preview"
+                    src=""
+                    alt="Immagine attuale aggiornamento"
+                >
+        
+                <div
+                    id="noCurrentImage"
+                    class="no-current-image">
+        
+                    Nessuna immagine associata.
+        
                 </div>
+        
+            </div>
+        
+        
+            <label
+                for="image"
+                class="replace-image-label">
+        
+                Sostituisci immagine
+        
+            </label>
+        
+        
+            <input
+                id="image"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+            >
+        
+        
+            <small>
+                JPG, PNG o WebP. Massimo 5 MB.
+                Se non scegli un nuovo file,
+                l'immagine attuale verrà mantenuta.
+            </small>
+        
+        
+            <div
+                id="newImageBox"
+                class="new-image-box">
+        
+                <span class="current-image-label">
+                    Nuova immagine selezionata
+                </span>
+        
+                <img
+                    id="newImagePreview"
+                    class="current-image-preview"
+                    src=""
+                    alt="Anteprima nuova immagine"
+                >
+        
+            </div>
+        
+        </div>
 
                 <div class="form-group">
 
@@ -808,6 +933,28 @@
             );
         const imageInput =
             document.getElementById('image');
+        const currentImagePreview =
+            document.getElementById(
+                'currentImagePreview'
+            );
+        
+        
+        const noCurrentImage =
+            document.getElementById(
+                'noCurrentImage'
+            );
+        
+        
+        const newImageBox =
+            document.getElementById(
+                'newImageBox'
+            );
+        
+        
+        const newImagePreview =
+            document.getElementById(
+                'newImagePreview'
+            );
 
         /* =====================================
            DATA DI OGGI
@@ -894,7 +1041,35 @@
                 data.published;
             currentImagePath =
                 data.image_path || null;
+        const currentImageUrl =
+            getImagePublicUrl(
+                currentImagePath
+            );
         
+        
+        if (currentImageUrl) {
+        
+            currentImagePreview.src =
+                currentImageUrl;
+        
+        
+            currentImagePreview.style.display =
+                'block';
+        
+        
+            noCurrentImage.style.display =
+                'none';
+        
+        }
+        else {
+        
+            currentImagePreview.style.display =
+                'none';
+        
+        
+            noCurrentImage.style.display =
+                'block';
+        }
             if (data.published_at) {
         
                 publishedAtInput.value =
@@ -906,6 +1081,101 @@
             }
         }
 
+        imageInput.addEventListener(
+    'change',
+    () => {
+
+        const file =
+            imageInput.files[0];
+
+
+        if (!file) {
+
+            newImageBox.style.display =
+                'none';
+
+
+            newImagePreview.src =
+                '';
+
+
+            return;
+        }
+
+
+        const allowedTypes = [
+            'image/jpeg',
+            'image/png',
+            'image/webp'
+        ];
+
+
+        if (
+            !allowedTypes.includes(
+                file.type
+            )
+        ) {
+
+            showMessage(
+                'Formato immagine non valido.',
+                'error'
+            );
+
+
+            imageInput.value =
+                '';
+
+
+            newImageBox.style.display =
+                'none';
+
+
+            return;
+        }
+
+
+        const maxSize =
+            5 * 1024 * 1024;
+
+
+        if (
+            file.size >
+            maxSize
+        ) {
+
+            showMessage(
+                'L’immagine supera i 5 MB.',
+                'error'
+            );
+
+
+            imageInput.value =
+                '';
+
+
+            newImageBox.style.display =
+                'none';
+
+
+            return;
+        }
+
+
+        const previewUrl =
+            URL.createObjectURL(
+                file
+            );
+
+
+        newImagePreview.src =
+            previewUrl;
+
+
+        newImageBox.style.display =
+            'block';
+
+    }
+);
         /* =====================================
            CONTROLLO UTENTE
            ===================================== */
@@ -1004,7 +1274,31 @@
             message.className =
                 'message ' + type;
         }
-
+        /* =====================================
+           Recuperare l'url della foto corrente
+           ===================================== */
+        function getImagePublicUrl(
+            imagePath
+        ) {
+        
+            if (!imagePath)
+                return null;
+        
+        
+            const {
+                data
+            } =
+                supabaseClient
+                    .storage
+                    .from('updates')
+                    .getPublicUrl(
+                        imagePath
+                    );
+        
+        
+            return data?.publicUrl
+                || null;
+        }
 
         /* =====================================
            ANNULLA
@@ -1019,7 +1313,7 @@
             }
         );
 
-          /* =====================================
+/* =====================================
    IMMAGINE ATTUALE
    ===================================== */
 
