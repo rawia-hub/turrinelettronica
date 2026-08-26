@@ -757,7 +757,8 @@
         
             publishedInput.checked =
                 data.published;
-        
+            currentImagePath =
+                data.image_path || null;
         
             if (data.published_at) {
         
@@ -883,359 +884,350 @@
             }
         );
 
-           /* =====================================
-           SALVA MODIFICHE
-           ===================================== */
-        
-        updateForm.addEventListener(
-            'submit',
-            async (event) => {
-        
-                event.preventDefault();
-        
-        
-                const option =
-                    productSelect.options[
-                        productSelect.selectedIndex
-                    ];
-        
-        
-                const productKey =
-                    option.value;
-        
-        
-                const productName =
-                    option.dataset.name;
-        
-        
-                if (
-                    !productKey ||
-                    !productName
-                ) {
-        
-                    showMessage(
-                        'Seleziona un prodotto.',
-                        'error'
-                    );
-        
-                    return;
-                }
-        
-        
-                saveButton.disabled =
-                    true;
-        
-        
-                saveButton.textContent =
-                    'Salvataggio...';
-        
-        
-                const publishedAt =
-                    new Date(
-                        publishedAtInput.value +
-                        'T12:00:00'
-                    )
-                    .toISOString();
-        
-        
-                const updatedUpdate = {
-        
-                    product_key:
-                        productKey,
-        
-                    product_name:
-                        productName,
-        
-                    version:
-                        versionInput.value.trim()
-                        || null,
-        
-                    title:
-                        titleInput.value.trim(),
-        
-                    description:
-                        descriptionInput.value.trim()
-                        || null,
-        
-                    content:
-                        contentInput.value.trim()
-                        || null,
-        
-                    published_at:
-                        publishedAt,
-        
-                    published:
-                        publishedInput.checked
-                };
-        
-        
-                const {
-                    error
-                } =
-                    await supabaseClient
-                        .from('updates')
-                        .update(
-                            updatedUpdate
-                        )
-                        .eq(
-                            'id',
-                            updateId
-                        );
-        
-        
-                if (error) {
-        
-                    console.error(error);
-        
-        
-                    showMessage(
-                        'Errore durante la modifica: ' +
-                        error.message,
-                        'error'
-                    );
-        
-        
-                    saveButton.disabled =
-                        false;
-        
-        
-                    saveButton.textContent =
-                        'Salva modifiche';
-        
-        
-                    return;
-                }
-        
-        
-                showMessage(
-                    'Aggiornamento modificato correttamente.',
-                    'success'
-                );
-        
-        
-                setTimeout(
-                    () => {
-        
-                        window.location.href =
-                            'dashboard.html';
-        
-                    },
-                    700
-                );
-        
-            }
-        );
+          /* =====================================
+   IMMAGINE ATTUALE
+   ===================================== */
 
-let imagePath = null;
+let currentImagePath = null;
 
 
 /* =====================================
-   UPLOAD IMMAGINE
+   SALVA MODIFICHE
    ===================================== */
 
-const imageFile =
-    imageInput.files[0];
+updateForm.addEventListener(
+    'submit',
+    async (event) => {
+
+        event.preventDefault();
 
 
-if (imageFile) {
-
-    const allowedTypes = [
-        'image/jpeg',
-        'image/png',
-        'image/webp'
-    ];
+        const option =
+            productSelect.options[
+                productSelect.selectedIndex
+            ];
 
 
-    if (
-        !allowedTypes.includes(
-            imageFile.type
-        )
-    ) {
-
-        showMessage(
-            'Formato immagine non valido.',
-            'error'
-        );
-
-        saveButton.disabled = false;
-
-        saveButton.textContent =
-            'Salva aggiornamento';
-
-        return;
-    }
+        const productKey =
+            option.value;
 
 
-    const maxSize =
-        5 * 1024 * 1024;
+        const productName =
+            option.dataset.name;
 
 
-    if (
-        imageFile.size >
-        maxSize
-    ) {
+        if (
+            !productKey ||
+            !productName
+        ) {
 
-        showMessage(
-            'L’immagine supera i 5 MB.',
-            'error'
-        );
-
-        saveButton.disabled = false;
-
-        saveButton.textContent =
-            'Salva aggiornamento';
-
-        return;
-    }
-
-
-    /*
-     * Creiamo un nome file unico.
-     */
-
-    const extension =
-        imageFile.name
-            .split('.')
-            .pop()
-            .toLowerCase();
-
-
-    const safeProduct =
-        productKey
-            .replace(
-                /[^a-z0-9_-]/gi,
-                '-'
+            showMessage(
+                'Seleziona un prodotto.',
+                'error'
             );
 
-
-    const fileName =
-        safeProduct +
-        '-' +
-        Date.now() +
-        '.' +
-        extension;
-
-
-    const {
-        data: uploadData,
-        error: uploadError
-    } =
-        await supabaseClient
-            .storage
-            .from('updates')
-            .upload(
-                fileName,
-                imageFile,
-                {
-                    cacheControl: '3600',
-                    upsert: false
-                }
-            );
-
-
-    if (uploadError) {
-
-        console.error(
-            uploadError
-        );
-
-
-        showMessage(
-            'Errore durante il caricamento dell’immagine: ' +
-            uploadError.message,
-            'error'
-        );
+            return;
+        }
 
 
         saveButton.disabled =
-            false;
+            true;
 
 
         saveButton.textContent =
-            'Salva aggiornamento';
+            'Salvataggio...';
 
 
-        return;
-    }
+        /*
+         * Per default manteniamo
+         * l'immagine già esistente.
+         */
+        let imagePath =
+            currentImagePath;
 
 
-    imagePath =
-        uploadData.path;
-}
-            const updatedUpdate = {
-
-                    product_key:
-                        productKey,
-                
-                    product_name:
-                        productName,
-                
-                    version:
-                        versionInput.value.trim()
-                        || null,
-                
-                    title:
-                        titleInput.value.trim(),
-                
-                    description:
-                        descriptionInput.value.trim()
-                        || null,
-                
-                    content:
-                        contentInput.value.trim()
-                        || null,
-                
-                    published_at:
-                        new Date(
-                            publishedAtInput.value +
-                            'T12:00:00'
-                        ).toISOString(),
-                
-                    published:
-                        publishedInput.checked
-                };
+        const imageFile =
+            imageInput.files[0];
 
 
-                const {
-                    error
-                } =
-                    await supabaseClient
-                        .from('updates')
-                        .insert(updatedUpdate)
-                        .eq('id',updateId);
+        /* =====================================
+           SE È STATA SCELTA UNA NUOVA FOTO
+           ===================================== */
+
+        if (imageFile) {
+
+            const allowedTypes = [
+                'image/jpeg',
+                'image/png',
+                'image/webp'
+            ];
 
 
-                if (error) {
+            if (
+                !allowedTypes.includes(
+                    imageFile.type
+                )
+            ) {
 
-                console.error(error);
-                showMessage('Errore durante la modifica: ' +
-                    error.message,
-                    'error');
-
-
-                    return;
-                }
-
-
-               showMessage(
-                    'Aggiornamento modificato correttamente.',
-                    'success'
+                showMessage(
+                    'Formato immagine non valido.',
+                    'error'
                 );
 
 
-                setTimeout(
-                    () => {
-                
-                        window.location.href =
-                            'dashboard.html';
-                
-                    },
-                    700
-                );
+                saveButton.disabled =
+                    false;
 
+
+                saveButton.textContent =
+                    'Salva modifiche';
+
+
+                return;
             }
+
+
+            const maxSize =
+                5 * 1024 * 1024;
+
+
+            if (
+                imageFile.size >
+                maxSize
+            ) {
+
+                showMessage(
+                    'L’immagine supera i 5 MB.',
+                    'error'
+                );
+
+
+                saveButton.disabled =
+                    false;
+
+
+                saveButton.textContent =
+                    'Salva modifiche';
+
+
+                return;
+            }
+
+
+            const extension =
+                imageFile.name
+                    .split('.')
+                    .pop()
+                    .toLowerCase();
+
+
+            const safeProduct =
+                productKey.replace(
+                    /[^a-z0-9_-]/gi,
+                    '-'
+                );
+
+
+            const fileName =
+                safeProduct +
+                '-' +
+                Date.now() +
+                '.' +
+                extension;
+
+
+            const {
+                data: uploadData,
+                error: uploadError
+            } =
+                await supabaseClient
+                    .storage
+                    .from('updates')
+                    .upload(
+                        fileName,
+                        imageFile,
+                        {
+                            cacheControl:
+                                '3600',
+
+                            upsert:
+                                false
+                        }
+                    );
+
+
+            if (uploadError) {
+
+                console.error(
+                    uploadError
+                );
+
+
+                showMessage(
+                    'Errore durante il caricamento dell’immagine: ' +
+                    uploadError.message,
+                    'error'
+                );
+
+
+                saveButton.disabled =
+                    false;
+
+
+                saveButton.textContent =
+                    'Salva modifiche';
+
+
+                return;
+            }
+
+
+            imagePath =
+                uploadData.path;
+        }
+
+
+        /* =====================================
+           DATI MODIFICATI
+           ===================================== */
+
+        const publishedAt =
+            new Date(
+                publishedAtInput.value +
+                'T12:00:00'
+            )
+            .toISOString();
+
+
+        const updatedUpdate = {
+
+            product_key:
+                productKey,
+
+            product_name:
+                productName,
+
+            version:
+                versionInput.value.trim()
+                || null,
+
+            title:
+                titleInput.value.trim(),
+
+            description:
+                descriptionInput.value.trim()
+                || null,
+
+            content:
+                contentInput.value.trim()
+                || null,
+
+            image_path:
+                imagePath,
+
+            published_at:
+                publishedAt,
+
+            published:
+                publishedInput.checked
+        };
+
+
+        /* =====================================
+           UPDATE - NON INSERT
+           ===================================== */
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from('updates')
+                .update(
+                    updatedUpdate
+                )
+                .eq(
+                    'id',
+                    updateId
+                );
+
+
+        if (error) {
+
+            console.error(
+                error
+            );
+
+
+            showMessage(
+                'Errore durante la modifica: ' +
+                error.message,
+                'error'
+            );
+
+
+            saveButton.disabled =
+                false;
+
+
+            saveButton.textContent =
+                'Salva modifiche';
+
+
+            return;
+        }
+
+
+        /* =====================================
+           SE ABBIAMO CAMBIATO FOTO,
+           ELIMINIAMO QUELLA VECCHIA
+           ===================================== */
+
+        if (
+            imageFile &&
+            currentImagePath &&
+            currentImagePath !==
+                imagePath
+        ) {
+
+            const {
+                error: deleteImageError
+            } =
+                await supabaseClient
+                    .storage
+                    .from('updates')
+                    .remove([
+                        currentImagePath
+                    ]);
+
+
+            if (deleteImageError) {
+
+                console.warn(
+                    'La modifica è riuscita, ma non è stato possibile eliminare la vecchia immagine:',
+                    deleteImageError
+                );
+            }
+        }
+
+
+        showMessage(
+            'Aggiornamento modificato correttamente.',
+            'success'
         );
 
+
+        setTimeout(
+            () => {
+
+                window.location.href =
+                    'dashboard.html';
+
+            },
+            700
+        );
+
+    }
+);
 
         /* =====================================
            AVVIO
