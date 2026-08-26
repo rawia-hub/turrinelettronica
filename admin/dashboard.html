@@ -939,7 +939,16 @@
             document.getElementById(
                 'clearFiltersButton'
             );
+        const resultsCount =
+            document.getElementById(
+                'resultsCount'
+            );
         
+        
+        const sortOrder =
+            document.getElementById(
+                'sortOrder'
+            );
         
         let allUpdates = [];
         
@@ -1076,30 +1085,33 @@ function applyFilters() {
         statusFilter.value;
 
 
-    const filteredUpdates =
+    let filteredUpdates =
         allUpdates.filter(
             update => {
 
                 /* =========================
-                   RICERCA TESTO
+                   RICERCA
                    ========================= */
 
                 const title =
                     String(
                         update.title || ''
-                    ).toLowerCase();
+                    )
+                    .toLowerCase();
 
 
                 const product =
                     String(
                         update.product_name || ''
-                    ).toLowerCase();
+                    )
+                    .toLowerCase();
 
 
                 const version =
                     String(
                         update.version || ''
-                    ).toLowerCase();
+                    )
+                    .toLowerCase();
 
 
                 const matchesSearch =
@@ -1116,7 +1128,7 @@ function applyFilters() {
 
 
                 /* =========================
-                   FILTRO PRODOTTO
+                   PRODOTTO
                    ========================= */
 
                 const matchesProduct =
@@ -1128,7 +1140,7 @@ function applyFilters() {
 
 
                 /* =========================
-                   FILTRO STATO
+                   STATO
                    ========================= */
 
                 let matchesStatus =
@@ -1166,10 +1178,166 @@ function applyFilters() {
         );
 
 
+    /* =========================
+       ORDINAMENTO
+       ========================= */
+
+    switch (
+        sortOrder.value
+    ) {
+
+        case 'date_asc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    new Date(
+                        a.published_at
+                    ) -
+                    new Date(
+                        b.published_at
+                    )
+            );
+
+            break;
+
+
+        case 'date_desc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    new Date(
+                        b.published_at
+                    ) -
+                    new Date(
+                        a.published_at
+                    )
+            );
+
+            break;
+
+
+        case 'title_asc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    String(
+                        a.title || ''
+                    )
+                    .localeCompare(
+                        String(
+                            b.title || ''
+                        ),
+                        'it'
+                    )
+            );
+
+            break;
+
+
+        case 'title_desc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    String(
+                        b.title || ''
+                    )
+                    .localeCompare(
+                        String(
+                            a.title || ''
+                        ),
+                        'it'
+                    )
+            );
+
+            break;
+
+
+        case 'product_asc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    String(
+                        a.product_name || ''
+                    )
+                    .localeCompare(
+                        String(
+                            b.product_name || ''
+                        ),
+                        'it'
+                    )
+            );
+
+            break;
+
+
+        case 'version_desc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    String(
+                        b.version || ''
+                    )
+                    .localeCompare(
+                        String(
+                            a.version || ''
+                        ),
+                        'it',
+                        {
+                            numeric: true,
+                            sensitivity: 'base'
+                        }
+                    )
+            );
+
+            break;
+
+
+        case 'version_asc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    String(
+                        a.version || ''
+                    )
+                    .localeCompare(
+                        String(
+                            b.version || ''
+                        ),
+                        'it',
+                        {
+                            numeric: true,
+                            sensitivity: 'base'
+                        }
+                    )
+            );
+
+            break;
+    }
+
+
+    /* =========================
+       CONTEGGIO
+       ========================= */
+
+    const count =
+        filteredUpdates.length;
+
+
+    resultsCount.textContent =
+        count === 1
+            ? '1 aggiornamento trovato'
+            : count +
+              ' aggiornamenti trovati';
+
+
     renderUpdates(
         filteredUpdates
     );
 }
+        sortOrder.addEventListener(
+            'change',
+            applyFilters
+        );
         /* =====================================
            CREA TABELLA
            ===================================== */
@@ -1352,7 +1520,9 @@ function applyFilters() {
             
                     statusFilter.value =
                         'all';
-            
+                    
+                    sortOrder.value =
+                        'date_desc';
             
                     applyFilters();
             
