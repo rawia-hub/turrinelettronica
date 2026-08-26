@@ -13,7 +13,10 @@
     <title>
         Modifica aggiornamento | Turrin Elettronica
     </title>
-
+    <link
+        href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+        rel="stylesheet"
+    >
 
     <style>
 
@@ -325,7 +328,36 @@
             }
 
         }
+#contentEditor {
+    min-height: 280px;
 
+    background: #ffffff;
+
+    font-size: 14px;
+}
+
+
+#contentEditor.ql-container {
+    border-color: #ccd7e4;
+
+    border-radius: 0 0 7px 7px;
+}
+
+
+#contentToolbar.ql-toolbar {
+    border-color: #ccd7e4;
+
+    border-radius: 7px 7px 0 0;
+
+    background: #f8fafc;
+}
+
+
+#contentEditor .ql-editor {
+    min-height: 280px;
+
+    line-height: 1.7;
+}
     </style>
 
 </head>
@@ -517,18 +549,51 @@
                 </div>
 
 
-                <div class="form-group full">
+       <div class="form-group full">
 
-                    <label for="content">
-                        Contenuto completo
-                    </label>
+    <label>
+        Contenuto completo
+    </label>
 
-                    <textarea
-                        id="content"
-                        placeholder="Testo completo dell'aggiornamento."
-                    ></textarea>
 
-                </div>
+    <div id="contentToolbar">
+
+        <select class="ql-header">
+            <option selected></option>
+            <option value="2"></option>
+            <option value="3"></option>
+        </select>
+
+
+        <button class="ql-bold"></button>
+
+        <button class="ql-italic"></button>
+
+        <button class="ql-underline"></button>
+
+
+        <button
+            class="ql-list"
+            value="ordered">
+        </button>
+
+
+        <button
+            class="ql-list"
+            value="bullet">
+        </button>
+
+
+        <button class="ql-link"></button>
+
+        <button class="ql-clean"></button>
+
+    </div>
+
+
+    <div id="contentEditor"></div>
+
+</div>
 
 
             </div>
@@ -567,7 +632,9 @@
     <script
         src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
     </script>
-
+    <script
+        src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js">
+    </script>
 
     <script>
 
