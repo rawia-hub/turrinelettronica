@@ -338,11 +338,16 @@
         
         
         #contentEditor.ql-container {
-            border-radius: 0 0 7px 7px;
-        
-            border-color: #ccd7e4;
-        }
-        
+        width: 100%;
+    
+        height: auto !important;
+    
+        border-color: #ccd7e4;
+        border-radius: 0 0 7px 7px;
+    
+        background: #ffffff;
+    }
+            
         
         #contentToolbar.ql-toolbar {
             border-color: #ccd7e4;
@@ -353,11 +358,46 @@
         }
         
         
-        #contentEditor .ql-editor {
+     #contentEditor .ql-editor {
             min-height: 280px;
+            max-height: 500px;
         
+            padding: 14px;
+        
+            overflow-y: auto !important;
+        
+            color: #25354a;
+        
+            font-size: 14px;
             line-height: 1.7;
         }
+        #contentEditor .ql-editor h2 {
+    margin:
+        20px 0 10px;
+
+    font-size: 21px;
+}
+
+
+#contentEditor .ql-editor h3 {
+    margin:
+        18px 0 9px;
+
+    font-size: 18px;
+}
+
+
+#contentEditor .ql-editor p {
+    margin:
+        0 0 12px;
+}
+
+
+#contentEditor .ql-editor ul,
+#contentEditor .ql-editor ol {
+    margin:
+        8px 0 16px;
+}
     </style>
 
 </head>
@@ -588,7 +628,7 @@
                         </button>
                 
                 
-                        <button class="ql-clean"></button>
+                        <button  type="button" class="ql-clean"></button>
                 
                     </div>
                 
@@ -715,7 +755,16 @@
         
                         toolbar:
                             '#contentToolbar'
-                    }
+                    },
+        
+                    formats: [
+                        'header',
+                        'bold',
+                        'italic',
+                        'underline',
+                        'list',
+                        'link'
+                    ]
                 }
             );
 
