@@ -244,7 +244,9 @@
     <script
         src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
     </script>
-
+    <script
+        src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js">
+    </script>
 
     <script>
 
@@ -534,7 +536,7 @@
 
 
             const content =
-                escapeHtml(
+                DOMPurify.sanitize(
                     update.content || ''
                 );
 
