@@ -381,6 +381,33 @@
     font-size: 14px;
     line-height: 1.7;
 }
+ #contentEditor .ql-editor h2 {
+    margin:
+        20px 0 10px;
+
+    font-size: 21px;
+}
+
+
+#contentEditor .ql-editor h3 {
+    margin:
+        18px 0 9px;
+
+    font-size: 18px;
+}
+
+
+#contentEditor .ql-editor p {
+    margin:
+        0 0 12px;
+}
+
+
+#contentEditor .ql-editor ul,
+#contentEditor .ql-editor ol {
+    margin:
+        8px 0 16px;
+}
     </style>
 
 </head>
@@ -609,7 +636,7 @@
 
         <button class="ql-link"></button>
 
-        <button class="ql-clean"></button>
+        <button  type="button" class="ql-clean"></button>
 
     </div>
 
@@ -748,7 +775,16 @@
         
                         toolbar:
                             '#contentToolbar'
-                    }
+                    },
+        
+                    formats: [
+                        'header',
+                        'bold',
+                        'italic',
+                        'underline',
+                        'list',
+                        'link'
+                    ]
                 }
             );
       
