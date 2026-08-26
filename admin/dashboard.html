@@ -688,35 +688,155 @@
                 });
 
 
-            document
-                .querySelectorAll(
-                    '.action-button.delete'
-                )
-                .forEach(button => {
+document
+    .querySelectorAll(
+        '.action-button.delete'
+    )
+    .forEach(button => {
 
-                    button.addEventListener(
-                        'click',
-                        () => {
+        button.addEventListener(
+            'click',
+            async () => {
 
-                            const id =
-                                button.dataset.id;
-
-
-                            console.log(
-                                'Elimina aggiornamento:',
-                                id
-                            );
+                const id =
+                    button.dataset.id;
 
 
-                            /*
-                             * Nel prossimo passo
-                             * renderemo questo
-                             * pulsante realmente
-                             * funzionante.
-                             */
-                        }
+                const confirmed =
+                    window.confirm(
+                        'Vuoi davvero eliminare questo aggiornamento?'
                     );
-                });
+
+
+                if (!confirmed)
+                    return;
+
+
+                button.disabled = true;
+
+                button.textContent =
+                    'Eliminazione...';
+
+
+                /* =====================================
+                   RECUPERA IMAGE_PATH
+                   ===================================== */
+
+                const {
+                    data: updateData,
+                    error: readError
+                } =
+                    await supabaseClient
+                        .from('updates')
+                        .select('image_path')
+                        .eq(
+                            'id',
+                            id
+                        )
+                        .single();
+
+
+                if (readError) {
+
+                    console.error(
+                        readError
+                    );
+
+
+                    alert(
+                        'Errore durante la lettura dell’aggiornamento.'
+                    );
+
+
+                    button.disabled = false;
+
+                    button.textContent =
+                        'Elimina';
+
+
+                    return;
+                }
+
+
+                /* =====================================
+                   ELIMINA RIGA DATABASE
+                   ===================================== */
+
+                const {
+                    error: deleteError
+                } =
+                    await supabaseClient
+                        .from('updates')
+                        .delete()
+                        .eq(
+                            'id',
+                            id
+                        );
+
+
+                if (deleteError) {
+
+                    console.error(
+                        deleteError
+                    );
+
+
+                    alert(
+                        'Errore durante l’eliminazione dell’aggiornamento: ' +
+                        deleteError.message
+                    );
+
+
+                    button.disabled = false;
+
+                    button.textContent =
+                        'Elimina';
+
+
+                    return;
+                }
+
+
+                /* =====================================
+                   ELIMINA FOTO DALLO STORAGE
+                   ===================================== */
+
+                if (
+                    updateData &&
+                    updateData.image_path
+                ) {
+
+                    const {
+                        error: imageError
+                    } =
+                        await supabaseClient
+                            .storage
+                            .from('updates')
+                            .remove([
+                                updateData.image_path
+                            ]);
+
+
+                    if (imageError) {
+
+                        console.warn(
+                            'Aggiornamento eliminato, ma la foto non è stata rimossa:',
+                            imageError
+                        );
+                    }
+                }
+
+
+                /* =====================================
+                   RICARICA DASHBOARD
+                   ===================================== */
+
+                await loadUpdates();
+
+            }
+        );
+
+    });
         }
 
 
