@@ -648,11 +648,20 @@
                 'description'
             );
 
-
-        const contentInput =
-            document.getElementById(
-                'content'
+        const contentEditor =
+            new Quill(
+                '#contentEditor',
+                {
+                    theme: 'snow',
+        
+                    modules: {
+        
+                        toolbar:
+                            '#contentToolbar'
+                    }
+                }
             );
+      
 
 
         const saveButton =
@@ -751,9 +760,9 @@
                 data.description || '';
         
         
-            contentInput.value =
-                data.content || '';
-        
+            contentEditor.clipboard.dangerouslyPasteHTML(
+                data.content || ''
+            );
         
             publishedInput.checked =
                 data.published;
@@ -1119,7 +1128,9 @@ updateForm.addEventListener(
                 || null,
 
             content:
-                contentInput.value.trim()
+                contentEditor
+                .getSemanticHTML()
+                .trim()
                 || null,
 
             image_path:
