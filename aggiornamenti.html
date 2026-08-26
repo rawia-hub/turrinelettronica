@@ -445,7 +445,15 @@
 
         let currentFilter =
             'all';
-
+        let visibleCount = 9;
+        
+        const ITEMS_PER_LOAD = 9;
+        
+        
+        const loadMoreButton =
+            document.getElementById(
+                'loadMoreButton'
+            );
 
 
         /* =====================================
@@ -706,59 +714,118 @@
            MOSTRA AGGIORNAMENTI
            ===================================== */
 
-        function renderUpdates() {
+ function renderUpdates() {
 
-            let filteredUpdates;
-
-
-            if (
-                currentFilter ===
-                'all'
-            ) {
-
-                filteredUpdates =
-                    allUpdates;
-
-            }
-            else {
-
-                filteredUpdates =
-                    allUpdates.filter(
-                        update =>
-                            update.product_key ===
-                            currentFilter
-                    );
-            }
+    let filteredUpdates;
 
 
-            if (
-                filteredUpdates.length ===
-                0
-            ) {
+    /* =====================================
+       FILTRO
+       ===================================== */
 
-                updatesGrid.innerHTML =
-                    '';
+    if (
+        currentFilter ===
+        'all'
+    ) {
+
+        filteredUpdates =
+            allUpdates;
+
+    }
+    else {
+
+        filteredUpdates =
+            allUpdates.filter(
+                update =>
+                    update.product_key ===
+                    currentFilter
+            );
+    }
 
 
-                updatesEmpty.style.display =
-                    'block';
+    /* =====================================
+       NESSUN RISULTATO
+       ===================================== */
+
+    if (
+        filteredUpdates.length ===
+        0
+    ) {
+
+        updatesGrid.innerHTML =
+            '';
 
 
-                return;
-            }
+        updatesEmpty.style.display =
+            'block';
 
 
-            updatesEmpty.style.display =
-                'none';
+        loadMoreButton.style.display =
+            'none';
 
 
-            updatesGrid.innerHTML =
-                filteredUpdates
-                    .map(
-                        createUpdateCard
-                    )
-                    .join('');
-        }
+        return;
+    }
+
+
+    updatesEmpty.style.display =
+        'none';
+
+
+    /* =====================================
+       MOSTRA SOLO I PRIMI N
+       ===================================== */
+
+    const visibleUpdates =
+        filteredUpdates.slice(
+            0,
+            visibleCount
+        );
+
+
+    updatesGrid.innerHTML =
+        visibleUpdates
+            .map(
+                createUpdateCard
+            )
+            .join('');
+
+
+    /* =====================================
+       CARICA ALTRI
+       ===================================== */
+
+    if (
+        visibleCount >=
+        filteredUpdates.length
+    ) {
+
+        /*
+         * Abbiamo già mostrato
+         * tutto il database/filtro.
+         */
+        loadMoreButton.style.display =
+            'none';
+
+    }
+    else {
+
+        loadMoreButton.style.display =
+            'inline-block';
+    }
+}
+        loadMoreButton.addEventListener(
+    'click',
+    () => {
+
+        visibleCount +=
+            ITEMS_PER_LOAD;
+
+
+        renderUpdates();
+
+    }
+);
 
 
 
@@ -791,7 +858,8 @@
 
                         currentFilter =
                             button.dataset.product;
-
+                        visibleCount =
+                            ITEMS_PER_LOAD;
 
                         renderUpdates();
 
