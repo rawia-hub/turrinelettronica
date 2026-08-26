@@ -301,7 +301,208 @@
             }
 
         }
+/* =========================================
+   MODAL ELIMINAZIONE
+   ========================================= */
 
+.delete-modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+.delete-modal.open {
+    display: flex;
+}
+
+
+.delete-modal-backdrop {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(7, 27, 58, .55);
+
+    backdrop-filter:
+        blur(2px);
+}
+
+
+.delete-modal-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, .25);
+
+    text-align: center;
+}
+
+
+.delete-modal-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin:
+        0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #fff0f0;
+    color: #c93636;
+
+    font-size: 24px;
+    font-weight: 900;
+}
+
+
+.delete-modal-box h3 {
+    margin:
+        0 0 10px;
+
+    color: #071b3a;
+
+    font-size: 22px;
+}
+
+
+.delete-modal-box p {
+    margin:
+        0 0 14px;
+
+    color: #687487;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+.delete-update-name {
+    margin:
+        18px 0;
+
+    padding: 12px 14px;
+
+    border-radius: 7px;
+
+    background: #f5f8fc;
+
+    color: #27374d;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.delete-modal-warning {
+    color: #9c4a4a !important;
+
+    font-size: 12px !important;
+}
+
+
+.delete-modal-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+
+.modal-button {
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+.modal-cancel {
+    border:
+        1px solid #cfd9e5;
+
+    background: #ffffff;
+    color: #35445a;
+}
+
+
+.modal-cancel:hover {
+    background: #f5f8fc;
+}
+
+
+.modal-delete {
+    border:
+        1px solid #cf3838;
+
+    background: #cf3838;
+    color: #ffffff;
+}
+
+
+.modal-delete:hover {
+    background: #b92e2e;
+}
+
+
+.modal-delete:disabled {
+    opacity: .6;
+
+    cursor: wait;
+}
+
+
+@media (max-width: 500px) {
+
+    .delete-modal-box {
+        padding: 24px 20px;
+    }
+
+
+    .delete-modal-actions {
+        flex-direction: column-reverse;
+    }
+
+
+    .modal-button {
+        width: 100%;
+    }
+
+}
     </style>
 
 </head>
@@ -364,7 +565,78 @@
 
     </main>
 
+<div
+    id="deleteModal"
+    class="delete-modal"
+    aria-hidden="true">
 
+    <div
+        class="delete-modal-backdrop"
+        id="deleteModalBackdrop">
+    </div>
+
+
+    <div
+        class="delete-modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="deleteModalTitle">
+
+        <div class="delete-modal-icon">
+            !
+        </div>
+
+
+        <h3 id="deleteModalTitle">
+            Elimina aggiornamento
+        </h3>
+
+
+        <p>
+            Sei sicuro di voler eliminare
+            questo aggiornamento?
+        </p>
+
+
+        <div
+            id="deleteUpdateName"
+            class="delete-update-name">
+        </div>
+
+
+        <p class="delete-modal-warning">
+            L’operazione eliminerà anche
+            l’immagine associata e non
+            potrà essere annullata.
+        </p>
+
+
+        <div class="delete-modal-actions">
+
+            <button
+                id="cancelDeleteButton"
+                class="modal-button modal-cancel"
+                type="button">
+
+                Annulla
+
+            </button>
+
+
+            <button
+                id="confirmDeleteButton"
+                class="modal-button modal-delete"
+                type="button">
+
+                Elimina
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
     <script
         src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
     </script>
@@ -411,7 +683,42 @@
             document.getElementById(
                 'newUpdateButton'
             );
-
+        const deleteModal =
+            document.getElementById(
+                'deleteModal'
+            );
+        
+        
+        const deleteModalBackdrop =
+            document.getElementById(
+                'deleteModalBackdrop'
+            );
+        
+        
+        const cancelDeleteButton =
+            document.getElementById(
+                'cancelDeleteButton'
+            );
+        
+        
+        const confirmDeleteButton =
+            document.getElementById(
+                'confirmDeleteButton'
+            );
+        
+        
+        const deleteUpdateName =
+            document.getElementById(
+                'deleteUpdateName'
+            );
+        
+        
+        let pendingDeleteId =
+            null;
+        
+        
+        let pendingDeleteTitle =
+            '';
 
         /* =====================================
            CONTROLLO LOGIN
@@ -594,6 +901,7 @@
                                     <button
                                         class="action-button delete"
                                         data-id="${update.id}"
+                                        data-title="${escapeHtml(update.title)}"
                                         type="button">
                                         Elimina
                                     </button>
@@ -696,149 +1004,261 @@ document
 
         button.addEventListener(
             'click',
-            async () => {
+            () => {
 
-                const id =
+                pendingDeleteId =
                     button.dataset.id;
 
 
-                const confirmed =
-                    window.confirm(
-                        'Vuoi davvero eliminare questo aggiornamento?'
-                    );
+                pendingDeleteTitle =
+                    button.dataset.title
+                    || 'Aggiornamento';
 
 
-                if (!confirmed)
-                    return;
+                deleteUpdateName.textContent =
+                    pendingDeleteTitle;
 
 
-                button.disabled = true;
-
-                button.textContent =
-                    'Eliminazione...';
-
-
-                /* =====================================
-                   RECUPERA IMAGE_PATH
-                   ===================================== */
-
-                const {
-                    data: updateData,
-                    error: readError
-                } =
-                    await supabaseClient
-                        .from('updates')
-                        .select('image_path')
-                        .eq(
-                            'id',
-                            id
-                        )
-                        .single();
+                deleteModal.classList.add(
+                    'open'
+                );
 
 
-                if (readError) {
-
-                    console.error(
-                        readError
-                    );
-
-
-                    alert(
-                        'Errore durante la lettura dell’aggiornamento.'
-                    );
+                deleteModal.setAttribute(
+                    'aria-hidden',
+                    'false'
+                );
 
 
-                    button.disabled = false;
-
-                    button.textContent =
-                        'Elimina';
-
-
-                    return;
-                }
-
-
-                /* =====================================
-                   ELIMINA RIGA DATABASE
-                   ===================================== */
-
-                const {
-                    error: deleteError
-                } =
-                    await supabaseClient
-                        .from('updates')
-                        .delete()
-                        .eq(
-                            'id',
-                            id
-                        );
-
-
-                if (deleteError) {
-
-                    console.error(
-                        deleteError
-                    );
-
-
-                    alert(
-                        'Errore durante l’eliminazione dell’aggiornamento: ' +
-                        deleteError.message
-                    );
-
-
-                    button.disabled = false;
-
-                    button.textContent =
-                        'Elimina';
-
-
-                    return;
-                }
-
-
-                /* =====================================
-                   ELIMINA FOTO DALLO STORAGE
-                   ===================================== */
-
-                if (
-                    updateData &&
-                    updateData.image_path
-                ) {
-
-                    const {
-                        error: imageError
-                    } =
-                        await supabaseClient
-                            .storage
-                            .from('updates')
-                            .remove([
-                                updateData.image_path
-                            ]);
-
-
-                    if (imageError) {
-
-                        console.warn(
-                            'Aggiornamento eliminato, ma la foto non è stata rimossa:',
-                            imageError
-                        );
-                    }
-                }
-
-
-                /* =====================================
-                   RICARICA DASHBOARD
-                   ===================================== */
-
-                await loadUpdates();
-
+                confirmDeleteButton.focus();
             }
         );
 
     });
         }
+/* =====================================
+   CHIUDI MODAL
+   ===================================== */
 
+function closeDeleteModal() {
+
+    deleteModal.classList.remove(
+        'open'
+    );
+
+
+    deleteModal.setAttribute(
+        'aria-hidden',
+        'true'
+    );
+
+
+    pendingDeleteId =
+        null;
+
+
+    pendingDeleteTitle =
+        '';
+
+
+    deleteUpdateName.textContent =
+        '';
+
+
+    confirmDeleteButton.disabled =
+        false;
+
+
+    confirmDeleteButton.textContent =
+        'Elimina';
+}
+
+
+/* =====================================
+   ANNULLA
+   ===================================== */
+
+cancelDeleteButton.addEventListener(
+    'click',
+    closeDeleteModal
+);
+
+
+deleteModalBackdrop.addEventListener(
+    'click',
+    closeDeleteModal
+);
+
+
+/* =====================================
+   ESC CHIUDE IL MODAL
+   ===================================== */
+
+document.addEventListener(
+    'keydown',
+    event => {
+
+        if (
+            event.key === 'Escape' &&
+            deleteModal.classList.contains(
+                'open'
+            )
+        ) {
+
+            closeDeleteModal();
+        }
+    }
+);
+
+
+/* =====================================
+   CONFERMA ELIMINAZIONE
+   ===================================== */
+
+confirmDeleteButton.addEventListener(
+    'click',
+    async () => {
+
+        if (!pendingDeleteId)
+            return;
+
+
+        const id =
+            pendingDeleteId;
+
+
+        confirmDeleteButton.disabled =
+            true;
+
+
+        confirmDeleteButton.textContent =
+            'Eliminazione...';
+
+
+        /* =====================================
+           RECUPERA IMAGE_PATH
+           ===================================== */
+
+        const {
+            data: updateData,
+            error: readError
+        } =
+            await supabaseClient
+                .from('updates')
+                .select('image_path')
+                .eq(
+                    'id',
+                    id
+                )
+                .single();
+
+
+        if (readError) {
+
+            console.error(
+                readError
+            );
+
+
+            alert(
+                'Errore durante la lettura dell’aggiornamento.'
+            );
+
+
+            confirmDeleteButton.disabled =
+                false;
+
+
+            confirmDeleteButton.textContent =
+                'Elimina';
+
+
+            return;
+        }
+
+
+        /* =====================================
+           ELIMINA DATABASE
+           ===================================== */
+
+        const {
+            error: deleteError
+        } =
+            await supabaseClient
+                .from('updates')
+                .delete()
+                .eq(
+                    'id',
+                    id
+                );
+
+
+        if (deleteError) {
+
+            console.error(
+                deleteError
+            );
+
+
+            alert(
+                'Errore durante l’eliminazione: ' +
+                deleteError.message
+            );
+
+
+            confirmDeleteButton.disabled =
+                false;
+
+
+            confirmDeleteButton.textContent =
+                'Elimina';
+
+
+            return;
+        }
+
+
+        /* =====================================
+           ELIMINA IMMAGINE
+           ===================================== */
+
+        if (
+            updateData &&
+            updateData.image_path
+        ) {
+
+            const {
+                error: imageError
+            } =
+                await supabaseClient
+                    .storage
+                    .from('updates')
+                    .remove([
+                        updateData.image_path
+                    ]);
+
+
+            if (imageError) {
+
+                console.error(
+                    'Errore eliminazione immagine:',
+                    imageError
+                );
+            }
+        }
+
+
+        /* =====================================
+           CHIUDI E RICARICA
+           ===================================== */
+
+        closeDeleteModal();
+
+
+        await loadUpdates();
+
+    }
+);
 
         /* =====================================
            NUOVO AGGIORNAMENTO
