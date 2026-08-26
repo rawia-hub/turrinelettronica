@@ -548,7 +548,7 @@
                     class="button button-primary"
                     id="saveButton"
                     type="submit">
-                    Salva aggiornamento
+                    Salva modifiche
                 </button>
 
             </div>
@@ -883,67 +883,148 @@
             }
         );
 
-
-        /* =====================================
-           SALVA
+           /* =====================================
+           SALVA MODIFICHE
            ===================================== */
-
+        
         updateForm.addEventListener(
             'submit',
             async (event) => {
-
+        
                 event.preventDefault();
-
-
+        
+        
                 const option =
-                    productSelect
-                        .options[
-                            productSelect.selectedIndex
-                        ];
-
-
+                    productSelect.options[
+                        productSelect.selectedIndex
+                    ];
+        
+        
                 const productKey =
                     option.value;
-
-
+        
+        
                 const productName =
                     option.dataset.name;
-
-
+        
+        
                 if (
                     !productKey ||
                     !productName
                 ) {
-
+        
                     showMessage(
                         'Seleziona un prodotto.',
                         'error'
                     );
-
+        
                     return;
                 }
-
-
+        
+        
                 saveButton.disabled =
                     true;
-
-
+        
+        
                 saveButton.textContent =
                     'Salvataggio...';
-
-
-                /*
-                 * published_at è timestamptz.
-                 * Usiamo mezzogiorno per evitare
-                 * problemi di cambio data dovuti
-                 * al fuso orario.
-                 */
+        
+        
                 const publishedAt =
                     new Date(
                         publishedAtInput.value +
                         'T12:00:00'
                     )
                     .toISOString();
+        
+        
+                const updatedUpdate = {
+        
+                    product_key:
+                        productKey,
+        
+                    product_name:
+                        productName,
+        
+                    version:
+                        versionInput.value.trim()
+                        || null,
+        
+                    title:
+                        titleInput.value.trim(),
+        
+                    description:
+                        descriptionInput.value.trim()
+                        || null,
+        
+                    content:
+                        contentInput.value.trim()
+                        || null,
+        
+                    published_at:
+                        publishedAt,
+        
+                    published:
+                        publishedInput.checked
+                };
+        
+        
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from('updates')
+                        .update(
+                            updatedUpdate
+                        )
+                        .eq(
+                            'id',
+                            updateId
+                        );
+        
+        
+                if (error) {
+        
+                    console.error(error);
+        
+        
+                    showMessage(
+                        'Errore durante la modifica: ' +
+                        error.message,
+                        'error'
+                    );
+        
+        
+                    saveButton.disabled =
+                        false;
+        
+        
+                    saveButton.textContent =
+                        'Salva modifiche';
+        
+        
+                    return;
+                }
+        
+        
+                showMessage(
+                    'Aggiornamento modificato correttamente.',
+                    'success'
+                );
+        
+        
+                setTimeout(
+                    () => {
+        
+                        window.location.href =
+                            'dashboard.html';
+        
+                    },
+                    700
+                );
+        
+            }
+        );
 
 let imagePath = null;
 
