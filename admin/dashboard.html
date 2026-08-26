@@ -672,28 +672,19 @@
                     '.action-button.edit'
                 )
                 .forEach(button => {
-
+            
                     button.addEventListener(
                         'click',
                         () => {
-
+            
                             const id =
                                 button.dataset.id;
-
-
-                            console.log(
-                                'Modifica aggiornamento:',
-                                id
-                            );
-
-
-                            /*
-                             * Nel prossimo passo:
-                             *
-                             * edit.html?id=1
-                             */
+            
+                            window.location.href =
+                                'edit.html?id=' + id;
                         }
                     );
+            
                 });
 
 
