@@ -855,7 +855,10 @@
         /* =====================================
            ELEMENTI
            ===================================== */
-
+        const removeImageButton =
+            document.getElementById(
+                'removeImageButton'
+            );
         const updateForm =
             document.getElementById(
                 'updateForm'
@@ -1077,15 +1080,26 @@
             noCurrentImage.style.display =
                 'block';
         }
-            if (data.published_at) {
+        if (data.published_at) {
+    
+            publishedAtInput.value =
+                data.published_at
+                    .substring(
+                        0,
+                        10
+                    );
+        }
+      if (currentImagePath) {
+
+            removeImageButton.style.display =
+                'inline-block';
         
-                publishedAtInput.value =
-                    data.published_at
-                        .substring(
-                            0,
-                            10
-                        );
-            }
+        }
+        else {
+        
+            removeImageButton.style.display =
+                'none';
+        }
         }
 
         imageInput.addEventListener(
@@ -1181,6 +1195,61 @@
         newImageBox.style.display =
             'block';
 
+    }
+);
+
+        removeImageButton.addEventListener(
+    'click',
+    () => {
+
+        if (!currentImagePath)
+            return;
+
+
+        const confirmed =
+            window.confirm(
+                'Vuoi rimuovere l’immagine da questo aggiornamento?'
+            );
+
+
+        if (!confirmed)
+            return;
+
+
+        removeCurrentImage =
+            true;
+
+
+        currentImagePreview.style.display =
+            'none';
+
+
+        noCurrentImage.style.display =
+            'block';
+
+
+        noCurrentImage.textContent =
+            'L’immagine verrà rimossa al salvataggio.';
+
+
+        removeImageButton.style.display =
+            'none';
+
+
+        /*
+         * Se avevi anche selezionato
+         * una nuova foto, la annulliamo.
+         */
+        imageInput.value =
+            '';
+
+
+        newImageBox.style.display =
+            'none';
+
+
+        newImagePreview.src =
+            '';
     }
 );
         /* =====================================
@@ -1325,7 +1394,7 @@
    ===================================== */
 
 let currentImagePath = null;
-
+let removeCurrentImage = false;
 
 /* =====================================
    SALVA MODIFICHE
@@ -1379,7 +1448,9 @@ updateForm.addEventListener(
          * l'immagine già esistente.
          */
         let imagePath =
-            currentImagePath;
+            removeCurrentImage
+                ? null
+                : currentImagePath;
 
 
         const imageFile =
@@ -1621,12 +1692,17 @@ updateForm.addEventListener(
            ===================================== */
 
         if (
-            imageFile &&
             currentImagePath &&
-            currentImagePath !==
-                imagePath
+            (
+                removeCurrentImage ||
+                (
+                    imageFile &&
+                    currentImagePath !==
+                        imagePath
+                )
+            )
         ) {
-
+        
             const {
                 error: deleteImageError
             } =
@@ -1636,12 +1712,12 @@ updateForm.addEventListener(
                     .remove([
                         currentImagePath
                     ]);
-
-
+        
+        
             if (deleteImageError) {
-
+        
                 console.warn(
-                    'La modifica è riuscita, ma non è stato possibile eliminare la vecchia immagine:',
+                    'Aggiornamento salvato, ma non è stato possibile eliminare la vecchia immagine:',
                     deleteImageError
                 );
             }
