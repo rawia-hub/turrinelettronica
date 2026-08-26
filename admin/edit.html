@@ -1694,37 +1694,71 @@ updateForm.addEventListener(
            ELIMINIAMO QUELLA VECCHIA
            ===================================== */
 
-        if (
-            currentImagePath &&
-            (
-                removeCurrentImage ||
-                (
-                    imageFile &&
-                    currentImagePath !==
-                        imagePath
-                )
-            )
-        ) {
-        
-            const {
-                error: deleteImageError
-            } =
-                await supabaseClient
-                    .storage
-                    .from('updates')
-                    .remove([
-                        currentImagePath
-                    ]);
-        
-        
-            if (deleteImageError) {
-        
-                console.warn(
-                    'Aggiornamento salvato, ma non è stato possibile eliminare la vecchia immagine:',
-                    deleteImageError
-                );
-            }
-        }
+/* =====================================
+   ELIMINA LA VECCHIA IMMAGINE
+   ===================================== */
+
+if (
+    currentImagePath &&
+    (
+        removeCurrentImage ||
+        (
+            imageFile &&
+            currentImagePath !== imagePath
+        )
+    )
+) {
+
+    console.log(
+        'Eliminazione immagine:',
+        currentImagePath
+    );
+
+
+    const {
+        data: deleteImageData,
+        error: deleteImageError
+    } =
+        await supabaseClient
+            .storage
+            .from('updates')
+            .remove([
+                currentImagePath
+            ]);
+
+
+    if (deleteImageError) {
+
+        console.error(
+            'Errore eliminazione Storage:',
+            deleteImageError
+        );
+
+
+        showMessage(
+            'L’aggiornamento è stato modificato, ma non è stato possibile eliminare la vecchia immagine: ' +
+            deleteImageError.message,
+            'error'
+        );
+
+
+        saveButton.disabled =
+            false;
+
+
+        saveButton.textContent =
+            'Salva modifiche';
+
+
+        return;
+    }
+
+
+    console.log(
+        'Immagine eliminata:',
+        deleteImageData
+    );
+}
 
 
         showMessage(
