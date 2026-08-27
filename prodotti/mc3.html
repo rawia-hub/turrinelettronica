@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        MC3 | Turrin Elettronica
+    </title>
+
+    <meta
+        name="description"
+        content="MC3, sistema professionale hardware e software per la programmazione delle centraline automotive tramite OBD, Bench e Boot."
+    >
+
+
+    <!--
+        Se il tuo style.css contiene già
+        header/footer generali puoi mantenerlo.
+    -->
+    <link
+        rel="stylesheet"
+        href="../style.css"
+    >
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+
+            color: #17253a;
+            background: #ffffff;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        img {
+            max-width: 100%;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        .container {
+            width: min(
+                1180px,
+                calc(100% - 40px)
+            );
+
+            margin: 0 auto;
+        }
+
+
+        /* =========================================
+           HEADER
+           ========================================= */
+
+        .site-header {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            background:
+                rgba(255,255,255,.96);
+
+            border-bottom:
+                1px solid #e7ecf2;
+
+            backdrop-filter:
+                blur(10px);
+        }
+
+
+        .header-inner {
+            min-height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .brand {
+            color: #071b3a;
+
+            font-size: 19px;
+            font-weight: 900;
+        }
+
+
+        .main-nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 28px;
+        }
+
+
+        .main-nav a {
+            color: #445167;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+
+        .main-nav a:hover {
+            color: #0759d8;
+        }
+
+
+        .header-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 42px;
+
+            padding: 0 18px;
+
+            border-radius: 7px;
+
+            background: #0759d8;
+            color: #ffffff;
+
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+
+        .header-button:hover {
+            background: #064ab0;
+        }
+
+
+        /* =========================================
+           HERO
+           ========================================= */
+
+        .product-hero {
+            overflow: hidden;
+
+            padding: 86px 0 78px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8fbff 0%,
+                    #ffffff 54%,
+                    #eef5ff 100%
+                );
+        }
+
+
+        .product-hero-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(420px, .95fr);
+
+            align-items: center;
+
+            gap: 65px;
+        }
+
+
+        .product-kicker {
+            display: inline-flex;
+
+            margin-bottom: 18px;
+
+            color: #0759d8;
+
+            font-size: 12px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .12em;
+        }
+
+
+        .product-hero h1 {
+            margin:
+                0 0 18px;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    44px,
+                    6vw,
+                    72px
+                );
+
+            line-height: 1;
+        }
+
+
+        .product-hero h2 {
+            max-width: 650px;
+
+            margin:
+                0 0 20px;
+
+            color: #17253a;
+
+            font-size:
+                clamp(
+                    24px,
+                    3vw,
+                    36px
+                );
+
+            line-height: 1.2;
+        }
+
+
+        .product-hero p {
+            max-width: 650px;
+
+            margin:
+                0 0 30px;
+
+            color: #59687b;
+
+            font-size: 16px;
+
+            line-height: 1.75;
+        }
+
+
+        .hero-actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        .button-primary,
+        .button-secondary {
+            min-height: 48px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 22px;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+
+        .button-primary {
+            color: #ffffff;
+
+            background: #0759d8;
+
+            border:
+                1px solid #0759d8;
+        }
+
+
+        .button-primary:hover {
+            background: #064ab0;
+        }
+
+
+        .button-secondary {
+            color: #263750;
+
+            background: #ffffff;
+
+            border:
+                1px solid #ced9e5;
+        }
+
+
+        .button-secondary:hover {
+            border-color: #0759d8;
+            color: #0759d8;
+        }
+
+
+        .product-hero-image {
+            position: relative;
+
+            min-height: 430px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .product-hero-image::before {
+            content: "";
+
+            position: absolute;
+
+            width: 380px;
+            height: 380px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(7,89,216,.08);
+
+            filter:
+                blur(2px);
+        }
+
+
+        .product-hero-image img {
+            position: relative;
+
+            z-index: 1;
+
+            width: 100%;
+            max-height: 430px;
+
+            object-fit: contain;
+
+            filter:
+                drop-shadow(
+                    0 25px 28px
+                    rgba(7,27,58,.18)
+                );
+        }
+
+
+        /* =========================================
+           SEZIONI
+           ========================================= */
+
+        .product-section {
+            padding: 85px 0;
+        }
+
+
+        .product-section.alt {
+            background: #f7f9fc;
+        }
+
+
+        .section-heading {
+            max-width: 740px;
+
+            margin-bottom: 38px;
+        }
+
+
+        .section-heading.center {
+            margin-left: auto;
+            margin-right: auto;
+
+            text-align: center;
+        }
+
+
+        .section-label {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #0759d8;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .11em;
+        }
+
+
+        .section-heading h2 {
+            margin:
+                0 0 14px;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    28px,
+                    4vw,
+                    40px
+                );
+
+            line-height: 1.2;
+        }
+
+
+        .section-heading p {
+            margin: 0;
+
+            color: #617084;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =========================================
+           PANORAMICA
+           ========================================= */
+
+        .overview-grid {
+            display: grid;
+
+            grid-template-columns:
+                .85fr 1.15fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+
+        .overview-visual {
+            min-height: 370px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #eaf2ff,
+                    #ffffff
+                );
+
+            padding: 35px;
+        }
+
+
+        .overview-visual img {
+            max-height: 330px;
+
+            object-fit: contain;
+        }
+
+
+        .overview-content h2 {
+            margin:
+                0 0 18px;
+
+            color: #071b3a;
+
+            font-size: 34px;
+        }
+
+
+        .overview-content p {
+            margin:
+                0 0 18px;
+
+            color: #58687b;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           MODALITÀ
+           ========================================= */
+
+        .feature-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    minmax(0,1fr)
+                );
+
+            gap: 18px;
+        }
+
+
+        .feature-card {
+            min-height: 260px;
+
+            padding: 28px;
+
+            border:
+                1px solid #e0e7ef;
+
+            border-radius: 12px;
+
+            background: #ffffff;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .feature-card:hover {
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 18px 42px
+                rgba(20,45,80,.10);
+        }
+
+
+        .feature-number {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 20px;
+
+            border-radius: 9px;
+
+            color: #0759d8;
+
+            background: #edf4ff;
+
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+
+        .feature-card h3 {
+            margin:
+                0 0 11px;
+
+            color: #071b3a;
+
+            font-size: 19px;
+        }
+
+
+        .feature-card p {
+            margin: 0;
+
+            color: #647286;
+
+            font-size: 14px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================================
+           PACCHETTI
+           ========================================= */
+
+        .packages-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    minmax(0,1fr)
+                );
+
+            gap: 16px;
+        }
+
+
+        .package-card {
+            padding: 24px;
+
+            border:
+                1px solid #dfe7ef;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+        }
+
+
+        .package-card h3 {
+            margin:
+                0 0 9px;
+
+            color: #071b3a;
+
+            font-size: 16px;
+        }
+
+
+        .package-card p {
+            margin: 0;
+
+            color: #677588;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           KIT
+           ========================================= */
+
+        .kit-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 55px;
+
+            align-items: center;
+        }
+
+
+        .kit-image {
+            min-height: 380px;
+
+            padding: 30px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                #f5f8fc;
+        }
+
+
+        .kit-image img {
+            max-height: 380px;
+
+            object-fit: contain;
+        }
+
+
+        .kit-list {
+            display: grid;
+
+            gap: 13px;
+        }
+
+
+        .kit-item {
+            padding: 15px 17px;
+
+            border:
+                1px solid #e1e8f0;
+
+            border-radius: 8px;
+
+            background: #ffffff;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            color: #344258;
+        }
+
+
+        .kit-item::before {
+            content: "✓";
+
+            margin-right: 10px;
+
+            color: #0759d8;
+
+            font-weight: 900;
+        }
+
+
+        /* =========================================
+           LICENZA
+           ========================================= */
+
+        .license-box {
+            display: grid;
+
+            grid-template-columns:
+                1.1fr .9fr;
+
+            gap: 35px;
+
+            padding: 42px;
+
+            border-radius: 15px;
+
+            background: #071b3a;
+
+            color: #ffffff;
+        }
+
+
+        .license-box h2 {
+            margin:
+                0 0 13px;
+
+            font-size: 31px;
+        }
+
+
+        .license-box p {
+            margin: 0;
+
+            color: #c7d5e8;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        .license-features {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 12px;
+        }
+
+
+        .license-feature {
+            padding: 13px 15px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.16);
+
+            border-radius: 7px;
+
+            color: #ffffff;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           AGGIORNAMENTI
+           ========================================= */
+
+        .product-updates-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(0,1fr)
+                );
+
+            gap: 22px;
+        }
+
+
+        .product-update-card {
+            overflow: hidden;
+
+            border:
+                1px solid #e1e8f0;
+
+            border-radius: 11px;
+
+            background: #ffffff;
+        }
+
+
+        .product-update-image {
+            width: 100%;
+            height: 190px;
+
+            object-fit: cover;
+
+            display: block;
+
+            background: #eef2f7;
+        }
+
+
+        .product-update-content {
+            padding: 20px;
+        }
+
+
+        .product-update-meta {
+            margin-bottom: 8px;
+
+            color: #0759d8;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        .product-update-content h3 {
+            margin:
+                0 0 9px;
+
+            color: #071b3a;
+
+            font-size: 18px;
+
+            line-height: 1.35;
+        }
+
+
+        .product-update-content p {
+            margin:
+                0 0 16px;
+
+            color: #667589;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        .update-link {
+            color: #0759d8;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+
+        .updates-loading {
+            grid-column:
+                1 / -1;
+
+            padding: 30px;
+
+            text-align: center;
+
+            color: #718096;
+        }
+
+
+        .updates-footer {
+            margin-top: 28px;
+
+            text-align: center;
+        }
+
+
+        /* =========================================
+           CTA
+           ========================================= */
+
+        .product-cta {
+            padding: 75px 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0759d8,
+                    #06429e
+                );
+
+            color: #ffffff;
+        }
+
+
+        .product-cta-inner {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 35px;
+        }
+
+
+        .product-cta h2 {
+            margin:
+                0 0 8px;
+
+            font-size: 32px;
+        }
+
+
+        .product-cta p {
+            margin: 0;
+
+            color: #dbe8ff;
+        }
+
+
+        .product-cta .button-secondary {
+            flex-shrink: 0;
+
+            border-color: #ffffff;
+
+            color: #0759d8;
+        }
+
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+
+        .site-footer {
+            padding: 38px 0;
+
+            background: #06152e;
+
+            color: #aebcd0;
+
+            font-size: 12px;
+        }
+
+
+        .footer-inner {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .footer-inner strong {
+            color: #ffffff;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media (
+            max-width: 1000px
+        ) {
+
+            .product-hero-grid,
+            .overview-grid,
+            .kit-grid,
+            .license-box {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .product-hero-image {
+                min-height: 340px;
+            }
+
+
+            .feature-grid,
+            .packages-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
+            }
+
+
+            .product-updates-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
+            }
+
+        }
+
+
+        @media (
+            max-width: 760px
+        ) {
+
+            .main-nav {
+                display: none;
+            }
+
+
+            .header-button {
+                display: none;
+            }
+
+
+            .product-hero {
+                padding:
+                    58px 0;
+            }
+
+
+            .product-hero-grid {
+                gap: 30px;
+            }
+
+
+            .product-section {
+                padding:
+                    62px 0;
+            }
+
+
+            .feature-grid,
+            .packages-grid,
+            .product-updates-grid,
+            .license-features {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .product-cta-inner,
+            .footer-inner {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <div class="container header-inner">
+
+        <a
+            href="../index.html"
+            class="brand">
+
+            Turrin Elettronica
+
+        </a>
+
+
+        <nav class="main-nav">
+
+            <a href="../index.html#prodotti">
+                Prodotti
+            </a>
+
+            <a href="../aggiornamenti.html">
+                Aggiornamenti
+            </a>
+
+            <a href="../index.html#chi-siamo">
+                Chi siamo
+            </a>
+
+            <a href="../index.html#contatti">
+                Contatti
+            </a>
+
+        </nav>
+
+
+        <a
+            href="../index.html#contatti"
+            class="header-button">
+
+            Richiedi preventivo
+
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+    <!-- =========================================
+         HERO
+         ========================================= -->
+
+    <section class="product-hero">
+
+        <div
+            class="
+                container
+                product-hero-grid
+            ">
+
+            <div>
+
+                <span class="product-kicker">
+                    Programmazione ECU professionale
+                </span>
+
+
+                <h1>
+                    MC3
+                </h1>
+
+
+                <h2>
+                    Programmatore completo
+                    per soluzioni automotive
+                </h2>
+
+
+                <p>
+                    Sistema hardware e software professionale
+                    per la lettura e scrittura delle centraline
+                    elettroniche tramite OBD, Bench e Boot.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a
+                        href="../index.html#contatti"
+                        class="button-primary">
+
+                        Richiedi preventivo
+
+                    </a>
+
+
+                    <a
+                        href="#funzionalita"
+                        class="button-secondary">
+
+                        Scopri MC3
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-hero-image">
+
+                <img
+                    src="../images/products/mc3.webp"
+                    alt="Programmatore MC3 Turrin Elettronica"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         PANORAMICA
+         ========================================= -->
+
+    <section
+        class="product-section"
+        id="funzionalita">
+
+        <div
+            class="
+                container
+                overview-grid
+            ">
+
+            <div class="overview-visual">
+
+                <img
+                    src="../images/products/mc3.webp"
+                    alt="Dispositivo MC3"
+                >
+
+            </div>
+
+
+            <div class="overview-content">
+
+                <span class="section-label">
+                    Tutto a portata di mano
+                </span>
+
+
+                <h2>
+                    Hardware e software
+                    in un unico sistema
+                </h2>
+
+
+                <p>
+                    MC3 permette di leggere e scrivere
+                    EEPROM, Micro e Flash delle
+                    centraline elettroniche.
+                </p>
+
+
+                <p>
+                    Il software accompagna l'operatore
+                    nella selezione della centralina,
+                    nel collegamento, nell'identificazione
+                    e nelle operazioni di lettura e scrittura,
+                    con istruzioni e pinout dedicati.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         MODALITÀ
+         ========================================= -->
+
+    <section class="product-section alt">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Programmazione
+                </span>
+
+                <h2>
+                    OBD, Bench e Boot
+                </h2>
+
+                <p>
+                    Diverse modalità operative per
+                    adattarsi al tipo di centralina e
+                    all'intervento da eseguire.
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+
+                <article class="feature-card">
+
+                    <div class="feature-number">
+                        01
+                    </div>
+
+                    <h3>
+                        OBD
+                    </h3>
+
+                    <p>
+                        Collegamento attraverso la presa
+                        diagnostica del veicolo senza
+                        rimuovere o aprire la centralina.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <div class="feature-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Bench
+                    </h3>
+
+                    <p>
+                        Collegamento diretto alla ECU
+                        attraverso i pin del connettore
+                        per le operazioni a banco.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <div class="feature-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Boot
+                    </h3>
+
+                    <p>
+                        Accesso alla scheda elettronica
+                        per operazioni avanzate di
+                        lettura, scrittura e recupero dati.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <div class="feature-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Checksum & CVN
+                    </h3>
+
+                    <p>
+                        Controllo dell'integrità del file
+                        e gestione del checksum e del CVN
+                        durante le operazioni supportate.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         PACCHETTI
+         ========================================= -->
+
+    <section class="product-section">
+
+        <div class="container">
+
+            <div class="section-heading center">
+
+                <span class="section-label">
+                    Multifunzionale
+                </span>
+
+                <h2>
+                    Configura MC3
+                </h2>
+
+                <p>
+                    Scegli i pacchetti più adatti
+                    alle lavorazioni della tua attività.
+                </p>
+
+            </div>
+
+
+            <div class="packages-grid">
+
+
+                <article class="package-card">
+
+                    <h3>ABS</h3>
+
+                    <p>
+                        Funzioni dedicate alle
+                        centraline ABS supportate.
+                    </p>
+
+                </article>
+
+
+                <article class="package-card">
+
+                    <h3>ADAS</h3>
+
+                    <p>
+                        Gestione delle centraline
+                        ADAS supportate.
+                    </p>
+
+                </article>
+
+
+                <article class="package-card">
+
+                    <h3>Cluster</h3>
+
+                    <p>
+                        Lettura, scrittura e configurazione
+                        dei quadri strumenti supportati.
+                    </p>
+
+                </article>
+
+
+                <article class="package-card">
+
+                    <h3>ECU Bench</h3>
+
+                    <p>
+                        Lettura e scrittura a banco
+                        delle ECU motore supportate.
+                    </p>
+
+                </article>
+
+
+                <article class="package-card">
+
+                    <h3>Airbag</h3>
+
+                    <p>
+                        Funzioni dedicate alle centraline
+                        Airbag supportate.
+                    </p>
+
+                </article>
+
+
+                <article class="package-card">
+
+                    <h3>Body / BSI</h3>
+
+                    <p>
+                        Lettura e scrittura dei Body
+                        Computer e BSI supportati.
+                    </p>
+
+                </article>
+
+
+                <article class="package-card">
+
+                    <h3>EPS</h3>
+
+                    <p>
+                        Operazioni dedicate ai sistemi
+                        di sterzo elettrico supportati.
+                    </p>
+
+                </article>
+
+
+                <article class="package-card">
+
+                    <h3>ECU OBD & Boot</h3>
+
+                    <p>
+                        Lettura e scrittura delle
+                        ECU motore supportate.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         KIT
+         ========================================= -->
+
+    <section class="product-section alt">
+
+        <div class="container kit-grid">
+
+            <div>
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        Hardware
+                    </span>
+
+                    <h2>
+                        Kit MC3
+                    </h2>
+
+                    <p>
+                        Il sistema comprende il dispositivo
+                        e gli accessori necessari per le
+                        principali modalità operative.
+                    </p>
+
+                </div>
+
+
+                <div class="kit-list">
+
+                    <div class="kit-item">
+                        Unità di programmazione MC3
+                    </div>
+
+                    <div class="kit-item">
+                        Valigia
+                    </div>
+
+                    <div class="kit-item">
+                        Cavo Bench / Boot
+                    </div>
+
+                    <div class="kit-item">
+                        Cavo OBD
+                    </div>
+
+                    <div class="kit-item">
+                        Alimentatore MC3
+                    </div>
+
+                    <div class="kit-item">
+                        Cavo USB A-B
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="kit-image">
+
+                <!--
+                    Quando avrai la foto del kit
+                    sostituisci questo percorso.
+                -->
+
+                <img
+                    src="../images/products/mc3-kit.webp"
+                    alt="Kit MC3"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         LICENZA
+         ========================================= -->
+
+    <section class="product-section">
+
+        <div class="container">
+
+            <div class="license-box">
+
+                <div>
+
+                    <span class="section-label">
+                        Licenza MC3
+                    </span>
+
+                    <h2>
+                        Aggiornamenti e assistenza
+                    </h2>
+
+                    <p>
+                        Un anno di licenza è incluso
+                        con MC3. Con la licenza attiva
+                        sono disponibili gli aggiornamenti
+                        software e l'assistenza tecnica.
+                    </p>
+
+                </div>
+
+
+                <div class="license-features">
+
+                    <div class="license-feature">
+                        Lettura e scrittura ECU
+                    </div>
+
+                    <div class="license-feature">
+                        Checksum automatico
+                    </div>
+
+                    <div class="license-feature">
+                        Aggiornamenti software
+                    </div>
+
+                    <div class="license-feature">
+                        Assistenza tecnica
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         AGGIORNAMENTI SUPABASE
+         ========================================= -->
+
+    <section class="product-section alt">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Software
+                </span>
+
+                <h2>
+                    Ultimi aggiornamenti MC3
+                </h2>
+
+                <p>
+                    Le ultime versioni pubblicate
+                    vengono caricate automaticamente.
+                </p>
+
+            </div>
+
+
+            <div
+                id="mc3Updates"
+                class="product-updates-grid">
+
+                <div class="updates-loading">
+                    Caricamento aggiornamenti...
+                </div>
+
+            </div>
+
+
+            <div class="updates-footer">
+
+                <a
+                    href="../aggiornamenti.html"
+                    class="button-secondary">
+
+                    Visualizza tutti gli aggiornamenti
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         CTA
+         ========================================= -->
+
+    <section class="product-cta">
+
+        <div
+            class="
+                container
+                product-cta-inner
+            ">
+
+            <div>
+
+                <h2>
+                    Vuoi maggiori informazioni su MC3?
+                </h2>
+
+                <p>
+                    Contattaci per informazioni,
+                    compatibilità e preventivi.
+                </p>
+
+            </div>
+
+
+            <a
+                href="../index.html#contatti"
+                class="button-secondary">
+
+                Contattaci
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer class="site-footer">
+
+    <div
+        class="
+            container
+            footer-inner
+        ">
+
+        <div>
+
+            <strong>
+                Turrin Elettronica SRL
+            </strong>
+
+        </div>
+
+
+        <div>
+            Soluzioni hardware e software
+            per il settore automotive
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+<script>
+
+    /* =========================================
+       SUPABASE
+       ========================================= */
+
+    const SUPABASE_URL =
+        'https://gxlquwudampvcuxiocmh.supabase.co';
+
+
+    const SUPABASE_KEY =
+        'sb_publishable_TXv6HGzmzYe2c-CFD2hkkQ_qzkOa4XR';
+
+
+    const supabaseClient =
+        supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    const updatesContainer =
+        document.getElementById(
+            'mc3Updates'
+        );
+
+
+    /* =========================================
+       PROTEZIONE HTML
+       ========================================= */
+
+    function escapeHtml(value) {
+
+        return String(value ?? '')
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#039;');
+    }
+
+
+    /* =========================================
+       URL IMMAGINE
+       ========================================= */
+
+    function getImagePublicUrl(
+        imagePath
+    ) {
+
+        if (!imagePath)
+            return null;
+
+
+        const {
+            data
+        } =
+            supabaseClient
+                .storage
+                .from('updates')
+                .getPublicUrl(
+                    imagePath
+                );
+
+
+        return (
+            data &&
+            data.publicUrl
+        )
+            ? data.publicUrl
+            : null;
+    }
+
+
+    /* =========================================
+       CARICA ULTIMI AGGIORNAMENTI
+       ========================================= */
+
+    async function loadMc3Updates() {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from('updates')
+                .select(`
+                    id,
+                    product_name,
+                    version,
+                    title,
+                    description,
+                    image_path,
+                    published_at
+                `)
+                .eq(
+                    'published',
+                    true
+                )
+                .eq(
+                    'product_key',
+                    'mc3'
+                )
+                .order(
+                    'published_at',
+                    {
+                        ascending:
+                            false
+                    }
+                )
+                .limit(3);
+
+
+        if (error) {
+
+            console.error(
+                error
+            );
+
+
+            updatesContainer.innerHTML =
+                `
+                <div class="updates-loading">
+                    Impossibile caricare
+                    gli aggiornamenti.
+                </div>
+                `;
+
+            return;
+        }
+
+
+        if (
+            !data ||
+            data.length === 0
+        ) {
+
+            updatesContainer.innerHTML =
+                `
+                <div class="updates-loading">
+                    Nessun aggiornamento
+                    disponibile.
+                </div>
+                `;
+
+            return;
+        }
+
+
+        updatesContainer.innerHTML =
+            data
+                .map(
+                    update => {
+
+                        const date =
+                            new Date(
+                                update.published_at
+                            )
+                            .toLocaleDateString(
+                                'it-IT'
+                            );
+
+
+                        const imageUrl =
+                            getImagePublicUrl(
+                                update.image_path
+                            );
+
+
+                        const image =
+                            imageUrl
+                            ? `
+                                <img
+                                    class="product-update-image"
+                                    src="${escapeHtml(imageUrl)}"
+                                    alt="${escapeHtml(update.title)}"
+                                >
+                              `
+                            : '';
+
+
+                        return `
+                            <article class="product-update-card">
+
+                                ${image}
+
+                                <div class="product-update-content">
+
+                                    <div class="product-update-meta">
+
+                                        ${date}
+
+                                        ${
+                                            update.version
+                                                ? ' · ' +
+                                                escapeHtml(
+                                                    update.version
+                                                )
+                                                : ''
+                                        }
+
+                                    </div>
+
+
+                                    <h3>
+                                        ${escapeHtml(
+                                            update.title
+                                        )}
+                                    </h3>
+
+
+                                    ${
+                                        update.description
+                                            ? `
+                                                <p>
+                                                    ${escapeHtml(
+                                                        update.description
+                                                    )}
+                                                </p>
+                                              `
+                                            : ''
+                                    }
+
+
+                                    <a
+                                        class="update-link"
+                                        href="../aggiornamento.html?id=${update.id}">
+
+                                        Leggi di più →
+
+                                    </a>
+
+                                </div>
+
+                            </article>
+                        `;
+                    }
+                )
+                .join('');
+    }
+
+
+    loadMc3Updates();
+
+</script>
+
+
+</body>
+
+</html>
