@@ -18,7 +18,63 @@
         rel="stylesheet"
         href="css/style.css"
     >
+<style>
+    .update-detail {
+    min-height: 70vh;
 
+    padding: 55px 0 85px;
+
+    background: #f5f8fc;
+}
+
+
+.update-detail-wrapper {
+    width: min(
+        1000px,
+        calc(100% - 40px)
+    );
+
+    margin: 0 auto;
+}
+
+
+.back-updates-link {
+    display: inline-block;
+
+    margin-bottom: 24px;
+
+    color: #0759d8;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+
+.back-updates-link:hover {
+    text-decoration: underline;
+}
+
+
+.update-detail-container {
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    border: 1px solid #dce5ef;
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 12px 35px
+        rgba(20, 45, 80, .07);
+}
+</style>
 </head>
 
 
@@ -29,36 +85,36 @@
 <div id="siteHeader" data-root="./"></div>
 
 
-    <main>
+<main>
 
-        <section class="update-detail">
+    <section class="update-detail">
 
-            <div class="container">
+        <div class="update-detail-wrapper">
 
-                <a
-                    href="aggiornamenti.html"
-                    class="update-detail-back">
+            <a
+                href="aggiornamenti.html"
+                class="update-detail-back back-updates-link">
 
-                    ← Tutti gli aggiornamenti
+                ← Tutti gli aggiornamenti
 
-                </a>
+            </a>
 
 
-                <div
-                    id="updateDetail"
-                    class="update-detail-container">
+            <div
+                id="updateDetail"
+                class="update-detail-container">
 
-                    <div class="update-detail-loading">
-                        Caricamento aggiornamento...
-                    </div>
-
+                <div class="update-detail-loading">
+                    Caricamento aggiornamento...
                 </div>
 
             </div>
 
-        </section>
+        </div>
 
-    </main>
+    </section>
+
+</main>
 
 
     <!-- FOOTER -->
