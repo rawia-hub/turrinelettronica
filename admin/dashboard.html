@@ -668,6 +668,67 @@
     }
 
 }
+        /* =========================================
+   PAGINAZIONE
+   ========================================= */
+
+.dashboard-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin: 22px 0 40px;
+}
+
+
+.pagination-button {
+    min-width: 38px;
+    height: 38px;
+
+    padding: 0 11px;
+
+    border: 1px solid #d3dde8;
+    border-radius: 6px;
+
+    background: #ffffff;
+    color: #344258;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.pagination-button:hover:not(:disabled) {
+    border-color: #0759d8;
+    color: #0759d8;
+}
+
+
+.pagination-button.active {
+    border-color: #0759d8;
+
+    background: #0759d8;
+    color: #ffffff;
+}
+
+
+.pagination-button:disabled {
+    opacity: .45;
+    cursor: default;
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard-pagination {
+        flex-wrap: wrap;
+    }
+
+}
     </style>
 
 </head>
@@ -845,6 +906,10 @@
             </div>
 
         </section>
+        <div
+            id="dashboardPagination"
+            class="dashboard-pagination">
+        </div>
 
     </main>
 
@@ -1035,7 +1100,17 @@
         
         let pendingDeleteTitle =
             '';
-
+        let filteredUpdatesList = [];
+        
+        let currentPage = 1;
+        
+        const ITEMS_PER_PAGE = 10;
+        
+        
+        const dashboardPagination =
+            document.getElementById(
+                'dashboardPagination'
+            );
         /* =====================================
            CONTROLLO LOGIN
            ===================================== */
@@ -1405,16 +1480,242 @@ function applyFilters() {
             ? '1 aggiornamento trovato'
             : count +
               ' aggiornamenti trovati';
+    filteredUpdatesList = filteredUpdates;
+    currentPage = 1;
 
-
-    renderUpdates(
-        filteredUpdates
-    );
+   renderCurrentPage();
 }
         sortOrder.addEventListener(
             'change',
             applyFilters
         );
+
+        /* =====================================
+   MOSTRA PAGINA CORRENTE
+   ===================================== */
+
+function renderCurrentPage() {
+
+    const totalItems =
+        filteredUpdatesList.length;
+
+
+    if (totalItems === 0) {
+
+        renderUpdates([]);
+
+        renderPagination();
+
+        return;
+    }
+
+
+    const totalPages =
+        Math.ceil(
+            totalItems /
+            ITEMS_PER_PAGE
+        );
+
+
+    if (
+        currentPage >
+        totalPages
+    ) {
+
+        currentPage =
+            totalPages;
+    }
+
+
+    const startIndex =
+        (
+            currentPage - 1
+        ) *
+        ITEMS_PER_PAGE;
+
+
+    const endIndex =
+        startIndex +
+        ITEMS_PER_PAGE;
+
+
+    const pageUpdates =
+        filteredUpdatesList.slice(
+            startIndex,
+            endIndex
+        );
+
+
+    renderUpdates(
+        pageUpdates
+    );
+
+
+    renderPagination();
+}
+        /* =====================================
+   CREA PAGINAZIONE
+   ===================================== */
+
+function renderPagination() {
+
+    const totalItems =
+        filteredUpdatesList.length;
+
+
+    const totalPages =
+        Math.ceil(
+            totalItems /
+            ITEMS_PER_PAGE
+        );
+
+
+    /*
+     * Una sola pagina:
+     * non serve mostrare i pulsanti.
+     */
+    if (
+        totalPages <= 1
+    ) {
+
+        dashboardPagination.innerHTML =
+            '';
+
+        return;
+    }
+
+
+    let html =
+        `
+        <button
+            class="pagination-button"
+            data-page="prev"
+            type="button"
+            ${currentPage === 1
+                ? 'disabled'
+                : ''}>
+
+            ← Precedente
+
+        </button>
+        `;
+
+
+    for (
+        let page = 1;
+        page <= totalPages;
+        page++
+    ) {
+
+        html +=
+            `
+            <button
+                class="
+                    pagination-button
+                    ${page === currentPage
+                        ? 'active'
+                        : ''}
+                "
+                data-page="${page}"
+                type="button">
+
+                ${page}
+
+            </button>
+            `;
+    }
+
+
+    html +=
+        `
+        <button
+            class="pagination-button"
+            data-page="next"
+            type="button"
+            ${currentPage === totalPages
+                ? 'disabled'
+                : ''}>
+
+            Successivo →
+
+        </button>
+        `;
+
+
+    dashboardPagination.innerHTML =
+        html;
+
+
+    attachPaginationEvents();
+}
+        /* =====================================
+   EVENTI PAGINAZIONE
+   ===================================== */
+
+function attachPaginationEvents() {
+
+    document
+        .querySelectorAll(
+            '.pagination-button'
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                'click',
+                () => {
+
+                    if (
+                        button.disabled
+                    ) {
+                        return;
+                    }
+
+
+                    const page =
+                        button.dataset.page;
+
+
+                    if (
+                        page === 'prev'
+                    ) {
+
+                        currentPage--;
+                    }
+
+                    else if (
+                        page === 'next'
+                    ) {
+
+                        currentPage++;
+                    }
+
+                    else {
+
+                        currentPage =
+                            Number(page);
+                    }
+
+
+                    renderCurrentPage();
+
+
+                    /*
+                     * Torna all'inizio
+                     * della tabella.
+                     */
+                    updatesPanel
+                        .scrollIntoView({
+                            behavior:
+                                'smooth',
+
+                            block:
+                                'start'
+                        });
+                }
+            );
+
+        });
+}
         /* =====================================
            CREA TABELLA
            ===================================== */
