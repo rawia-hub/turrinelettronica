@@ -5724,7 +5724,36 @@ document
 
     });
     loadMc3Updates();
+/* =====================================
+   AGGIORNAMENTI MC3 IN TEMPO REALE
+   ===================================== */
 
+const mc3UpdatesChannel =
+    supabaseClient
+        .channel(
+            'mc3-updates-live'
+        )
+        .on(
+            'postgres_changes',
+            {
+                event: '*',
+                schema: 'public',
+                table: 'updates',
+                filter:
+                    'product_key=eq.mc3'
+            },
+            payload => {
+
+                console.log(
+                    'Aggiornamento MC3 ricevuto:',
+                    payload
+                );
+
+
+                loadMc3Updates();
+
+            }
+        )
 </script>
 
 <script src="../js/components.js"></script>
