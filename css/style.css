@@ -936,9 +936,9 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{f
 
 
 .update-detail-container {
-    max-width: 900px;
-
-    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
 }
 
 
