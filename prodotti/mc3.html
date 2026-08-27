@@ -2793,61 +2793,512 @@ div {
     }
 
 }
-        /* =========================================
-           AGGIORNAMENTI
-           ========================================= */
 
-        .product-updates-grid {
-            display: grid;
+/* =========================================
+   ULTIMI AGGIORNAMENTI MC3
+   ========================================= */
 
-            grid-template-columns:
-                repeat(
-                    3,
-                    minmax(0,1fr)
-                );
+.mc3-page .mc3-updates-section {
+    padding: 110px 0;
 
-            gap: 22px;
-        }
-
-
-        .product-update-card {
-            overflow: hidden;
-
-            border:
-                1px solid #e1e8f0;
-
-            border-radius: 11px;
-
-            background: #ffffff;
-        }
+    background:
+        linear-gradient(
+            180deg,
+            #f7f9fc 0%,
+            #ffffff 100%
+        );
+}
 
 
-        .product-update-image {
-            width: 100%;
-            height: 190px;
+/* HEADER */
 
-            object-fit: cover;
+.mc3-page .mc3-updates-heading {
+    display: flex;
 
-            display: block;
+    align-items: flex-end;
+    justify-content: space-between;
 
-            background: #eef2f7;
-        }
+    gap: 40px;
 
-
-        .product-update-content {
-            padding: 20px;
-        }
+    margin-bottom: 42px;
+}
 
 
-        .product-update-meta {
-            margin-bottom: 8px;
+.mc3-page .mc3-updates-heading > div {
+    max-width: 700px;
+}
 
-            color: #0759d8;
 
-            font-size: 11px;
-            font-weight: 800;
-        }
+.mc3-page .mc3-updates-heading h2 {
+    margin:
+        0 0 14px;
 
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            48px
+        );
+
+    line-height: 1.1;
+
+    letter-spacing: -.025em;
+}
+
+
+.mc3-page .mc3-updates-heading p {
+    margin: 0;
+
+    max-width: 650px;
+
+    color: #667589;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.mc3-page .updates-all-link {
+    flex-shrink: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding-bottom: 4px;
+
+    border-bottom:
+        1px solid #0759d8;
+
+    color: #0759d8;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+
+.mc3-page .updates-all-link span {
+    transition:
+        transform .2s ease;
+}
+
+
+.mc3-page .updates-all-link:hover span {
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================
+   LAYOUT
+   ========================================= */
+
+.mc3-page .mc3-updates-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(340px, .75fr);
+
+    gap: 22px;
+
+    align-items: stretch;
+}
+
+
+.mc3-page .mc3-updates-side {
+    display: grid;
+
+    grid-template-rows:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 22px;
+}
+
+
+/* =========================================
+   AGGIORNAMENTO PRINCIPALE
+   ========================================= */
+
+.mc3-page .update-featured {
+    position: relative;
+
+    min-height: 520px;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background: #071b3a;
+
+    box-shadow:
+        0 20px 55px
+        rgba(18,41,73,.10);
+}
+
+
+.mc3-page .update-featured-image {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: .62;
+
+    transition:
+        transform .5s ease;
+}
+
+
+.mc3-page .update-featured:hover
+.update-featured-image {
+    transform:
+        scale(1.025);
+}
+
+
+.mc3-page .update-featured-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5,20,43,.08) 10%,
+            rgba(5,20,43,.82) 75%,
+            rgba(5,20,43,.97) 100%
+        );
+}
+
+
+.mc3-page .update-featured-content {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 38px;
+}
+
+
+.mc3-page .update-featured-meta {
+    margin-bottom: 12px;
+
+    color: #8cbbff;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+}
+
+
+.mc3-page .update-featured h3 {
+    max-width: 650px;
+
+    margin:
+        0 0 12px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            34px
+        );
+
+    line-height: 1.2;
+}
+
+
+.mc3-page .update-featured p {
+    max-width: 640px;
+
+    margin:
+        0 0 22px;
+
+    color: #c8d4e3;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+.mc3-page .update-featured-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   AGGIORNAMENTI SECONDARI
+   ========================================= */
+
+.mc3-page .update-compact {
+    display: grid;
+
+    grid-template-columns:
+        150px 1fr;
+
+    min-height: 245px;
+
+    overflow: hidden;
+
+    border:
+        1px solid #dfe7ef;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.mc3-page .update-compact:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 38px
+        rgba(20,45,80,.09);
+}
+
+
+.mc3-page .update-compact-image {
+    width: 100%;
+    height: 100%;
+
+    min-height: 245px;
+
+    object-fit: cover;
+
+    background: #edf2f7;
+}
+
+
+.mc3-page .update-compact-content {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 22px;
+}
+
+
+.mc3-page .update-compact-meta {
+    margin-bottom: 9px;
+
+    color: #0759d8;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: .06em;
+
+    text-transform: uppercase;
+}
+
+
+.mc3-page .update-compact h3 {
+    margin:
+        0 0 9px;
+
+    color: #071b3a;
+
+    font-size: 18px;
+
+    line-height: 1.3;
+}
+
+
+.mc3-page .update-compact p {
+    display:
+        -webkit-box;
+
+    margin:
+        0 0 15px;
+
+    overflow: hidden;
+
+    color: #6a788c;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+
+.mc3-page .update-compact-link {
+    margin-top: auto;
+
+    color: #0759d8;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   NESSUNA IMMAGINE
+   ========================================= */
+
+.mc3-page .update-image-placeholder {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 100%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0a2a59,
+            #0759d8
+        );
+
+    color:
+        rgba(255,255,255,.8);
+
+    font-size: 38px;
+    font-weight: 900;
+}
+
+
+/* LOADING */
+
+.mc3-page .updates-loading {
+    grid-column:
+        1 / -1;
+
+    padding: 50px;
+
+    color: #788699;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:950px) {
+
+    .mc3-page .mc3-updates-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .mc3-page .mc3-updates-side {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+
+        grid-template-rows: auto;
+    }
+
+}
+
+
+@media(max-width:700px) {
+
+    .mc3-page .mc3-updates-section {
+        padding: 75px 0;
+    }
+
+
+    .mc3-page .mc3-updates-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .mc3-page .mc3-updates-side {
+        grid-template-columns: 1fr;
+    }
+
+
+    .mc3-page .update-featured {
+        min-height: 450px;
+    }
+
+
+    .mc3-page .update-featured-content {
+        padding: 27px;
+    }
+
+
+    .mc3-page .update-compact {
+        grid-template-columns:
+            120px 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .mc3-page .update-compact {
+        grid-template-columns: 1fr;
+    }
+
+
+    .mc3-page .update-compact-image {
+        height: 180px;
+        min-height: 180px;
+    }
+
+}
 
         .product-update-content h3 {
             margin:
@@ -2873,13 +3324,6 @@ div {
         }
 
 
-        .update-link {
-            color: #0759d8;
-
-            font-size: 12px;
-            font-weight: 800;
-        }
-
 
         .updates-loading {
             grid-column:
@@ -2892,12 +3336,6 @@ div {
             color: #718096;
         }
 
-
-        .updates-footer {
-            margin-top: 28px;
-
-            text-align: center;
-        }
 
 
         /* =========================================
@@ -4195,57 +4633,57 @@ div {
          AGGIORNAMENTI SUPABASE
          ========================================= -->
 
-    <section class="product-section alt">
+  <section class="mc3-updates-section">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-heading">
+        <div class="mc3-updates-heading reveal">
+
+            <div>
 
                 <span class="section-label">
-                    Software
+                    Ultime novità
                 </span>
 
                 <h2>
-                    Ultimi aggiornamenti MC3
+                    MC3 continua ad evolversi.
                 </h2>
 
                 <p>
-                    Le ultime versioni pubblicate
-                    vengono caricate automaticamente.
+                    Nuove versioni, centraline supportate
+                    e funzionalità vengono aggiunte
+                    attraverso gli aggiornamenti software.
                 </p>
 
             </div>
 
 
-            <div
-                id="mc3Updates"
-                class="product-updates-grid">
+            <a
+                href="../aggiornamenti.html"
+                class="updates-all-link">
 
-                <div class="updates-loading">
-                    Caricamento aggiornamenti...
-                </div>
+                Tutti gli aggiornamenti
+                <span>→</span>
 
-            </div>
+            </a>
+
+        </div>
 
 
-            <div class="updates-footer">
+        <div
+            id="mc3Updates"
+            class="mc3-updates-layout">
 
-                <a
-                    href="../aggiornamenti.html"
-                    class="button-secondary">
-
-                    Visualizza tutti gli aggiornamenti
-
-                </a>
-
+            <div class="updates-loading">
+                Caricamento aggiornamenti...
             </div>
 
         </div>
 
-    </section>
+    </div>
 
-
-
+</section>
+    
     <!-- =========================================
          CTA
          ========================================= -->
@@ -4442,96 +4880,245 @@ div {
         }
 
 
-        updatesContainer.innerHTML =
-            data
-                .map(
-                    update => {
-
-                        const date =
-                            new Date(
-                                update.published_at
-                            )
-                            .toLocaleDateString(
-                                'it-IT'
-                            );
+      const latestUpdate =
+    data[0];
 
 
-                        const imageUrl =
-                            getImagePublicUrl(
-                                update.image_path
-                            );
+const secondaryUpdates =
+    data.slice(
+        1,
+        3
+    );
 
 
-                        const image =
-                            imageUrl
-                            ? `
-                                <img
-                                    class="product-update-image"
-                                    src="${escapeHtml(imageUrl)}"
-                                    alt="${escapeHtml(update.title)}"
-                                >
-                              `
-                            : '';
+/* =====================================
+   AGGIORNAMENTO PRINCIPALE
+   ===================================== */
+
+const latestDate =
+    new Date(
+        latestUpdate.published_at
+    )
+    .toLocaleDateString(
+        'it-IT',
+        {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        }
+    );
 
 
-                        return `
-                            <article class="product-update-card">
-
-                                ${image}
-
-                                <div class="product-update-content">
-
-                                    <div class="product-update-meta">
-
-                                        ${date}
-
-                                        ${
-                                            update.version
-                                                ? ' · ' +
-                                                escapeHtml(
-                                                    update.version
-                                                )
-                                                : ''
-                                        }
-
-                                    </div>
+const latestImageUrl =
+    getImagePublicUrl(
+        latestUpdate.image_path
+    );
 
 
-                                    <h3>
-                                        ${escapeHtml(
-                                            update.title
-                                        )}
-                                    </h3>
+const latestImage =
+    latestImageUrl
+        ? `
+            <img
+                class="update-featured-image"
+                src="${escapeHtml(latestImageUrl)}"
+                alt="${escapeHtml(latestUpdate.title)}"
+            >
+          `
+        : `
+            <div class="update-image-placeholder">
+                MC3
+            </div>
+          `;
 
 
-                                    ${
-                                        update.description
-                                            ? `
-                                                <p>
-                                                    ${escapeHtml(
-                                                        update.description
-                                                    )}
-                                                </p>
-                                              `
-                                            : ''
-                                    }
+const featuredHtml =
+    `
+    <article class="update-featured reveal">
+
+        ${latestImage}
+
+        <div class="update-featured-overlay"></div>
 
 
-                                    <a
-                                        class="update-link"
-                                        href="../aggiornamento.html?id=${update.id}">
+        <div class="update-featured-content">
 
-                                        Leggi di più →
+            <div class="update-featured-meta">
 
-                                    </a>
+                ${escapeHtml(latestDate)}
 
-                                </div>
+                ${
+                    latestUpdate.version
+                        ? ' · Versione ' +
+                          escapeHtml(
+                              latestUpdate.version
+                          )
+                        : ''
+                }
 
-                            </article>
-                        `;
-                    }
-                )
-                .join('');
+            </div>
+
+
+            <h3>
+                ${escapeHtml(
+                    latestUpdate.title
+                )}
+            </h3>
+
+
+            ${
+                latestUpdate.description
+                    ? `
+                        <p>
+                            ${escapeHtml(
+                                latestUpdate.description
+                            )}
+                        </p>
+                      `
+                    : ''
+            }
+
+
+            <a
+                class="update-featured-link"
+                href="../aggiornamento.html?id=${latestUpdate.id}">
+
+                Scopri l'aggiornamento
+                <span>→</span>
+
+            </a>
+
+        </div>
+
+    </article>
+    `;
+
+
+/* =====================================
+   AGGIORNAMENTI SECONDARI
+   ===================================== */
+
+const secondaryHtml =
+    secondaryUpdates
+        .map(
+            update => {
+
+                const date =
+                    new Date(
+                        update.published_at
+                    )
+                    .toLocaleDateString(
+                        'it-IT'
+                    );
+
+
+                const imageUrl =
+                    getImagePublicUrl(
+                        update.image_path
+                    );
+
+
+                const image =
+                    imageUrl
+                        ? `
+                            <img
+                                class="update-compact-image"
+                                src="${escapeHtml(imageUrl)}"
+                                alt="${escapeHtml(update.title)}"
+                            >
+                          `
+                        : `
+                            <div class="update-image-placeholder">
+                                MC3
+                            </div>
+                          `;
+
+
+                return `
+                    <article class="update-compact reveal">
+
+                        ${image}
+
+
+                        <div class="update-compact-content">
+
+                            <div class="update-compact-meta">
+
+                                ${escapeHtml(date)}
+
+                                ${
+                                    update.version
+                                        ? ' · ' +
+                                          escapeHtml(
+                                              update.version
+                                          )
+                                        : ''
+                                }
+
+                            </div>
+
+
+                            <h3>
+                                ${escapeHtml(
+                                    update.title
+                                )}
+                            </h3>
+
+
+                            ${
+                                update.description
+                                    ? `
+                                        <p>
+                                            ${escapeHtml(
+                                                update.description
+                                            )}
+                                        </p>
+                                      `
+                                    : ''
+                            }
+
+
+                            <a
+                                class="update-compact-link"
+                                href="../aggiornamento.html?id=${update.id}">
+
+                                Leggi di più →
+
+                            </a>
+
+                        </div>
+
+                    </article>
+                `;
+            }
+        )
+        .join('');
+
+
+updatesContainer.innerHTML =
+    `
+    ${featuredHtml}
+
+    ${
+        secondaryUpdates.length
+            ? `
+                <div class="mc3-updates-side">
+                    ${secondaryHtml}
+                </div>
+              `
+            : ''
+    }
+    `;
+        updatesContainer
+    .querySelectorAll(
+        '.reveal'
+    )
+    .forEach(element => {
+
+        revealObserver.observe(
+            element
+        );
+
+    });
     }
 
 
