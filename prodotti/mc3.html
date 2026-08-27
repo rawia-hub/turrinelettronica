@@ -1139,20 +1139,285 @@ div {
 }
 
 
-#modeVisualText {
-    color:
-        rgba(255,255,255,.95);
+/* =========================================
+   DIAGRAMMA MODALITÀ MC3
+   ========================================= */
 
-    font-size:
-        clamp(
-            60px,
-            10vw,
-            110px
+.mc3-page .mode-visual {
+    position: relative;
+
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px;
+
+    overflow: hidden;
+
+    border-radius: 13px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(7, 89, 216, .22),
+            rgba(6, 21, 46, .35) 70%
+        );
+}
+
+
+.mc3-page .mode-diagram {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        65px
+        1fr
+        65px
+        1fr;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.mc3-page .diagram-node {
+    min-height: 105px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    text-align: center;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease;
+}
+
+
+.mc3-page .diagram-node:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(79,156,255,.65);
+
+    background:
+        rgba(7,89,216,.14);
+}
+
+
+.mc3-page .diagram-small {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #8297b5;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: .12em;
+}
+
+
+.mc3-page .diagram-node strong {
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+
+.mc3-page .diagram-mc3 {
+    border-color:
+        rgba(79,156,255,.5);
+
+    background:
+        rgba(7,89,216,.18);
+}
+
+
+.mc3-page .diagram-mc3 strong {
+    color: #5fa9ff;
+
+    font-size: 24px;
+
+    letter-spacing: -.03em;
+}
+
+
+/* CONNESSIONE */
+
+.mc3-page .diagram-connection {
+    display: flex;
+
+    align-items: center;
+}
+
+
+.mc3-page .connection-dot {
+    flex: 0 0 6px;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #4f9cff;
+
+    box-shadow:
+        0 0 10px
+        rgba(79,156,255,.7);
+}
+
+
+.mc3-page .connection-line {
+    position: relative;
+
+    flex: 1;
+
+    height: 2px;
+
+    overflow: hidden;
+
+    background:
+        rgba(79,156,255,.22);
+}
+
+
+.mc3-page .connection-line::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #4f9cff,
+            transparent
         );
 
-    font-weight: 900;
+    animation:
+        mc3DataFlow
+        2s linear
+        infinite;
+}
 
-    letter-spacing: -.05em;
+
+@keyframes mc3DataFlow {
+
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 100%;
+    }
+
+}
+
+
+/* STATO */
+
+.mc3-page .diagram-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 35px;
+
+    padding: 8px 13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius: 30px;
+
+    color: #aebed2;
+
+    background:
+        rgba(0,0,0,.12);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.mc3-page .status-light {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #42da83;
+
+    box-shadow:
+        0 0 9px
+        rgba(66,218,131,.75);
+}
+
+
+@media(max-width:650px) {
+
+    .mc3-page .mode-diagram {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    .mc3-page .diagram-connection {
+        width: 2px;
+        height: 35px;
+
+        margin: auto;
+
+        flex-direction: column;
+    }
+
+
+    .mc3-page .connection-line {
+        width: 2px;
+        height: 100%;
+    }
+
+
+    .mc3-page .mode-visual {
+        padding: 25px;
+    }
+
 }
 
 
@@ -2088,13 +2353,87 @@ div {
             </div>
 
 
-            <div class="mode-visual">
+ <div
+    class="mode-visual"
+    id="modeVisual"
+    data-mode="obd">
 
-                <div id="modeVisualText">
-                    OBD
-                </div>
+    <div class="mode-diagram">
 
-            </div>
+        <div class="diagram-node diagram-source">
+
+            <span class="diagram-small">
+                SORGENTE
+            </span>
+
+            <strong id="diagramSource">
+                VEICOLO
+            </strong>
+
+        </div>
+
+
+        <div class="diagram-connection">
+
+            <span class="connection-dot"></span>
+
+            <span class="connection-line"></span>
+
+            <span class="connection-dot"></span>
+
+        </div>
+
+
+        <div class="diagram-node diagram-middle">
+
+            <span class="diagram-small">
+                COLLEGAMENTO
+            </span>
+
+            <strong id="diagramConnection">
+                PRESA OBD
+            </strong>
+
+        </div>
+
+
+        <div class="diagram-connection">
+
+            <span class="connection-dot"></span>
+
+            <span class="connection-line"></span>
+
+            <span class="connection-dot"></span>
+
+        </div>
+
+
+        <div class="diagram-node diagram-mc3">
+
+            <span class="diagram-small">
+                PROGRAMMATORE
+            </span>
+
+            <strong>
+                MC3
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="diagram-status">
+
+        <span class="status-light"></span>
+
+        <span id="diagramStatus">
+            Collegamento OBD
+        </span>
+
+    </div>
+
+</div>
 
         </div>
 
@@ -2739,8 +3078,16 @@ const modeData = {
             'Collegamento rapido',
             'Nessuna apertura ECU',
             'Lettura e scrittura supportate'
-        ]
+        ],
 
+        source:
+            'VEICOLO',
+
+        connection:
+            'PRESA OBD',
+
+        status:
+            'Collegamento OBD'
     },
 
 
@@ -2752,14 +3099,22 @@ const modeData = {
             'Programmazione direttamente a banco',
 
         text:
-            'Collega MC3 direttamente ai pin della centralina senza intervenire sul circuito interno.',
+            'Collega MC3 direttamente al connettore della centralina per eseguire le operazioni supportate a banco.',
 
         features: [
             'Centralina fuori dal veicolo',
-            'Connessione attraverso il connettore ECU',
+            'Collegamento tramite connettore ECU',
             'Pinout guidato dal software'
-        ]
+        ],
 
+        source:
+            'ECU',
+
+        connection:
+            'CONNETTORE',
+
+        status:
+            'Collegamento Bench'
     },
 
 
@@ -2771,14 +3126,22 @@ const modeData = {
             'Accesso avanzato alla centralina',
 
         text:
-            'Lavora direttamente sulla scheda elettronica per le operazioni che richiedono accesso Boot.',
+            'Accedi direttamente alla scheda elettronica per le procedure che richiedono la modalità Boot.',
 
         features: [
-            'Accesso diretto alla ECU',
-            'Operazioni avanzate',
-            'Supporto alle procedure dedicate'
-        ]
+            'Accesso diretto alla scheda',
+            'Procedure dedicate',
+            'Operazioni avanzate'
+        ],
 
+        source:
+            'ECU APERTA',
+
+        connection:
+            'BOOT PIN',
+
+        status:
+            'Collegamento Boot'
     }
 
 };
@@ -2834,10 +3197,28 @@ document
                     data.text;
 
 
-                document.getElementById(
-                    'modeVisualText'
+               document.getElementById(
+                    'diagramSource'
                 ).textContent =
-                    data.label;
+                    data.source;
+                
+                
+                document.getElementById(
+                    'diagramConnection'
+                ).textContent =
+                    data.connection;
+                
+                
+                document.getElementById(
+                    'diagramStatus'
+                ).textContent =
+                    data.status;
+                
+                
+                document.getElementById(
+                    'modeVisual'
+                ).dataset.mode =
+                    mode;
 
 
                 document.getElementById(
