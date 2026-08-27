@@ -54,210 +54,563 @@ body {
 
 
 
+/* =========================================
+   HERO MC3
+   ========================================= */
 
-        /* =========================================
-           HERO
-           ========================================= */
+.mc3-page .product-hero {
+    position: relative;
 
-        .product-hero {
-            overflow: hidden;
+    overflow: hidden;
 
-            padding: 86px 0 78px;
+    padding: 105px 0 95px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #f8fbff 0%,
-                    #ffffff 54%,
-                    #eef5ff 100%
-                );
-        }
+    background:
+        radial-gradient(
+            circle at 80% 45%,
+            rgba(7, 89, 216, .10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8fbff 55%,
+            #edf5ff 100%
+        );
+}
 
 
-        .product-hero-grid {
-            display: grid;
+.mc3-page .product-hero::before {
+    content: "";
 
-            grid-template-columns:
-                minmax(0, 1fr)
-                minmax(420px, .95fr);
+    position: absolute;
 
-            align-items: center;
+    right: -180px;
+    top: -200px;
 
-            gap: 65px;
-        }
+    width: 600px;
+    height: 600px;
 
+    border-radius: 50%;
 
-        .product-kicker {
-            display: inline-flex;
+    border:
+        1px solid
+        rgba(7, 89, 216, .08);
+}
 
-            margin-bottom: 18px;
 
-            color: #0759d8;
+.mc3-page .product-hero-grid {
+    position: relative;
 
-            font-size: 12px;
-            font-weight: 900;
+    z-index: 2;
 
-            text-transform: uppercase;
+    display: grid;
 
-            letter-spacing: .12em;
-        }
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(420px, .9fr);
 
+    align-items: center;
 
-        .product-hero h1 {
-            margin:
-                0 0 18px;
+    gap: 80px;
+}
 
-            color: #071b3a;
 
-            font-size:
-                clamp(
-                    44px,
-                    6vw,
-                    72px
-                );
+.mc3-page .product-kicker {
+    display: inline-block;
 
-            line-height: 1;
-        }
+    margin-bottom: 20px;
 
+    color: #0759d8;
 
-        .product-hero h2 {
-            max-width: 650px;
+    font-size: 12px;
+    font-weight: 900;
 
-            margin:
-                0 0 20px;
+    letter-spacing: .13em;
 
-            color: #17253a;
+    text-transform: uppercase;
+}
 
-            font-size:
-                clamp(
-                    24px,
-                    3vw,
-                    36px
-                );
 
-            line-height: 1.2;
-        }
+.mc3-page .product-hero h1 {
+    margin: 0;
 
+    color: #071b3a;
 
-        .product-hero p {
-            max-width: 650px;
+    font-size:
+        clamp(
+            58px,
+            7vw,
+            92px
+        );
 
-            margin:
-                0 0 30px;
+    line-height: .95;
 
-            color: #59687b;
+    letter-spacing: -.045em;
+}
 
-            font-size: 16px;
 
-            line-height: 1.75;
-        }
+.mc3-page .product-hero h2 {
+    max-width: 650px;
 
+    margin:
+        24px 0 20px;
 
-        .hero-actions {
-            display: flex;
+    color: #071b3a;
 
-            flex-wrap: wrap;
+    font-size:
+        clamp(
+            31px,
+            4vw,
+            48px
+        );
 
-            gap: 12px;
-        }
+    line-height: 1.08;
 
+    letter-spacing: -.025em;
+}
 
-        .button-primary,
-        .button-secondary {
-            min-height: 48px;
 
-            display: inline-flex;
+.mc3-page .product-hero h2 span {
+    color: #0759d8;
+}
 
-            align-items: center;
-            justify-content: center;
 
-            padding: 0 22px;
+.mc3-page .product-hero-description {
+    max-width: 620px;
 
-            border-radius: 7px;
+    margin:
+        0 0 24px;
 
-            font-size: 13px;
-            font-weight: 800;
-        }
+    color: #5c6b7e;
 
+    font-size: 16px;
 
-        .button-primary {
-            color: #ffffff;
+    line-height: 1.75;
+}
 
-            background: #0759d8;
 
-            border:
-                1px solid #0759d8;
-        }
+.mc3-page .product-hero-description strong {
+    color: #25364c;
+}
 
 
-        .button-primary:hover {
-            background: #064ab0;
-        }
+/* OBD BENCH BOOT */
 
+.mc3-page .hero-modes {
+    display: flex;
 
-        .button-secondary {
-            color: #263750;
+    flex-wrap: wrap;
 
-            background: #ffffff;
+    gap: 10px;
 
-            border:
-                1px solid #ced9e5;
-        }
+    margin-bottom: 30px;
+}
 
 
-        .button-secondary:hover {
-            border-color: #0759d8;
-            color: #0759d8;
-        }
+.mc3-page .hero-mode {
+    display: inline-flex;
 
+    align-items: center;
 
-        .product-hero-image {
-            position: relative;
+    gap: 8px;
 
-            min-height: 430px;
+    padding: 8px 13px;
 
-            display: flex;
+    border:
+        1px solid #dbe5f0;
 
-            align-items: center;
-            justify-content: center;
-        }
+    border-radius: 30px;
 
+    background:
+        rgba(255,255,255,.85);
 
-        .product-hero-image::before {
-            content: "";
+    color: #314158;
 
-            position: absolute;
+    font-size: 11px;
+    font-weight: 900;
 
-            width: 380px;
-            height: 380px;
+    letter-spacing: .06em;
+}
 
-            border-radius: 50%;
 
-            background:
-                rgba(7,89,216,.08);
+.mc3-page .hero-mode-dot {
+    width: 7px;
+    height: 7px;
 
-            filter:
-                blur(2px);
-        }
+    border-radius: 50%;
 
+    background: #0759d8;
 
-        .product-hero-image img {
-            position: relative;
+    box-shadow:
+        0 0 0 4px
+        rgba(7,89,216,.10);
+}
 
-            z-index: 1;
 
-            width: 100%;
-            max-height: 430px;
+/* PULSANTI */
 
-            object-fit: contain;
+.mc3-page .hero-actions {
+    display: flex;
 
-            filter:
-                drop-shadow(
-                    0 25px 28px
-                    rgba(7,27,58,.18)
-                );
-        }
+    flex-wrap: wrap;
 
+    gap: 12px;
+}
+
+
+.mc3-page .button-primary,
+.mc3-page .button-secondary {
+    min-height: 48px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 0 22px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+
+.mc3-page .button-primary {
+    border:
+        1px solid #0759d8;
+
+    background: #0759d8;
+    color: #ffffff;
+}
+
+
+.mc3-page .button-primary:hover {
+    transform:
+        translateY(-2px);
+
+    background: #064bb5;
+}
+
+
+.mc3-page .button-secondary {
+    border:
+        1px solid #ccd8e6;
+
+    background:
+        rgba(255,255,255,.85);
+
+    color: #263750;
+}
+
+
+.mc3-page .button-secondary:hover {
+    transform:
+        translateY(-2px);
+
+    border-color: #0759d8;
+
+    color: #0759d8;
+}
+
+
+/* TRE VANTAGGI */
+
+.mc3-page .hero-features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 0;
+
+    max-width: 660px;
+
+    margin-top: 42px;
+
+    padding-top: 23px;
+
+    border-top:
+        1px solid #dce5ef;
+}
+
+
+.mc3-page .hero-features > div {
+    padding-right: 20px;
+}
+
+
+.mc3-page .hero-features > div +
+div {
+    padding-left: 20px;
+
+    border-left:
+        1px solid #dce5ef;
+}
+
+
+.mc3-page .hero-features strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #15263e;
+
+    font-size: 12px;
+}
+
+
+.mc3-page .hero-features span {
+    display: block;
+
+    color: #768396;
+
+    font-size: 11px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================
+   IMMAGINE MC3
+   ========================================= */
+
+.mc3-page .product-hero-visual {
+    position: relative;
+
+    min-height: 490px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mc3-page .hero-glow {
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.20),
+            rgba(7,89,216,.03) 55%,
+            transparent 72%
+        );
+
+    filter:
+        blur(5px);
+}
+
+
+.mc3-page .hero-device {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mc3-page .hero-device img {
+    width: 88%;
+    max-height: 450px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 30px 32px
+            rgba(6,28,61,.22)
+        );
+
+    animation:
+        mc3Float
+        5s ease-in-out
+        infinite;
+}
+
+
+@keyframes mc3Float {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-10px);
+    }
+
+}
+
+
+/* MINI CARD INTORNO AL PRODOTTO */
+
+.mc3-page .hero-floating-card {
+    position: absolute;
+
+    z-index: 3;
+
+    min-width: 160px;
+
+    padding: 13px 16px;
+
+    border:
+        1px solid
+        rgba(205,218,233,.8);
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.90);
+
+    box-shadow:
+        0 14px 35px
+        rgba(23,48,80,.11);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+.mc3-page .hero-floating-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #8290a2;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+
+.mc3-page .hero-floating-card strong {
+    color: #1c2d45;
+
+    font-size: 11px;
+}
+
+
+.mc3-page .hero-card-top {
+    right: 0;
+    top: 18%;
+}
+
+
+.mc3-page .hero-card-bottom {
+    left: 0;
+    bottom: 15%;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:1000px) {
+
+    .mc3-page .product-hero-grid {
+        grid-template-columns:
+            1fr;
+
+        gap: 45px;
+    }
+
+
+    .mc3-page .product-hero-visual {
+        min-height: 410px;
+    }
+
+
+    .mc3-page .hero-device img {
+        max-width: 520px;
+    }
+
+}
+
+
+@media(max-width:650px) {
+
+    .mc3-page .product-hero {
+        padding:
+            65px 0 55px;
+    }
+
+
+    .mc3-page .hero-features {
+        grid-template-columns:
+            1fr;
+
+        gap: 15px;
+    }
+
+
+    .mc3-page .hero-features > div {
+        padding:
+            0 0 15px;
+    }
+
+
+    .mc3-page .hero-features > div +
+    div {
+        padding:
+            15px 0;
+
+        border-left: 0;
+
+        border-top:
+            1px solid #e1e8ef;
+    }
+
+
+    .mc3-page .product-hero-visual {
+        min-height: 330px;
+    }
+
+
+    .mc3-page .hero-floating-card {
+        display: none;
+    }
+
+}
+        @media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .mc3-page .hero-device img {
+        animation: none;
+    }
+
+}
 
         /* =========================================
            SEZIONI
@@ -1322,64 +1675,124 @@ body {
          HERO
          ========================================= -->
 
-    <section class="product-hero">
+<section class="product-hero">
 
-        <div
-            class="
-                container
-                product-hero-grid
-            ">
+    <div class="container product-hero-grid">
 
-            <div>
+        <div class="product-hero-content reveal">
 
-                <span class="product-kicker">
-                    Programmazione ECU professionale
-                </span>
+            <span class="product-kicker">
+                Programmazione ECU professionale
+            </span>
 
 
-                <h1>
-                    MC3
-                </h1>
+            <h1>
+                MC3
+            </h1>
 
 
-                <h2>
-                    Programmatore completo
-                    per soluzioni automotive
-                </h2>
+            <h2>
+                Un solo strumento.
+                <span>Più modi di lavorare.</span>
+            </h2>
 
 
-                <p>
-                    Sistema hardware e software professionale
-                    per la lettura e scrittura delle centraline
-                    elettroniche tramite OBD, Bench e Boot.
-                </p>
+            <p class="product-hero-description">
+                Sistema hardware e software professionale
+                per la lettura e scrittura delle centraline
+                elettroniche attraverso
+                <strong>OBD, Bench e Boot</strong>.
+            </p>
 
 
-                <div class="hero-actions">
+            <div class="hero-modes">
 
-                    <a
-                        href="../index.html#contatti"
-                        class="button-primary">
+                <div class="hero-mode">
+                    <span class="hero-mode-dot"></span>
+                    OBD
+                </div>
 
-                        Richiedi preventivo
+                <div class="hero-mode">
+                    <span class="hero-mode-dot"></span>
+                    BENCH
+                </div>
 
-                    </a>
-
-
-                    <a
-                        href="#funzionalita"
-                        class="button-secondary">
-
-                        Scopri MC3
-
-                    </a>
-
+                <div class="hero-mode">
+                    <span class="hero-mode-dot"></span>
+                    BOOT
                 </div>
 
             </div>
 
 
-            <div class="product-hero-image">
+            <div class="hero-actions">
+
+                <a
+                    href="../index.html#contatti"
+                    class="button-primary">
+
+                    Richiedi preventivo
+
+                </a>
+
+
+                <a
+                    href="#funzionalita"
+                    class="button-secondary">
+
+                    Scopri MC3
+                    <span>↓</span>
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-features">
+
+                <div>
+                    <strong>
+                        Hardware + Software
+                    </strong>
+
+                    <span>
+                        Un unico ambiente di lavoro
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>
+                        Collegamento guidato
+                    </strong>
+
+                    <span>
+                        Procedure e pinout dedicati
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>
+                        Aggiornabile
+                    </strong>
+
+                    <span>
+                        Nuovi protocolli e funzioni
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-hero-visual reveal">
+
+            <div class="hero-glow"></div>
+
+
+            <div class="hero-device">
 
                 <img
                     src="../images/products/mc3.webp"
@@ -1388,9 +1801,37 @@ body {
 
             </div>
 
+
+            <div class="hero-floating-card hero-card-top">
+
+                <span>
+                    Modalità
+                </span>
+
+                <strong>
+                    OBD · Bench · Boot
+                </strong>
+
+            </div>
+
+
+            <div class="hero-floating-card hero-card-bottom">
+
+                <span>
+                    Sistema
+                </span>
+
+                <strong>
+                    Hardware + Software
+                </strong>
+
+            </div>
+
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
