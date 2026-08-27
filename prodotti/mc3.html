@@ -444,37 +444,248 @@
            PANORAMICA
            ========================================= */
 
-        .overview-grid {
-            display: grid;
+        .mc3-story {
+    padding: 110px 0;
 
-            grid-template-columns:
-                .85fr 1.15fr;
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f6f9fd 100%
+        );
+}
 
-            gap: 60px;
 
-            align-items: center;
-        }
+.mc3-story-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(380px, .9fr)
+        minmax(0, 1.1fr);
+
+    gap: 90px;
+
+    align-items: start;
+}
 
 
-        .overview-visual {
-            min-height: 370px;
+.mc3-story-visual {
+    position: sticky;
 
-            display: flex;
+    top: 120px;
 
-            align-items: center;
-            justify-content: center;
+    min-height: 520px;
 
-            border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #eaf2ff,
-                    #ffffff
-                );
 
-            padding: 35px;
-        }
+.mc3-device-stage {
+    position: relative;
+
+    width: 100%;
+    max-width: 480px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mc3-device-stage img {
+    position: relative;
+
+    z-index: 2;
+
+    width: 90%;
+
+    filter:
+        drop-shadow(
+            0 35px 40px
+            rgba(7,27,58,.22)
+        );
+
+    transition:
+        transform .4s ease;
+}
+
+
+.mc3-device-stage:hover img {
+    transform:
+        translateY(-8px)
+        scale(1.02);
+}
+
+
+.device-glow {
+    position: absolute;
+
+    width: 340px;
+    height: 340px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.18),
+            rgba(7,89,216,0) 68%
+        );
+
+    filter: blur(8px);
+}
+
+
+.device-tag {
+    position: absolute;
+
+    z-index: 3;
+
+    padding: 8px 12px;
+
+    border:
+        1px solid
+        rgba(7,89,216,.18);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    color: #0759d8;
+
+    box-shadow:
+        0 8px 22px
+        rgba(20,45,80,.10);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: .08em;
+}
+
+
+.tag-obd {
+    top: 15%;
+    left: 3%;
+}
+
+
+.tag-bench {
+    right: 0;
+    top: 42%;
+}
+
+
+.tag-boot {
+    bottom: 16%;
+    left: 12%;
+}
+
+
+.story-intro {
+    margin-bottom: 70px;
+}
+
+
+.story-intro h2 {
+    max-width: 600px;
+
+    margin:
+        0 0 18px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            36px,
+            5vw,
+            55px
+        );
+
+    line-height: 1.08;
+}
+
+
+.story-intro p {
+    max-width: 570px;
+
+    color: #617084;
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+
+.story-step {
+    display: grid;
+
+    grid-template-columns:
+        65px 1fr;
+
+    gap: 20px;
+
+    min-height: 240px;
+
+    padding:
+        45px 0;
+
+    border-top:
+        1px solid #dfe7ef;
+}
+
+
+.story-number {
+    color: #0759d8;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+
+.story-step h3 {
+    margin:
+        0 0 12px;
+
+    color: #071b3a;
+
+    font-size: 27px;
+}
+
+
+.story-step p {
+    max-width: 520px;
+
+    margin: 0;
+
+    color: #657489;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+@media(max-width:900px) {
+
+    .mc3-story-grid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+
+    .mc3-story-visual {
+        position: relative;
+
+        top: auto;
+
+        min-height: 360px;
+    }
+
+}
 
 
         .overview-visual img {
@@ -507,90 +718,214 @@
         /* =========================================
            MODALITÀ
            ========================================= */
+/* =========================================
+   MODALITÀ MC3
+   ========================================= */
 
-        .feature-grid {
-            display: grid;
+.mc3-modes {
+    padding: 100px 0;
 
-            grid-template-columns:
-                repeat(
-                    4,
-                    minmax(0,1fr)
-                );
-
-            gap: 18px;
-        }
+    background: #071b3a;
+}
 
 
-        .feature-card {
-            min-height: 260px;
-
-            padding: 28px;
-
-            border:
-                1px solid #e0e7ef;
-
-            border-radius: 12px;
-
-            background: #ffffff;
-
-            transition:
-                transform .2s ease,
-                box-shadow .2s ease;
-        }
+.mc3-modes .section-heading h2 {
+    color: #ffffff;
+}
 
 
-        .feature-card:hover {
-            transform:
-                translateY(-4px);
-
-            box-shadow:
-                0 18px 42px
-                rgba(20,45,80,.10);
-        }
+.mc3-modes .section-heading p {
+    color: #aebdd1;
+}
 
 
-        .feature-number {
-            width: 42px;
-            height: 42px;
+.mode-tabs {
+    display: flex;
+    justify-content: center;
 
-            display: flex;
+    gap: 10px;
 
-            align-items: center;
-            justify-content: center;
-
-            margin-bottom: 20px;
-
-            border-radius: 9px;
-
-            color: #0759d8;
-
-            background: #edf4ff;
-
-            font-size: 13px;
-            font-weight: 900;
-        }
+    margin-bottom: 30px;
+}
 
 
-        .feature-card h3 {
-            margin:
-                0 0 11px;
+.mode-tab {
+    min-width: 120px;
+    height: 45px;
 
-            color: #071b3a;
+    border:
+        1px solid
+        rgba(255,255,255,.2);
 
-            font-size: 19px;
-        }
+    border-radius: 7px;
+
+    background: transparent;
+    color: #bcc9da;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
 
 
-        .feature-card p {
-            margin: 0;
+.mode-tab:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+}
 
-            color: #647286;
 
-            font-size: 14px;
+.mode-tab.active {
+    border-color: #0759d8;
 
-            line-height: 1.65;
-        }
+    background: #0759d8;
+    color: #ffffff;
+}
 
+
+.mode-panel {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+
+    min-height: 390px;
+
+    padding: 55px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+
+.mode-label {
+    color: #4f9cff;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: .12em;
+}
+
+
+.mode-panel h3 {
+    margin:
+        12px 0 16px;
+
+    color: #ffffff;
+
+    font-size: 32px;
+
+    line-height: 1.2;
+}
+
+
+.mode-panel p {
+    max-width: 520px;
+
+    color: #b5c3d6;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.mode-panel ul {
+    margin:
+        25px 0 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.mode-panel li {
+    margin-bottom: 11px;
+
+    color: #e8eef7;
+
+    font-size: 14px;
+}
+
+
+.mode-panel li::before {
+    content: "✓";
+
+    margin-right: 10px;
+
+    color: #4f9cff;
+
+    font-weight: 900;
+}
+
+
+.mode-visual {
+    min-height: 280px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.35),
+            rgba(7,27,58,.25) 65%
+        );
+}
+
+
+#modeVisualText {
+    color:
+        rgba(255,255,255,.95);
+
+    font-size:
+        clamp(
+            60px,
+            10vw,
+            110px
+        );
+
+    font-weight: 900;
+
+    letter-spacing: -.05em;
+}
+
+
+@media(max-width:800px) {
+
+    .mode-panel {
+        grid-template-columns: 1fr;
+
+        padding: 30px;
+    }
+
+
+    .mode-tabs {
+        flex-wrap: wrap;
+    }
+
+}
+       
 
         /* =========================================
            PACCHETTI
@@ -1063,7 +1398,24 @@
             }
 
         }
+.reveal {
+    opacity: 0;
 
+    transform:
+        translateY(24px);
+
+    transition:
+        opacity .65s ease,
+        transform .65s ease;
+}
+
+
+.reveal.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
     </style>
 
 </head>
@@ -1203,59 +1555,160 @@
          PANORAMICA
          ========================================= -->
 
-    <section
-        class="product-section"
-        id="funzionalita">
+<section
+    class="mc3-story"
+    id="funzionalita">
 
-        <div
-            class="
-                container
-                overview-grid
-            ">
+    <div class="container mc3-story-grid">
 
-            <div class="overview-visual">
+        <div class="mc3-story-visual">
+
+            <div class="mc3-device-stage">
+
+                <div class="device-glow"></div>
 
                 <img
                     src="../images/products/mc3.webp"
-                    alt="Dispositivo MC3"
+                    alt="MC3 Turrin Elettronica"
                 >
 
-            </div>
-
-
-            <div class="overview-content">
-
-                <span class="section-label">
-                    Tutto a portata di mano
+                <span class="device-tag tag-obd">
+                    OBD
                 </span>
 
+                <span class="device-tag tag-bench">
+                    BENCH
+                </span>
 
-                <h2>
-                    Hardware e software
-                    in un unico sistema
-                </h2>
-
-
-                <p>
-                    MC3 permette di leggere e scrivere
-                    EEPROM, Micro e Flash delle
-                    centraline elettroniche.
-                </p>
-
-
-                <p>
-                    Il software accompagna l'operatore
-                    nella selezione della centralina,
-                    nel collegamento, nell'identificazione
-                    e nelle operazioni di lettura e scrittura,
-                    con istruzioni e pinout dedicati.
-                </p>
+                <span class="device-tag tag-boot">
+                    BOOT
+                </span>
 
             </div>
 
         </div>
 
-    </section>
+
+        <div class="mc3-story-content">
+
+            <div class="story-intro reveal">
+
+                <span class="section-label">
+                    Come funziona
+                </span>
+
+                <h2>
+                    Dalla centralina al file
+                    in pochi passaggi.
+                </h2>
+
+                <p>
+                    MC3 combina hardware e software
+                    in un unico ambiente di lavoro
+                    progettato per guidare l'operatore
+                    durante ogni fase della programmazione.
+                </p>
+
+            </div>
+
+
+            <article class="story-step reveal">
+
+                <span class="story-number">
+                    01
+                </span>
+
+                <div>
+
+                    <h3>
+                        Seleziona la centralina
+                    </h3>
+
+                    <p>
+                        Scegli marca, modello e tipo
+                        di centralina dal software MC3.
+                        Il sistema mostra le modalità
+                        disponibili.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-step reveal">
+
+                <span class="story-number">
+                    02
+                </span>
+
+                <div>
+
+                    <h3>
+                        Segui il collegamento
+                    </h3>
+
+                    <p>
+                        Pinout, connessioni e indicazioni
+                        operative vengono presentati
+                        direttamente nell'interfaccia.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-step reveal">
+
+                <span class="story-number">
+                    03
+                </span>
+
+                <div>
+
+                    <h3>
+                        Identifica la ECU
+                    </h3>
+
+                    <p>
+                        MC3 identifica i dati disponibili
+                        della centralina prima di procedere
+                        con le operazioni.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-step reveal">
+
+                <span class="story-number">
+                    04
+                </span>
+
+                <div>
+
+                    <h3>
+                        Leggi e scrivi
+                    </h3>
+
+                    <p>
+                        Esegui le operazioni supportate
+                        su EEPROM, Micro e Flash tramite
+                        OBD, Bench oppure Boot.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 
@@ -1263,113 +1716,107 @@
          MODALITÀ
          ========================================= -->
 
-    <section class="product-section alt">
+<section class="mc3-modes">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-heading">
+        <div class="section-heading center reveal">
 
-                <span class="section-label">
-                    Programmazione
+            <span class="section-label">
+                Modalità operative
+            </span>
+
+            <h2>
+                Scegli come lavorare
+            </h2>
+
+            <p>
+                MC3 supporta diverse modalità
+                operative in base alla centralina
+                e all'intervento da eseguire.
+            </p>
+
+        </div>
+
+
+        <div class="mode-tabs">
+
+            <button
+                class="mode-tab active"
+                data-mode="obd"
+                type="button">
+                OBD
+            </button>
+
+            <button
+                class="mode-tab"
+                data-mode="bench"
+                type="button">
+                Bench
+            </button>
+
+            <button
+                class="mode-tab"
+                data-mode="boot"
+                type="button">
+                Boot
+            </button>
+
+        </div>
+
+
+        <div class="mode-panel reveal">
+
+            <div>
+
+                <span
+                    id="modeLabel"
+                    class="mode-label">
+                    OBD
                 </span>
 
-                <h2>
-                    OBD, Bench e Boot
-                </h2>
+                <h3 id="modeTitle">
+                    Lavora direttamente dal veicolo
+                </h3>
 
-                <p>
-                    Diverse modalità operative per
-                    adattarsi al tipo di centralina e
-                    all'intervento da eseguire.
+                <p id="modeText">
+                    Collegati attraverso la presa
+                    diagnostica senza rimuovere
+                    o aprire la centralina.
                 </p>
+
+                <ul id="modeFeatures">
+
+                    <li>
+                        Collegamento rapido
+                    </li>
+
+                    <li>
+                        Nessuna apertura ECU
+                    </li>
+
+                    <li>
+                        Lettura e scrittura supportate
+                    </li>
+
+                </ul>
 
             </div>
 
 
-            <div class="feature-grid">
+            <div class="mode-visual">
 
-
-                <article class="feature-card">
-
-                    <div class="feature-number">
-                        01
-                    </div>
-
-                    <h3>
-                        OBD
-                    </h3>
-
-                    <p>
-                        Collegamento attraverso la presa
-                        diagnostica del veicolo senza
-                        rimuovere o aprire la centralina.
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-number">
-                        02
-                    </div>
-
-                    <h3>
-                        Bench
-                    </h3>
-
-                    <p>
-                        Collegamento diretto alla ECU
-                        attraverso i pin del connettore
-                        per le operazioni a banco.
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-number">
-                        03
-                    </div>
-
-                    <h3>
-                        Boot
-                    </h3>
-
-                    <p>
-                        Accesso alla scheda elettronica
-                        per operazioni avanzate di
-                        lettura, scrittura e recupero dati.
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-number">
-                        04
-                    </div>
-
-                    <h3>
-                        Checksum & CVN
-                    </h3>
-
-                    <p>
-                        Controllo dell'integrità del file
-                        e gestione del checksum e del CVN
-                        durante le operazioni supportate.
-                    </p>
-
-                </article>
-
+                <div id="modeVisualText">
+                    OBD
+                </div>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
@@ -2017,6 +2464,190 @@
     }
 
 
+/* =====================================
+   MODALITÀ MC3
+   ===================================== */
+
+const modeData = {
+
+    obd: {
+
+        label: 'OBD',
+
+        title:
+            'Lavora direttamente dal veicolo',
+
+        text:
+            'Collegati attraverso la presa diagnostica senza rimuovere o aprire la centralina.',
+
+        features: [
+            'Collegamento rapido',
+            'Nessuna apertura ECU',
+            'Lettura e scrittura supportate'
+        ]
+
+    },
+
+
+    bench: {
+
+        label: 'BENCH',
+
+        title:
+            'Programmazione direttamente a banco',
+
+        text:
+            'Collega MC3 direttamente ai pin della centralina senza intervenire sul circuito interno.',
+
+        features: [
+            'Centralina fuori dal veicolo',
+            'Connessione attraverso il connettore ECU',
+            'Pinout guidato dal software'
+        ]
+
+    },
+
+
+    boot: {
+
+        label: 'BOOT',
+
+        title:
+            'Accesso avanzato alla centralina',
+
+        text:
+            'Lavora direttamente sulla scheda elettronica per le operazioni che richiedono accesso Boot.',
+
+        features: [
+            'Accesso diretto alla ECU',
+            'Operazioni avanzate',
+            'Supporto alle procedure dedicate'
+        ]
+
+    }
+
+};
+
+
+document
+    .querySelectorAll('.mode-tab')
+    .forEach(button => {
+
+        button.addEventListener(
+            'click',
+            () => {
+
+                const mode =
+                    button.dataset.mode;
+
+
+                const data =
+                    modeData[mode];
+
+
+                document
+                    .querySelectorAll('.mode-tab')
+                    .forEach(tab => {
+
+                        tab.classList.remove(
+                            'active'
+                        );
+
+                    });
+
+
+                button.classList.add(
+                    'active'
+                );
+
+
+                document.getElementById(
+                    'modeLabel'
+                ).textContent =
+                    data.label;
+
+
+                document.getElementById(
+                    'modeTitle'
+                ).textContent =
+                    data.title;
+
+
+                document.getElementById(
+                    'modeText'
+                ).textContent =
+                    data.text;
+
+
+                document.getElementById(
+                    'modeVisualText'
+                ).textContent =
+                    data.label;
+
+
+                document.getElementById(
+                    'modeFeatures'
+                ).innerHTML =
+                    data.features
+                        .map(
+                            item =>
+                                `<li>${item}</li>`
+                        )
+                        .join('');
+
+            }
+
+        );
+
+    });
+
+/* =====================================
+   ANIMAZIONE SCROLL
+   ===================================== */
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target
+                            .classList
+                            .add(
+                                'visible'
+                            );
+
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: .15
+        }
+    );
+
+
+document
+    .querySelectorAll('.reveal')
+    .forEach(element => {
+
+        revealObserver.observe(
+            element
+        );
+
+    });
     loadMc3Updates();
 
 </script>
