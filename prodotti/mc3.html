@@ -2436,73 +2436,363 @@ div {
 
 }
 
-        /* =========================================
-           LICENZA
-           ========================================= */
 
-        .license-box {
-            display: grid;
+/* =========================================
+   LICENZA MC3
+   ========================================= */
 
-            grid-template-columns:
-                1.1fr .9fr;
+.mc3-page .mc3-license {
+    position: relative;
 
-            gap: 35px;
+    overflow: hidden;
 
-            padding: 42px;
+    padding: 110px 0;
 
-            border-radius: 15px;
-
-            background: #071b3a;
-
-            color: #ffffff;
-        }
+    background: #071b3a;
+}
 
 
-        .license-box h2 {
-            margin:
-                0 0 13px;
+.mc3-page .mc3-license::before {
+    content: "";
 
-            font-size: 31px;
-        }
+    position: absolute;
 
+    right: -160px;
+    top: -220px;
 
-        .license-box p {
-            margin: 0;
+    width: 620px;
+    height: 620px;
 
-            color: #c7d5e8;
+    border-radius: 50%;
 
-            font-size: 14px;
-
-            line-height: 1.7;
-        }
-
-
-        .license-features {
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 12px;
-        }
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.33),
+            transparent 68%
+        );
+}
 
 
-        .license-feature {
-            padding: 13px 15px;
+.mc3-page .mc3-license-grid {
+    position: relative;
 
-            border:
-                1px solid
-                rgba(255,255,255,.16);
+    z-index: 2;
 
-            border-radius: 7px;
+    display: grid;
 
-            color: #ffffff;
+    grid-template-columns:
+        minmax(0,1fr)
+        330px;
 
-            font-size: 13px;
-            font-weight: 700;
-        }
+    align-items: center;
+
+    gap: 90px;
+}
 
 
+/* TESTO */
+
+.mc3-page .mc3-license
+.section-label {
+    color: #5ba4ff;
+}
+
+
+.mc3-page .mc3-license-intro h2 {
+    max-width: 620px;
+
+    margin:
+        0 0 20px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            52px
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -.025em;
+}
+
+
+.mc3-page .mc3-license-intro p {
+    max-width: 610px;
+
+    margin:
+        0 0 12px;
+
+    color: #b6c5d8;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+/* CARD LICENZA */
+
+.mc3-page .mc3-license-card {
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    border-radius: 17px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    box-shadow:
+        0 25px 55px
+        rgba(0,0,0,.16);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+.mc3-page .license-status {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: #aebed2;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: .11em;
+}
+
+
+.mc3-page .license-status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #41dd83;
+
+    box-shadow:
+        0 0 12px
+        rgba(65,221,131,.8);
+}
+
+
+.mc3-page .license-duration {
+    display: flex;
+    align-items: baseline;
+
+    gap: 10px;
+
+    margin:
+        38px 0 35px;
+}
+
+
+.mc3-page .license-duration strong {
+    color: #ffffff;
+
+    font-size: 82px;
+
+    line-height: .8;
+
+    letter-spacing: -.06em;
+}
+
+
+.mc3-page .license-duration span {
+    color: #66aaff;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    letter-spacing: .1em;
+}
+
+
+.mc3-page .license-included {
+    padding-top: 19px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.13);
+}
+
+
+.mc3-page .license-included span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #8398b4;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+
+.mc3-page .license-included strong {
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+
+/* BENEFIT */
+
+.mc3-page .license-benefits {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0,1fr)
+        );
+
+    gap: 14px;
+
+    margin-top: 65px;
+}
+
+
+.mc3-page .license-benefit {
+    display: flex;
+
+    gap: 15px;
+
+    padding: 21px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+
+.mc3-page .license-benefit:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(91,164,255,.4);
+
+    background:
+        rgba(7,89,216,.10);
+}
+
+
+.mc3-page .license-benefit-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(7,89,216,.18);
+
+    color: #66aaff;
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+
+.mc3-page .license-benefit strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.mc3-page .license-benefit p {
+    margin: 0;
+
+    color: #98aac1;
+
+    font-size: 11px;
+
+    line-height: 1.55;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:950px) {
+
+    .mc3-page .mc3-license-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .mc3-page .mc3-license-card {
+        max-width: 380px;
+    }
+
+
+    .mc3-page .license-benefits {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .mc3-page .mc3-license {
+        padding: 75px 0;
+    }
+
+
+    .mc3-page .license-benefits {
+        grid-template-columns: 1fr;
+    }
+
+
+    .mc3-page .license-duration strong {
+        font-size: 65px;
+    }
+
+}
         /* =========================================
            AGGIORNAMENTI
            ========================================= */
@@ -3728,49 +4018,74 @@ div {
          LICENZA
          ========================================= -->
 
-    <section class="product-section">
+<section class="mc3-license">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="license-box">
+        <div class="mc3-license-grid">
 
-                <div>
+            <div class="mc3-license-intro reveal">
 
-                    <span class="section-label">
-                        Licenza MC3
-                    </span>
+                <span class="section-label">
+                    Licenza MC3
+                </span>
 
-                    <h2>
-                        Aggiornamenti e assistenza
-                    </h2>
 
-                    <p>
-                        Un anno di licenza è incluso
-                        con MC3. Con la licenza attiva
-                        sono disponibili gli aggiornamenti
-                        software e l'assistenza tecnica.
-                    </p>
+                <h2>
+                    Mantieni MC3
+                    sempre aggiornato.
+                </h2>
+
+
+                <p>
+                    Con la licenza attiva hai accesso
+                    agli aggiornamenti software,
+                    ai nuovi protocolli supportati
+                    e all'assistenza tecnica.
+                </p>
+
+
+                <p>
+                    Il primo anno di licenza
+                    è incluso con MC3.
+                </p>
+
+            </div>
+
+
+            <div class="mc3-license-card reveal">
+
+                <div class="license-status">
+
+                    <span class="license-status-dot"></span>
+
+                    LICENZA MC3
 
                 </div>
 
 
-                <div class="license-features">
+                <div class="license-duration">
 
-                    <div class="license-feature">
-                        Lettura e scrittura ECU
-                    </div>
+                    <strong>
+                        12
+                    </strong>
 
-                    <div class="license-feature">
-                        Checksum automatico
-                    </div>
+                    <span>
+                        MESI
+                    </span>
 
-                    <div class="license-feature">
-                        Aggiornamenti software
-                    </div>
+                </div>
 
-                    <div class="license-feature">
-                        Assistenza tecnica
-                    </div>
+
+                <div class="license-included">
+
+                    <span>
+                        Inclusa con MC3
+                    </span>
+
+                    <strong>
+                        Primo anno
+                    </strong>
 
                 </div>
 
@@ -3778,9 +4093,103 @@ div {
 
         </div>
 
-    </section>
+
+        <div class="license-benefits reveal">
 
 
+            <div class="license-benefit">
+
+                <span class="license-benefit-icon">
+                    ↻
+                </span>
+
+                <div>
+
+                    <strong>
+                        Aggiornamenti software
+                    </strong>
+
+                    <p>
+                        Accesso alle nuove versioni
+                        del software MC3.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="license-benefit">
+
+                <span class="license-benefit-icon">
+                    +
+                </span>
+
+                <div>
+
+                    <strong>
+                        Nuovi protocolli
+                    </strong>
+
+                    <p>
+                        Nuove centraline e procedure
+                        vengono aggiunte nel tempo.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="license-benefit">
+
+                <span class="license-benefit-icon">
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Assistenza tecnica
+                    </strong>
+
+                    <p>
+                        Supporto tecnico durante
+                        il periodo di licenza.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="license-benefit">
+
+                <span class="license-benefit-icon">
+                    ⇩
+                </span>
+
+                <div>
+
+                    <strong>
+                        Database aggiornato
+                    </strong>
+
+                    <p>
+                        Disponibilità degli aggiornamenti
+                        relativi alle unità supportate.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
 
     <!-- =========================================
          AGGIORNAMENTI SUPABASE
