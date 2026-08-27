@@ -1437,54 +1437,238 @@ div {
 }
        
 
-        /* =========================================
-           PACCHETTI
-           ========================================= */
+/* =========================================
+   PACCHETTI MC3
+   ========================================= */
 
-        .packages-grid {
-            display: grid;
+.mc3-page .mc3-packages {
+    padding: 105px 0;
 
-            grid-template-columns:
-                repeat(
-                    4,
-                    minmax(0,1fr)
-                );
-
-            gap: 16px;
-        }
+    background: #f6f9fd;
+}
 
 
-        .package-card {
-            padding: 24px;
+.mc3-page .package-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-            border:
-                1px solid #dfe7ef;
+    gap: 10px;
 
-            border-radius: 10px;
+    max-width: 950px;
 
-            background: #ffffff;
-        }
-
-
-        .package-card h3 {
-            margin:
-                0 0 9px;
-
-            color: #071b3a;
-
-            font-size: 16px;
-        }
+    margin:
+        0 auto 35px;
+}
 
 
-        .package-card p {
-            margin: 0;
+.mc3-page .package-button {
+    min-height: 43px;
 
-            color: #677588;
+    padding: 0 17px;
 
-            font-size: 13px;
+    border: 1px solid #d6e1ec;
+    border-radius: 7px;
 
-            line-height: 1.6;
-        }
+    background: #ffffff;
+    color: #526176;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+
+.mc3-page .package-button:hover {
+    transform:
+        translateY(-2px);
+
+    border-color: #0759d8;
+
+    color: #0759d8;
+}
+
+
+.mc3-page .package-button.active {
+    border-color: #0759d8;
+
+    background: #0759d8;
+    color: #ffffff;
+}
+
+
+/* PANNELLO */
+
+.mc3-page .package-detail {
+    display: grid;
+
+    grid-template-columns:
+        1.15fr .85fr;
+
+    align-items: stretch;
+
+    overflow: hidden;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    border: 1px solid #dfe7ef;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 18px 50px
+        rgba(20,45,80,.08);
+}
+
+
+.mc3-page .package-detail-content {
+    padding: 52px;
+}
+
+
+.mc3-page .package-detail-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #0759d8;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: .12em;
+}
+
+
+.mc3-page .package-detail h3 {
+    margin:
+        0 0 16px;
+
+    color: #071b3a;
+
+    font-size: 31px;
+}
+
+
+.mc3-page .package-detail p {
+    max-width: 520px;
+
+    margin:
+        0 0 25px;
+
+    color: #657489;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.mc3-page .package-detail ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.mc3-page .package-detail li {
+    margin-bottom: 10px;
+
+    color: #344258;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.mc3-page .package-detail li::before {
+    content: "✓";
+
+    margin-right: 10px;
+
+    color: #0759d8;
+
+    font-weight: 900;
+}
+
+
+/* VISUALE DESTRA */
+
+.mc3-page .package-detail-visual {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 330px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.18),
+            rgba(7,27,58,.02) 65%
+        ),
+        #071b3a;
+}
+
+
+.mc3-page .package-detail-visual span {
+    margin-bottom: 5px;
+
+    color: #7692b7;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: .15em;
+}
+
+
+.mc3-page .package-detail-visual strong {
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            72px
+        );
+
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+@media(max-width:800px) {
+
+    .mc3-page .package-detail {
+        grid-template-columns: 1fr;
+    }
+
+
+    .mc3-page .package-detail-content {
+        padding: 32px;
+    }
+
+
+    .mc3-page .package-detail-visual {
+        min-height: 220px;
+    }
+
+}
 
 
         /* =========================================
@@ -2447,132 +2631,147 @@ div {
          PACCHETTI
          ========================================= -->
 
-    <section class="product-section">
+<section class="mc3-packages">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-heading center">
+        <div class="section-heading center reveal">
 
-                <span class="section-label">
-                    Multifunzionale
+            <span class="section-label">
+                Configurabile
+            </span>
+
+            <h2>
+                Un MC3.
+                I pacchetti che ti servono.
+            </h2>
+
+            <p>
+                Configura il sistema in base alle
+                tipologie di centraline su cui lavori.
+            </p>
+
+        </div>
+
+
+        <div class="package-selector">
+
+            <button
+                class="package-button active"
+                data-package="ecu"
+                type="button">
+                ECU OBD & Boot
+            </button>
+
+            <button
+                class="package-button"
+                data-package="bench"
+                type="button">
+                ECU Bench
+            </button>
+
+            <button
+                class="package-button"
+                data-package="airbag"
+                type="button">
+                Airbag
+            </button>
+
+            <button
+                class="package-button"
+                data-package="body"
+                type="button">
+                Body / BSI
+            </button>
+
+            <button
+                class="package-button"
+                data-package="abs"
+                type="button">
+                ABS
+            </button>
+
+            <button
+                class="package-button"
+                data-package="adas"
+                type="button">
+                ADAS
+            </button>
+
+            <button
+                class="package-button"
+                data-package="cluster"
+                type="button">
+                Cluster
+            </button>
+
+            <button
+                class="package-button"
+                data-package="eps"
+                type="button">
+                EPS
+            </button>
+
+        </div>
+
+
+        <div class="package-detail reveal">
+
+            <div class="package-detail-content">
+
+                <span
+                    id="packageLabel"
+                    class="package-detail-label">
+                    PACCHETTO MC3
                 </span>
 
-                <h2>
-                    Configura MC3
-                </h2>
+                <h3 id="packageTitle">
+                    ECU OBD & Boot
+                </h3>
 
-                <p>
-                    Scegli i pacchetti più adatti
-                    alle lavorazioni della tua attività.
+                <p id="packageText">
+                    Operazioni di lettura e scrittura
+                    sulle centraline motore supportate
+                    tramite OBD e Boot.
                 </p>
+
+
+                <ul id="packageFeatures">
+
+                    <li>
+                        Lettura ECU
+                    </li>
+
+                    <li>
+                        Scrittura ECU
+                    </li>
+
+                    <li>
+                        Procedure guidate
+                    </li>
+
+                </ul>
 
             </div>
 
 
-            <div class="packages-grid">
+            <div class="package-detail-visual">
 
+                <span>
+                    MC3
+                </span>
 
-                <article class="package-card">
-
-                    <h3>ABS</h3>
-
-                    <p>
-                        Funzioni dedicate alle
-                        centraline ABS supportate.
-                    </p>
-
-                </article>
-
-
-                <article class="package-card">
-
-                    <h3>ADAS</h3>
-
-                    <p>
-                        Gestione delle centraline
-                        ADAS supportate.
-                    </p>
-
-                </article>
-
-
-                <article class="package-card">
-
-                    <h3>Cluster</h3>
-
-                    <p>
-                        Lettura, scrittura e configurazione
-                        dei quadri strumenti supportati.
-                    </p>
-
-                </article>
-
-
-                <article class="package-card">
-
-                    <h3>ECU Bench</h3>
-
-                    <p>
-                        Lettura e scrittura a banco
-                        delle ECU motore supportate.
-                    </p>
-
-                </article>
-
-
-                <article class="package-card">
-
-                    <h3>Airbag</h3>
-
-                    <p>
-                        Funzioni dedicate alle centraline
-                        Airbag supportate.
-                    </p>
-
-                </article>
-
-
-                <article class="package-card">
-
-                    <h3>Body / BSI</h3>
-
-                    <p>
-                        Lettura e scrittura dei Body
-                        Computer e BSI supportati.
-                    </p>
-
-                </article>
-
-
-                <article class="package-card">
-
-                    <h3>EPS</h3>
-
-                    <p>
-                        Operazioni dedicate ai sistemi
-                        di sterzo elettrico supportati.
-                    </p>
-
-                </article>
-
-
-                <article class="package-card">
-
-                    <h3>ECU OBD & Boot</h3>
-
-                    <p>
-                        Lettura e scrittura delle
-                        ECU motore supportate.
-                    </p>
-
-                </article>
-
+                <strong id="packageVisual">
+                    ECU
+                </strong>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
@@ -3281,6 +3480,186 @@ document
 
         revealObserver.observe(
             element
+        );
+
+    });
+    const packageData = {
+
+    ecu: {
+        title: 'ECU OBD & Boot',
+        visual: 'ECU',
+        text:
+            'Operazioni di lettura e scrittura sulle centraline motore supportate tramite OBD e Boot.',
+        features: [
+            'Lettura ECU',
+            'Scrittura ECU',
+            'Procedure guidate'
+        ]
+    },
+
+
+    bench: {
+        title: 'ECU Bench',
+        visual: 'BENCH',
+        text:
+            'Lavora direttamente a banco sulle centraline motore supportate attraverso il connettore ECU.',
+        features: [
+            'Lettura a banco',
+            'Scrittura a banco',
+            'Pinout dedicati'
+        ]
+    },
+
+
+    airbag: {
+        title: 'Airbag',
+        visual: 'AIRBAG',
+        text:
+            'Funzioni dedicate alle centraline Airbag supportate attraverso le procedure disponibili in MC3.',
+        features: [
+            'Centraline Airbag',
+            'Procedure dedicate',
+            'Nuove unità tramite aggiornamenti'
+        ]
+    },
+
+
+    body: {
+        title: 'Body / BSI',
+        visual: 'BODY',
+        text:
+            'Operazioni dedicate ai Body Computer e alle centraline BSI supportate.',
+        features: [
+            'Lettura',
+            'Scrittura',
+            'Supporto Body / BSI'
+        ]
+    },
+
+
+    abs: {
+        title: 'ABS',
+        visual: 'ABS',
+        text:
+            'Funzioni dedicate alle centraline ABS presenti nel database MC3.',
+        features: [
+            'Centraline ABS',
+            'Procedure dedicate',
+            'Database aggiornabile'
+        ]
+    },
+
+
+    adas: {
+        title: 'ADAS',
+        visual: 'ADAS',
+        text:
+            'Supporto alle centraline dei sistemi avanzati di assistenza alla guida compatibili.',
+        features: [
+            'Centraline ADAS',
+            'Procedure dedicate',
+            'Supporto progressivamente aggiornato'
+        ]
+    },
+
+
+    cluster: {
+        title: 'Cluster',
+        visual: 'CLUSTER',
+        text:
+            'Operazioni dedicate ai quadri strumenti e alle unità Cluster supportate.',
+        features: [
+            'Quadri strumenti',
+            'Lettura',
+            'Scrittura'
+        ]
+    },
+
+
+    eps: {
+        title: 'EPS',
+        visual: 'EPS',
+        text:
+            'Funzioni dedicate alle centraline dei sistemi di sterzo elettrico supportati.',
+        features: [
+            'Centraline EPS',
+            'Procedure guidate',
+            'Database aggiornabile'
+        ]
+    }
+
+};
+    document
+    .querySelectorAll(
+        '.package-button'
+    )
+    .forEach(button => {
+
+        button.addEventListener(
+            'click',
+            () => {
+
+                const packageKey =
+                    button.dataset.package;
+
+
+                const data =
+                    packageData[
+                        packageKey
+                    ];
+
+
+                if (!data)
+                    return;
+
+
+                document
+                    .querySelectorAll(
+                        '.package-button'
+                    )
+                    .forEach(item => {
+
+                        item.classList.remove(
+                            'active'
+                        );
+
+                    });
+
+
+                button.classList.add(
+                    'active'
+                );
+
+
+                document.getElementById(
+                    'packageTitle'
+                ).textContent =
+                    data.title;
+
+
+                document.getElementById(
+                    'packageText'
+                ).textContent =
+                    data.text;
+
+
+                document.getElementById(
+                    'packageVisual'
+                ).textContent =
+                    data.visual;
+
+
+                document.getElementById(
+                    'packageFeatures'
+                ).innerHTML =
+                    data.features
+                        .map(
+                            feature =>
+                                `<li>${feature}</li>`
+                        )
+                        .join('');
+
+            }
         );
 
     });
