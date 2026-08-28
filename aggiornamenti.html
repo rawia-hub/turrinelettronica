@@ -278,7 +278,26 @@
                 'loadMoreButton'
             );
 
-
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+        
+        
+        const productFromUrl =
+            urlParams.get(
+                'product'
+            );
+        
+        
+        if (
+            productFromUrl
+        ) {
+        
+            currentFilter =
+                productFromUrl;
+        
+        }
         /* =====================================
            ESCAPE HTML
            ===================================== */
@@ -681,6 +700,25 @@
 
                         currentFilter =
                             button.dataset.product;
+                        visibleCount = 9;
+
+                        updateActiveFilter();
+                        
+                        renderUpdates();
+                        const newUrl =
+                    currentFilter === 'all'
+                        ? 'aggiornamenti.html'
+                        : 'aggiornamenti.html?product=' +
+                          encodeURIComponent(
+                              currentFilter
+                          );
+                
+                
+                window.history.replaceState(
+                    {},
+                    '',
+                    newUrl
+                );
                         visibleCount =
                             ITEMS_PER_LOAD;
 
@@ -692,7 +730,23 @@
             }
         );
 
+function updateActiveFilter() {
 
+    document
+        .querySelectorAll(
+            '.updates-filters'
+        )
+        .forEach(button => {
+
+            button.classList.toggle(
+                'active',
+                button.dataset.filter ===
+                    currentFilter
+            );
+
+        });
+
+}
 
         /* =====================================
            CARICA SUPABASE
@@ -755,7 +809,7 @@
             allUpdates =
                 data || [];
 
-
+updateActiveFilter();
             renderUpdates();
 
         }
