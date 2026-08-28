@@ -84,7 +84,7 @@
 
                     <button
                         type="button"
-                        class="updates-filter active"
+                        class="updates-filter"
                         data-product="all">
                         Tutti
                     </button>
@@ -701,10 +701,10 @@
                         currentFilter =
                             button.dataset.product;
                         visibleCount = 9;
+                 updateActiveFilter();
 
-                        updateActiveFilter();
-                        
-                        renderUpdates();
+                 renderUpdates();
+         
                         const newUrl =
                     currentFilter === 'all'
                         ? 'aggiornamenti.html'
@@ -721,8 +721,7 @@
                 );
                         visibleCount =
                             ITEMS_PER_LOAD;
-
-                        renderUpdates();
+                       
 
                     }
                 );
@@ -734,18 +733,17 @@ function updateActiveFilter() {
 
     document
         .querySelectorAll(
-            '.updates-filters'
+            '.updates-filter'
         )
         .forEach(button => {
 
             button.classList.toggle(
                 'active',
-                button.dataset.filter ===
+                button.dataset.product ===
                     currentFilter
             );
 
         });
-
 }
 
         /* =====================================
