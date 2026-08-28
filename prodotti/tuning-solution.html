@@ -1076,6 +1076,435 @@ body {
     }
 
 }
+        /* =========================================
+   MULTIBRAND / COVERAGE
+   ========================================= */
+
+.tuning-page .tuning-coverage {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 110px 0;
+
+    background: #ffffff;
+}
+
+
+.tuning-page .coverage-top {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 50px;
+
+    margin-bottom: 50px;
+}
+
+
+.tuning-page .coverage-heading {
+    max-width: 720px;
+}
+
+
+.tuning-page .coverage-heading h2 {
+    margin:
+        0 0 15px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            52px
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -.025em;
+}
+
+
+.tuning-page .coverage-heading h2 span {
+    color: #0759d8;
+}
+
+
+.tuning-page .coverage-heading p {
+    max-width: 650px;
+
+    margin: 0;
+
+    color: #657489;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* NUMERO */
+
+.tuning-page .coverage-stat {
+    flex-shrink: 0;
+
+    padding-left: 35px;
+
+    border-left:
+        1px solid #dce5ef;
+}
+
+
+.tuning-page .coverage-stat strong {
+    display: block;
+
+    color: #0759d8;
+
+    font-size:
+        clamp(
+            55px,
+            7vw,
+            78px
+        );
+
+    line-height: .85;
+
+    letter-spacing: -.05em;
+}
+
+
+.tuning-page .coverage-stat span {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #68778a;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+
+/* =========================================
+   BRAND STRIP
+   ========================================= */
+
+.tuning-page .brand-strip {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    margin-bottom: 45px;
+
+    padding:
+        19px 0;
+
+    border-top:
+        1px solid #e2e9f1;
+
+    border-bottom:
+        1px solid #e2e9f1;
+
+    background: #f8fafc;
+}
+
+
+.tuning-page .brand-strip::before,
+.tuning-page .brand-strip::after {
+    content: "";
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 0;
+    bottom: 0;
+
+    width: 100px;
+
+    pointer-events: none;
+}
+
+
+.tuning-page .brand-strip::before {
+    left: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f8fafc,
+            transparent
+        );
+}
+
+
+.tuning-page .brand-strip::after {
+    right: 0;
+
+    background:
+        linear-gradient(
+            -90deg,
+            #f8fafc,
+            transparent
+        );
+}
+
+
+.tuning-page .brand-strip-track {
+    width: max-content;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 45px;
+
+    animation:
+        tuningBrands
+        28s linear
+        infinite;
+}
+
+
+.tuning-page .brand-strip-track span {
+    flex-shrink: 0;
+
+    color: #768497;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: .06em;
+
+    white-space: nowrap;
+}
+
+
+.tuning-page .brand-strip:hover
+.brand-strip-track {
+    animation-play-state: paused;
+}
+
+
+@keyframes tuningBrands {
+
+    from {
+        transform:
+            translateX(0);
+    }
+
+    to {
+        transform:
+            translateX(-50%);
+    }
+
+}
+
+
+/* =========================================
+   COVERAGE PANEL
+   ========================================= */
+
+.tuning-page .coverage-panel {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0,1.15fr)
+        minmax(320px,.85fr);
+
+    gap: 45px;
+
+    padding: 45px;
+
+    border:
+        1px solid #dce5ef;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fbff,
+            #eef4fb
+        );
+}
+
+
+.tuning-page .coverage-panel-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #0759d8;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: .13em;
+}
+
+
+.tuning-page .coverage-panel-main h3 {
+    max-width: 560px;
+
+    margin:
+        0 0 14px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            27px,
+            4vw,
+            37px
+        );
+
+    line-height: 1.15;
+}
+
+
+.tuning-page .coverage-panel-main p {
+    max-width: 600px;
+
+    margin: 0;
+
+    color: #657489;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* FEATURE */
+
+.tuning-page .coverage-features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
+
+    gap: 10px;
+}
+
+
+.tuning-page .coverage-features > div {
+    padding: 17px;
+
+    border:
+        1px solid #dce5ef;
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.75);
+}
+
+
+.tuning-page .coverage-features strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #172a44;
+
+    font-size: 13px;
+}
+
+
+.tuning-page .coverage-features span {
+    color: #7a8798;
+
+    font-size: 10px;
+}
+
+
+/* PULSANTE */
+
+.tuning-page .coverage-action {
+    grid-column:
+        1 / -1;
+
+    padding-top: 5px;
+
+    text-align: right;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+
+    .tuning-page .coverage-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .tuning-page .coverage-stat {
+        padding:
+            20px 0 0;
+
+        border-left: 0;
+
+        border-top:
+            1px solid #dce5ef;
+    }
+
+
+    .tuning-page .coverage-panel {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:550px) {
+
+    .tuning-page .tuning-coverage {
+        padding: 75px 0;
+    }
+
+
+    .tuning-page .coverage-panel {
+        padding: 28px;
+    }
+
+
+    .tuning-page .coverage-features {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tuning-page .coverage-action {
+        text-align: left;
+    }
+
+}
+
+
+@media(
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .tuning-page .brand-strip-track {
+        animation: none;
+    }
+
+}
     </style>
 
 </head>
@@ -1545,7 +1974,197 @@ body {
     </div>
 
 </section>
+    <!-- =====================
+        MULTIBRAND
+    ========================== -->
+<section class="tuning-coverage">
 
+    <div class="container">
+
+        <div class="coverage-top">
+
+            <div class="coverage-heading reveal">
+
+                <span class="section-label">
+                    Multibrand
+                </span>
+
+                <h2>
+                    Un unico software.
+                    <span>Decine di brand.</span>
+                </h2>
+
+                <p>
+                    Tuning Solution supporta un ampio
+                    database di veicoli e centraline,
+                    continuamente aggiornato con nuove
+                    soluzioni e compatibilità.
+                </p>
+
+            </div>
+
+
+            <div class="coverage-stat reveal">
+
+                <strong>
+                    90+
+                </strong>
+
+                <span>
+                    brand supportati
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             BRAND SCROLLER
+             ================================= -->
+
+        <div class="brand-strip reveal">
+
+            <div class="brand-strip-track">
+
+                <span>ALFA ROMEO</span>
+                <span>AUDI</span>
+                <span>BMW</span>
+                <span>FIAT</span>
+                <span>FORD</span>
+                <span>IVECO</span>
+                <span>JEEP</span>
+                <span>MERCEDES-BENZ</span>
+                <span>OPEL</span>
+                <span>PEUGEOT</span>
+                <span>RENAULT</span>
+                <span>SEAT</span>
+                <span>SKODA</span>
+                <span>VOLKSWAGEN</span>
+                <span>VOLVO</span>
+
+                <!-- copia per loop continuo -->
+
+                <span>ALFA ROMEO</span>
+                <span>AUDI</span>
+                <span>BMW</span>
+                <span>FIAT</span>
+                <span>FORD</span>
+                <span>IVECO</span>
+                <span>JEEP</span>
+                <span>MERCEDES-BENZ</span>
+                <span>OPEL</span>
+                <span>PEUGEOT</span>
+                <span>RENAULT</span>
+                <span>SEAT</span>
+                <span>SKODA</span>
+                <span>VOLKSWAGEN</span>
+                <span>VOLVO</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             COPERTURA
+             ================================= -->
+
+        <div class="coverage-panel reveal">
+
+            <div class="coverage-panel-main">
+
+                <span class="coverage-panel-label">
+                    DATABASE TUNING SOLUTION
+                </span>
+
+                <h3>
+                    Una copertura che cresce
+                    insieme al software.
+                </h3>
+
+                <p>
+                    Nuove ECU, nuove versioni software
+                    e nuove soluzioni vengono integrate
+                    attraverso gli aggiornamenti.
+                </p>
+
+            </div>
+
+
+            <div class="coverage-features">
+
+                <div>
+
+                    <strong>
+                        ECU
+                    </strong>
+
+                    <span>
+                        motore
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Diesel
+                    </strong>
+
+                    <span>
+                        e benzina
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Multibrand
+                    </strong>
+
+                    <span>
+                        automotive
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Update
+                    </strong>
+
+                    <span>
+                        frequenti
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="coverage-action">
+
+                <a
+                    href="#"
+                    class="button-secondary">
+
+                    Visualizza ECU supportate →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
     
     <!-- =========================================
          CTA
