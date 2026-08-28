@@ -1094,46 +1094,53 @@
         showUpdates();
     }
 
+function stopUpdatesAuto() {
 
-    function stopAuto() {
+    if (autoTimer) {
 
-        if (autoTimer) {
+        clearInterval(
+            autoTimer
+        );
 
-            clearInterval(
-                autoTimer
-            );
+        autoTimer = null;
+    }
+}
 
-            autoTimer = null;
-        }
+
+function startUpdatesAuto() {
+
+    stopUpdatesAuto();
+
+
+    const totalPages =
+        getTotalPages();
+
+
+    if (
+        totalPages <= 1
+    ) {
+        return;
     }
 
 
-    function startAuto() {
+    autoTimer =
+        window.setInterval(
+            () => {
 
-        stopAuto();
+                nextPage();
 
-        if (
-            getTotalPages() <= 1
-        ) {
-   
-            return;
-        }
+            },
+            6000
+        );
+}
 
-
-        autoTimer =
-            setInterval(
-            
-                nextPage,
-                6000
-            );
-    }
 
 
     function restartAuto() {
 
-        stopAuto();
+        stopUpdatesAuto();
 
-        startAuto();
+        startUpdatesAuto();
     }
 
 
@@ -1243,7 +1250,7 @@
 
         showUpdates();
 
-        startAuto();
+        startUpdatesAuto();
     }
 
 
@@ -1255,12 +1262,12 @@
 
         updatesSection.addEventListener(
             'mouseenter',
-            stopAuto
+            stopUpdatesAuto
         );
 
         updatesSection.addEventListener(
             'mouseleave',
-            startAuto
+            startUpdatesAuto
         );
     }
 
