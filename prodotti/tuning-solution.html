@@ -2032,6 +2032,255 @@ div div span {
     }
 
 }
+        /* =========================================
+   TUNING BENEFITS
+   ========================================= */
+
+.tuning-page .tuning-benefits {
+    position: relative;
+
+    padding: 110px 0;
+
+    background: #ffffff;
+}
+
+
+.tuning-page .benefits-heading {
+    max-width: 720px;
+
+    margin-bottom: 48px;
+}
+
+
+.tuning-page .benefits-heading h2 {
+    margin:
+        0 0 16px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            52px
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -.025em;
+}
+
+
+.tuning-page .benefits-heading p {
+    max-width: 620px;
+
+    margin: 0;
+
+    color: #657489;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* GRID */
+
+.tuning-page .tuning-benefits-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0,1fr)
+        );
+
+    gap: 16px;
+}
+
+
+/* CARD */
+
+.tuning-page .tuning-benefit-card {
+    position: relative;
+
+    min-height: 310px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 27px;
+
+    overflow: hidden;
+
+    border:
+        1px solid #dde6ef;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8fbff
+        );
+
+    transition:
+        transform .22s ease,
+        border-color .22s ease,
+        box-shadow .22s ease;
+}
+
+
+.tuning-page .tuning-benefit-card:hover {
+    transform:
+        translateY(-6px);
+
+    border-color:
+        #b9d2f3;
+
+    box-shadow:
+        0 20px 45px
+        rgba(20,45,80,.09);
+}
+
+
+/* NUMERO */
+
+.tuning-page .benefit-number {
+    margin-bottom: 35px;
+
+    color: #9aa7b6;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: .1em;
+}
+
+
+/* ICON */
+
+.tuning-page .benefit-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 23px;
+
+    border-radius: 11px;
+
+    background: #edf4ff;
+
+    color: #0759d8;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+
+.tuning-page
+.tuning-benefit-card:hover
+.benefit-icon {
+    background: #0759d8;
+
+    color: #ffffff;
+}
+
+
+/* TESTO */
+
+.tuning-page .tuning-benefit-card h3 {
+    margin:
+        0 0 10px;
+
+    color: #142b49;
+
+    font-size: 19px;
+}
+
+
+.tuning-page .tuning-benefit-card p {
+    margin: 0;
+
+    color: #6f7d8f;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* LINEA INFERIORE */
+
+.tuning-page
+.tuning-benefit-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 3px;
+
+    background: #0759d8;
+
+    transition:
+        width .25s ease;
+}
+
+
+.tuning-page
+.tuning-benefit-card:hover::after {
+    width: 100%;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1000px) {
+
+    .tuning-page
+    .tuning-benefits-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+    }
+
+}
+
+
+@media(max-width:550px) {
+
+    .tuning-page .tuning-benefits {
+        padding: 75px 0;
+    }
+
+
+    .tuning-page
+    .tuning-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tuning-page
+    .tuning-benefit-card {
+        min-height: auto;
+    }
+
+}
     </style>
 
 </head>
@@ -2916,6 +3165,133 @@ div div span {
                 </div>
 
             </div>
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- ============================
+         benefits
+         ============================ -->
+    <section class="tuning-benefits">
+
+    <div class="container">
+
+        <div class="benefits-heading reveal">
+
+            <span class="section-label">
+                Tuning Solution
+            </span>
+
+            <h2>
+                Pensato per rendere
+                il lavoro più semplice.
+            </h2>
+
+            <p>
+                Un ambiente di lavoro progettato
+                per velocizzare le operazioni quotidiane
+                e mantenere il software sempre aggiornato.
+            </p>
+
+        </div>
+
+
+        <div class="tuning-benefits-grid">
+
+
+            <article class="tuning-benefit-card reveal">
+
+                <span class="benefit-number">
+                    01
+                </span>
+
+                <div class="benefit-icon">
+                    UI
+                </div>
+
+                <h3>
+                    Smart Interface
+                </h3>
+
+                <p>
+                    Un'interfaccia chiara e immediata
+                    che permette di raggiungere rapidamente
+                    le funzioni disponibili.
+                </p>
+
+            </article>
+
+
+            <article class="tuning-benefit-card reveal">
+
+                <span class="benefit-number">
+                    02
+                </span>
+
+                <div class="benefit-icon">
+                    ∞
+                </div>
+
+                <h3>
+                    File illimitati
+                </h3>
+
+                <p>
+                    Lavora sui file supportati
+                    senza un sistema basato
+                    sul consumo di crediti per file.
+                </p>
+
+            </article>
+
+
+            <article class="tuning-benefit-card reveal">
+
+                <span class="benefit-number">
+                    03
+                </span>
+
+                <div class="benefit-icon">
+                    UP
+                </div>
+
+                <h3>
+                    Aggiornamenti continui
+                </h3>
+
+                <p>
+                    Nuove soluzioni, compatibilità
+                    e funzionalità vengono integrate
+                    attraverso gli aggiornamenti software.
+                </p>
+
+            </article>
+
+
+            <article class="tuning-benefit-card reveal">
+
+                <span class="benefit-number">
+                    04
+                </span>
+
+                <div class="benefit-icon">
+                    ?
+                </div>
+
+                <h3>
+                    Supporto tecnico
+                </h3>
+
+                <p>
+                    Assistenza dedicata per supportarti
+                    nell'utilizzo del software
+                    e nelle funzionalità disponibili.
+                </p>
+
+            </article>
+
 
         </div>
 
