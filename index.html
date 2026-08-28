@@ -496,11 +496,20 @@
                 event.clientX -
                 dragStartX;
 
-            if (
-                Math.abs(deltaX) > 5
-            ) {
+        if (
+            Math.abs(deltaX) > 5
+        ) {
+
+            if (!didDrag) {
+
                 didDrag = true;
-                              if (
+
+                track.classList.add(
+                    'is-dragging'
+                );
+
+
+                if (
                     !track.hasPointerCapture(
                         event.pointerId
                     )
@@ -511,6 +520,9 @@
                     );
                 }
             }
+        }
+           if (!didDrag)
+            return;
 
             position =
                 dragStartPosition -
