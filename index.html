@@ -478,9 +478,9 @@
                 'is-dragging'
             );
 
-            track.setPointerCapture(
+         /*   track.setPointerCapture(
                 event.pointerId
-            );
+            ); */
         }
     );
 
@@ -500,6 +500,16 @@
                 Math.abs(deltaX) > 5
             ) {
                 didDrag = true;
+                              if (
+                    !track.hasPointerCapture(
+                        event.pointerId
+                    )
+                ) {
+
+                    track.setPointerCapture(
+                        event.pointerId
+                    );
+                }
             }
 
             position =
