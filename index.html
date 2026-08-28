@@ -1086,16 +1086,28 @@
     function startAuto() {
 
         stopAuto();
+console.log(
+        'START AUTO',
+        {
+            cards: updateCards.length,
+            itemsPerPage: itemsPerPage,
+            totalPages: getTotalPages()
+        }
+    );
 
         if (
             getTotalPages() <= 1
         ) {
+          console.log(
+            'Autoplay non avviato: una sola pagina'
+        );
             return;
         }
 
 
         autoTimer =
             setInterval(
+            
                 nextPage,
                 6000
             );
