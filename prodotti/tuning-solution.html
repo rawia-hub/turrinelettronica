@@ -615,6 +615,467 @@ body {
     }
 
 }
+        /* =========================================
+   SOLUZIONI AUTOMATIZZATE
+   ========================================= */
+
+.tuning-page .tuning-solutions {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 110px 0;
+
+    background: #071b3a;
+}
+
+
+.tuning-page .tuning-solutions::before {
+    content: "";
+
+    position: absolute;
+
+    right: -250px;
+    top: -250px;
+
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.30),
+            transparent 68%
+        );
+}
+
+
+/* HEADER */
+
+.tuning-page .solutions-heading {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 760px;
+
+    margin-bottom: 50px;
+}
+
+
+.tuning-page .solutions-heading
+.section-label {
+    color: #66aaff;
+}
+
+
+.tuning-page .solutions-heading h2 {
+    margin:
+        0 0 16px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            52px
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -.025em;
+}
+
+
+.tuning-page .solutions-heading h2 span {
+    color: #66aaff;
+}
+
+
+.tuning-page .solutions-heading p {
+    max-width: 650px;
+
+    margin: 0;
+
+    color: #aebdd0;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   LAYOUT
+   ========================================= */
+
+.tuning-page .solutions-layout {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(270px,.7fr)
+        minmax(0,1.3fr);
+
+    gap: 28px;
+}
+
+
+/* =========================================
+   MENU SINISTRA
+   ========================================= */
+
+.tuning-page .solutions-selector {
+    display: grid;
+
+    gap: 7px;
+}
+
+
+.tuning-page .solution-button {
+    width: 100%;
+
+    min-height: 54px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    color: #aebdd0;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease;
+}
+
+
+.tuning-page .solution-button:hover {
+    transform:
+        translateX(4px);
+
+    border-color:
+        rgba(102,170,255,.45);
+
+    color: #ffffff;
+}
+
+
+.tuning-page .solution-button.active {
+    border-color: #0759d8;
+
+    background: #0759d8;
+
+    color: #ffffff;
+}
+
+
+.tuning-page .solution-arrow {
+    color: #66aaff;
+
+    transition:
+        transform .2s ease;
+}
+
+
+.tuning-page
+.solution-button.active
+.solution-arrow {
+    color: #ffffff;
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================
+   PANNELLO DESTRO
+   ========================================= */
+
+.tuning-page .solution-detail {
+    position: relative;
+
+    min-height: 520px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 55px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 16px;
+
+    background:
+        radial-gradient(
+            circle at 82% 25%,
+            rgba(7,89,216,.24),
+            transparent 37%
+        ),
+        rgba(255,255,255,.05);
+
+    box-shadow:
+        0 25px 60px
+        rgba(0,0,0,.16);
+}
+
+
+.tuning-page .solution-detail-top {
+    position: absolute;
+
+    top: 28px;
+    left: 32px;
+    right: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.tuning-page .solution-kicker {
+    color: #7790af;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: .13em;
+}
+
+
+.tuning-page .solution-index {
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+
+/* ICONA */
+
+.tuning-page .solution-icon {
+    width: 95px;
+    height: 95px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 27px;
+
+    border:
+        1px solid
+        rgba(102,170,255,.35);
+
+    border-radius: 22px;
+
+    background:
+        rgba(7,89,216,.18);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.12);
+}
+
+
+.tuning-page .solution-icon span {
+    color: #66aaff;
+
+    font-size: 23px;
+    font-weight: 900;
+
+    letter-spacing: -.03em;
+}
+
+
+.tuning-page .solution-detail h3 {
+    margin:
+        0 0 14px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            42px
+        );
+}
+
+
+.tuning-page .solution-detail > p {
+    max-width: 650px;
+
+    margin:
+        0 0 25px;
+
+    color: #b6c4d6;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* TAG */
+
+.tuning-page .solution-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.tuning-page .solution-tags span {
+    padding: 7px 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 20px;
+
+    color: #dce6f3;
+
+    background:
+        rgba(255,255,255,.04);
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+/* STATO */
+
+.tuning-page .solution-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 35px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.10);
+
+    color: #8195af;
+
+    font-size: 10px;
+}
+
+
+.tuning-page .solution-status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #43df83;
+
+    box-shadow:
+        0 0 10px
+        rgba(67,223,131,.7);
+}
+
+
+/* TRANSIZIONE */
+
+.tuning-page .solution-detail.changing {
+    opacity: .35;
+
+    transform:
+        translateY(5px);
+}
+
+
+.tuning-page .solution-detail {
+    transition:
+        opacity .18s ease,
+        transform .18s ease;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+
+    .tuning-page .solutions-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tuning-page .solutions-selector {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+    }
+
+}
+
+
+@media(max-width:550px) {
+
+    .tuning-page .tuning-solutions {
+        padding: 75px 0;
+    }
+
+
+    .tuning-page .solutions-selector {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tuning-page .solution-detail {
+        min-height: 440px;
+
+        padding:
+            70px 28px 32px;
+    }
+
+}
     </style>
 
 </head>
@@ -743,6 +1204,9 @@ body {
     </div>
 
 </section>
+    <!-- ==========================
+    tuning workflow
+    ============================= -->
 <section
     class="tuning-workflow"
     id="come-funziona">
@@ -868,7 +1332,219 @@ body {
     </div>
 
 </section>
+    <!-- ===================
+    Soluzioni automatizzate
+    ================== -->
+<section
+    class="tuning-solutions"
+    id="soluzioni">
 
+    <div class="container">
+
+        <div class="solutions-heading reveal">
+
+            <div>
+
+                <span class="section-label">
+                    Soluzioni automatizzate
+                </span>
+
+                <h2>
+                    Le funzioni che ti servono.
+                    <span>Pronte in pochi click.</span>
+                </h2>
+
+                <p>
+                    Seleziona una soluzione per scoprire
+                    le funzionalità disponibili
+                    nell'ambiente Tuning Solution.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="solutions-layout">
+
+
+            <!-- =========================
+                 MENU SOLUZIONI
+                 ========================= -->
+
+            <div class="solutions-selector reveal">
+
+                <button
+                    class="solution-button active"
+                    data-solution="dpf"
+                    type="button">
+
+                    <span>DPF / OPF</span>
+                    <span class="solution-arrow">→</span>
+
+                </button>
+
+
+                <button
+                    class="solution-button"
+                    data-solution="egr"
+                    type="button">
+
+                    <span>EGR</span>
+                    <span class="solution-arrow">→</span>
+
+                </button>
+
+
+                <button
+                    class="solution-button"
+                    data-solution="adblue"
+                    type="button">
+
+                    <span>NOx / AdBlue</span>
+                    <span class="solution-arrow">→</span>
+
+                </button>
+
+
+                <button
+                    class="solution-button"
+                    data-solution="lambda"
+                    type="button">
+
+                    <span>Lambda</span>
+                    <span class="solution-arrow">→</span>
+
+                </button>
+
+
+                <button
+                    class="solution-button"
+                    data-solution="speed"
+                    type="button">
+
+                    <span>Speed Limiter</span>
+                    <span class="solution-arrow">→</span>
+
+                </button>
+
+
+                <button
+                    class="solution-button"
+                    data-solution="swirl"
+                    type="button">
+
+                    <span>Swirl / Flap</span>
+                    <span class="solution-arrow">→</span>
+
+                </button>
+
+
+                <button
+                    class="solution-button"
+                    data-solution="torque"
+                    type="button">
+
+                    <span>Torque Monitor</span>
+                    <span class="solution-arrow">→</span>
+
+                </button>
+
+
+                <button
+                    class="solution-button"
+                    data-solution="special"
+                    type="button">
+
+                    <span>Funzioni speciali</span>
+                    <span class="solution-arrow">→</span>
+
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 DETTAGLIO SOLUZIONE
+                 ========================= -->
+
+            <div
+                class="solution-detail reveal"
+                id="solutionDetail">
+
+                <div class="solution-detail-top">
+
+                    <span class="solution-kicker">
+                        TUNING SOLUTION
+                    </span>
+
+                    <span
+                        id="solutionIndex"
+                        class="solution-index">
+                        01
+                    </span>
+
+                </div>
+
+
+                <div class="solution-icon">
+
+                    <span id="solutionIcon">
+                        DPF
+                    </span>
+
+                </div>
+
+
+                <h3 id="solutionTitle">
+                    DPF / OPF
+                </h3>
+
+
+                <p id="solutionText">
+                    Gestione della soluzione dedicata
+                    ai sistemi filtro antiparticolato
+                    supportati dal software.
+                </p>
+
+
+                <div
+                    id="solutionTags"
+                    class="solution-tags">
+
+                    <span>
+                        Diesel
+                    </span>
+
+                    <span>
+                        Benzina
+                    </span>
+
+                    <span>
+                        Automatico
+                    </span>
+
+                </div>
+
+
+                <div class="solution-status">
+
+                    <span class="solution-status-dot"></span>
+
+                    <span>
+                        Soluzione disponibile
+                        sulle ECU supportate
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
     <!-- =========================================
          AGGIORNAMENTI SUPABASE
@@ -1963,7 +2639,284 @@ document
         );
 
     });
-    loadMc3Updates();
+    /* =====================================
+   SOLUZIONI TUNING SOLUTION
+   ===================================== */
+
+const solutionData = {
+
+    dpf: {
+
+        index: '01',
+
+        icon: 'DPF',
+
+        title:
+            'DPF / OPF',
+
+        text:
+            'Gestione della soluzione dedicata ai sistemi filtro antiparticolato supportati dal software.',
+
+        tags: [
+            'DPF',
+            'OPF',
+            'Automatico'
+        ]
+
+    },
+
+
+    egr: {
+
+        index: '02',
+
+        icon: 'EGR',
+
+        title:
+            'EGR',
+
+        text:
+            'Soluzione automatizzata dedicata alla gestione delle funzioni EGR presenti nelle ECU supportate.',
+
+        tags: [
+            'EGR',
+            'ECU',
+            'Automatico'
+        ]
+
+    },
+
+
+    adblue: {
+
+        index: '03',
+
+        icon: 'NOx',
+
+        title:
+            'NOx / AdBlue',
+
+        text:
+            'Funzioni dedicate ai sistemi NOx e AdBlue disponibili sulle centraline compatibili.',
+
+        tags: [
+            'NOx',
+            'AdBlue',
+            'Diesel'
+        ]
+
+    },
+
+
+    lambda: {
+
+        index: '04',
+
+        icon: 'λ',
+
+        title:
+            'Lambda',
+
+        text:
+            'Soluzione dedicata alla gestione delle funzioni Lambda sulle ECU supportate.',
+
+        tags: [
+            'Lambda',
+            'Benzina',
+            'ECU'
+        ]
+
+    },
+
+
+    speed: {
+
+        index: '05',
+
+        icon: 'Vmax',
+
+        title:
+            'Speed Limiter',
+
+        text:
+            'Gestione delle funzioni relative al limite di velocità sulle centraline per cui la soluzione è disponibile.',
+
+        tags: [
+            'Speed',
+            'Limiter',
+            'Automatico'
+        ]
+
+    },
+
+
+    swirl: {
+
+        index: '06',
+
+        icon: 'FLAP',
+
+        title:
+            'Swirl / Flap',
+
+        text:
+            'Funzioni dedicate alla gestione dei sistemi Swirl e Flap presenti sulle configurazioni supportate.',
+
+        tags: [
+            'Swirl',
+            'Flap',
+            'Intake'
+        ]
+
+    },
+
+
+    torque: {
+
+        index: '07',
+
+        icon: 'Nm',
+
+        title:
+            'Torque Monitor',
+
+        text:
+            'Soluzione dedicata alla gestione delle strategie di monitoraggio della coppia sulle ECU compatibili.',
+
+        tags: [
+            'Torque',
+            'Monitor',
+            'ECU'
+        ]
+
+    },
+
+
+    special: {
+
+        index: '08',
+
+        icon: 'FX',
+
+        title:
+            'Funzioni speciali',
+
+        text:
+            'Tuning Solution include inoltre funzioni speciali disponibili in base alla centralina, tra cui Burbles, Launch Control e altre soluzioni dedicate.',
+
+        tags: [
+            'Burbles',
+            'Launch Control',
+            'Special'
+        ]
+
+    }
+
+};
+    function selectSolution(
+    key
+) {
+
+    const data =
+        solutionData[key];
+
+
+    if (!data)
+        return;
+
+
+    const detail =
+        document.getElementById(
+            'solutionDetail'
+        );
+
+
+    detail.classList.add(
+        'changing'
+    );
+
+
+    window.setTimeout(
+        () => {
+
+            document.getElementById(
+                'solutionIndex'
+            ).textContent =
+                data.index;
+
+
+            document.getElementById(
+                'solutionIcon'
+            ).textContent =
+                data.icon;
+
+
+            document.getElementById(
+                'solutionTitle'
+            ).textContent =
+                data.title;
+
+
+            document.getElementById(
+                'solutionText'
+            ).textContent =
+                data.text;
+
+
+            document.getElementById(
+                'solutionTags'
+            ).innerHTML =
+                data.tags
+                    .map(
+                        tag =>
+                            `<span>${tag}</span>`
+                    )
+                    .join('');
+
+
+            detail.classList.remove(
+                'changing'
+            );
+
+        },
+        160
+    );
+
+
+    document
+        .querySelectorAll(
+            '.solution-button'
+        )
+        .forEach(button => {
+
+            button.classList.toggle(
+                'active',
+                button.dataset.solution ===
+                    key
+            );
+
+        });
+
+}
+    document
+    .querySelectorAll(
+        '.solution-button'
+    )
+    .forEach(button => {
+
+        button.addEventListener(
+            'click',
+            () => {
+
+                selectSolution(
+                    button.dataset.solution
+                );
+
+            }
+        );
+
+    });
+    loadTuningUpdates();
 /* =====================================
    AGGIORNAMENTI MC3 IN TEMPO REALE
    ===================================== */
@@ -1985,12 +2938,12 @@ const mc3UpdatesChannel =
             payload => {
 
                 console.log(
-                    'Aggiornamento MC3 ricevuto:',
+                    'Aggiornamento Tuning ricevuto:',
                     payload
                 );
 
 
-                loadMc3Updates();
+                loadTuningUpdates();
 
             }
         )
