@@ -45,7 +45,266 @@
 body {
     margin: 0;
 }
-       
+       /* =========================================
+   HERO TUNING SOLUTION
+   ========================================= */
+
+.tuning-page .tuning-hero {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 105px 0 95px;
+
+    background:
+        radial-gradient(
+            circle at 82% 40%,
+            rgba(7,89,216,.13),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f7faff 58%,
+            #edf4ff
+        );
+}
+
+
+.tuning-page .tuning-hero-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(420px,.95fr);
+
+    align-items: center;
+
+    gap: 75px;
+}
+
+
+.tuning-page .product-kicker {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: #0759d8;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: .13em;
+
+    text-transform: uppercase;
+}
+
+
+.tuning-page .tuning-hero h1 {
+    margin: 0;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            52px,
+            7vw,
+            82px
+        );
+
+    line-height: .95;
+
+    letter-spacing: -.05em;
+}
+
+
+.tuning-page .tuning-hero h1 span {
+    color: #0759d8;
+}
+
+
+.tuning-page .tuning-hero h2 {
+    max-width: 650px;
+
+    margin:
+        25px 0 18px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            45px
+        );
+
+    line-height: 1.1;
+}
+
+
+.tuning-page .tuning-hero h2 span {
+    color: #0759d8;
+}
+
+
+.tuning-page .tuning-hero p {
+    max-width: 610px;
+
+    margin:
+        0 0 25px;
+
+    color: #617084;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+.tuning-page .tuning-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 30px;
+}
+
+
+.tuning-page .tuning-tags span {
+    padding: 7px 11px;
+
+    border: 1px solid #d8e3ef;
+    border-radius: 30px;
+
+    background: #ffffff;
+
+    color: #415168;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+/* VISUAL */
+
+.tuning-page .tuning-hero-visual {
+    position: relative;
+
+    min-height: 470px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.tuning-page .tuning-screen-glow {
+    position: absolute;
+
+    width: 410px;
+    height: 410px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.22),
+            transparent 68%
+        );
+}
+
+
+.tuning-page .tuning-hero-visual img {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    max-height: 440px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 30px 30px
+            rgba(7,27,58,.20)
+        );
+}
+
+
+.tuning-page .tuning-floating-card {
+    position: absolute;
+
+    z-index: 3;
+
+    padding: 12px 15px;
+
+    border: 1px solid #d7e2ee;
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    box-shadow:
+        0 14px 35px
+        rgba(20,45,80,.12);
+}
+
+
+.tuning-page .tuning-floating-card span {
+    display: block;
+
+    color: #8290a2;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.tuning-page .tuning-floating-card strong {
+    color: #172a45;
+
+    font-size: 11px;
+}
+
+
+.tuning-page .tuning-card-top {
+    right: 0;
+    top: 18%;
+}
+
+
+.tuning-page .tuning-card-bottom {
+    left: 2%;
+    bottom: 16%;
+}
+
+
+@media(max-width:950px) {
+
+    .tuning-page .tuning-hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .tuning-page .tuning-hero {
+        padding: 65px 0;
+    }
+
+
+    .tuning-page
+    .tuning-floating-card {
+        display: none;
+    }
+
+}
         /* =========================================
            CTA
            ========================================= */
@@ -228,6 +487,134 @@ body {
     transform:
         translateY(0);
 }
+        /* =========================================
+   WORKFLOW TUNING SOLUTION
+   ========================================= */
+
+.tuning-page .tuning-workflow {
+    padding: 110px 0;
+
+    background: #ffffff;
+}
+
+
+.tuning-page .tuning-workflow-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0,1fr)
+        );
+
+    gap: 16px;
+
+    margin-top: 45px;
+}
+
+
+.tuning-page .workflow-step {
+    position: relative;
+
+    min-height: 285px;
+
+    padding: 27px;
+
+    border: 1px solid #e0e7ef;
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.tuning-page .workflow-step:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 18px 40px
+        rgba(20,45,80,.09);
+}
+
+
+.tuning-page .workflow-number {
+    display: block;
+
+    margin-bottom: 25px;
+
+    color: #8491a3;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+.tuning-page .workflow-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+    border-radius: 10px;
+
+    background: #edf4ff;
+    color: #0759d8;
+
+    font-size: 19px;
+    font-weight: 900;
+}
+
+
+.tuning-page .workflow-step h3 {
+    margin:
+        0 0 10px;
+
+    color: #071b3a;
+
+    font-size: 19px;
+}
+
+
+.tuning-page .workflow-step p {
+    margin: 0;
+
+    color: #677588;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+@media(max-width:900px) {
+
+    .tuning-page .tuning-workflow-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+    }
+
+}
+
+
+@media(max-width:550px) {
+
+    .tuning-page .tuning-workflow-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
     </style>
 
 </head>
@@ -359,340 +746,250 @@ body {
 
 
 
-    <!-- =========================================
-         PANORAMICA
-         ========================================= -->
-
 <section
-    class="mc3-story"
-    id="funzionalita">
+    class="tuning-workflow"
+    id="come-funziona">
 
-    <div class="container mc3-story-grid">
+    <div class="container">
 
-        <div class="mc3-story-visual">
+        <div class="section-heading center reveal">
 
-            <div class="mc3-device-stage">
+            <span class="section-label">
+                Workflow
+            </span>
 
-                <div class="device-glow"></div>
+            <h2>
+                Dal file alla soluzione
+                in pochi passaggi.
+            </h2>
 
-                <img
-                    src="../images/products/mc3.webp"
-                    alt="MC3 Turrin Elettronica"
-                >
-
-                <span class="device-tag tag-obd">
-                    OBD
-                </span>
-
-                <span class="device-tag tag-bench">
-                    BENCH
-                </span>
-
-                <span class="device-tag tag-boot">
-                    BOOT
-                </span>
-
-            </div>
+            <p>
+                Un flusso di lavoro pensato
+                per ridurre i tempi e rendere
+                immediata la gestione del file ECU.
+            </p>
 
         </div>
 
 
-        <div class="mc3-story-content">
-
-            <div class="story-intro reveal">
-
-                <span class="section-label">
-                    Come funziona
-                </span>
-
-                <h2>
-                    Dalla centralina al file
-                    in pochi passaggi.
-                </h2>
-
-                <p>
-                    MC3 combina hardware e software
-                    in un unico ambiente di lavoro
-                    progettato per guidare l'operatore
-                    durante ogni fase della programmazione.
-                </p>
-
-            </div>
+        <div class="tuning-workflow-grid">
 
 
-            <article class="story-step reveal">
+            <article class="workflow-step reveal">
 
-                <span class="story-number">
+                <span class="workflow-number">
                     01
                 </span>
 
-                <div>
-
-                    <h3>
-                        Seleziona la centralina
-                    </h3>
-
-                    <p>
-                        Scegli marca, modello e tipo
-                        di centralina dal software MC3.
-                        Il sistema mostra le modalità
-                        disponibili.
-                    </p>
-
+                <div class="workflow-icon">
+                    ⇧
                 </div>
+
+                <h3>
+                    Carica il file
+                </h3>
+
+                <p>
+                    Apri nel software il file
+                    letto dalla centralina.
+                </p>
 
             </article>
 
 
-            <article class="story-step reveal">
+            <article class="workflow-step reveal">
 
-                <span class="story-number">
+                <span class="workflow-number">
                     02
                 </span>
 
-                <div>
-
-                    <h3>
-                        Segui il collegamento
-                    </h3>
-
-                    <p>
-                        Pinout, connessioni e indicazioni
-                        operative vengono presentati
-                        direttamente nell'interfaccia.
-                    </p>
-
+                <div class="workflow-icon">
+                    ◉
                 </div>
+
+                <h3>
+                    Analisi automatica
+                </h3>
+
+                <p>
+                    Tuning Solution identifica
+                    il file e ricerca le soluzioni
+                    disponibili.
+                </p>
 
             </article>
 
 
-            <article class="story-step reveal">
+            <article class="workflow-step reveal">
 
-                <span class="story-number">
+                <span class="workflow-number">
                     03
                 </span>
 
-                <div>
-
-                    <h3>
-                        Identifica la ECU
-                    </h3>
-
-                    <p>
-                        MC3 identifica i dati disponibili
-                        della centralina prima di procedere
-                        con le operazioni.
-                    </p>
-
+                <div class="workflow-icon">
+                    ✓
                 </div>
+
+                <h3>
+                    Scegli la soluzione
+                </h3>
+
+                <p>
+                    Seleziona le funzioni
+                    che vuoi applicare
+                    direttamente dall'interfaccia.
+                </p>
 
             </article>
 
 
-            <article class="story-step reveal">
+            <article class="workflow-step reveal">
 
-                <span class="story-number">
+                <span class="workflow-number">
                     04
                 </span>
 
-                <div>
-
-                    <h3>
-                        Leggi e scrivi
-                    </h3>
-
-                    <p>
-                        Esegui le operazioni supportate
-                        su EEPROM, Micro e Flash tramite
-                        OBD, Bench oppure Boot.
-                    </p>
-
+                <div class="workflow-icon">
+                    ↓
                 </div>
+
+                <h3>
+                    Processa il file
+                </h3>
+
+                <p>
+                    Ottieni il file elaborato
+                    pronto per la successiva
+                    fase di lavoro.
+                </p>
 
             </article>
 
+
         </div>
 
     </div>
 
 </section>
-
-
-
-    <!-- =========================================
-         MODALITÀ
-         ========================================= -->
-
-<section class="mc3-modes">
+<section
+    class="tuning-workflow"
+    id="come-funziona">
 
     <div class="container">
 
         <div class="section-heading center reveal">
 
             <span class="section-label">
-                Modalità operative
+                Workflow
             </span>
 
             <h2>
-                Scegli come lavorare
+                Dal file alla soluzione
+                in pochi passaggi.
             </h2>
 
             <p>
-                MC3 supporta diverse modalità
-                operative in base alla centralina
-                e all'intervento da eseguire.
+                Un flusso di lavoro pensato
+                per ridurre i tempi e rendere
+                immediata la gestione del file ECU.
             </p>
 
         </div>
 
 
-        <div class="mode-tabs">
-
-            <button
-                class="mode-tab active"
-                data-mode="obd"
-                type="button">
-                OBD
-            </button>
-
-            <button
-                class="mode-tab"
-                data-mode="bench"
-                type="button">
-                Bench
-            </button>
-
-            <button
-                class="mode-tab"
-                data-mode="boot"
-                type="button">
-                Boot
-            </button>
-
-        </div>
+        <div class="tuning-workflow-grid">
 
 
-        <div class="mode-panel reveal">
+            <article class="workflow-step reveal">
 
-            <div>
-
-                <span
-                    id="modeLabel"
-                    class="mode-label">
-                    OBD
+                <span class="workflow-number">
+                    01
                 </span>
 
-                <h3 id="modeTitle">
-                    Lavora direttamente dal veicolo
+                <div class="workflow-icon">
+                    ⇧
+                </div>
+
+                <h3>
+                    Carica il file
                 </h3>
 
-                <p id="modeText">
-                    Collegati attraverso la presa
-                    diagnostica senza rimuovere
-                    o aprire la centralina.
+                <p>
+                    Apri nel software il file
+                    letto dalla centralina.
                 </p>
 
-                <ul id="modeFeatures">
-
-                    <li>
-                        Collegamento rapido
-                    </li>
-
-                    <li>
-                        Nessuna apertura ECU
-                    </li>
-
-                    <li>
-                        Lettura e scrittura supportate
-                    </li>
-
-                </ul>
-
-            </div>
+            </article>
 
 
- <div
-    class="mode-visual"
-    id="modeVisual"
-    data-mode="obd">
+            <article class="workflow-step reveal">
 
-    <div class="mode-diagram">
+                <span class="workflow-number">
+                    02
+                </span>
 
-        <div class="diagram-node diagram-source">
+                <div class="workflow-icon">
+                    ◉
+                </div>
 
-            <span class="diagram-small">
-                SORGENTE
-            </span>
+                <h3>
+                    Analisi automatica
+                </h3>
 
-            <strong id="diagramSource">
-                VEICOLO
-            </strong>
+                <p>
+                    Tuning Solution identifica
+                    il file e ricerca le soluzioni
+                    disponibili.
+                </p>
 
-        </div>
-
-
-        <div class="diagram-connection">
-
-            <span class="connection-dot"></span>
-
-            <span class="connection-line"></span>
-
-            <span class="connection-dot"></span>
-
-        </div>
+            </article>
 
 
-        <div class="diagram-node diagram-middle">
+            <article class="workflow-step reveal">
 
-            <span class="diagram-small">
-                COLLEGAMENTO
-            </span>
+                <span class="workflow-number">
+                    03
+                </span>
 
-            <strong id="diagramConnection">
-                PRESA OBD
-            </strong>
+                <div class="workflow-icon">
+                    ✓
+                </div>
 
-        </div>
+                <h3>
+                    Scegli la soluzione
+                </h3>
 
+                <p>
+                    Seleziona le funzioni
+                    che vuoi applicare
+                    direttamente dall'interfaccia.
+                </p>
 
-        <div class="diagram-connection">
-
-            <span class="connection-dot"></span>
-
-            <span class="connection-line"></span>
-
-            <span class="connection-dot"></span>
-
-        </div>
-
-
-        <div class="diagram-node diagram-mc3">
-
-            <span class="diagram-small">
-                PROGRAMMATORE
-            </span>
-
-            <strong>
-                MC3
-            </strong>
-
-        </div>
-
-    </div>
+            </article>
 
 
-    <div class="diagram-status">
+            <article class="workflow-step reveal">
 
-        <span class="status-light"></span>
+                <span class="workflow-number">
+                    04
+                </span>
 
-        <span id="diagramStatus">
-            Collegamento OBD
-        </span>
+                <div class="workflow-icon">
+                    ↓
+                </div>
 
-    </div>
+                <h3>
+                    Processa il file
+                </h3>
 
-</div>
+                <p>
+                    Ottieni il file elaborato
+                    pronto per la successiva
+                    fase di lavoro.
+                </p>
+
+            </article>
+
 
         </div>
 
@@ -700,413 +997,6 @@ body {
 
 </section>
 
-
-
-    <!-- =========================================
-         PACCHETTI
-         ========================================= -->
-
-<section class="mc3-packages">
-
-    <div class="container">
-
-        <div class="section-heading center reveal">
-
-            <span class="section-label">
-                Configurabile
-            </span>
-
-            <h2>
-                Un MC3.
-                I pacchetti che ti servono.
-            </h2>
-
-            <p>
-                Configura il sistema in base alle
-                tipologie di centraline su cui lavori.
-            </p>
-
-        </div>
-
-
-        <div class="package-selector">
-
-            <button
-                class="package-button active"
-                data-package="ecu"
-                type="button">
-                ECU OBD & Boot
-            </button>
-
-            <button
-                class="package-button"
-                data-package="bench"
-                type="button">
-                ECU Bench
-            </button>
-
-            <button
-                class="package-button"
-                data-package="airbag"
-                type="button">
-                Airbag
-            </button>
-
-            <button
-                class="package-button"
-                data-package="body"
-                type="button">
-                Body / BSI
-            </button>
-
-            <button
-                class="package-button"
-                data-package="abs"
-                type="button">
-                ABS
-            </button>
-
-            <button
-                class="package-button"
-                data-package="adas"
-                type="button">
-                ADAS
-            </button>
-
-            <button
-                class="package-button"
-                data-package="cluster"
-                type="button">
-                Cluster
-            </button>
-
-            <button
-                class="package-button"
-                data-package="eps"
-                type="button">
-                EPS
-            </button>
-
-        </div>
-
-
-        <div class="package-detail reveal">
-
-            <div class="package-detail-content">
-
-                <span
-                    id="packageLabel"
-                    class="package-detail-label">
-                    PACCHETTO MC3
-                </span>
-
-                <h3 id="packageTitle">
-                    ECU OBD & Boot
-                </h3>
-
-                <p id="packageText">
-                    Operazioni di lettura e scrittura
-                    sulle centraline motore supportate
-                    tramite OBD e Boot.
-                </p>
-
-
-                <ul id="packageFeatures">
-
-                    <li>
-                        Lettura ECU
-                    </li>
-
-                    <li>
-                        Scrittura ECU
-                    </li>
-
-                    <li>
-                        Procedure guidate
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <div class="package-detail-visual">
-
-                <span>
-                    MC3
-                </span>
-
-                <strong id="packageVisual">
-                    ECU
-                </strong>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-    <!-- =========================================
-         KIT
-         ========================================= -->
-
-<section class="mc3-kit-section">
-
-    <div class="container">
-
-        <div class="section-heading center reveal">
-
-            <span class="section-label">
-                Hardware
-            </span>
-
-            <h2>
-                Tutto quello che ti serve.
-                In un unico kit.
-            </h2>
-
-            <p>
-                MC3 viene fornito con gli accessori
-                necessari per lavorare nelle principali
-                modalità operative.
-            </p>
-
-        </div>
-
-
-        <div class="mc3-kit-grid">
-
-            <!-- =========================
-                 IMMAGINE KIT
-                 ========================= -->
-
-            <div class="mc3-kit-visual reveal">
-
-                <div class="kit-image-stage">
-
-                    <div class="kit-image-glow"></div>
-
-                    <img
-                        src="../images/products/mc3-kit.webp"
-                        alt="Kit completo MC3"
-                        class="kit-main-image"
-                    >
-
-
-                    <!-- HOTSPOT -->
-
-                    <button
-                        class="kit-hotspot active"
-                        data-kit="device"
-                        type="button"
-                        aria-label="Dispositivo MC3"
-                        style="left:48%; top:42%;">
-
-                        <span>1</span>
-
-                    </button>
-
-
-                    <button
-                        class="kit-hotspot"
-                        data-kit="obd"
-                        type="button"
-                        aria-label="Cavo OBD"
-                        style="left:22%; top:62%;">
-
-                        <span>2</span>
-
-                    </button>
-
-
-                    <button
-                        class="kit-hotspot"
-                        data-kit="bench"
-                        type="button"
-                        aria-label="Cavo Bench Boot"
-                        style="left:72%; top:60%;">
-
-                        <span>3</span>
-
-                    </button>
-
-
-                    <button
-                        class="kit-hotspot"
-                        data-kit="power"
-                        type="button"
-                        aria-label="Alimentatore"
-                        style="left:78%; top:27%;">
-
-                        <span>4</span>
-
-                    </button>
-
-
-                    <button
-                        class="kit-hotspot"
-                        data-kit="usb"
-                        type="button"
-                        aria-label="Cavo USB"
-                        style="left:30%; top:28%;">
-
-                        <span>5</span>
-
-                    </button>
-
-                </div>
-
-
-                <div class="kit-visual-caption">
-
-                    <span>
-                        Passa sui punti per esplorare il kit
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-                 CONTENUTO
-                 ========================= -->
-
-            <div class="mc3-kit-content reveal">
-
-                <span class="kit-label">
-                    KIT MC3
-                </span>
-
-
-                <h3 id="kitTitle">
-                    Programmatore MC3
-                </h3>
-
-
-                <p id="kitDescription">
-
-                    Il cuore del sistema.
-                    L'interfaccia hardware collega
-                    il computer alla centralina e
-                    gestisce le operazioni supportate
-                    tramite OBD, Bench e Boot.
-
-                </p>
-
-
-                <div class="kit-items">
-
-
-                    <button
-                        class="kit-item-button active"
-                        data-kit="device"
-                        type="button">
-
-                        <span class="kit-item-number">
-                            01
-                        </span>
-
-                        <span>
-                            Programmatore MC3
-                        </span>
-
-                    </button>
-
-
-                    <button
-                        class="kit-item-button"
-                        data-kit="obd"
-                        type="button">
-
-                        <span class="kit-item-number">
-                            02
-                        </span>
-
-                        <span>
-                            Cavo OBD
-                        </span>
-
-                    </button>
-
-
-                    <button
-                        class="kit-item-button"
-                        data-kit="bench"
-                        type="button">
-
-                        <span class="kit-item-number">
-                            03
-                        </span>
-
-                        <span>
-                            Cavo Bench / Boot
-                        </span>
-
-                    </button>
-
-
-                    <button
-                        class="kit-item-button"
-                        data-kit="power"
-                        type="button">
-
-                        <span class="kit-item-number">
-                            04
-                        </span>
-
-                        <span>
-                            Alimentatore MC3
-                        </span>
-
-                    </button>
-
-
-                    <button
-                        class="kit-item-button"
-                        data-kit="usb"
-                        type="button">
-
-                        <span class="kit-item-number">
-                            05
-                        </span>
-
-                        <span>
-                            Cavo USB A-B
-                        </span>
-
-                    </button>
-
-
-                    <button
-                        class="kit-item-button"
-                        data-kit="case"
-                        type="button">
-
-                        <span class="kit-item-number">
-                            06
-                        </span>
-
-                        <span>
-                            Valigia
-                        </span>
-
-                    </button>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
 
 
     <!-- =========================================
@@ -1316,7 +1206,7 @@ body {
 
 
             <a
-                href="../aggiornamenti.html?product=mc3"
+                href="../aggiornamenti.html?product=tuning"
                 class="updates-all-link">
 
                 Tutti gli aggiornamenti
@@ -1466,7 +1356,7 @@ body {
        CARICA ULTIMI AGGIORNAMENTI
        ========================================= */
 
-    async function loadMc3Updates() {
+    async function loadTuningUpdates() {
 
         const {
             data,
@@ -1489,7 +1379,7 @@ body {
                 )
                 .eq(
                     'product_key',
-                    'mc3'
+                    'tuning'
                 )
                 .order(
                     'published_at',
