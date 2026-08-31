@@ -288,117 +288,275 @@ body {
     transform:
         translateY(0);
 }
-        /* =========================================
-   WORKFLOW TUNING SOLUTION
+/* =========================================
+   T-RACE PRO WORKFLOW
    ========================================= */
 
-.tuning-page .tuning-workflow {
+.trace-page .trace-workflow {
     padding: 110px 0;
 
     background: #ffffff;
 }
 
 
-.tuning-page .tuning-workflow-grid {
+.trace-page .trace-workflow .section-heading {
+    max-width: 760px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+}
+
+
+.trace-page .trace-workflow .section-heading h2 {
+    margin: 0 0 15px;
+
+    color: #071b3a;
+
+    font-size: clamp(
+        35px,
+        5vw,
+        52px
+    );
+
+    line-height: 1.08;
+
+    letter-spacing: -.025em;
+}
+
+
+.trace-page .trace-workflow .section-heading p {
+    max-width: 650px;
+
+    margin:
+        0 auto;
+
+    color: #657489;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* GRID */
+
+.trace-page .trace-workflow-grid {
     display: grid;
 
     grid-template-columns:
         repeat(
             4,
-            minmax(0,1fr)
+            minmax(0, 1fr)
         );
 
     gap: 16px;
 
-    margin-top: 45px;
+    margin-top: 48px;
 }
 
 
-.tuning-page .workflow-step {
+/* CARD */
+
+.trace-page .trace-workflow-step {
     position: relative;
 
-    min-height: 285px;
+    min-height: 310px;
+
+    display: flex;
+    flex-direction: column;
 
     padding: 27px;
 
-    border: 1px solid #e0e7ef;
-    border-radius: 13px;
+    overflow: hidden;
 
-    background: #ffffff;
+    border:
+        1px solid #dfe7f0;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8fbff
+        );
 
     transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+        transform .22s ease,
+        border-color .22s ease,
+        box-shadow .22s ease;
 }
 
 
-.tuning-page .workflow-step:hover {
+.trace-page .trace-workflow-step:hover {
     transform:
         translateY(-5px);
 
+    border-color:
+        #bfd4ef;
+
     box-shadow:
         0 18px 40px
-        rgba(20,45,80,.09);
+        rgba(20, 45, 80, .09);
 }
 
 
-.tuning-page .workflow-number {
+/* NUMERO */
+
+.trace-page .trace-step-number {
     display: block;
 
-    margin-bottom: 25px;
+    margin-bottom: 27px;
 
-    color: #8491a3;
+    color: #96a4b5;
 
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 900;
+
+    letter-spacing: .1em;
 }
 
 
-.tuning-page .workflow-icon {
-    width: 45px;
-    height: 45px;
+/* ICONA */
+
+.trace-page .trace-step-icon {
+    width: 48px;
+    height: 48px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     margin-bottom: 22px;
 
-    border-radius: 10px;
+    border-radius: 11px;
 
     background: #edf4ff;
+
     color: #0759d8;
 
-    font-size: 19px;
+    font-size: 12px;
     font-weight: 900;
 }
 
 
-.tuning-page .workflow-step h3 {
+.trace-page .trace-workflow-step h3 {
     margin:
         0 0 10px;
 
-    color: #071b3a;
+    color: #132b49;
 
-    font-size: 19px;
+    font-size: 18px;
+
+    line-height: 1.25;
 }
 
 
-.tuning-page .workflow-step p {
+.trace-page .trace-workflow-step > p {
     margin: 0;
 
-    color: #677588;
+    color: #6e7c8f;
 
-    font-size: 13px;
+    font-size: 12px;
 
-    line-height: 1.65;
+    line-height: 1.7;
 }
 
 
-@media(max-width:900px) {
+/* STEP PRINCIPALE */
 
-    .tuning-page .tuning-workflow-grid {
+.trace-page .trace-workflow-highlight {
+    border-color:
+        rgba(7, 89, 216, .28);
+
+    background:
+        linear-gradient(
+            180deg,
+            #f6faff,
+            #edf4ff
+        );
+}
+
+
+.trace-page .trace-workflow-highlight::before {
+    content: "";
+
+    position: absolute;
+
+    right: -80px;
+    top: -80px;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7, 89, 216, .12),
+            transparent 70%
+        );
+}
+
+
+/* OPZIONI */
+
+.trace-page .trace-step-options {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+
+.trace-page .trace-step-options span {
+    padding:
+        6px 8px;
+
+    border:
+        1px solid #cddcf0;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,.8);
+
+    color: #37516f;
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+
+.trace-page
+.trace-workflow-highlight
+.trace-step-options span:nth-child(2),
+.trace-page
+.trace-workflow-highlight
+.trace-step-options span:nth-child(3) {
+
+    border-color:
+        rgba(7,89,216,.18);
+
+    background:
+        #0759d8;
+
+    color: #ffffff;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1000px) {
+
+    .trace-page .trace-workflow-grid {
         grid-template-columns:
             repeat(
                 2,
@@ -411,11 +569,26 @@ body {
 
 @media(max-width:550px) {
 
-    .tuning-page .tuning-workflow-grid {
+    .trace-page .trace-workflow {
+        padding: 75px 0;
+    }
+
+
+    .trace-page .trace-workflow-grid {
         grid-template-columns: 1fr;
     }
 
+
+    .trace-page .trace-workflow-step {
+        min-height: auto;
+    }
+
 }
+
+
+
+
+
         /* =========================================
    SOLUZIONI AUTOMATIZZATE
    ========================================= */
@@ -3318,8 +3491,8 @@ div div span {
     tuning workflow
     ============================= -->
 <section
-    class="tuning-workflow"
-    id="come-funziona">
+    class="trace-workflow"
+    id="workflow">
 
     <div class="container">
 
@@ -3330,29 +3503,28 @@ div div span {
             </span>
 
             <h2>
-                Dal file alla soluzione
-                in pochi passaggi.
+                Dal file originale
+                alla calibrazione.
             </h2>
 
             <p>
-                Un flusso di lavoro pensato
-                per ridurre i tempi e rendere
-                immediata la gestione del file ECU.
+                T-Race Pro ti permette di scegliere
+                come lavorare: modifica manuale delle mappe
+                oppure Stage1 e Stage1 Plus automatici.
             </p>
 
         </div>
 
 
-        <div class="tuning-workflow-grid">
+        <div class="trace-workflow-grid">
 
+            <article class="trace-workflow-step reveal">
 
-            <article class="workflow-step reveal">
-
-                <span class="workflow-number">
+                <span class="trace-step-number">
                     01
                 </span>
 
-                <div class="workflow-icon">
+                <div class="trace-step-icon">
                     ⇧
                 </div>
 
@@ -3361,81 +3533,98 @@ div div span {
                 </h3>
 
                 <p>
-                    Apri nel software il file
-                    letto dalla centralina.
+                    Apri il file originale letto
+                    dalla centralina direttamente
+                    all'interno di T-Race Pro.
                 </p>
 
             </article>
 
 
-            <article class="workflow-step reveal">
+            <article class="trace-workflow-step reveal">
 
-                <span class="workflow-number">
+                <span class="trace-step-number">
                     02
                 </span>
 
-                <div class="workflow-icon">
-                    ◉
+                <div class="trace-step-icon">
+                    ECU
                 </div>
 
                 <h3>
-                    Analisi automatica
+                    Seleziona Marca ed ECU
                 </h3>
 
                 <p>
-                    Tuning Solution identifica
-                    il file e ricerca le soluzioni
-                    disponibili.
+                    Seleziona il driver corrispondente
+                    alla marca e alla centralina
+                    sulla quale stai lavorando.
                 </p>
 
             </article>
 
 
-            <article class="workflow-step reveal">
+            <article class="trace-workflow-step trace-workflow-highlight reveal">
 
-                <span class="workflow-number">
+                <span class="trace-step-number">
                     03
                 </span>
 
-                <div class="workflow-icon">
-                    ✓
+                <div class="trace-step-icon">
+                    MAP
                 </div>
 
                 <h3>
-                    Scegli la soluzione
+                    Scegli come lavorare
                 </h3>
 
                 <p>
-                    Seleziona le funzioni
-                    che vuoi applicare
-                    direttamente dall'interfaccia.
+                    Modifica manualmente le mappe
+                    oppure utilizza le funzioni automatiche
+                    Stage1 e Stage1 Plus.
                 </p>
+
+
+                <div class="trace-step-options">
+
+                    <span>
+                        Manual Editing
+                    </span>
+
+                    <span>
+                        Stage1
+                    </span>
+
+                    <span>
+                        Stage1 Plus
+                    </span>
+
+                </div>
 
             </article>
 
 
-            <article class="workflow-step reveal">
+            <article class="trace-workflow-step reveal">
 
-                <span class="workflow-number">
+                <span class="trace-step-number">
                     04
                 </span>
 
-                <div class="workflow-icon">
+                <div class="trace-step-icon">
                     ↓
                 </div>
 
                 <h3>
-                    Processa il file
+                    Salva il file
                 </h3>
 
                 <p>
-                    Ottieni il file elaborato
-                    pronto per la successiva
-                    fase di lavoro.
+                    Completa le modifiche e salva
+                    il file elaborato pronto
+                    per la fase successiva.
                 </p>
 
             </article>
-
 
         </div>
 
