@@ -585,17 +585,12 @@ body {
 
 }
 
-
-
-
-
-        /* =========================================
-   SOLUZIONI AUTOMATIZZATE
+/* =========================================
+   MANUAL / STAGE1 / STAGE1 PLUS
    ========================================= */
 
-.tuning-page .tuning-solutions {
+.trace-page .trace-editing {
     position: relative;
-
     overflow: hidden;
 
     padding: 110px 0;
@@ -604,16 +599,16 @@ body {
 }
 
 
-.tuning-page .tuning-solutions::before {
+.trace-page .trace-editing::before {
     content: "";
 
     position: absolute;
 
-    right: -250px;
-    top: -250px;
+    right: -240px;
+    top: -260px;
 
-    width: 700px;
-    height: 700px;
+    width: 720px;
+    height: 720px;
 
     border-radius: 50%;
 
@@ -628,26 +623,24 @@ body {
 
 /* HEADER */
 
-.tuning-page .solutions-heading {
+.trace-page .trace-editing-heading {
     position: relative;
-
     z-index: 2;
 
     max-width: 760px;
 
-    margin-bottom: 50px;
+    margin-bottom: 48px;
 }
 
 
-.tuning-page .solutions-heading
+.trace-page .trace-editing-heading
 .section-label {
     color: #66aaff;
 }
 
 
-.tuning-page .solutions-heading h2 {
-    margin:
-        0 0 16px;
+.trace-page .trace-editing-heading h2 {
+    margin: 0 0 16px;
 
     color: #ffffff;
 
@@ -664,13 +657,13 @@ body {
 }
 
 
-.tuning-page .solutions-heading h2 span {
+.trace-page .trace-editing-heading h2 span {
     color: #66aaff;
 }
 
 
-.tuning-page .solutions-heading p {
-    max-width: 650px;
+.trace-page .trace-editing-heading p {
+    max-width: 640px;
 
     margin: 0;
 
@@ -682,61 +675,58 @@ body {
 }
 
 
-/* =========================================
-   LAYOUT
-   ========================================= */
+/* LAYOUT */
 
-.tuning-page .solutions-layout {
+.trace-page .trace-editing-layout {
     position: relative;
-
     z-index: 2;
 
     display: grid;
 
     grid-template-columns:
-        minmax(270px,.7fr)
+        minmax(280px,.7fr)
         minmax(0,1.3fr);
 
     gap: 28px;
 }
 
 
-/* =========================================
-   MENU SINISTRA
-   ========================================= */
+/* SELECTOR */
 
-.tuning-page .solutions-selector {
+.trace-page .trace-editing-selector {
     display: grid;
 
-    gap: 7px;
+    gap: 10px;
 }
 
 
-.tuning-page .solution-button {
+.trace-page .trace-editing-button {
+    position: relative;
+
     width: 100%;
 
-    min-height: 54px;
+    min-height: 95px;
 
-    display: flex;
+    display: grid;
+
+    grid-template-columns:
+        1fr auto;
 
     align-items: center;
-    justify-content: space-between;
 
-    padding: 0 18px;
+    padding:
+        19px 18px;
 
     border:
         1px solid
         rgba(255,255,255,.10);
 
-    border-radius: 8px;
+    border-radius: 11px;
 
     background:
         rgba(255,255,255,.035);
 
     color: #aebdd0;
-
-    font-size: 12px;
-    font-weight: 800;
 
     text-align: left;
 
@@ -745,88 +735,113 @@ body {
     transition:
         transform .2s ease,
         background .2s ease,
-        border-color .2s ease,
-        color .2s ease;
+        border-color .2s ease;
 }
 
 
-.tuning-page .solution-button:hover {
-    transform:
-        translateX(4px);
-
-    border-color:
-        rgba(102,170,255,.45);
-
+.trace-page .trace-editing-button > span:first-child {
     color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 900;
 }
 
 
-.tuning-page .solution-button.active {
-    border-color: #0759d8;
+.trace-page .trace-editing-button small {
+    grid-column: 1;
 
-    background: #0759d8;
+    margin-top: 5px;
 
-    color: #ffffff;
+    color: #7f93ae;
+
+    font-size: 9px;
 }
 
 
-.tuning-page .solution-arrow {
+.trace-page .trace-editing-arrow {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+
     color: #66aaff;
+
+    font-weight: 900;
 
     transition:
         transform .2s ease;
 }
 
 
-.tuning-page
-.solution-button.active
-.solution-arrow {
-    color: #ffffff;
-
+.trace-page .trace-editing-button:hover {
     transform:
-        translateX(3px);
+        translateX(4px);
+
+    border-color:
+        rgba(102,170,255,.40);
 }
 
 
-/* =========================================
-   PANNELLO DESTRO
-   ========================================= */
+.trace-page .trace-editing-button.active {
+    border-color: #0759d8;
 
-.tuning-page .solution-detail {
+    background:
+        rgba(7,89,216,.24);
+}
+
+
+.trace-page
+.trace-editing-button.active
+.trace-editing-arrow {
+    transform:
+        translateX(4px);
+}
+
+
+/* DETAIL */
+
+.trace-page .trace-editing-detail {
     position: relative;
 
-    min-height: 520px;
+    min-height: 430px;
 
     display: flex;
     flex-direction: column;
-
     justify-content: center;
 
-    padding: 55px;
-
-    overflow: hidden;
+    padding: 50px;
 
     border:
         1px solid
         rgba(255,255,255,.12);
 
-    border-radius: 16px;
+    border-radius: 17px;
 
     background:
         radial-gradient(
             circle at 82% 25%,
-            rgba(7,89,216,.24),
-            transparent 37%
+            rgba(7,89,216,.23),
+            transparent 38%
         ),
         rgba(255,255,255,.05);
 
     box-shadow:
         0 25px 60px
         rgba(0,0,0,.16);
+
+    transition:
+        opacity .18s ease,
+        transform .18s ease;
 }
 
 
-.tuning-page .solution-detail-top {
+.trace-page .trace-editing-detail.changing {
+    opacity: .35;
+
+    transform:
+        translateY(5px);
+}
+
+
+.trace-page .trace-editing-top {
     position: absolute;
 
     top: 28px;
@@ -840,8 +855,8 @@ body {
 }
 
 
-.tuning-page .solution-kicker {
-    color: #7790af;
+.trace-page .trace-editing-label {
+    color: #7990ad;
 
     font-size: 9px;
     font-weight: 900;
@@ -850,7 +865,7 @@ body {
 }
 
 
-.tuning-page .solution-index {
+.trace-page .trace-editing-index {
     color:
         rgba(255,255,255,.25);
 
@@ -859,154 +874,139 @@ body {
 }
 
 
-/* ICONA */
-
-.tuning-page .solution-icon {
-    width: 95px;
-    height: 95px;
+.trace-page .trace-editing-icon {
+    width: 90px;
+    height: 90px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 27px;
+    margin-bottom: 25px;
 
     border:
         1px solid
         rgba(102,170,255,.35);
 
-    border-radius: 22px;
+    border-radius: 20px;
 
     background:
-        rgba(7,89,216,.18);
+        rgba(7,89,216,.17);
 
-    box-shadow:
-        0 15px 35px
-        rgba(0,0,0,.12);
-}
-
-
-.tuning-page .solution-icon span {
     color: #66aaff;
 
-    font-size: 23px;
+    font-size: 19px;
     font-weight: 900;
-
-    letter-spacing: -.03em;
 }
 
 
-.tuning-page .solution-detail h3 {
-    margin:
-        0 0 14px;
+.trace-page .trace-editing-detail h3 {
+    margin: 0 0 13px;
 
     color: #ffffff;
 
     font-size:
         clamp(
-            30px,
+            29px,
             4vw,
-            42px
+            41px
         );
 }
 
 
-.tuning-page .solution-detail > p {
+.trace-page .trace-editing-detail > p {
     max-width: 650px;
 
     margin:
-        0 0 25px;
+        0 0 24px;
 
-    color: #b6c4d6;
+    color: #b4c2d4;
 
-    font-size: 15px;
+    font-size: 14px;
 
     line-height: 1.7;
 }
 
 
-/* TAG */
+/* FEATURES */
 
-.tuning-page .solution-tags {
-    display: flex;
+.trace-page .trace-editing-features {
+    display: grid;
 
-    flex-wrap: wrap;
+    gap: 9px;
 
-    gap: 8px;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
 }
 
 
-.tuning-page .solution-tags span {
-    padding: 7px 11px;
+.trace-page .trace-editing-features li {
+    position: relative;
 
-    border:
-        1px solid
-        rgba(255,255,255,.12);
+    padding-left: 19px;
 
-    border-radius: 20px;
+    color: #d7e2ef;
 
-    color: #dce6f3;
-
-    background:
-        rgba(255,255,255,.04);
-
-    font-size: 9px;
-    font-weight: 800;
+    font-size: 11px;
 }
 
 
-/* STATO */
+.trace-page .trace-editing-features li::before {
+    content: "✓";
 
-.tuning-page .solution-status {
+    position: absolute;
+
+    left: 0;
+
+    color: #66aaff;
+
+    font-weight: 900;
+}
+
+
+/* STATUS */
+
+.trace-page .trace-editing-status {
     display: flex;
 
     align-items: center;
 
-    gap: 9px;
+    gap: 8px;
 
-    margin-top: 35px;
+    margin-top: 30px;
 
     padding-top: 20px;
 
     border-top:
         1px solid
-        rgba(255,255,255,.10);
+        rgba(255,255,255,.09);
 
-    color: #8195af;
+    color: #8295ad;
 
-    font-size: 10px;
+    font-size: 9px;
 }
 
 
-.tuning-page .solution-status-dot {
+.trace-page .trace-editing-status > span {
     width: 7px;
     height: 7px;
 
     border-radius: 50%;
 
-    background: #43df83;
+    background: #44dc87;
 
     box-shadow:
-        0 0 10px
-        rgba(67,223,131,.7);
+        0 0 9px
+        rgba(68,220,135,.7);
 }
 
 
-/* TRANSIZIONE */
+.trace-page .trace-editing-status strong {
+    color: #9eb1c8;
 
-.tuning-page .solution-detail.changing {
-    opacity: .35;
-
-    transform:
-        translateY(5px);
-}
-
-
-.tuning-page .solution-detail {
-    transition:
-        opacity .18s ease,
-        transform .18s ease;
+    font-size: 9px;
 }
 
 
@@ -1014,15 +1014,15 @@ body {
 
 @media(max-width:850px) {
 
-    .tuning-page .solutions-layout {
+    .trace-page .trace-editing-layout {
         grid-template-columns: 1fr;
     }
 
 
-    .tuning-page .solutions-selector {
+    .trace-page .trace-editing-selector {
         grid-template-columns:
             repeat(
-                2,
+                3,
                 minmax(0,1fr)
             );
     }
@@ -1030,20 +1030,20 @@ body {
 }
 
 
-@media(max-width:550px) {
+@media(max-width:650px) {
 
-    .tuning-page .tuning-solutions {
+    .trace-page .trace-editing {
         padding: 75px 0;
     }
 
 
-    .tuning-page .solutions-selector {
+    .trace-page .trace-editing-selector {
         grid-template-columns: 1fr;
     }
 
 
-    .tuning-page .solution-detail {
-        min-height: 440px;
+    .trace-page .trace-editing-detail {
+        min-height: 400px;
 
         padding:
             70px 28px 32px;
@@ -3632,208 +3632,163 @@ div div span {
 
 </section>
     <!-- ===================
-    Soluzioni automatizzate
+    MANUAL / STAGE1 / STAGE1 PLUS
     ================== -->
-<section
-    class="tuning-solutions"
-    id="soluzioni">
+<section class="trace-editing" id="editing">
 
     <div class="container">
 
-        <div class="solutions-heading reveal">
+        <div class="trace-editing-heading reveal">
 
-            <div>
+            <span class="section-label">
+                Modalità di lavoro
+            </span>
 
-                <span class="section-label">
-                    Soluzioni automatizzate
-                </span>
+            <h2>
+                Decidi tu
+                <span>come modificare il file.</span>
+            </h2>
 
-                <h2>
-                    Le funzioni che ti servono.
-                    <span>Pronte in pochi click.</span>
-                </h2>
-
-                <p>
-                    Seleziona una soluzione per scoprire
-                    le funzionalità disponibili
-                    nell'ambiente Tuning Solution.
-                </p>
-
-            </div>
+            <p>
+                Lavora manualmente sulle mappe oppure
+                utilizza le funzioni automatiche
+                Stage1 e Stage1 Plus.
+            </p>
 
         </div>
 
 
-        <div class="solutions-layout">
+        <div class="trace-editing-layout">
 
-
-            <!-- =========================
-                 MENU SOLUZIONI
-                 ========================= -->
-
-            <div class="solutions-selector reveal">
+            <div class="trace-editing-selector reveal">
 
                 <button
-                    class="solution-button active"
-                    data-solution="dpf"
-                    type="button">
+                    type="button"
+                    class="trace-editing-button active"
+                    data-editing="manual">
 
-                    <span>DPF / OPF</span>
-                    <span class="solution-arrow">→</span>
+                    <span>
+                        Manual Editing
+                    </span>
+
+                    <small>
+                        Controllo diretto delle mappe
+                    </small>
+
+                    <span class="trace-editing-arrow">
+                        →
+                    </span>
 
                 </button>
 
 
                 <button
-                    class="solution-button"
-                    data-solution="egr"
-                    type="button">
+                    type="button"
+                    class="trace-editing-button"
+                    data-editing="stage1">
 
-                    <span>EGR</span>
-                    <span class="solution-arrow">→</span>
+                    <span>
+                        Stage1
+                    </span>
 
-                </button>
+                    <small>
+                        Elaborazione automatica
+                    </small>
 
-
-                <button
-                    class="solution-button"
-                    data-solution="adblue"
-                    type="button">
-
-                    <span>NOx / AdBlue</span>
-                    <span class="solution-arrow">→</span>
+                    <span class="trace-editing-arrow">
+                        →
+                    </span>
 
                 </button>
 
 
                 <button
-                    class="solution-button"
-                    data-solution="lambda"
-                    type="button">
+                    type="button"
+                    class="trace-editing-button"
+                    data-editing="stageplus">
 
-                    <span>Lambda</span>
-                    <span class="solution-arrow">→</span>
+                    <span>
+                        Stage1 Plus
+                    </span>
 
-                </button>
+                    <small>
+                        Calibrazione automatica avanzata
+                    </small>
 
-
-                <button
-                    class="solution-button"
-                    data-solution="speed"
-                    type="button">
-
-                    <span>Speed Limiter</span>
-                    <span class="solution-arrow">→</span>
-
-                </button>
-
-
-                <button
-                    class="solution-button"
-                    data-solution="swirl"
-                    type="button">
-
-                    <span>Swirl / Flap</span>
-                    <span class="solution-arrow">→</span>
-
-                </button>
-
-
-                <button
-                    class="solution-button"
-                    data-solution="torque"
-                    type="button">
-
-                    <span>Torque Monitor</span>
-                    <span class="solution-arrow">→</span>
-
-                </button>
-
-
-                <button
-                    class="solution-button"
-                    data-solution="special"
-                    type="button">
-
-                    <span>Funzioni speciali</span>
-                    <span class="solution-arrow">→</span>
+                    <span class="trace-editing-arrow">
+                        →
+                    </span>
 
                 </button>
 
             </div>
 
 
-            <!-- =========================
-                 DETTAGLIO SOLUZIONE
-                 ========================= -->
-
             <div
-                class="solution-detail reveal"
-                id="solutionDetail">
+                class="trace-editing-detail reveal"
+                id="traceEditingDetail">
 
-                <div class="solution-detail-top">
+                <div class="trace-editing-top">
 
-                    <span class="solution-kicker">
-                        TUNING SOLUTION
+                    <span class="trace-editing-label">
+                        T-RACE PRO
                     </span>
 
                     <span
-                        id="solutionIndex"
-                        class="solution-index">
+                        class="trace-editing-index"
+                        id="traceEditingIndex">
                         01
                     </span>
 
                 </div>
 
 
-                <div class="solution-icon">
-
-                    <span id="solutionIcon">
-                        DPF
-                    </span>
-
+                <div
+                    class="trace-editing-icon"
+                    id="traceEditingIcon">
+                    MAP
                 </div>
 
 
-                <h3 id="solutionTitle">
-                    DPF / OPF
+                <h3 id="traceEditingTitle">
+                    Modifica Manuale
                 </h3>
 
 
-                <p id="solutionText">
-                    Gestione della soluzione dedicata
-                    ai sistemi filtro antiparticolato
-                    supportati dal software.
+                <p id="traceEditingText">
+                    Accedi alle mappe disponibili nel driver
+                    e modifica direttamente i valori
+                    attraverso gli strumenti di editing
+                    di T-Race Pro.
                 </p>
 
 
-                <div
-                    id="solutionTags"
-                    class="solution-tags">
+                <ul
+                    class="trace-editing-features"
+                    id="traceEditingFeatures">
 
-                    <span>
-                        Diesel
-                    </span>
+                    <li>
+                        Lista mappe completa
+                    </li>
 
-                    <span>
-                        Benzina
-                    </span>
+                    <li>
+                        Modifica diretta dei valori
+                    </li>
 
-                    <span>
-                        Automatico
-                    </span>
+                    <li>
+                        Controllo manuale della calibrazione
+                    </li>
 
-                </div>
+                </ul>
 
 
-                <div class="solution-status">
+                <div class="trace-editing-status">
 
-                    <span class="solution-status-dot"></span>
+                    <span></span>
 
-                    <span>
-                        Soluzione disponibile
-                        sulle ECU supportate
-                    </span>
+                    <strong id="traceEditingStatus">
+                        Modalità manuale
+                    </strong>
 
                 </div>
 
@@ -5428,7 +5383,190 @@ async function loadTuningUpdates() {
 
 
 loadTuningUpdates();
+const traceEditingData = {
 
+    manual: {
+
+        index: '01',
+
+        icon: 'MAP',
+
+        title:
+            'Modifica Manuale',
+
+        text:
+            'Accedi alle mappe disponibili nel driver e modifica direttamente i valori attraverso gli strumenti di editing di T-Race Pro.',
+
+        features: [
+            'Lista mappe completa',
+            'Modifica diretta dei valori',
+            'Controllo manuale della calibrazione'
+        ],
+
+        status:
+            'Modalità manuale'
+
+    },
+
+
+    stage1: {
+
+        index: '02',
+
+        icon: 'S1',
+
+        title:
+            'Stage1 Automatico',
+
+        text:
+            'Utilizza la funzione Stage1 per applicare automaticamente la calibrazione disponibile sul file supportato.',
+
+        features: [
+            'Procedura automatizzata',
+            'Workflow rapido',
+            'Disponibile sui driver supportati'
+        ],
+
+        status:
+            'Stage1 Automatico'
+
+    },
+
+
+    stageplus: {
+
+        index: '03',
+
+        icon: 'S1+',
+
+        title:
+            'Stage1 Plus',
+
+        text:
+            'Stage1 Plus offre una modalità automatizzata aggiuntiva disponibile sulle ECU e sulle versioni file supportate.',
+
+        features: [
+            'Elaborazione automatica',
+            'Funzione dedicata Stage1 Plus',
+            'Aggiornata con nuovi driver'
+        ],
+
+        status:
+            'Stage1 Plus Automatico'
+
+    }
+
+};
+
+
+function selectTraceEditing(key) {
+
+    const data =
+        traceEditingData[key];
+
+
+    if (!data)
+        return;
+
+
+    const detail =
+        document.getElementById(
+            'traceEditingDetail'
+        );
+
+
+    detail.classList.add(
+        'changing'
+    );
+
+
+    window.setTimeout(
+        () => {
+
+            document.getElementById(
+                'traceEditingIndex'
+            ).textContent =
+                data.index;
+
+
+            document.getElementById(
+                'traceEditingIcon'
+            ).textContent =
+                data.icon;
+
+
+            document.getElementById(
+                'traceEditingTitle'
+            ).textContent =
+                data.title;
+
+
+            document.getElementById(
+                'traceEditingText'
+            ).textContent =
+                data.text;
+
+
+            document.getElementById(
+                'traceEditingFeatures'
+            ).innerHTML =
+                data.features
+                    .map(
+                        feature =>
+                            `<li>${escapeHtml(feature)}</li>`
+                    )
+                    .join('');
+
+
+            document.getElementById(
+                'traceEditingStatus'
+            ).textContent =
+                data.status;
+
+
+            detail.classList.remove(
+                'changing'
+            );
+
+        },
+        160
+    );
+
+
+    document
+        .querySelectorAll(
+            '.trace-editing-button'
+        )
+        .forEach(button => {
+
+            button.classList.toggle(
+                'active',
+                button.dataset.editing ===
+                    key
+            );
+
+        });
+}
+
+
+document
+    .querySelectorAll(
+        '.trace-editing-button'
+    )
+    .forEach(button => {
+
+        button.addEventListener(
+            'click',
+            () => {
+
+                selectTraceEditing(
+                    button.dataset.editing
+                );
+
+            }
+        );
+
+    });
 </script>
 
 <script src="../js/components.js"></script>
