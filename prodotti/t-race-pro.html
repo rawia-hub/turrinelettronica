@@ -2489,11 +2489,11 @@ span::after {
     }
 
 }
-        /* =========================================
-   TUNING BENEFITS
+       /* =========================================
+   T-RACE PRO BENEFITS
    ========================================= */
 
-.tuning-page .tuning-benefits {
+.trace-page .trace-benefits {
     position: relative;
 
     padding: 110px 0;
@@ -2502,16 +2502,17 @@ span::after {
 }
 
 
-.tuning-page .benefits-heading {
-    max-width: 720px;
+/* HEADER */
+
+.trace-page .trace-benefits-heading {
+    max-width: 740px;
 
     margin-bottom: 48px;
 }
 
 
-.tuning-page .benefits-heading h2 {
-    margin:
-        0 0 16px;
+.trace-page .trace-benefits-heading h2 {
+    margin: 0 0 16px;
 
     color: #071b3a;
 
@@ -2528,7 +2529,12 @@ span::after {
 }
 
 
-.tuning-page .benefits-heading p {
+.trace-page .trace-benefits-heading h2 span {
+    color: #0759d8;
+}
+
+
+.trace-page .trace-benefits-heading p {
     max-width: 620px;
 
     margin: 0;
@@ -2543,13 +2549,13 @@ span::after {
 
 /* GRID */
 
-.tuning-page .tuning-benefits-grid {
+.trace-page .trace-benefits-grid {
     display: grid;
 
     grid-template-columns:
         repeat(
             4,
-            minmax(0,1fr)
+            minmax(0, 1fr)
         );
 
     gap: 16px;
@@ -2558,28 +2564,28 @@ span::after {
 
 /* CARD */
 
-.tuning-page .tuning-benefit-card {
+.trace-page .trace-benefit-card {
     position: relative;
 
-    min-height: 310px;
+    min-height: 315px;
 
     display: flex;
     flex-direction: column;
 
-    padding: 27px;
+    padding: 28px;
 
     overflow: hidden;
 
     border:
         1px solid #dde6ef;
 
-    border-radius: 14px;
+    border-radius: 15px;
 
     background:
         linear-gradient(
             180deg,
-            #ffffff,
-            #f8fbff
+            #ffffff 0%,
+            #f8fbff 100%
         );
 
     transition:
@@ -2589,7 +2595,7 @@ span::after {
 }
 
 
-.tuning-page .tuning-benefit-card:hover {
+.trace-page .trace-benefit-card:hover {
     transform:
         translateY(-6px);
 
@@ -2602,12 +2608,20 @@ span::after {
 }
 
 
-/* NUMERO */
+/* TOP */
 
-.tuning-page .benefit-number {
+.trace-page .trace-benefit-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
     margin-bottom: 35px;
+}
 
-    color: #9aa7b6;
+
+.trace-page .trace-benefit-number {
+    color: #9ba8b8;
 
     font-size: 9px;
     font-weight: 900;
@@ -2616,18 +2630,14 @@ span::after {
 }
 
 
-/* ICON */
-
-.tuning-page .benefit-icon {
-    width: 52px;
-    height: 52px;
+.trace-page .trace-benefit-icon {
+    width: 50px;
+    height: 50px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
-
-    margin-bottom: 23px;
 
     border-radius: 11px;
 
@@ -2635,40 +2645,47 @@ span::after {
 
     color: #0759d8;
 
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 900;
 
     transition:
         background .2s ease,
-        color .2s ease;
+        color .2s ease,
+        transform .2s ease;
 }
 
 
-.tuning-page
-.tuning-benefit-card:hover
-.benefit-icon {
+.trace-page
+.trace-benefit-card:hover
+.trace-benefit-icon {
+
     background: #0759d8;
 
     color: #ffffff;
+
+    transform:
+        translateY(-2px);
 }
 
 
-/* TESTO */
+/* TEXT */
 
-.tuning-page .tuning-benefit-card h3 {
+.trace-page .trace-benefit-card h3 {
     margin:
-        0 0 10px;
+        0 0 11px;
 
-    color: #142b49;
+    color: #152c49;
 
-    font-size: 19px;
+    font-size: 20px;
+
+    line-height: 1.2;
 }
 
 
-.tuning-page .tuning-benefit-card p {
+.trace-page .trace-benefit-card p {
     margin: 0;
 
-    color: #6f7d8f;
+    color: #6e7d90;
 
     font-size: 12px;
 
@@ -2676,10 +2693,25 @@ span::after {
 }
 
 
-/* LINEA INFERIORE */
+/* FOOTER */
 
-.tuning-page
-.tuning-benefit-card::after {
+.trace-page .trace-benefit-footer {
+    margin-top: auto;
+
+    padding-top: 28px;
+
+    color: #9aa7b6;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: .1em;
+}
+
+
+/* LINEA BLU */
+
+.trace-page .trace-benefit-card::after {
     content: "";
 
     position: absolute;
@@ -2697,8 +2729,8 @@ span::after {
 }
 
 
-.tuning-page
-.tuning-benefit-card:hover::after {
+.trace-page
+.trace-benefit-card:hover::after {
     width: 100%;
 }
 
@@ -2707,12 +2739,11 @@ span::after {
 
 @media(max-width:1000px) {
 
-    .tuning-page
-    .tuning-benefits-grid {
+    .trace-page .trace-benefits-grid {
         grid-template-columns:
             repeat(
                 2,
-                minmax(0,1fr)
+                minmax(0, 1fr)
             );
     }
 
@@ -2721,23 +2752,22 @@ span::after {
 
 @media(max-width:550px) {
 
-    .tuning-page .tuning-benefits {
+    .trace-page .trace-benefits {
         padding: 75px 0;
     }
 
 
-    .tuning-page
-    .tuning-benefits-grid {
+    .trace-page .trace-benefits-grid {
         grid-template-columns: 1fr;
     }
 
 
-    .tuning-page
-    .tuning-benefit-card {
-        min-height: auto;
+    .trace-page .trace-benefit-card {
+        min-height: 260px;
     }
 
 }
+
         /* =========================================
    LICENSE
    ========================================= */
@@ -4780,64 +4810,77 @@ span::after {
     <!-- ============================
          benefits
          ============================ -->
-    <section class="tuning-benefits">
+<section class="trace-benefits">
 
     <div class="container">
 
-        <div class="benefits-heading reveal">
+        <div class="trace-benefits-heading reveal">
 
             <span class="section-label">
-                Tuning Solution
+                T-Race Pro
             </span>
 
             <h2>
-                Pensato per rendere
-                il lavoro più semplice.
+                Tutto ciò che serve
+                <span>nel lavoro quotidiano.</span>
             </h2>
 
             <p>
-                Un ambiente di lavoro progettato
-                per velocizzare le operazioni quotidiane
-                e mantenere il software sempre aggiornato.
+                Un ambiente professionale pensato
+                per rendere più semplice e veloce
+                il lavoro sui file ECU.
             </p>
 
         </div>
 
 
-        <div class="tuning-benefits-grid">
+        <div class="trace-benefits-grid">
 
 
-            <article class="tuning-benefit-card reveal">
+            <article class="trace-benefit-card reveal">
 
-                <span class="benefit-number">
-                    01
-                </span>
+                <div class="trace-benefit-top">
 
-                <div class="benefit-icon">
-                    UI
+                    <span class="trace-benefit-number">
+                        01
+                    </span>
+
+                    <span class="trace-benefit-icon">
+                        UI
+                    </span>
+
                 </div>
 
                 <h3>
-                    Smart Interface
+                    Smart UI
                 </h3>
 
                 <p>
-                    Un'interfaccia chiara e immediata
-                    che permette di raggiungere rapidamente
-                    le funzioni disponibili.
+                    Un'interfaccia semplificata
+                    progettata per rendere immediato
+                    l'accesso alle funzioni
+                    e alle mappe disponibili.
                 </p>
+
+                <span class="trace-benefit-footer">
+                    INTERFACCIA
+                </span>
 
             </article>
 
 
-            <article class="tuning-benefit-card reveal">
+            <article class="trace-benefit-card reveal">
 
-                <span class="benefit-number">
-                    02
-                </span>
+                <div class="trace-benefit-top">
 
-                <div class="benefit-icon">
-                    ∞
+                    <span class="trace-benefit-number">
+                        02
+                    </span>
+
+                    <span class="trace-benefit-icon">
+                        ∞
+                    </span>
+
                 </div>
 
                 <h3>
@@ -4847,43 +4890,61 @@ span::after {
                 <p>
                     Lavora sui file supportati
                     senza un sistema basato
-                    sul consumo di crediti per file.
+                    sul consumo di crediti
+                    per ogni elaborazione.
                 </p>
+
+                <span class="trace-benefit-footer">
+                    UNLIMITED FILES
+                </span>
 
             </article>
 
 
-            <article class="tuning-benefit-card reveal">
+            <article class="trace-benefit-card reveal">
 
-                <span class="benefit-number">
-                    03
-                </span>
+                <div class="trace-benefit-top">
 
-                <div class="benefit-icon">
-                    UP
+                    <span class="trace-benefit-number">
+                        03
+                    </span>
+
+                    <span class="trace-benefit-icon">
+                        UP
+                    </span>
+
                 </div>
 
                 <h3>
-                    Aggiornamenti continui
+                    Aggiornamenti frequenti
                 </h3>
 
                 <p>
-                    Nuove soluzioni, compatibilità
-                    e funzionalità vengono integrate
-                    attraverso gli aggiornamenti software.
+                    Nuovi driver, compatibilità
+                    e funzionalità vengono integrati
+                    attraverso gli aggiornamenti
+                    del software.
                 </p>
+
+                <span class="trace-benefit-footer">
+                    SOFTWARE UPDATE
+                </span>
 
             </article>
 
 
-            <article class="tuning-benefit-card reveal">
+            <article class="trace-benefit-card reveal">
 
-                <span class="benefit-number">
-                    04
-                </span>
+                <div class="trace-benefit-top">
 
-                <div class="benefit-icon">
-                    ?
+                    <span class="trace-benefit-number">
+                        04
+                    </span>
+
+                    <span class="trace-benefit-icon">
+                        ?
+                    </span>
+
                 </div>
 
                 <h3>
@@ -4891,10 +4952,15 @@ span::after {
                 </h3>
 
                 <p>
-                    Assistenza dedicata per supportarti
-                    nell'utilizzo del software
-                    e nelle funzionalità disponibili.
+                    Assistenza dedicata
+                    per l'utilizzo del software
+                    e supporto durante
+                    il lavoro sui file.
                 </p>
+
+                <span class="trace-benefit-footer">
+                    TECH SUPPORT
+                </span>
 
             </article>
 
