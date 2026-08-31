@@ -2969,6 +2969,415 @@ div div span {
     }
 
 }
+        /* =========================================
+   TUNING SOLUTION UPDATES
+   ========================================= */
+
+.tuning-page .tuning-updates-section {
+    padding: 110px 0;
+
+    background: #ffffff;
+}
+
+
+.tuning-page .tuning-updates-heading {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    margin-bottom: 42px;
+}
+
+
+.tuning-page .tuning-updates-heading > div {
+    max-width: 700px;
+}
+
+
+.tuning-page .tuning-updates-heading h2 {
+    margin:
+        0 0 14px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            50px
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -.025em;
+}
+
+
+.tuning-page .tuning-updates-heading p {
+    max-width: 620px;
+
+    margin: 0;
+
+    color: #657489;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+.tuning-page .updates-all-link {
+    flex-shrink: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #0759d8;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+
+.tuning-page .updates-all-link span {
+    transition:
+        transform .2s ease;
+}
+
+
+.tuning-page .updates-all-link:hover span {
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================
+   LAYOUT
+   ========================================= */
+
+.tuning-page .tuning-updates-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0,1.35fr)
+        minmax(340px,.65fr);
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   FEATURED
+   ========================================= */
+
+.tuning-page .update-featured {
+    position: relative;
+
+    min-height: 465px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    overflow: hidden;
+
+    border-radius: 17px;
+
+    background: #071b3a;
+
+    text-decoration: none;
+}
+
+
+.tuning-page .update-featured-image {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .45s ease;
+}
+
+
+.tuning-page .update-featured:hover
+.update-featured-image {
+    transform:
+        scale(1.035);
+}
+
+
+.tuning-page .update-featured-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7,27,58,.06) 20%,
+            rgba(7,27,58,.95) 100%
+        );
+}
+
+
+.tuning-page .update-featured-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    padding: 35px;
+}
+
+
+.tuning-page .update-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 13px;
+}
+
+
+.tuning-page .update-meta span {
+    padding: 5px 8px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,.11);
+
+    color: #d8e5f5;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+.tuning-page .update-featured h3 {
+    max-width: 650px;
+
+    margin:
+        0 0 11px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            26px,
+            4vw,
+            37px
+        );
+
+    line-height: 1.1;
+}
+
+
+.tuning-page .update-featured p {
+    max-width: 650px;
+
+    margin:
+        0 0 17px;
+
+    color: #b9c7d8;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+}
+
+
+.tuning-page .update-read-more {
+    color: #66aaff;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+/* =========================================
+   COMPACT
+   ========================================= */
+
+.tuning-page .updates-secondary {
+    display: grid;
+
+    gap: 18px;
+}
+
+
+.tuning-page .update-compact {
+    display: grid;
+
+    grid-template-columns:
+        130px 1fr;
+
+    min-height: 220px;
+
+    overflow: hidden;
+
+    border:
+        1px solid #dde6ef;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.tuning-page .update-compact:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(20,45,80,.08);
+}
+
+
+.tuning-page .update-compact-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    background: #edf3f9;
+}
+
+
+.tuning-page .update-compact-content {
+    padding: 20px;
+}
+
+
+.tuning-page .update-compact h3 {
+    margin:
+        9px 0 9px;
+
+    color: #172c48;
+
+    font-size: 16px;
+
+    line-height: 1.25;
+}
+
+
+.tuning-page .update-compact p {
+    margin: 0;
+
+    color: #748296;
+
+    font-size: 10px;
+
+    line-height: 1.55;
+}
+
+
+/* EMPTY / LOADING */
+
+.tuning-page .updates-loading,
+.tuning-page .updates-empty {
+    grid-column:
+        1 / -1;
+
+    padding: 50px;
+
+    border:
+        1px solid #dde6ef;
+
+    border-radius: 13px;
+
+    color: #758397;
+
+    text-align: center;
+
+    font-size: 12px;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+
+    .tuning-page
+    .tuning-updates-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tuning-page
+    .updates-secondary {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+    }
+
+}
+
+
+@media(max-width:650px) {
+
+    .tuning-page
+    .tuning-updates-section {
+        padding: 75px 0;
+    }
+
+
+    .tuning-page
+    .tuning-updates-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .tuning-page
+    .update-featured {
+        min-height: 390px;
+    }
+
+
+    .tuning-page
+    .updates-secondary {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tuning-page
+    .update-compact {
+        grid-template-columns:
+            110px 1fr;
+
+        min-height: 180px;
+    }
+
+}
     </style>
 
 </head>
@@ -4353,7 +4762,60 @@ div div span {
     </div>
 
 </section>
+<!-- ===================
+    Ultimi aggiornamenti
+    ==================== -->
+    <section class="tuning-updates-section">
 
+    <div class="container">
+
+        <div class="tuning-updates-heading reveal">
+
+            <div>
+
+                <span class="section-label">
+                    Ultime novità
+                </span>
+
+                <h2>
+                    Tuning Solution
+                    continua ad evolversi.
+                </h2>
+
+                <p>
+                    Nuove soluzioni, compatibilità
+                    e funzionalità vengono integrate
+                    attraverso gli aggiornamenti software.
+                </p>
+
+            </div>
+
+
+            <a
+                href="../aggiornamenti.html?product=tuning"
+                class="updates-all-link">
+
+                Tutti gli aggiornamenti
+                <span>→</span>
+
+            </a>
+
+        </div>
+
+
+        <div
+            id="tuningUpdates"
+            class="tuning-updates-layout">
+
+            <div class="updates-loading">
+                Caricamento aggiornamenti...
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 </main>
 
@@ -4386,7 +4848,7 @@ div div span {
 
     const updatesContainer =
         document.getElementById(
-            'mc3Updates'
+            'tuningUpdates'
         );
 
 
@@ -4480,7 +4942,6 @@ div div span {
             console.error(
                 error
             );
-
 
             updatesContainer.innerHTML =
                 `
