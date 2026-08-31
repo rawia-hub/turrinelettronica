@@ -1558,12 +1558,11 @@ span::after {
     }
 
 }
-
-        /* =========================================
-   CHECKSUM
+/* =========================================
+   T-RACE PRO CHECKSUM
    ========================================= */
 
-.tuning-page .tuning-checksum {
+.trace-page .trace-checksum {
     position: relative;
 
     overflow: hidden;
@@ -1580,12 +1579,12 @@ span::after {
 }
 
 
-.tuning-page .checksum-grid {
+.trace-page .trace-checksum-grid {
     display: grid;
 
     grid-template-columns:
-        minmax(0,.85fr)
-        minmax(500px,1.15fr);
+        minmax(0, .85fr)
+        minmax(500px, 1.15fr);
 
     align-items: center;
 
@@ -1593,13 +1592,14 @@ span::after {
 }
 
 
-/* TESTO */
+/* =========================================
+   TESTO
+   ========================================= */
 
-.tuning-page .checksum-content h2 {
+.trace-page .trace-checksum-content h2 {
     max-width: 600px;
 
-    margin:
-        0 0 18px;
+    margin: 0 0 18px;
 
     color: #071b3a;
 
@@ -1616,16 +1616,15 @@ span::after {
 }
 
 
-.tuning-page .checksum-content h2 span {
+.trace-page .trace-checksum-content h2 span {
     color: #0759d8;
 }
 
 
-.tuning-page .checksum-content > p {
+.trace-page .trace-checksum-content > p {
     max-width: 580px;
 
-    margin:
-        0 0 32px;
+    margin: 0 0 32px;
 
     color: #647286;
 
@@ -1635,18 +1634,18 @@ span::after {
 }
 
 
-/* FEATURE */
+/* FEATURES */
 
-.tuning-page .checksum-features {
+.trace-page .trace-checksum-features {
     display: grid;
 
-    gap: 15px;
+    gap: 16px;
 
     margin-bottom: 31px;
 }
 
 
-.tuning-page .checksum-features > div {
+.trace-page .trace-checksum-features > div {
     display: flex;
 
     align-items: flex-start;
@@ -1655,9 +1654,9 @@ span::after {
 }
 
 
-.tuning-page .checksum-check {
-    width: 27px;
-    height: 27px;
+.trace-page .trace-checksum-check {
+    width: 28px;
+    height: 28px;
 
     flex-shrink: 0;
 
@@ -1669,6 +1668,7 @@ span::after {
     border-radius: 50%;
 
     background: #edf4ff;
+
     color: #0759d8;
 
     font-size: 12px;
@@ -1676,7 +1676,7 @@ span::after {
 }
 
 
-.tuning-page .checksum-features strong {
+.trace-page .trace-checksum-features strong {
     display: block;
 
     margin-bottom: 3px;
@@ -1687,18 +1687,421 @@ span::after {
 }
 
 
-.tuning-page .checksum-features
-div div span {
+.trace-page .trace-checksum-features div div span {
     color: #788597;
 
     font-size: 11px;
+
+    line-height: 1.5;
 }
 
 
-.tuning-page .checksum-button {
+.trace-page .trace-checksum-button {
     margin-top: 3px;
 }
 
+
+/* =========================================
+   VISUAL
+   ========================================= */
+
+.trace-page .trace-checksum-visual {
+    position: relative;
+}
+
+
+.trace-page .trace-checksum-panel {
+    overflow: hidden;
+
+    border:
+        1px solid #18345e;
+
+    border-radius: 17px;
+
+    background: #071b3a;
+
+    box-shadow:
+        0 30px 65px
+        rgba(7, 27, 58, .20);
+}
+
+
+/* HEADER */
+
+.trace-page .trace-checksum-panel-header {
+    min-height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 0 20px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.10);
+
+    background:
+        rgba(255,255,255,.035);
+
+    color: #8298b5;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: .11em;
+}
+
+
+.trace-page .trace-checksum-dots {
+    display: flex;
+
+    gap: 6px;
+}
+
+
+.trace-page .trace-checksum-dots span {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.25);
+}
+
+
+/* =========================================
+   FLOW
+   ========================================= */
+
+.trace-page .trace-checksum-flow {
+    display: grid;
+
+    grid-template-columns:
+        1fr 55px
+        1fr 55px
+        1fr;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        55px 30px 42px;
+}
+
+
+.trace-page .trace-checksum-node {
+    position: relative;
+
+    min-height: 185px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    text-align: center;
+}
+
+
+.trace-page .trace-checksum-node.active {
+    border-color:
+        rgba(79,156,255,.45);
+
+    background:
+        rgba(7,89,216,.14);
+}
+
+
+.trace-page .trace-checksum-node.ready {
+    border-color:
+        rgba(61,218,129,.33);
+
+    background:
+        rgba(61,218,129,.035);
+}
+
+
+.trace-page .trace-checksum-node-number {
+    position: absolute;
+
+    top: 12px;
+    left: 13px;
+
+    color: #637a99;
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+
+.trace-page .trace-checksum-node-icon {
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    border:
+        1px solid
+        rgba(79,156,255,.25);
+
+    border-radius: 12px;
+
+    background:
+        rgba(7,89,216,.13);
+
+    color: #66aaff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+
+.trace-page
+.trace-checksum-node.ready
+.trace-checksum-node-icon {
+
+    border-color:
+        rgba(61,218,129,.30);
+
+    background:
+        rgba(61,218,129,.11);
+
+    color: #45dc86;
+}
+
+
+.trace-page .trace-checksum-node strong {
+    margin-bottom: 4px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+
+.trace-page .trace-checksum-node small {
+    color: #7f93ae;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   FRECCE
+   ========================================= */
+
+.trace-page .trace-checksum-arrow {
+    display: flex;
+
+    align-items: center;
+
+    color: #559bef;
+}
+
+
+.trace-page .trace-checksum-line {
+    position: relative;
+
+    flex: 1;
+
+    height: 2px;
+
+    overflow: hidden;
+
+    background:
+        rgba(85,155,239,.20);
+}
+
+
+.trace-page .trace-checksum-line::after {
+    content: "";
+
+    position: absolute;
+
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #66aaff,
+            transparent
+        );
+
+    animation:
+        traceChecksumFlow
+        2s linear
+        infinite;
+}
+
+
+@keyframes traceChecksumFlow {
+
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 100%;
+    }
+
+}
+
+
+/* =========================================
+   STATUS
+   ========================================= */
+
+.trace-page .trace-checksum-status {
+    margin:
+        0 30px 30px;
+
+    padding: 17px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    border-radius: 9px;
+
+    background:
+        rgba(0,0,0,.12);
+}
+
+
+.trace-page .trace-checksum-status > div:first-child {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+
+    color: #7288a6;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: .09em;
+}
+
+
+.trace-page .trace-checksum-status strong {
+    color: #45dc86;
+}
+
+
+.trace-page .trace-checksum-progress {
+    height: 4px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+
+.trace-page .trace-checksum-progress span {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0759d8,
+            #43dd83
+        );
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:1000px) {
+
+    .trace-page .trace-checksum-grid {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+}
+
+
+@media(max-width:650px) {
+
+    .trace-page .trace-checksum {
+        padding: 75px 0;
+    }
+
+
+    .trace-page .trace-checksum-flow {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .trace-page .trace-checksum-arrow {
+        width: 2px;
+        height: 35px;
+
+        margin: auto;
+
+        flex-direction: column;
+    }
+
+
+    .trace-page .trace-checksum-line {
+        width: 2px;
+        height: 100%;
+    }
+
+}
+
+
+@media(
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .trace-page
+    .trace-checksum-line::after {
+        animation: none;
+    }
+
+}
 
 /* =========================================
    TERMINAL
@@ -4126,76 +4529,94 @@ div div span {
 <!-- ====================
     checksum
      ==================== -->
-    <section class="tuning-checksum" id="checksum">
+<section class="trace-checksum" id="checksum">
 
-    <div class="container checksum-grid">
+    <div class="container trace-checksum-grid">
 
-        <div class="checksum-content reveal">
+        <div class="trace-checksum-content reveal">
 
             <span class="section-label">
                 Plugin opzionale
             </span>
 
-
             <h2>
                 Checksum.
-                <span>Integrato nel tuo workflow.</span>
+                <span>Integrato nel workflow.</span>
             </h2>
 
-
             <p>
-                Il plugin Checksum permette di eseguire
-                il ricalcolo sui file supportati
-                direttamente in abbinamento
-                a Tuning Solution.
+                Il modulo Checksum può essere utilizzato
+                in abbinamento a T-Race Pro per eseguire
+                il ricalcolo sui file e sulle ECU supportate.
             </p>
 
 
-            <div class="checksum-features">
+            <div class="trace-checksum-features">
 
                 <div>
-                    <span class="checksum-check">✓</span>
+
+                    <span class="trace-checksum-check">
+                        ✓
+                    </span>
 
                     <div>
+
                         <strong>
                             Ricalcolo automatico
                         </strong>
 
                         <span>
-                            Sui file e sulle ECU supportate
+                            Il checksum viene ricalcolato
+                            sui file supportati.
                         </span>
+
                     </div>
+
                 </div>
 
 
                 <div>
-                    <span class="checksum-check">✓</span>
+
+                    <span class="trace-checksum-check">
+                        ✓
+                    </span>
 
                     <div>
+
                         <strong>
-                            Integrato nel software
+                            Workflow integrato
                         </strong>
 
                         <span>
-                            Senza cambiare ambiente di lavoro
+                            Completa il lavoro senza
+                            uscire dal flusso operativo.
                         </span>
+
                     </div>
+
                 </div>
 
 
                 <div>
-                    <span class="checksum-check">✓</span>
+
+                    <span class="trace-checksum-check">
+                        ✓
+                    </span>
 
                     <div>
+
                         <strong>
                             Database aggiornabile
                         </strong>
 
                         <span>
-                            Nuovi checksum vengono aggiunti
-                            attraverso gli aggiornamenti
+                            Nuove compatibilità possono
+                            essere aggiunte attraverso
+                            gli aggiornamenti.
                         </span>
+
                     </div>
+
                 </div>
 
             </div>
@@ -4203,78 +4624,81 @@ div div span {
 
             <a
                 href="#"
-                class="button-secondary checksum-button">
+                class="button-secondary trace-checksum-button">
 
-                Visualizza lista Checksum →
+                Visualizza Checksum supportati →
 
             </a>
 
         </div>
 
 
-        <!-- =================================
-             VISUAL WORKFLOW
-             ================================= -->
+        <!--
+            Rappresentazione grafica del processo.
+            Non è una schermata reale di T-Race Pro.
+        -->
 
-        <div class="checksum-visual reveal">
+        <div class="trace-checksum-visual reveal">
 
-            <div class="checksum-terminal">
+            <div class="trace-checksum-panel">
 
-                <div class="checksum-terminal-header">
+                <div class="trace-checksum-panel-header">
 
-                    <div class="terminal-dots">
+                    <div class="trace-checksum-dots">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
 
                     <span>
-                        TUNING SOLUTION · CHECKSUM
+                        T-RACE PRO · CHECKSUM
                     </span>
 
                 </div>
 
 
-                <div class="checksum-flow">
+                <div class="trace-checksum-flow">
 
 
-                    <div class="checksum-node">
+                    <div class="trace-checksum-node">
 
-                        <span class="checksum-node-label">
+                        <span class="trace-checksum-node-number">
                             01
                         </span>
 
-                        <div class="checksum-node-icon">
+                        <div class="trace-checksum-node-icon">
                             FILE
                         </div>
 
                         <strong>
-                            File ECU
+                            File modificato
                         </strong>
 
                         <small>
-                            File elaborato
+                            Calibrazione completata
                         </small>
 
                     </div>
 
 
-                    <div class="checksum-arrow">
+                    <div class="trace-checksum-arrow">
 
-                        <span class="checksum-line"></span>
+                        <span class="trace-checksum-line"></span>
 
-                        <span>→</span>
+                        <strong>
+                            →
+                        </strong>
 
                     </div>
 
 
-                    <div class="checksum-node active">
+                    <div class="trace-checksum-node active">
 
-                        <span class="checksum-node-label">
+                        <span class="trace-checksum-node-number">
                             02
                         </span>
 
-                        <div class="checksum-node-icon">
+                        <div class="trace-checksum-node-icon">
                             CRC
                         </div>
 
@@ -4289,22 +4713,24 @@ div div span {
                     </div>
 
 
-                    <div class="checksum-arrow">
+                    <div class="trace-checksum-arrow">
 
-                        <span class="checksum-line"></span>
+                        <span class="trace-checksum-line"></span>
 
-                        <span>→</span>
+                        <strong>
+                            →
+                        </strong>
 
                     </div>
 
 
-                    <div class="checksum-node ready">
+                    <div class="trace-checksum-node ready">
 
-                        <span class="checksum-node-label">
+                        <span class="trace-checksum-node-number">
                             03
                         </span>
 
-                        <div class="checksum-node-icon">
+                        <div class="trace-checksum-node-icon">
                             ✓
                         </div>
 
@@ -4313,18 +4739,17 @@ div div span {
                         </strong>
 
                         <small>
-                            Operazione completata
+                            Processo completato
                         </small>
 
                     </div>
 
-
                 </div>
 
 
-                <div class="checksum-progress">
+                <div class="trace-checksum-status">
 
-                    <div class="checksum-progress-top">
+                    <div>
 
                         <span>
                             CHECKSUM STATUS
@@ -4337,7 +4762,7 @@ div div span {
                     </div>
 
 
-                    <div class="checksum-progress-bar">
+                    <div class="trace-checksum-progress">
 
                         <span></span>
 
