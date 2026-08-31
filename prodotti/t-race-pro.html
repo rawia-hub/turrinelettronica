@@ -54,19 +54,20 @@ body {
     position: relative;
     overflow: hidden;
 
-    padding: 105px 0 100px;
+    padding: 95px 0 90px;
 
     background:
         radial-gradient(
-            circle at 80% 35%,
-            rgba(7, 89, 216, .13),
-            transparent 35%
+           circle at 78% 45%,
+            rgba(7, 89, 216, .10),
+            transparent 32%
         ),
         linear-gradient(
-            135deg,
-            #ffffff,
-            #f7faff 55%,
-            #edf4ff
+            110deg,
+            #ffffff 0%,
+            #ffffff 42%,
+            #f5f8fd 72%,
+            #edf4ff 100%
         );
 }
 
@@ -200,36 +201,59 @@ body {
    SOFTWARE VISUAL
    =============================== */
 
-.trace-hero-visual {
+.trace-page .trace-hero-visual {
     position: relative;
+
+    min-height: 520px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 520px;
 }
-.trace-hero-visual::before {
-    content: "";
+        /* alone luminoso dietro il portatile */
+
+.trace-page .trace-hero-glow {
     position: absolute;
-    width: 520px;
-    height: 520px;
+
+    width: 620px;
+    height: 500px;
+
     border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(28, 93, 214, 0.14) 0%,
-        rgba(28, 93, 214, 0.06) 45%,
-        rgba(28, 93, 214, 0) 75%
-    );
-    filter: blur(6px);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(7, 89, 216, .18) 0%,
+            rgba(7, 89, 216, .08) 40%,
+            transparent 72%
+        );
+
+    filter: blur(12px);
 }
-.trace-hero-real-image {
+/* immagine reale */
+
+.trace-page .trace-hero-real-image {
     position: relative;
     z-index: 2;
-    width: 100%;
-    max-width: 760px;
+
+    width: 115%;
+    max-width: 820px;
     height: auto;
-    object-fit: contain;
+
     display: block;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 28px 25px
+            rgba(7, 27, 58, .16)
+        );
+
+    transform:
+        translateX(15px);
 }
+
 .trace-page .trace-hero-glow {
     position: absolute;
 
@@ -245,15 +269,7 @@ body {
             transparent 68%
         );
 }
-.trace-hero-media {
-    position: relative;
-    z-index: 2;
-    background: linear-gradient(180deg, #f7f9fc 0%, #eef3fb 100%);
-    border: 1px solid rgba(15, 23, 42, 0.06);
-    border-radius: 24px;
-    padding: 28px;
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
-}
+
 
 /* WINDOW */
 
@@ -3648,30 +3664,27 @@ div div span {
                 <a
                     href="../index.html#contatti"
                     class="button-primary">
-
                     Richiedi preventivo
-
                 </a>
-
+            
                 <a
                     href="#workflow"
                     class="button-secondary">
-
                     Scopri T-Race Pro ↓
-
                 </a>
+        
 
             </div>
 
         </div>
 
-<div class="trace-hero-visual">
+<div class="trace-hero-visual reveal">
 
-    <div class="trace-hero-media"></div>
+    <div class="trace-hero-glow"></div>
 
     <img
-        src="../images/products/t-race-pro.webp"
-        alt="Interfaccia software T-Race Pro"
+        src="../assets/images/products/t-race-pro.webp"
+        alt="Software T-Race Pro"
         class="trace-hero-real-image"
     >
 
