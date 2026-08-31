@@ -2768,9 +2768,6 @@ span::after {
 
 }
 
-        /* =========================================
-   LICENSE
-   ========================================= */
 
 /* =========================================
    T-RACE PRO LICENSE
@@ -3550,6 +3547,730 @@ div:nth-child(2)
 
     .trace-page .trace-license-info {
         align-items: flex-start;
+    }
+
+}
+        /* =========================================
+   T-RACE PRO INSTALLATION / USB DONGLE
+   ========================================= */
+
+.trace-page .trace-installation {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 115px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8fbff 55%,
+            #eef5ff 100%
+        );
+}
+
+
+/* HEADER */
+
+.trace-page .trace-installation-heading {
+    max-width: 760px;
+
+    margin-bottom: 50px;
+}
+
+
+.trace-page .trace-installation-heading h2 {
+    margin: 0 0 16px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            36px,
+            5vw,
+            52px
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -.03em;
+}
+
+
+.trace-page .trace-installation-heading h2 span {
+    color: #0759d8;
+}
+
+
+.trace-page .trace-installation-heading p {
+    max-width: 630px;
+
+    margin: 0;
+
+    color: #657489;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   LAYOUT
+   ========================================= */
+
+.trace-page .trace-installation-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(360px, .75fr)
+        minmax(0, 1.25fr);
+
+    gap: 22px;
+}
+
+
+/* =========================================
+   DONGLE CARD
+   ========================================= */
+
+.trace-page .trace-dongle-card {
+    padding: 36px;
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(7,89,216,.27),
+            transparent 35%
+        ),
+        #071b3a;
+
+    box-shadow:
+        0 25px 60px
+        rgba(7,27,58,.16);
+}
+
+
+.trace-page .trace-dongle-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 40px;
+}
+
+
+.trace-page .trace-dongle-label {
+    color: #7690b0;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: .12em;
+}
+
+
+.trace-page .trace-dongle-status {
+    padding: 6px 9px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(69,220,134,.10);
+
+    color: #48db88;
+
+    font-size: 7px;
+    font-weight: 900;
+
+    letter-spacing: .08em;
+}
+
+
+/* =========================================
+   USB VISUAL
+   ========================================= */
+
+.trace-page .trace-dongle-visual {
+    display: flex;
+
+    align-items: center;
+
+    margin:
+        30px 0 43px;
+
+    transform:
+        rotate(-6deg);
+}
+
+
+.trace-page .trace-usb-connector {
+    width: 72px;
+    height: 55px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 5px;
+
+    padding: 11px;
+
+    border-radius:
+        7px 0 0 7px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #d7e0e9,
+            #8998aa
+        );
+}
+
+
+.trace-page .trace-usb-connector span {
+    border-radius: 2px;
+
+    background:
+        rgba(7,27,58,.30);
+}
+
+
+.trace-page .trace-usb-body {
+    width: 190px;
+    height: 92px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius:
+        10px 20px 20px 10px;
+
+    border:
+        1px solid
+        rgba(102,170,255,.28);
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b2345,
+            #06162f
+        );
+
+    box-shadow:
+        0 20px 35px
+        rgba(0,0,0,.25);
+}
+
+
+.trace-page .trace-usb-body span {
+    color: #7991ae;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: .15em;
+}
+
+
+.trace-page .trace-usb-body strong {
+    margin-top: 2px;
+
+    color: #66aaff;
+
+    font-size: 22px;
+
+    letter-spacing: -.03em;
+}
+
+
+/* TEXT */
+
+.trace-page .trace-dongle-card h3 {
+    margin:
+        0 0 12px;
+
+    color: #ffffff;
+
+    font-size: 28px;
+}
+
+
+.trace-page .trace-dongle-card > p {
+    margin:
+        0 0 27px;
+
+    color: #aebdd0;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* INFO */
+
+.trace-page .trace-dongle-info {
+    display: grid;
+
+    gap: 13px;
+
+    padding-top: 24px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.10);
+}
+
+
+.trace-page .trace-dongle-info > div {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+}
+
+
+.trace-page .trace-dongle-info > div > span {
+    width: 24px;
+    height: 24px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(69,220,134,.10);
+
+    color: #45dc86;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+
+.trace-page .trace-dongle-info strong {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #dbe6f2;
+
+    font-size: 11px;
+}
+
+
+.trace-page .trace-dongle-info small {
+    color: #7489a4;
+
+    font-size: 8px;
+}
+
+
+/* =========================================
+   RIGHT COLUMN
+   ========================================= */
+
+.trace-page .trace-installation-side {
+    display: grid;
+
+    gap: 22px;
+}
+
+
+/* =========================================
+   ACTIVATION CARD
+   ========================================= */
+
+.trace-page .trace-activation-card,
+.trace-page .trace-requirements-card {
+    padding: 31px;
+
+    border:
+        1px solid #dce5ef;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 15px 35px
+        rgba(20,45,80,.055);
+}
+
+
+.trace-page .trace-activation-header,
+.trace-page .trace-requirements-header {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+.trace-page .trace-activation-header span:first-child,
+.trace-page .trace-requirements-header div > span {
+    color: #8796a8;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: .12em;
+}
+
+
+.trace-page .trace-activation-header h3,
+.trace-page .trace-requirements-header h3 {
+    margin:
+        5px 0 0;
+
+    color: #172d49;
+
+    font-size: 25px;
+}
+
+
+.trace-page .trace-activation-icon,
+.trace-page .trace-requirements-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: #edf4ff;
+
+    color: #0759d8;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+/* =========================================
+   STATS
+   ========================================= */
+
+.trace-page .trace-activation-stats {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1px 1fr;
+
+    align-items: center;
+
+    gap: 32px;
+
+    margin:
+        31px 0 23px;
+
+    padding:
+        25px;
+
+    border-radius: 13px;
+
+    background: #f6f9fd;
+}
+
+
+.trace-page .trace-activation-stats > div:not(
+.trace-activation-divider) {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.trace-page .trace-activation-stats strong {
+    color: #0759d8;
+
+    font-size: 52px;
+
+    line-height: .9;
+
+    letter-spacing: -.05em;
+}
+
+
+.trace-page .trace-activation-stats span {
+    margin-top: 9px;
+
+    color: #334b67;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: .08em;
+}
+
+
+.trace-page .trace-activation-stats small {
+    margin-top: 3px;
+
+    color: #8a97a7;
+
+    font-size: 8px;
+}
+
+
+.trace-page .trace-activation-divider {
+    width: 1px;
+    height: 70px;
+
+    background: #dbe4ee;
+}
+
+
+.trace-page .trace-activation-card > p {
+    margin: 0;
+
+    color: #718095;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   REQUIREMENTS
+   ========================================= */
+
+.trace-page .trace-requirements-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 12px;
+
+    margin-top: 27px;
+}
+
+
+.trace-page .trace-requirements-grid > div {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 15px;
+
+    border:
+        1px solid #e2e9f1;
+
+    border-radius: 10px;
+
+    background: #f9fbfd;
+}
+
+
+.trace-page .trace-requirement-check {
+    width: 25px;
+    height: 25px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #edf4ff;
+
+    color: #0759d8;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+
+.trace-page .trace-requirements-grid strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #253c59;
+
+    font-size: 11px;
+}
+
+
+.trace-page .trace-requirements-grid small {
+    display: block;
+
+    color: #8390a0;
+
+    font-size: 8px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NOTE
+   ========================================= */
+
+.trace-page .trace-installation-note {
+    display: grid;
+
+    grid-template-columns:
+        auto 1fr;
+
+    align-items: center;
+
+    gap: 17px;
+
+    margin-top: 22px;
+
+    padding: 22px 25px;
+
+    border:
+        1px solid #dce5ef;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+}
+
+
+.trace-page .trace-installation-note-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #edf4ff;
+
+    color: #0759d8;
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+
+.trace-page
+.trace-installation-note
+div:nth-child(2)
+> span {
+
+    color: #8b99aa;
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: .1em;
+}
+
+
+.trace-page .trace-installation-note h4 {
+    margin:
+        3px 0;
+
+    color: #172d49;
+
+    font-size: 16px;
+}
+
+
+.trace-page .trace-installation-note p {
+    margin: 0;
+
+    color: #758397;
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:950px) {
+
+    .trace-page .trace-installation-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .trace-page .trace-installation {
+        padding: 75px 0;
+    }
+
+
+    .trace-page .trace-dongle-card,
+    .trace-page .trace-activation-card,
+    .trace-page .trace-requirements-card {
+        padding: 27px;
+    }
+
+
+    .trace-page .trace-requirements-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .trace-page .trace-activation-stats {
+        gap: 18px;
+
+        padding: 20px;
+    }
+
+
+    .trace-page .trace-activation-stats strong {
+        font-size: 43px;
+    }
+
+
+    .trace-page .trace-dongle-visual {
+        transform: none;
+    }
+
+
+    .trace-page .trace-usb-body {
+        width: 160px;
     }
 
 }
@@ -5495,6 +6216,383 @@ div:nth-child(2)
                     puoi scegliere di rinnovare
                     la licenza per mantenere attive
                     tutte le funzionalità e i servizi.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- ==============================
+    trace installation
+         ============================== -->
+    <section class="trace-installation" id="installazione">
+
+    <div class="container">
+
+        <div class="trace-installation-heading reveal">
+
+            <span class="section-label">
+                Installazione & Sicurezza
+            </span>
+
+            <h2>
+                Il tuo T-Race Pro.
+                <span>Protetto dal Dongle USB.</span>
+            </h2>
+
+            <p>
+                T-Race Pro utilizza un Dongle USB
+                come chiave di sicurezza per
+                l'attivazione e l'utilizzo del software.
+            </p>
+
+        </div>
+
+
+        <div class="trace-installation-layout">
+
+
+            <!-- ==============================
+                 DONGLE
+                 ============================== -->
+
+            <article class="trace-dongle-card reveal">
+
+                <div class="trace-dongle-top">
+
+                    <span class="trace-dongle-label">
+                        SECURITY KEY
+                    </span>
+
+                    <span class="trace-dongle-status">
+                        INCLUDED
+                    </span>
+
+                </div>
+
+
+                <div class="trace-dongle-visual">
+
+                    <div class="trace-usb-connector">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <div class="trace-usb-body">
+
+                        <span>
+                            T-RACE
+                        </span>
+
+                        <strong>
+                            PRO
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <h3>
+                    Dongle USB
+                </h3>
+
+                <p>
+                    La chiavetta USB funziona
+                    come chiave di sicurezza
+                    per l'esecuzione di T-Race Pro
+                    e viene fornita con l'acquisto
+                    del software.
+                </p>
+
+
+                <div class="trace-dongle-info">
+
+                    <div>
+
+                        <span>✓</span>
+
+                        <div>
+                            <strong>
+                                Incluso con T-Race Pro
+                            </strong>
+
+                            <small>
+                                Fornito insieme al software
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>✓</span>
+
+                        <div>
+                            <strong>
+                                Chiave di sicurezza
+                            </strong>
+
+                            <small>
+                                Necessaria per utilizzare
+                                il software
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ==============================
+                 ATTIVAZIONI
+                 ============================== -->
+
+            <div class="trace-installation-side">
+
+
+                <article class="trace-activation-card reveal">
+
+                    <div class="trace-activation-header">
+
+                        <div>
+
+                            <span>
+                                INSTALLAZIONI
+                            </span>
+
+                            <h3>
+                                Un Dongle.
+                                Più postazioni.
+                            </h3>
+
+                        </div>
+
+                        <span class="trace-activation-icon">
+                            PC
+                        </span>
+
+                    </div>
+
+
+                    <div class="trace-activation-stats">
+
+                        <div>
+
+                            <strong>
+                                3
+                            </strong>
+
+                            <span>
+                                ATTIVAZIONI
+                            </span>
+
+                            <small>
+                                massimo consentito
+                            </small>
+
+                        </div>
+
+
+                        <div class="trace-activation-divider">
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                2
+                            </strong>
+
+                            <span>
+                                PC ATTIVI
+                            </span>
+
+                            <small>
+                                contemporaneamente
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+                        Lo stesso Dongle USB può essere
+                        associato fino a tre attivazioni.
+                        Possono però essere mantenuti
+                        attivi al massimo due computer
+                        contemporaneamente.
+                    </p>
+
+                </article>
+
+
+
+                <!-- ==============================
+                     REQUISITI
+                     ============================== -->
+
+                <article class="trace-requirements-card reveal">
+
+                    <div class="trace-requirements-header">
+
+                        <div>
+
+                            <span>
+                                REQUISITI
+                            </span>
+
+                            <h3>
+                                Cosa serve.
+                            </h3>
+
+                        </div>
+
+                        <span class="trace-requirements-icon">
+                            SYS
+                        </span>
+
+                    </div>
+
+
+                    <div class="trace-requirements-grid">
+
+
+                        <div>
+
+                            <span class="trace-requirement-check">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Windows 7+
+                                </strong>
+
+                                <small>
+                                    Windows 7
+                                    o versione superiore
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="trace-requirement-check">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Connessione stabile
+                                </strong>
+
+                                <small>
+                                    Connessione Internet
+                                    affidabile
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="trace-requirement-check">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Windows Update
+                                </strong>
+
+                                <small>
+                                    Attivo e completamente
+                                    aggiornato
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <span class="trace-requirement-check">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Hardware
+                                </strong>
+
+                                <small>
+                                    Nessuna specifica
+                                    particolare richiesta
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==============================
+             NOTA FINALE
+             ============================== -->
+
+        <div class="trace-installation-note reveal">
+
+            <div class="trace-installation-note-icon">
+                !
+            </div>
+
+            <div>
+
+                <span>
+                    IMPORTANTE
+                </span>
+
+                <h4>
+                    Mantieni il sistema aggiornato.
+                </h4>
+
+                <p>
+                    È importante utilizzare una connessione
+                    stabile e mantenere Windows Update
+                    attivo e completamente aggiornato
+                    per evitare problemi durante
+                    l'utilizzo del software.
                 </p>
 
             </div>
