@@ -200,18 +200,36 @@ body {
    SOFTWARE VISUAL
    =============================== */
 
-.trace-page .trace-hero-visual {
+.trace-hero-visual {
     position: relative;
-
-    min-height: 500px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
+    min-height: 520px;
 }
-
-
+.trace-hero-visual::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(28, 93, 214, 0.14) 0%,
+        rgba(28, 93, 214, 0.06) 45%,
+        rgba(28, 93, 214, 0) 75%
+    );
+    filter: blur(6px);
+}
+.trace-hero-real-image {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 760px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
 .trace-page .trace-hero-glow {
     position: absolute;
 
@@ -227,7 +245,15 @@ body {
             transparent 68%
         );
 }
-
+.trace-hero-media {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(180deg, #f7f9fc 0%, #eef3fb 100%);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
 
 /* WINDOW */
 
@@ -3639,9 +3665,9 @@ div div span {
 
         </div>
 
-<div class="trace-hero-visual reveal">
+<div class="trace-hero-visual">
 
-    <div class="trace-hero-glow"></div>
+    <div class="trace-hero-media"></div>
 
     <img
         src="../products/t-race-pro.webp"
