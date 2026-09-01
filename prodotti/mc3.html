@@ -57,7 +57,38 @@ body {
 /* =========================================
    HERO MC3
    ========================================= */
+.mc3-page .updates-all-link {
+    flex-shrink: 0;
 
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding-bottom: 4px;
+
+    border-bottom:
+        1px solid #0759d8;
+
+    color: #0759d8;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+
+.mc3-page .updates-all-link span {
+    transition:
+        transform .2s ease;
+}
+
+
+.mc3-page .updates-all-link:hover span {
+    transform:
+        translateX(4px);
+}
 .mc3-page .product-hero {
     position: relative;
 
@@ -3502,24 +3533,7 @@ div {
             }
 
         }
-.reveal {
-    opacity: 0;
 
-    transform:
-        translateY(24px);
-
-    transition:
-        opacity .65s ease,
-        transform .65s ease;
-}
-
-
-.reveal.visible {
-    opacity: 1;
-
-    transform:
-        translateY(0);
-}
     </style>
 
 </head>
@@ -3546,7 +3560,7 @@ div {
 
     <div class="container product-hero-grid">
 
-        <div class="product-hero-content reveal">
+        <div class="product-hero-content reveal reveal-left">
 
             <span class="product-kicker">
                 Programmazione ECU professionale
@@ -3615,7 +3629,7 @@ div {
             </div>
 
 
-            <div class="hero-features">
+            <div class="hero-features" data-stagger>
 
                 <div>
                     <strong>
@@ -3654,7 +3668,7 @@ div {
         </div>
 
 
-        <div class="product-hero-visual reveal">
+        <div class="product-hero-visual reveal reveal-right">
 
             <div class="hero-glow"></div>
 
@@ -3712,7 +3726,7 @@ div {
 
     <div class="container mc3-story-grid">
 
-        <div class="mc3-story-visual">
+        <div class="mc3-story-visual reveal reveal-left">
 
             <div class="mc3-device-stage">
 
@@ -3740,7 +3754,7 @@ div {
         </div>
 
 
-        <div class="mc3-story-content">
+        <div class="mc3-story-content" data-stagger>
 
             <div class="story-intro reveal">
 
@@ -3871,7 +3885,7 @@ div {
 
     <div class="container">
 
-        <div class="section-heading center reveal">
+        <div class="section-heading center reveal reveal-up">
 
             <span class="section-label">
                 Modalità operative
@@ -3890,7 +3904,7 @@ div {
         </div>
 
 
-        <div class="mode-tabs">
+        <div class="mode-tabs" data-stagger>
 
             <button
                 class="mode-tab active"
@@ -3916,7 +3930,7 @@ div {
         </div>
 
 
-        <div class="mode-panel reveal">
+        <div class="mode-panel reveal reveal-soft">
 
             <div>
 
@@ -4072,7 +4086,7 @@ div {
         </div>
 
 
-        <div class="package-selector">
+        <div class="package-selector" data-stagger>
 
             <button
                 class="package-button active"
@@ -4133,7 +4147,7 @@ div {
         </div>
 
 
-        <div class="package-detail reveal">
+        <div class="package-detail reveal reveal-soft">
 
             <div class="package-detail-content">
 
@@ -4204,7 +4218,7 @@ div {
 
     <div class="container">
 
-        <div class="section-heading center reveal">
+        <div class="section-heading center reveal reveal-up">
 
             <span class="section-label">
                 Hardware
@@ -4230,7 +4244,7 @@ div {
                  IMMAGINE KIT
                  ========================= -->
 
-            <div class="mc3-kit-visual reveal">
+            <div class="mc3-kit-visual reveal reveal-left">
 
                 <div class="kit-image-stage">
 
@@ -4322,7 +4336,7 @@ div {
                  CONTENUTO
                  ========================= -->
 
-            <div class="mc3-kit-content reveal">
+            <div class="mc3-kit-content reveal reveal-right">
 
                 <span class="kit-label">
                     KIT MC3
@@ -4345,7 +4359,7 @@ div {
                 </p>
 
 
-                <div class="kit-items">
+                <div class="kit-items" data-stagger>
 
 
                     <button
@@ -4465,7 +4479,7 @@ div {
 
         <div class="mc3-license-grid">
 
-            <div class="mc3-license-intro reveal">
+            <div class="mc3-license-intro reveal reveal-left">
 
                 <span class="section-label">
                     Licenza MC3
@@ -4494,7 +4508,7 @@ div {
             </div>
 
 
-            <div class="mc3-license-card reveal">
+            <div class="mc3-license-card reveal reveal-right">
 
                 <div class="license-status">
 
@@ -4507,8 +4521,8 @@ div {
 
                 <div class="license-duration">
 
-                    <strong>
-                        12
+                    <strong data-count="12">
+                        0
                     </strong>
 
                     <span>
@@ -4535,7 +4549,7 @@ div {
         </div>
 
 
-        <div class="license-benefits reveal">
+        <div class="license-benefits reveal" data-stagger>
 
 
             <div class="license-benefit">
@@ -4640,7 +4654,7 @@ div {
 
     <div class="container">
 
-        <div class="mc3-updates-heading reveal">
+        <div class="mc3-updates-heading reveal reveal-up">
 
             <div>
 
@@ -4675,7 +4689,7 @@ div {
 
         <div
             id="mc3Updates"
-            class="mc3-updates-layout">
+            class="mc3-updates-layout reveal reveal-soft">
 
             <div class="updates-loading">
                 Caricamento aggiornamenti...
@@ -4696,7 +4710,9 @@ div {
         <div
             class="
                 container
-                product-cta-inner
+                product-cta-inner  
+                reveal 
+                reveal-up
             ">
 
             <div>
@@ -5751,11 +5767,11 @@ const mc3UpdatesChannel =
                     payload
                 );
 
-
                 loadMc3Updates();
 
             }
         )
+        .subscribe();
 </script>
 
 <script src="../js/components.js"></script>
