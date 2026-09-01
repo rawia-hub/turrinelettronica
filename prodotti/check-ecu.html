@@ -2121,7 +2121,47 @@
         user-select: none;
         -webkit-user-select: none;
     }
+     .check-page .button-secondary {
+            border:
+                1px solid #ccd8e6;
 
+            background:
+                rgba(255,255,255,.85);
+
+            color: #263750;
+        }
+
+        .mc3-page .button-secondary:hover {
+            transform:
+                translateY(-2px);
+
+            border-color: #0759d8;
+
+            color: #0759d8;
+        }
+        .check-page .button-primary,
+        .mc3-page .button-secondary {
+            min-height: 48px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            padding: 0 22px;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            transition:
+                transform .2s ease,
+                background .2s ease,
+                border-color .2s ease;
+        }
     </style>
 
 </head>
