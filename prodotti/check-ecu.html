@@ -2111,7 +2111,16 @@
             }
 
         }
-
+    .check-page .updates-carousel-track,
+    .check-page .updates-carousel-track * {
+        -webkit-user-drag: none;
+    }
+    
+    .check-page .updates-carousel-track img,
+    .check-page .updates-carousel-track a {
+        user-select: none;
+        -webkit-user-select: none;
+    }
     </style>
 
 </head>
@@ -3638,7 +3647,12 @@ function initUpdatesCarousel(track, dotsContainer) {
 
         }
     );
-
+    track.addEventListener(
+        'dragstart',
+        event => {
+            event.preventDefault();
+        }
+    );
 
     buildDots();
 
