@@ -1223,15 +1223,170 @@
         }
 
 
-        .check-page .check-updates-grid {
-        
-            grid-template-columns:
-                repeat(
-                    3,
-                    minmax(0,1fr)
-                );
+.check-page .check-updates-grid {
+    gap: 18px;
+}
 
-            gap: 18px;
+
+/* =========================================
+   UPDATES CAROUSEL
+   ========================================= */
+
+.check-page .updates-carousel {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+}
+
+
+.check-page .updates-carousel-track {
+    display: flex;
+
+    gap: 18px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    cursor: grab;
+
+    padding-bottom: 4px;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.check-page .updates-carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+
+.check-page .updates-carousel-track.is-dragging {
+    cursor: grabbing;
+
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+
+    user-select: none;
+}
+
+
+.check-page
+.updates-carousel-track
+> .check-update-card {
+    flex:
+        0 0
+        calc((100% - 36px) / 3);
+
+    min-width: 0;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+
+.check-page .updates-carousel-dots {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 24px;
+
+    margin-top: 24px;
+}
+
+
+.check-page .updates-carousel-dots[hidden] {
+    display: none;
+}
+
+
+.check-page .updates-carousel-dot {
+    width: 8px;
+    height: 8px;
+
+    flex: 0 0 auto;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 999px;
+
+    background:
+        rgba(7,89,216,.20);
+
+    cursor: pointer;
+
+    transition:
+        width .25s ease,
+        background-color .25s ease,
+        transform .25s ease;
+}
+
+
+.check-page .updates-carousel-dot:hover {
+    transform:
+        scale(1.12);
+}
+
+
+.check-page .updates-carousel-dot.is-active {
+    width: 24px;
+
+    background: #0759d8;
+}
+
+
+.check-page .updates-carousel-dot:focus-visible {
+    outline:
+        2px solid
+        rgba(7,89,216,.35);
+
+    outline-offset: 4px;
+}
+
+
+@media(max-width:1000px) {
+
+    .check-page
+    .updates-carousel-track
+    > .check-update-card {
+        flex-basis:
+            calc((100% - 18px) / 2);
+    }
+
+}
+
+
+        @media(max-width:650px) {
+        
+            .check-page .updates-carousel-track {
+                gap: 14px;
+            }
+        
+        
+            .check-page
+            .updates-carousel-track
+            > .check-update-card {
+                flex-basis: 100%;
+            }
+        
+        
+            .check-page .updates-carousel-dots {
+                gap: 7px;
+        
+                margin-top: 20px;
+            }
+        
         }
 
 
@@ -1911,15 +2066,6 @@
                     );
             }
 
-
-            .check-page .check-updates-grid {
-                grid-template-columns:
-                    repeat(
-                        2,
-                        minmax(0,1fr)
-                    );
-            }
-
         }
 
 
@@ -1939,8 +2085,7 @@
 
             .check-page .scan-stage,
             .check-page .module-grid,
-            .check-page .coverage-grid,
-            .check-page .check-updates-grid {
+            .check-page .coverage-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -3687,6 +3832,16 @@ async function loadCheckUpdates() {
                 );
 
         });
+    const updatesDots =
+    document.getElementById(
+        'checkUpdatesDots'
+    );
+
+
+    initUpdatesCarousel(
+        updatesContainer,
+        updatesDots
+    );
 }
 
 
