@@ -733,3 +733,4 @@ function initGlobalMotion() {
 /* Avvia support widget */
 
 initFloatingSupport();
+initGlobalMotion();
