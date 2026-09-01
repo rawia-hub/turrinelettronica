@@ -25,20 +25,7 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{f
     height: 46px;
     object-fit: contain;
 }
-        .section-label {
-            display: block;
 
-            margin-bottom: 10px;
-
-            color: #0759d8;
-
-            font-size: 11px;
-            font-weight: 900;
-
-            text-transform: uppercase;
-
-            letter-spacing: .11em;
-        }
 .brand-name {
     color: var(--navy);
     font-size: 24px;
@@ -2229,3 +2216,17 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{f
     }
 
 }
+        .section-label {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #0759d8;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .11em;
+        }
