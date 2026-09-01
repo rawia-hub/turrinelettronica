@@ -12,15 +12,7 @@
         html { scroll-behavior: smooth; }
         body { margin: 0; }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity .65s ease, transform .65s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
 
         /* HERO */
         .trace-page .trace-hero {
@@ -931,7 +923,6 @@
         @media(prefers-reduced-motion: reduce) {
             .trace-page .trace-driver-connector span::after,
             .trace-page .trace-checksum-line::after { animation: none; }
-            .reveal { opacity: 1; transform: none; transition: none; }
         }
     </style>
 </head>
@@ -943,7 +934,7 @@
 
     <section class="trace-hero">
         <div class="container trace-hero-grid">
-            <div class="trace-hero-content reveal">
+            <div class="trace-hero-content reveal reveal-left">
                 <span class="trace-kicker">ECU Remapping Software</span>
                 <h1>T-Race <span>Pro</span></h1>
                 <h2>Dalla mappa originale <span>alla tua calibrazione.</span></h2>
@@ -956,9 +947,9 @@
                     <a href="#workflow" class="button-secondary">Scopri T-Race Pro ↓</a>
                 </div>
             </div>
-            <div class="trace-hero-visual reveal">
+            <div class="trace-hero-visual reveal reveal-right">
                 <div class="trace-hero-glow"></div>
-                <img src="../images/products/t-race-pro.webp" alt="Software T-Race Pro" class="trace-hero-real-image">
+                <img src="../images/products/t-race-pro.webp" alt="Software T-Race Pro" class="trace-hero-real-image motion-float">
             </div>
         </div>
     </section>
@@ -970,7 +961,7 @@
                 <h2>Dal file originale alla calibrazione.</h2>
                 <p>T-Race Pro ti permette di scegliere come lavorare: modifica manuale delle mappe oppure Stage1 e Stage1 Plus automatici.</p>
             </div>
-            <div class="trace-workflow-grid">
+            <div class="trace-workflow-grid" data-stagger>
                 <article class="trace-workflow-step reveal"><span class="trace-step-number">01</span><div class="trace-step-icon">⇧</div><h3>Carica il file</h3><p>Apri il file originale letto dalla centralina direttamente all'interno di T-Race Pro.</p></article>
                 <article class="trace-workflow-step reveal"><span class="trace-step-number">02</span><div class="trace-step-icon">ECU</div><h3>Seleziona Marca ed ECU</h3><p>Seleziona il driver corrispondente alla marca e alla centralina sulla quale stai lavorando.</p></article>
                 <article class="trace-workflow-step trace-workflow-highlight reveal"><span class="trace-step-number">03</span><div class="trace-step-icon">MAP</div><h3>Scegli come lavorare</h3><p>Modifica manualmente le mappe oppure utilizza le funzioni automatiche Stage1 e Stage1 Plus.</p><div class="trace-step-options"><span>Manual Editing</span><span>Stage1</span><span>Stage1 Plus</span></div></article>
@@ -1003,8 +994,11 @@
             </div>
         </div>
     </section>
-
-    <section class="trace-drivers" id="drivers">
+    <div
+    class="tech-divider"
+    aria-hidden="true">
+    </div>
+    <section class="trace-drivers tech-surface" id="drivers">
         <div class="container trace-drivers-grid">
             <div class="trace-drivers-content reveal">
                 <span class="section-label">Driver & Lista Mappe</span>
@@ -1068,7 +1062,7 @@
     <section class="trace-benefits">
         <div class="container">
             <div class="trace-benefits-heading reveal"><span class="section-label">T-Race Pro</span><h2>Tutto ciò che serve <span>nel lavoro quotidiano.</span></h2><p>Un ambiente professionale pensato per rendere più semplice e veloce il lavoro sui file ECU.</p></div>
-            <div class="trace-benefits-grid">
+            <div class="trace-benefits-grid" data-stagger>
                 <article class="trace-benefit-card reveal"><div class="trace-benefit-top"><span class="trace-benefit-number">01</span><span class="trace-benefit-icon">UI</span></div><h3>Smart UI</h3><p>Un'interfaccia semplificata progettata per rendere immediato l'accesso alle funzioni e alle mappe disponibili.</p><span class="trace-benefit-footer">INTERFACCIA</span></article>
                 <article class="trace-benefit-card reveal"><div class="trace-benefit-top"><span class="trace-benefit-number">02</span><span class="trace-benefit-icon">∞</span></div><h3>File illimitati</h3><p>Lavora sui file supportati senza un sistema basato sul consumo di crediti per ogni elaborazione.</p><span class="trace-benefit-footer">UNLIMITED FILES</span></article>
                 <article class="trace-benefit-card reveal"><div class="trace-benefit-top"><span class="trace-benefit-number">03</span><span class="trace-benefit-icon">UP</span></div><h3>Aggiornamenti frequenti</h3><p>Nuovi driver, compatibilità e funzionalità vengono integrati attraverso gli aggiornamenti del software.</p><span class="trace-benefit-footer">SOFTWARE UPDATE</span></article>
@@ -1083,7 +1077,7 @@
             <div class="trace-license-layout">
                 <article class="trace-license-card reveal">
                     <div class="trace-license-card-header"><div><span class="trace-license-kicker">ABBONAMENTO</span><h3>Licenza Annuale</h3></div><span class="trace-license-status active"><span></span>ATTIVA</span></div>
-                    <div class="trace-license-duration"><strong>12</strong><div><span>MESI</span><small>1° anno incluso</small></div></div>
+                    <div class="trace-license-duration"><strong data-count="12">0</strong><div><span>MESI</span><small>1° anno incluso</small></div></div>
                     <div class="trace-license-divider"></div>
                     <div class="trace-license-features">
                         <div><span>✓</span><div><strong>File illimitati</strong><small>Nessun limite sui file processati</small></div></div>
@@ -1127,7 +1121,7 @@
                 <div class="trace-installation-side">
                     <article class="trace-activation-card reveal">
                         <div class="trace-activation-header"><div><span>INSTALLAZIONI</span><h3>Un Dongle. Più postazioni.</h3></div><span class="trace-activation-icon">PC</span></div>
-                        <div class="trace-activation-stats"><div><strong>3</strong><span>ATTIVAZIONI</span><small>massimo consentito</small></div><div class="trace-activation-divider"></div><div><strong>2</strong><span>PC ATTIVI</span><small>contemporaneamente</small></div></div>
+                        <div class="trace-activation-stats"><div><strong data-count="3">0</strong><span>ATTIVAZIONI</span><small>massimo consentito</small></div><div class="trace-activation-divider"></div><div><strong data-count="2">0</strong><span>PC ATTIVI</span><small>contemporaneamente</small></div></div>
                         <p>Lo stesso Dongle USB può essere associato fino a tre attivazioni. Possono però essere mantenuti attivi al massimo due computer contemporaneamente.</p>
                     </article>
                     <article class="trace-requirements-card reveal">
