@@ -437,7 +437,298 @@ function initFloatingSupport() {
     );
 
 }
+function initGlobalMotion() {
 
+    /* =====================================
+       REVEAL
+       ===================================== */
+
+    const motionObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting)
+                        return;
+
+
+                    entry.target
+                        .classList
+                        .add('visible');
+
+
+                    motionObserver.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+            {
+                threshold: .12,
+                rootMargin:
+                    '0px 0px -40px 0px'
+            }
+        );
+
+
+    document
+        .querySelectorAll('.reveal')
+        .forEach(element => {
+
+            if (
+                element.dataset.motionBound ===
+                'true'
+            )
+                return;
+
+
+            element.dataset.motionBound =
+                'true';
+
+
+            motionObserver.observe(
+                element
+            );
+
+        });
+
+
+    /* =====================================
+       STAGGER
+       ===================================== */
+
+    document
+        .querySelectorAll('[data-stagger]')
+        .forEach(container => {
+
+            const children =
+                Array.from(
+                    container.children
+                );
+
+
+            children.forEach(
+                (element, index) => {
+
+                    element.classList.add(
+                        'reveal',
+                        'reveal-up'
+                    );
+
+
+                    const delay =
+                        Math.min(
+                            index * 90,
+                            450
+                        );
+
+
+                    element.style
+                        .setProperty(
+                            '--reveal-delay',
+                            `${delay}ms`
+                        );
+
+
+                    if (
+                        element.dataset.motionBound !==
+                        'true'
+                    ) {
+
+                        element.dataset.motionBound =
+                            'true';
+
+
+                        motionObserver.observe(
+                            element
+                        );
+
+                    }
+
+                });
+
+        });
+
+
+    /* =====================================
+       COUNTER
+       ===================================== */
+
+    const countObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting)
+                        return;
+
+
+                    animateCounter(
+                        entry.target
+                    );
+
+
+                    countObserver.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+            {
+                threshold: .6
+            }
+        );
+
+
+    document
+        .querySelectorAll('[data-count]')
+        .forEach(element => {
+
+            countObserver.observe(
+                element
+            );
+
+        });
+
+
+    function animateCounter(element) {
+
+        const target =
+            Number(
+                element.dataset.count
+            );
+
+
+        if (
+            !Number.isFinite(target)
+        )
+            return;
+
+
+        const suffix =
+            element.dataset.suffix || '';
+
+
+        const prefix =
+            element.dataset.prefix || '';
+
+
+        const duration =
+            1100;
+
+
+        const startTime =
+            performance.now();
+
+
+        function update(now) {
+
+            const progress =
+                Math.min(
+                    (now - startTime) /
+                    duration,
+                    1
+                );
+
+
+            const eased =
+                1 -
+                Math.pow(
+                    1 - progress,
+                    3
+                );
+
+
+            const value =
+                Math.round(
+                    target * eased
+                );
+
+
+            element.textContent =
+                prefix +
+                value +
+                suffix;
+
+
+            if (progress < 1) {
+
+                requestAnimationFrame(
+                    update
+                );
+
+            }
+
+        }
+
+
+        requestAnimationFrame(
+            update
+        );
+
+    }
+
+
+    /* =====================================
+       SCROLL PROGRESS
+       ===================================== */
+
+    const backToTop =
+        document.querySelector(
+            '.back-to-top'
+        );
+
+
+    function updateScrollProgress() {
+
+        if (!backToTop)
+            return;
+
+
+        const scrollTop =
+            window.scrollY;
+
+
+        const maxScroll =
+            document.documentElement
+                .scrollHeight -
+            window.innerHeight;
+
+
+        const progress =
+            maxScroll > 0
+                ? (
+                    scrollTop /
+                    maxScroll
+                ) * 100
+                : 0;
+
+
+        backToTop.style
+            .setProperty(
+                '--scroll-progress',
+                `${progress}%`
+            );
+
+    }
+
+
+    window.addEventListener(
+        'scroll',
+        updateScrollProgress,
+        {
+            passive: true
+        }
+    );
+
+
+    updateScrollProgress();
+
+}
 
 /* Avvia support widget */
 
