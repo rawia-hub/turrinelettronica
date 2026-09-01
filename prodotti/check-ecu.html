@@ -1224,8 +1224,7 @@
 
 
         .check-page .check-updates-grid {
-            display: grid;
-
+        
             grid-template-columns:
                 repeat(
                     3,
@@ -3072,7 +3071,433 @@ const checkDynamicRevealObserver =
 /* =========================================
    AGGIORNAMENTI CHECK ECU
    ========================================= */
+function initUpdatesCarousel(track, dotsContainer) {
 
+    if (!track || !dotsContainer)
+        return;
+
+
+    let isDragging = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let hasDragged = false;
+
+    let resizeTimer = null;
+
+
+    function getCards() {
+
+        return Array.from(
+            track.querySelectorAll(
+                '.check-update-card'
+            )
+        );
+
+    }
+
+
+    function getItemsPerPage() {
+
+        if (window.innerWidth <= 640)
+            return 1;
+
+        if (window.innerWidth <= 1024)
+            return 2;
+
+        return 3;
+
+    }
+
+
+    function getPageCount() {
+
+        const cards = getCards();
+
+        if (!cards.length)
+            return 0;
+
+        return Math.ceil(
+            cards.length /
+            getItemsPerPage()
+        );
+
+    }
+
+
+    function getPagePosition(pageIndex) {
+
+        const cards = getCards();
+
+        if (!cards.length)
+            return 0;
+
+
+        const cardIndex =
+            Math.min(
+                pageIndex * getItemsPerPage(),
+                cards.length - 1
+            );
+
+
+        return cards[cardIndex].offsetLeft -
+               track.offsetLeft;
+
+    }
+
+
+    function updateActiveDot() {
+
+        const dots =
+            dotsContainer.querySelectorAll(
+                '.updates-carousel-dot'
+            );
+
+
+        if (!dots.length)
+            return;
+
+
+        let nearestPage = 0;
+        let nearestDistance = Infinity;
+
+
+        dots.forEach((dot, index) => {
+
+            const position =
+                getPagePosition(index);
+
+            const distance =
+                Math.abs(
+                    track.scrollLeft -
+                    position
+                );
+
+
+            if (distance < nearestDistance) {
+
+                nearestDistance = distance;
+                nearestPage = index;
+
+            }
+
+        });
+
+
+        dots.forEach((dot, index) => {
+
+            dot.classList.toggle(
+                'is-active',
+                index === nearestPage
+            );
+
+
+            dot.setAttribute(
+                'aria-current',
+                index === nearestPage
+                    ? 'true'
+                    : 'false'
+            );
+
+        });
+
+    }
+
+
+    function buildDots() {
+
+        const pageCount =
+            getPageCount();
+
+
+        dotsContainer.innerHTML = '';
+
+
+        if (pageCount <= 1) {
+
+            dotsContainer.hidden = true;
+            return;
+
+        }
+
+
+        dotsContainer.hidden = false;
+
+
+        for (
+            let page = 0;
+            page < pageCount;
+            page++
+        ) {
+
+            const dot =
+                document.createElement(
+                    'button'
+                );
+
+
+            dot.type = 'button';
+
+            dot.className =
+                'updates-carousel-dot';
+
+
+            dot.setAttribute(
+                'aria-label',
+                `Vai alla pagina ${page + 1} degli aggiornamenti`
+            );
+
+
+            dot.addEventListener(
+                'click',
+                () => {
+
+                    track.scrollTo({
+                        left:
+                            getPagePosition(
+                                page
+                            ),
+                        behavior:
+                            'smooth'
+                    });
+
+                }
+            );
+
+
+            dotsContainer.appendChild(
+                dot
+            );
+
+        }
+
+
+        updateActiveDot();
+
+    }
+
+
+    /*
+       Aggiorna i pallini mentre
+       si scorre anche con touch.
+    */
+
+    let scrollFrame = null;
+
+
+    track.addEventListener(
+        'scroll',
+        () => {
+
+            if (scrollFrame)
+                cancelAnimationFrame(
+                    scrollFrame
+                );
+
+
+            scrollFrame =
+                requestAnimationFrame(
+                    updateActiveDot
+                );
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    /*
+       Drag con mouse desktop.
+       Su mobile lasciamo lavorare
+       lo scrolling touch nativo.
+    */
+
+    track.addEventListener(
+        'mousedown',
+        event => {
+
+            if (event.button !== 0)
+                return;
+
+
+            isDragging = true;
+            hasDragged = false;
+
+            startX = event.pageX;
+
+            startScrollLeft =
+                track.scrollLeft;
+
+
+            track.classList.add(
+                'is-dragging'
+            );
+
+        }
+    );
+
+
+    window.addEventListener(
+        'mousemove',
+        event => {
+
+            if (!isDragging)
+                return;
+
+
+            const distance =
+                event.pageX -
+                startX;
+
+
+            if (Math.abs(distance) > 5)
+                hasDragged = true;
+
+
+            track.scrollLeft =
+                startScrollLeft -
+                distance;
+
+        }
+    );
+
+
+    window.addEventListener(
+        'mouseup',
+        () => {
+
+            if (!isDragging)
+                return;
+
+
+            isDragging = false;
+
+
+            track.classList.remove(
+                'is-dragging'
+            );
+
+
+            /*
+               Dopo il drag portiamo
+               alla pagina più vicina.
+            */
+
+            const pageCount =
+                getPageCount();
+
+
+            let nearestPage = 0;
+            let nearestDistance =
+                Infinity;
+
+
+            for (
+                let page = 0;
+                page < pageCount;
+                page++
+            ) {
+
+                const position =
+                    getPagePosition(page);
+
+
+                const distance =
+                    Math.abs(
+                        track.scrollLeft -
+                        position
+                    );
+
+
+                if (
+                    distance <
+                    nearestDistance
+                ) {
+
+                    nearestDistance =
+                        distance;
+
+                    nearestPage =
+                        page;
+
+                }
+
+            }
+
+
+            track.scrollTo({
+                left:
+                    getPagePosition(
+                        nearestPage
+                    ),
+                behavior:
+                    'smooth'
+            });
+
+        }
+    );
+
+
+    /*
+       Evita di aprire accidentalmente
+       un aggiornamento quando stavamo
+       trascinando.
+    */
+
+    track.addEventListener(
+        'click',
+        event => {
+
+            if (!hasDragged)
+                return;
+
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            hasDragged = false;
+
+        },
+        true
+    );
+
+
+    /*
+       Responsive:
+       desktop 3
+       tablet 2
+       mobile 1
+    */
+
+    window.addEventListener(
+        'resize',
+        () => {
+
+            clearTimeout(
+                resizeTimer
+            );
+
+
+            resizeTimer =
+                setTimeout(
+                    () => {
+
+                        track.scrollLeft = 0;
+
+                        buildDots();
+
+                    },
+                    150
+                );
+
+        }
+    );
+
+
+    buildDots();
+
+}
 async function loadCheckUpdates() {
 
     if (!updatesContainer)
@@ -3120,7 +3545,7 @@ async function loadCheckUpdates() {
                     ascending: false
                 }
             )
-            .limit(3);
+            .limit(9);
 
 
     if (error) {
