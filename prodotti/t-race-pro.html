@@ -219,74 +219,291 @@ body {
     }
 }
 
-        /* =========================================
-           CTA FINALE
-           ========================================= */
+/* =========================================
+   T-RACE PRO FINAL CTA
+   ========================================= */
 
-.tuning-page .product-cta {
-    padding: 75px 0;
+.trace-page .trace-final-cta {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 85px 0;
 
     background:
+        radial-gradient(
+            circle at 85% 40%,
+            rgba(55, 137, 255, .24),
+            transparent 32%
+        ),
         linear-gradient(
             135deg,
-            #0759d8,
-            #06429e
+            #071b3a 0%,
+            #08264f 55%,
+            #06429e 100%
         );
-
-    color: #ffffff;
 }
 
 
-.tuning-page .product-cta-inner {
+/* DECORAZIONE */
+
+.trace-page .trace-final-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    left: -220px;
+    bottom: -360px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(102,170,255,.15),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+
+/* LAYOUT */
+
+.trace-page .trace-final-cta-inner {
+    position: relative;
+    z-index: 2;
+
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    gap: 35px;
+    gap: 60px;
 }
 
 
-.tuning-page .product-cta h2 {
-    margin: 0 0 8px;
+/* TEXT */
 
-    font-size: 32px;
+.trace-page .trace-final-cta-content {
+    max-width: 720px;
 }
 
 
-.tuning-page .product-cta p {
+.trace-page .trace-final-cta-kicker {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    color: #66aaff;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: .14em;
+}
+
+
+.trace-page .trace-final-cta h2 {
+    margin: 0 0 15px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            52px
+        );
+
+    line-height: 1.06;
+
+    letter-spacing: -.03em;
+}
+
+
+.trace-page .trace-final-cta h2 span {
+    color: #66aaff;
+}
+
+
+.trace-page .trace-final-cta p {
+    max-width: 610px;
+
     margin: 0;
 
-    color: #dbe8ff;
+    color: #b8c8db;
+
+    font-size: 14px;
+
+    line-height: 1.7;
 }
 
 
-@media(max-width:760px) {
+/* =========================================
+   ACTIONS
+   ========================================= */
 
-    .tuning-page .product-cta-inner {
+.trace-page .trace-final-cta-actions {
+    flex-shrink: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    min-width: 220px;
+}
+
+
+/* PRIMARY */
+
+.trace-page .trace-final-cta-primary {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    min-height: 52px;
+
+    padding: 0 20px;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #0759d8;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 15px 30px
+        rgba(0,0,0,.15);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.trace-page .trace-final-cta-primary span {
+    font-size: 16px;
+
+    transition:
+        transform .2s ease;
+}
+
+
+.trace-page .trace-final-cta-primary:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 19px 38px
+        rgba(0,0,0,.20);
+}
+
+
+.trace-page
+.trace-final-cta-primary:hover
+span {
+
+    transform:
+        translateX(4px);
+}
+
+
+/* SECONDARY */
+
+.trace-page .trace-final-cta-secondary {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 47px;
+
+    padding: 0 19px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    color: #dce7f5;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease;
+}
+
+
+.trace-page .trace-final-cta-secondary:hover {
+    border-color:
+        rgba(102,170,255,.55);
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:800px) {
+
+    .trace-page .trace-final-cta-inner {
         align-items: flex-start;
+
         flex-direction: column;
+
+        gap: 35px;
+    }
+
+
+    .trace-page .trace-final-cta-actions {
+        width: 100%;
+
+        min-width: 0;
+
+        max-width: 360px;
     }
 
 }
 
-.reveal {
-    opacity: 0;
 
-    transform:
-        translateY(24px);
+@media(max-width:550px) {
 
-    transition:
-        opacity .65s ease,
-        transform .65s ease;
-}
+    .trace-page .trace-final-cta {
+        padding: 70px 0;
+    }
 
 
-.reveal.visible {
-    opacity: 1;
+    .trace-page .trace-final-cta-actions {
+        max-width: none;
+    }
 
-    transform:
-        translateY(0);
 }
 /* =========================================
    T-RACE PRO WORKFLOW
@@ -2103,392 +2320,6 @@ span::after {
 
 }
 
-/* =========================================
-   TERMINAL
-   ========================================= */
-
-.tuning-page .checksum-visual {
-    position: relative;
-}
-
-
-.tuning-page .checksum-terminal {
-    overflow: hidden;
-
-    border:
-        1px solid #18345e;
-
-    border-radius: 17px;
-
-    background: #071b3a;
-
-    box-shadow:
-        0 30px 65px
-        rgba(7,27,58,.20);
-}
-
-
-.tuning-page .checksum-terminal-header {
-    min-height: 50px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    padding: 0 20px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.10);
-
-    background:
-        rgba(255,255,255,.035);
-
-    color: #8298b5;
-
-    font-size: 9px;
-    font-weight: 900;
-
-    letter-spacing: .11em;
-}
-
-
-.tuning-page .terminal-dots {
-    display: flex;
-
-    gap: 6px;
-}
-
-
-.tuning-page .terminal-dots span {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.25);
-}
-
-
-/* FLOW */
-
-.tuning-page .checksum-flow {
-    display: grid;
-
-    grid-template-columns:
-        1fr 55px
-        1fr 55px
-        1fr;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding:
-        55px 30px 42px;
-}
-
-
-.tuning-page .checksum-node {
-    position: relative;
-
-    min-height: 180px;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    padding: 18px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.11);
-
-    border-radius: 12px;
-
-    background:
-        rgba(255,255,255,.04);
-
-    text-align: center;
-}
-
-
-.tuning-page .checksum-node.active {
-    border-color:
-        rgba(79,156,255,.45);
-
-    background:
-        rgba(7,89,216,.14);
-}
-
-
-.tuning-page .checksum-node.ready {
-    border-color:
-        rgba(61,218,129,.33);
-}
-
-
-.tuning-page .checksum-node-label {
-    position: absolute;
-
-    top: 12px;
-    left: 13px;
-
-    color: #637a99;
-
-    font-size: 8px;
-    font-weight: 900;
-}
-
-
-.tuning-page .checksum-node-icon {
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 14px;
-
-    border:
-        1px solid
-        rgba(79,156,255,.25);
-
-    border-radius: 12px;
-
-    background:
-        rgba(7,89,216,.13);
-
-    color: #66aaff;
-
-    font-size: 14px;
-    font-weight: 900;
-}
-
-
-.tuning-page .checksum-node.ready
-.checksum-node-icon {
-    border-color:
-        rgba(61,218,129,.30);
-
-    background:
-        rgba(61,218,129,.11);
-
-    color: #45dc86;
-}
-
-
-.tuning-page .checksum-node strong {
-    margin-bottom: 4px;
-
-    color: #ffffff;
-
-    font-size: 13px;
-}
-
-
-.tuning-page .checksum-node small {
-    color: #7f93ae;
-
-    font-size: 9px;
-}
-
-
-/* FRECCE */
-
-.tuning-page .checksum-arrow {
-    display: flex;
-
-    align-items: center;
-
-    color: #559bef;
-}
-
-
-.tuning-page .checksum-line {
-    position: relative;
-
-    flex: 1;
-
-    height: 2px;
-
-    overflow: hidden;
-
-    background:
-        rgba(85,155,239,.20);
-}
-
-
-.tuning-page .checksum-line::after {
-    content: "";
-
-    position: absolute;
-
-    left: -100%;
-
-    width: 100%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #66aaff,
-            transparent
-        );
-
-    animation:
-        checksumFlow
-        2s linear
-        infinite;
-}
-
-
-@keyframes checksumFlow {
-
-    from {
-        left: -100%;
-    }
-
-    to {
-        left: 100%;
-    }
-
-}
-
-
-/* PROGRESS */
-
-.tuning-page .checksum-progress {
-    margin:
-        0 30px 30px;
-
-    padding: 17px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    border-radius: 9px;
-
-    background:
-        rgba(0,0,0,.12);
-}
-
-
-.tuning-page .checksum-progress-top {
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-bottom: 10px;
-
-    color: #7288a6;
-
-    font-size: 8px;
-    font-weight: 900;
-
-    letter-spacing: .09em;
-}
-
-
-.tuning-page .checksum-progress-top strong {
-    color: #45dc86;
-}
-
-
-.tuning-page .checksum-progress-bar {
-    height: 4px;
-
-    overflow: hidden;
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,.08);
-}
-
-
-.tuning-page .checksum-progress-bar span {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    border-radius: inherit;
-
-    background:
-        linear-gradient(
-            90deg,
-            #0759d8,
-            #43dd83
-        );
-}
-
-
-/* RESPONSIVE */
-
-@media(max-width:1000px) {
-
-    .tuning-page .checksum-grid {
-        grid-template-columns: 1fr;
-
-        gap: 50px;
-    }
-
-}
-
-
-@media(max-width:650px) {
-
-    .tuning-page .tuning-checksum {
-        padding: 75px 0;
-    }
-
-
-    .tuning-page .checksum-flow {
-        grid-template-columns: 1fr;
-
-        gap: 12px;
-    }
-
-
-    .tuning-page .checksum-arrow {
-        width: 2px;
-        height: 35px;
-
-        margin: auto;
-
-        flex-direction: column;
-    }
-
-
-    .tuning-page .checksum-line {
-        width: 2px;
-        height: 100%;
-    }
-
-}
-
-
-@media(
-    prefers-reduced-motion:
-    reduce
-) {
-
-    .tuning-page
-    .checksum-line::after {
-        animation: none;
-    }
-
-}
        /* =========================================
    T-RACE PRO BENEFITS
    ========================================= */
@@ -6697,35 +6528,55 @@ div:nth-child(2)
          CTA
          ========================================= -->
 
-<section class="product-cta">
+<section class="trace-final-cta">
 
-    <div class="container product-cta-inner reveal">
+    <div class="container trace-final-cta-inner reveal">
 
-        <div>
+        <div class="trace-final-cta-content">
 
-            <span class="section-label">
-                Tuning Solution
+            <span class="trace-final-cta-kicker">
+                T-RACE PRO
             </span>
 
             <h2>
-                Vuoi iniziare a lavorare
-                con Tuning Solution?
+                Porta il remapping
+                <span>nel tuo workflow.</span>
             </h2>
 
             <p>
-                Contattaci per informazioni,
-                licenze e configurazioni disponibili.
+                Lavora sulle mappe in modalità manuale,
+                utilizza Stage1 e Stage1 Plus
+                e gestisci il tuo lavoro ECU
+                con T-Race Pro.
             </p>
 
         </div>
 
-        <a
-            href="../index.html#contatti"
-            class="button-primary">
 
-            Richiedi informazioni
+        <div class="trace-final-cta-actions">
 
-        </a>
+            <a
+                href="../index.html#contatti"
+                class="trace-final-cta-primary">
+
+                Richiedi preventivo
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+
+            <a
+                href="#licenza"
+                class="trace-final-cta-secondary">
+
+                Scopri la licenza
+
+            </a>
+
+        </div>
 
     </div>
 
