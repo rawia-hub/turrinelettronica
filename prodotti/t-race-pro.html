@@ -4274,18 +4274,20 @@ div:nth-child(2)
     }
 
 }
-        /* =========================================
-   TUNING SOLUTION UPDATES
+/* =========================================
+   T-RACE PRO UPDATES
    ========================================= */
 
-.tuning-page .tuning-updates-section {
+.trace-page .trace-updates-section {
     padding: 110px 0;
 
     background: #ffffff;
 }
 
 
-.tuning-page .tuning-updates-heading {
+/* HEADER */
+
+.trace-page .trace-updates-heading {
     display: flex;
 
     align-items: flex-end;
@@ -4297,14 +4299,13 @@ div:nth-child(2)
 }
 
 
-.tuning-page .tuning-updates-heading > div {
+.trace-page .trace-updates-heading > div {
     max-width: 700px;
 }
 
 
-.tuning-page .tuning-updates-heading h2 {
-    margin:
-        0 0 14px;
+.trace-page .trace-updates-heading h2 {
+    margin: 0 0 14px;
 
     color: #071b3a;
 
@@ -4321,7 +4322,12 @@ div:nth-child(2)
 }
 
 
-.tuning-page .tuning-updates-heading p {
+.trace-page .trace-updates-heading h2 span {
+    color: #0759d8;
+}
+
+
+.trace-page .trace-updates-heading p {
     max-width: 620px;
 
     margin: 0;
@@ -4334,7 +4340,9 @@ div:nth-child(2)
 }
 
 
-.tuning-page .updates-all-link {
+/* LINK TUTTI */
+
+.trace-page .trace-updates-all-link {
     flex-shrink: 0;
 
     display: inline-flex;
@@ -4352,13 +4360,13 @@ div:nth-child(2)
 }
 
 
-.tuning-page .updates-all-link span {
+.trace-page .trace-updates-all-link span {
     transition:
         transform .2s ease;
 }
 
 
-.tuning-page .updates-all-link:hover span {
+.trace-page .trace-updates-all-link:hover span {
     transform:
         translateX(4px);
 }
@@ -4368,22 +4376,22 @@ div:nth-child(2)
    LAYOUT
    ========================================= */
 
-.tuning-page .tuning-updates-layout {
+.trace-page .trace-updates-layout {
     display: grid;
 
     grid-template-columns:
-        minmax(0,1.35fr)
-        minmax(340px,.65fr);
+        minmax(0, 1.35fr)
+        minmax(340px, .65fr);
 
     gap: 18px;
 }
 
 
 /* =========================================
-   FEATURED
+   AGGIORNAMENTO PRINCIPALE
    ========================================= */
 
-.tuning-page .update-featured {
+.trace-page .trace-update-featured {
     position: relative;
 
     min-height: 465px;
@@ -4398,11 +4406,13 @@ div:nth-child(2)
 
     background: #071b3a;
 
+    color: inherit;
+
     text-decoration: none;
 }
 
 
-.tuning-page .update-featured-image {
+.trace-page .trace-update-featured-image {
     position: absolute;
 
     inset: 0;
@@ -4417,14 +4427,16 @@ div:nth-child(2)
 }
 
 
-.tuning-page .update-featured:hover
-.update-featured-image {
+.trace-page
+.trace-update-featured:hover
+.trace-update-featured-image {
+
     transform:
         scale(1.035);
 }
 
 
-.tuning-page .update-featured-overlay {
+.trace-page .trace-update-featured-overlay {
     position: absolute;
 
     inset: 0;
@@ -4432,13 +4444,14 @@ div:nth-child(2)
     background:
         linear-gradient(
             180deg,
-            rgba(7,27,58,.06) 20%,
-            rgba(7,27,58,.95) 100%
+            rgba(7,27,58,.05) 15%,
+            rgba(7,27,58,.35) 50%,
+            rgba(7,27,58,.97) 100%
         );
 }
 
 
-.tuning-page .update-featured-content {
+.trace-page .trace-update-featured-content {
     position: relative;
 
     z-index: 2;
@@ -4449,7 +4462,9 @@ div:nth-child(2)
 }
 
 
-.tuning-page .update-meta {
+/* META */
+
+.trace-page .trace-update-meta {
     display: flex;
 
     flex-wrap: wrap;
@@ -4460,7 +4475,7 @@ div:nth-child(2)
 }
 
 
-.tuning-page .update-meta span {
+.trace-page .trace-update-meta span {
     padding: 5px 8px;
 
     border-radius: 20px;
@@ -4475,11 +4490,12 @@ div:nth-child(2)
 }
 
 
-.tuning-page .update-featured h3 {
+/* TEXT */
+
+.trace-page .trace-update-featured h3 {
     max-width: 650px;
 
-    margin:
-        0 0 11px;
+    margin: 0 0 11px;
 
     color: #ffffff;
 
@@ -4494,11 +4510,10 @@ div:nth-child(2)
 }
 
 
-.tuning-page .update-featured p {
+.trace-page .trace-update-featured p {
     max-width: 650px;
 
-    margin:
-        0 0 17px;
+    margin: 0 0 17px;
 
     color: #b9c7d8;
 
@@ -4508,7 +4523,7 @@ div:nth-child(2)
 }
 
 
-.tuning-page .update-read-more {
+.trace-page .trace-update-read-more {
     color: #66aaff;
 
     font-size: 10px;
@@ -4517,17 +4532,17 @@ div:nth-child(2)
 
 
 /* =========================================
-   COMPACT
+   AGGIORNAMENTI SECONDARI
    ========================================= */
 
-.tuning-page .updates-secondary {
+.trace-page .trace-updates-secondary {
     display: grid;
 
     gap: 18px;
 }
 
 
-.tuning-page .update-compact {
+.trace-page .trace-update-compact {
     display: grid;
 
     grid-template-columns:
@@ -4550,13 +4565,16 @@ div:nth-child(2)
 
     transition:
         transform .2s ease,
-        box-shadow .2s ease;
+        box-shadow .2s ease,
+        border-color .2s ease;
 }
 
 
-.tuning-page .update-compact:hover {
+.trace-page .trace-update-compact:hover {
     transform:
         translateY(-3px);
+
+    border-color: #c5d8ef;
 
     box-shadow:
         0 15px 35px
@@ -4564,7 +4582,7 @@ div:nth-child(2)
 }
 
 
-.tuning-page .update-compact-image {
+.trace-page .trace-update-compact-image {
     width: 100%;
     height: 100%;
 
@@ -4574,14 +4592,23 @@ div:nth-child(2)
 }
 
 
-.tuning-page .update-compact-content {
+.trace-page .trace-update-compact-content {
     padding: 20px;
 }
 
 
-.tuning-page .update-compact h3 {
-    margin:
-        9px 0 9px;
+.trace-page
+.trace-update-compact
+.trace-update-meta span {
+
+    background: #edf4ff;
+
+    color: #61738a;
+}
+
+
+.trace-page .trace-update-compact h3 {
+    margin: 9px 0 9px;
 
     color: #172c48;
 
@@ -4591,7 +4618,7 @@ div:nth-child(2)
 }
 
 
-.tuning-page .update-compact p {
+.trace-page .trace-update-compact p {
     margin: 0;
 
     color: #748296;
@@ -4602,17 +4629,17 @@ div:nth-child(2)
 }
 
 
-.tuning-page .update-compact .update-meta span {
-    background: #edf4ff;
-    color: #61738a;
-}
+/* =========================================
+   PLACEHOLDER
+   ========================================= */
 
-
-.tuning-page .update-featured-placeholder {
+.trace-page .trace-update-featured-placeholder {
     position: absolute;
+
     inset: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -4624,35 +4651,40 @@ div:nth-child(2)
         ),
         #071b3a;
 
-    color: rgba(255,255,255,.22);
+    color:
+        rgba(255,255,255,.22);
 
     font-size: 22px;
     font-weight: 900;
+
     letter-spacing: .08em;
 }
 
 
-.tuning-page .update-compact-placeholder {
+.trace-page .trace-update-compact-placeholder {
     width: 100%;
     height: 100%;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     background: #edf3f9;
+
     color: #7b8da3;
 
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 900;
+
     letter-spacing: .06em;
 }
 
 
-/* EMPTY / LOADING */
+/* LOADING / EMPTY */
 
-.tuning-page .updates-loading,
-.tuning-page .updates-empty {
+.trace-page .trace-updates-loading,
+.trace-page .trace-updates-empty {
     grid-column:
         1 / -1;
 
@@ -4671,18 +4703,18 @@ div:nth-child(2)
 }
 
 
-/* RESPONSIVE */
+/* =========================================
+   RESPONSIVE
+   ========================================= */
 
 @media(max-width:900px) {
 
-    .tuning-page
-    .tuning-updates-layout {
+    .trace-page .trace-updates-layout {
         grid-template-columns: 1fr;
     }
 
 
-    .tuning-page
-    .updates-secondary {
+    .trace-page .trace-updates-secondary {
         grid-template-columns:
             repeat(
                 2,
@@ -4695,34 +4727,29 @@ div:nth-child(2)
 
 @media(max-width:650px) {
 
-    .tuning-page
-    .tuning-updates-section {
+    .trace-page .trace-updates-section {
         padding: 75px 0;
     }
 
 
-    .tuning-page
-    .tuning-updates-heading {
+    .trace-page .trace-updates-heading {
         align-items: flex-start;
 
         flex-direction: column;
     }
 
 
-    .tuning-page
-    .update-featured {
+    .trace-page .trace-update-featured {
         min-height: 390px;
     }
 
 
-    .tuning-page
-    .updates-secondary {
+    .trace-page .trace-updates-secondary {
         grid-template-columns: 1fr;
     }
 
 
-    .tuning-page
-    .update-compact {
+    .trace-page .trace-update-compact {
         grid-template-columns:
             110px 1fr;
 
@@ -4730,6 +4757,9 @@ div:nth-child(2)
     }
 
 }
+
+
+
     </style>
 
 </head>
@@ -6606,11 +6636,11 @@ div:nth-child(2)
 <!-- ===================
     Ultimi aggiornamenti
     ==================== -->
-    <section class="tuning-updates-section">
+<section class="trace-updates-section" id="aggiornamenti">
 
     <div class="container">
 
-        <div class="tuning-updates-heading reveal">
+        <div class="trace-updates-heading reveal">
 
             <div>
 
@@ -6619,25 +6649,29 @@ div:nth-child(2)
                 </span>
 
                 <h2>
-                    Tuning Solution
-                    continua ad evolversi.
+                    T-Race Pro
+                    <span>continua ad evolversi.</span>
                 </h2>
 
                 <p>
-                    Nuove soluzioni, compatibilità
-                    e funzionalità vengono integrate
-                    attraverso gli aggiornamenti software.
+                    Nuovi driver, compatibilità,
+                    funzionalità e miglioramenti
+                    vengono integrati attraverso
+                    gli aggiornamenti software.
                 </p>
 
             </div>
 
 
             <a
-                href="../aggiornamenti.html?product=tuning"
-                class="updates-all-link">
+                href="../aggiornamenti.html?product=trace"
+                class="trace-updates-all-link">
 
                 Tutti gli aggiornamenti
-                <span>→</span>
+
+                <span>
+                    →
+                </span>
 
             </a>
 
@@ -6645,10 +6679,10 @@ div:nth-child(2)
 
 
         <div
-            id="tuningUpdates"
-            class="tuning-updates-layout">
+            id="traceUpdates"
+            class="trace-updates-layout">
 
-            <div class="updates-loading">
+            <div class="trace-updates-loading">
                 Caricamento aggiornamenti...
             </div>
 
@@ -6726,9 +6760,9 @@ const supabaseClient =
     );
 
 
-const updatesContainer =
+const traceUpdatesContainer =
     document.getElementById(
-        'tuningUpdates'
+        'traceUpdates'
     );
 
 
@@ -6808,227 +6842,13 @@ document
         );
 
     });
-
-
 /* =========================================
-   SOLUZIONI TUNING SOLUTION
+   ULTIMI AGGIORNAMENTI T-RACE PRO
    ========================================= */
 
-const solutionData = {
+async function loadTraceUpdates() {
 
-    dpf: {
-        index: '01',
-        icon: 'DPF',
-        title: 'DPF / OPF',
-        text: 'Gestione della soluzione dedicata ai sistemi filtro antiparticolato supportati dal software.',
-        tags: [
-            'DPF',
-            'OPF',
-            'Automatico'
-        ]
-    },
-
-    egr: {
-        index: '02',
-        icon: 'EGR',
-        title: 'EGR',
-        text: 'Soluzione automatizzata dedicata alla gestione delle funzioni EGR presenti nelle ECU supportate.',
-        tags: [
-            'EGR',
-            'ECU',
-            'Automatico'
-        ]
-    },
-
-    adblue: {
-        index: '03',
-        icon: 'NOx',
-        title: 'NOx / AdBlue',
-        text: 'Funzioni dedicate ai sistemi NOx e AdBlue disponibili sulle centraline compatibili.',
-        tags: [
-            'NOx',
-            'AdBlue',
-            'Diesel'
-        ]
-    },
-
-    lambda: {
-        index: '04',
-        icon: 'λ',
-        title: 'Lambda',
-        text: 'Soluzione dedicata alla gestione delle funzioni Lambda sulle ECU supportate.',
-        tags: [
-            'Lambda',
-            'Benzina',
-            'ECU'
-        ]
-    },
-
-    speed: {
-        index: '05',
-        icon: 'Vmax',
-        title: 'Speed Limiter',
-        text: 'Gestione delle funzioni relative al limite di velocità sulle centraline per cui la soluzione è disponibile.',
-        tags: [
-            'Speed',
-            'Limiter',
-            'Automatico'
-        ]
-    },
-
-    swirl: {
-        index: '06',
-        icon: 'FLAP',
-        title: 'Swirl / Flap',
-        text: 'Funzioni dedicate alla gestione dei sistemi Swirl e Flap presenti sulle configurazioni supportate.',
-        tags: [
-            'Swirl',
-            'Flap',
-            'Intake'
-        ]
-    },
-
-    torque: {
-        index: '07',
-        icon: 'Nm',
-        title: 'Torque Monitor',
-        text: 'Soluzione dedicata alla gestione delle strategie di monitoraggio della coppia sulle ECU compatibili.',
-        tags: [
-            'Torque',
-            'Monitor',
-            'ECU'
-        ]
-    },
-
-    special: {
-        index: '08',
-        icon: 'FX',
-        title: 'Funzioni speciali',
-        text: 'Tuning Solution include inoltre funzioni speciali disponibili in base alla centralina, tra cui Burbles, Launch Control e altre soluzioni dedicate.',
-        tags: [
-            'Burbles',
-            'Launch Control',
-            'Special'
-        ]
-    }
-
-};
-
-
-function selectSolution(key) {
-
-    const data =
-        solutionData[key];
-
-
-    if (!data)
-        return;
-
-
-    const detail =
-        document.getElementById(
-            'solutionDetail'
-        );
-
-
-    if (!detail)
-        return;
-
-
-    detail.classList.add(
-        'changing'
-    );
-
-
-    window.setTimeout(
-        () => {
-
-            document.getElementById(
-                'solutionIndex'
-            ).textContent =
-                data.index;
-
-
-            document.getElementById(
-                'solutionIcon'
-            ).textContent =
-                data.icon;
-
-
-            document.getElementById(
-                'solutionTitle'
-            ).textContent =
-                data.title;
-
-
-            document.getElementById(
-                'solutionText'
-            ).textContent =
-                data.text;
-
-
-            document.getElementById(
-                'solutionTags'
-            ).innerHTML =
-                data.tags
-                    .map(
-                        tag =>
-                            `<span>${escapeHtml(tag)}</span>`
-                    )
-                    .join('');
-
-
-            detail.classList.remove(
-                'changing'
-            );
-
-        },
-        160
-    );
-
-
-    document
-        .querySelectorAll(
-            '.solution-button'
-        )
-        .forEach(button => {
-
-            button.classList.toggle(
-                'active',
-                button.dataset.solution === key
-            );
-
-        });
-}
-
-
-document
-    .querySelectorAll(
-        '.solution-button'
-    )
-    .forEach(button => {
-
-        button.addEventListener(
-            'click',
-            () => {
-
-                selectSolution(
-                    button.dataset.solution
-                );
-
-            }
-        );
-
-    });
-
-
-/* =========================================
-   ULTIMI AGGIORNAMENTI TUNING SOLUTION
-   ========================================= */
-
-async function loadTuningUpdates() {
-
-    if (!updatesContainer)
+    if (!traceUpdatesContainer)
         return;
 
 
@@ -7053,7 +6873,7 @@ async function loadTuningUpdates() {
             )
             .eq(
                 'product_key',
-                'tuning'
+                'trace'
             )
             .order(
                 'published_at',
@@ -7067,13 +6887,13 @@ async function loadTuningUpdates() {
     if (error) {
 
         console.error(
-            'Errore caricamento aggiornamenti Tuning Solution:',
+            'Errore caricamento aggiornamenti T-Race Pro:',
             error
         );
 
 
-        updatesContainer.innerHTML = `
-            <div class="updates-empty">
+        traceUpdatesContainer.innerHTML = `
+            <div class="trace-updates-empty">
                 Impossibile caricare gli aggiornamenti.
             </div>
         `;
@@ -7084,9 +6904,10 @@ async function loadTuningUpdates() {
 
     if (!data || data.length === 0) {
 
-        updatesContainer.innerHTML = `
-            <div class="updates-empty">
-                Nessun aggiornamento Tuning Solution pubblicato al momento.
+        traceUpdatesContainer.innerHTML = `
+            <div class="trace-updates-empty">
+                Nessun aggiornamento T-Race Pro
+                pubblicato al momento.
             </div>
         `;
 
@@ -7094,12 +6915,19 @@ async function loadTuningUpdates() {
     }
 
 
+    /* =====================================
+       AGGIORNAMENTO PRINCIPALE
+       ===================================== */
+
     const latestUpdate =
         data[0];
 
 
     const secondaryUpdates =
-        data.slice(1, 3);
+        data.slice(
+            1,
+            3
+        );
 
 
     const latestDate =
@@ -7126,30 +6954,32 @@ async function loadTuningUpdates() {
         latestImageUrl
             ? `
                 <img
-                    class="update-featured-image"
+                    class="trace-update-featured-image"
                     src="${escapeHtml(latestImageUrl)}"
                     alt="${escapeHtml(latestUpdate.title)}"
                 >
               `
             : `
-                <div class="update-featured-placeholder">
-                    TUNING SOLUTION
+                <div class="trace-update-featured-placeholder">
+                    T-RACE PRO
                 </div>
               `;
 
 
     const featuredHtml = `
         <a
-            class="update-featured reveal"
+            class="trace-update-featured reveal"
             href="../aggiornamento.html?id=${encodeURIComponent(latestUpdate.id)}">
 
             ${latestImage}
 
-            <div class="update-featured-overlay"></div>
+            <div class="trace-update-featured-overlay">
+            </div>
 
-            <div class="update-featured-content">
 
-                <div class="update-meta">
+            <div class="trace-update-featured-content">
+
+                <div class="trace-update-meta">
 
                     <span>
                         ${escapeHtml(latestDate)}
@@ -7159,7 +6989,8 @@ async function loadTuningUpdates() {
                         latestUpdate.version
                             ? `
                                 <span>
-                                    Versione ${escapeHtml(latestUpdate.version)}
+                                    Versione
+                                    ${escapeHtml(latestUpdate.version)}
                                 </span>
                               `
                             : ''
@@ -7167,9 +6998,11 @@ async function loadTuningUpdates() {
 
                 </div>
 
+
                 <h3>
                     ${escapeHtml(latestUpdate.title)}
                 </h3>
+
 
                 ${
                     latestUpdate.description
@@ -7181,7 +7014,8 @@ async function loadTuningUpdates() {
                         : ''
                 }
 
-                <span class="update-read-more">
+
+                <span class="trace-update-read-more">
                     Scopri l'aggiornamento →
                 </span>
 
@@ -7191,9 +7025,14 @@ async function loadTuningUpdates() {
     `;
 
 
+    /* =====================================
+       AGGIORNAMENTI SECONDARI
+       ===================================== */
+
     const secondaryHtml =
         secondaryUpdates
             .map(update => {
+
 
                 const date =
                     new Date(
@@ -7219,28 +7058,29 @@ async function loadTuningUpdates() {
                     imageUrl
                         ? `
                             <img
-                                class="update-compact-image"
+                                class="trace-update-compact-image"
                                 src="${escapeHtml(imageUrl)}"
                                 alt="${escapeHtml(update.title)}"
                             >
                           `
                         : `
-                            <div class="update-compact-placeholder">
-                                TUNING
+                            <div class="trace-update-compact-placeholder">
+                                T-RACE
                             </div>
                           `;
 
 
                 return `
                     <a
-                        class="update-compact reveal"
+                        class="trace-update-compact reveal"
                         href="../aggiornamento.html?id=${encodeURIComponent(update.id)}">
 
                         ${image}
 
-                        <div class="update-compact-content">
 
-                            <div class="update-meta">
+                        <div class="trace-update-compact-content">
+
+                            <div class="trace-update-meta">
 
                                 <span>
                                     ${escapeHtml(date)}
@@ -7250,7 +7090,8 @@ async function loadTuningUpdates() {
                                     update.version
                                         ? `
                                             <span>
-                                                Versione ${escapeHtml(update.version)}
+                                                Versione
+                                                ${escapeHtml(update.version)}
                                             </span>
                                           `
                                         : ''
@@ -7258,9 +7099,11 @@ async function loadTuningUpdates() {
 
                             </div>
 
+
                             <h3>
                                 ${escapeHtml(update.title)}
                             </h3>
+
 
                             ${
                                 update.description
@@ -7281,13 +7124,17 @@ async function loadTuningUpdates() {
             .join('');
 
 
-    updatesContainer.innerHTML = `
+    /* =====================================
+       RENDER
+       ===================================== */
+
+    traceUpdatesContainer.innerHTML = `
         ${featuredHtml}
 
         ${
             secondaryUpdates.length
                 ? `
-                    <div class="updates-secondary">
+                    <div class="trace-updates-secondary">
                         ${secondaryHtml}
                     </div>
                   `
@@ -7296,8 +7143,14 @@ async function loadTuningUpdates() {
     `;
 
 
-    updatesContainer
-        .querySelectorAll('.reveal')
+    /* =====================================
+       REVEAL PER ELEMENTI DINAMICI
+       ===================================== */
+
+    traceUpdatesContainer
+        .querySelectorAll(
+            '.reveal'
+        )
         .forEach(element => {
 
             revealObserver.observe(
@@ -7308,81 +7161,9 @@ async function loadTuningUpdates() {
 }
 
 
-loadTuningUpdates();
-const traceEditingData = {
-
-    manual: {
-
-        index: '01',
-
-        icon: 'MAP',
-
-        title:
-            'Modifica Manuale',
-
-        text:
-            'Accedi alle mappe disponibili nel driver e modifica direttamente i valori attraverso gli strumenti di editing di T-Race Pro.',
-
-        features: [
-            'Lista mappe completa',
-            'Modifica diretta dei valori',
-            'Controllo manuale della calibrazione'
-        ],
-
-        status:
-            'Modalità manuale'
-
-    },
+loadTraceUpdates();
 
 
-    stage1: {
-
-        index: '02',
-
-        icon: 'S1',
-
-        title:
-            'Stage1 Automatico',
-
-        text:
-            'Utilizza la funzione Stage1 per applicare automaticamente la calibrazione disponibile sul file supportato.',
-
-        features: [
-            'Procedura automatizzata',
-            'Workflow rapido',
-            'Disponibile sui driver supportati'
-        ],
-
-        status:
-            'Stage1 Automatico'
-
-    },
-
-
-    stageplus: {
-
-        index: '03',
-
-        icon: 'S1+',
-
-        title:
-            'Stage1 Plus',
-
-        text:
-            'Stage1 Plus offre una modalità automatizzata aggiuntiva disponibile sulle ECU e sulle versioni file supportate.',
-
-        features: [
-            'Elaborazione automatica',
-            'Funzione dedicata Stage1 Plus',
-            'Aggiornata con nuovi driver'
-        ],
-
-        status:
-            'Stage1 Plus Automatico'
-
-    }
-
-};
 
 
 function selectTraceEditing(key) {
