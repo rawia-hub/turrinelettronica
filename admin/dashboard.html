@@ -1,0 +1,2521 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Dashboard | Turrin Elettronica
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            color: #162033;
+            background: #f5f8fc;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        .admin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 20px 32px;
+
+            background: #071b3a;
+            color: #ffffff;
+        }
+
+
+        .admin-header h1 {
+            margin: 0;
+
+            font-size: 22px;
+        }
+
+
+        .logout-button {
+            padding: 10px 18px;
+
+            border: 1px solid
+                rgba(255,255,255,.35);
+
+            border-radius: 6px;
+
+            background: transparent;
+            color: #ffffff;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .logout-button:hover {
+            background:
+                rgba(255,255,255,.1);
+        }
+
+
+        .container {
+            width: min(
+                1150px,
+                calc(100% - 40px)
+            );
+
+            margin: 0 auto;
+        }
+
+
+        .dashboard-top {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 38px 0 24px;
+        }
+
+
+        .dashboard-top h2 {
+            margin: 0;
+
+            color: #071b3a;
+
+            font-size: 28px;
+        }
+
+
+        .dashboard-top p {
+            margin: 6px 0 0;
+
+            color: #687487;
+
+            font-size: 14px;
+        }
+
+
+        .new-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 44px;
+
+            padding: 0 20px;
+
+            border: 0;
+            border-radius: 7px;
+
+            color: #ffffff;
+            background: #0759d8;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+
+        .new-button:hover {
+            background: #064ab0;
+        }
+
+
+        .updates-panel {
+            overflow: hidden;
+
+            border: 1px solid #dde5ef;
+            border-radius: 10px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 8px 30px
+                rgba(21, 42, 75, .07);
+        }
+
+
+        .updates-table {
+            width: 100%;
+
+            border-collapse: collapse;
+        }
+
+
+        .updates-table th,
+        .updates-table td {
+            padding: 15px 16px;
+
+            border-bottom:
+                1px solid #e7edf4;
+
+            text-align: left;
+
+            vertical-align: middle;
+        }
+
+
+        .updates-table th {
+            color: #58677a;
+            background: #f8fafc;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .04em;
+        }
+
+
+        .updates-table td {
+            font-size: 13px;
+        }
+
+
+        .updates-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+
+        .status {
+            display: inline-flex;
+
+            align-items: center;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        .status.published {
+            color: #16713a;
+            background: #e9f8ef;
+        }
+
+
+        .status.draft {
+            color: #8a6515;
+            background: #fff6d9;
+        }
+
+
+        .actions {
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .action-button {
+            padding: 7px 10px;
+
+            border: 1px solid #d6e0eb;
+            border-radius: 5px;
+
+            background: #ffffff;
+
+            color: #344258;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .action-button:hover {
+            border-color: #0759d8;
+            color: #0759d8;
+        }
+
+
+        .action-button.delete:hover {
+            border-color: #cf3838;
+            color: #cf3838;
+        }
+
+
+        .empty-message,
+        .loading-message,
+        .error-message {
+            padding: 35px;
+
+            text-align: center;
+
+            color: #687487;
+
+            font-size: 14px;
+        }
+
+
+        .error-message {
+            color: #b02b2b;
+        }
+
+
+
+        /* LIVE CHAT */
+        .admin-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .live-chat-admin-link {
+            position: relative;
+            min-height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 0 15px;
+            border: 1px solid rgba(255,255,255,.28);
+            border-radius: 7px;
+            background: rgba(255,255,255,.08);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            transition:
+                background .2s ease,
+                border-color .2s ease,
+                transform .2s ease;
+        }
+
+        .live-chat-admin-link:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255,255,255,.50);
+            background: rgba(255,255,255,.14);
+        }
+
+        .live-chat-admin-icon {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+
+        .live-chat-unread-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            min-width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 6px;
+            border: 2px solid #071b3a;
+            border-radius: 999px;
+            background: #e53935;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 900;
+            line-height: 1;
+            box-shadow: 0 5px 13px rgba(0,0,0,.20);
+        }
+
+        .live-chat-unread-badge[hidden] {
+            display: none;
+        }
+
+        @media(max-width:600px) {
+            .admin-header {
+                align-items: flex-start;
+            }
+
+            .admin-header-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .live-chat-admin-link,
+            .logout-button {
+                min-height: 40px;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .dashboard-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+
+            .updates-panel {
+                overflow-x: auto;
+            }
+
+
+            .updates-table {
+                min-width: 760px;
+            }
+
+        }
+/* =========================================
+   MODAL ELIMINAZIONE
+   ========================================= */
+
+.delete-modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+
+.delete-modal.open {
+    display: flex;
+}
+
+
+.delete-modal-backdrop {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(7, 27, 58, .55);
+
+    backdrop-filter:
+        blur(2px);
+}
+
+
+.delete-modal-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, .25);
+
+    text-align: center;
+}
+
+
+.delete-modal-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin:
+        0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #fff0f0;
+    color: #c93636;
+
+    font-size: 24px;
+    font-weight: 900;
+}
+
+
+.delete-modal-box h3 {
+    margin:
+        0 0 10px;
+
+    color: #071b3a;
+
+    font-size: 22px;
+}
+
+
+.delete-modal-box p {
+    margin:
+        0 0 14px;
+
+    color: #687487;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+.delete-update-name {
+    margin:
+        18px 0;
+
+    padding: 12px 14px;
+
+    border-radius: 7px;
+
+    background: #f5f8fc;
+
+    color: #27374d;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.delete-modal-warning {
+    color: #9c4a4a !important;
+
+    font-size: 12px !important;
+}
+
+
+.delete-modal-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+
+.modal-button {
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+.modal-cancel {
+    border:
+        1px solid #cfd9e5;
+
+    background: #ffffff;
+    color: #35445a;
+}
+
+
+.modal-cancel:hover {
+    background: #f5f8fc;
+}
+
+
+.modal-delete {
+    border:
+        1px solid #cf3838;
+
+    background: #cf3838;
+    color: #ffffff;
+}
+
+
+.modal-delete:hover {
+    background: #b92e2e;
+}
+
+
+.modal-delete:disabled {
+    opacity: .6;
+
+    cursor: wait;
+}
+
+
+@media (max-width: 500px) {
+
+    .delete-modal-box {
+        padding: 24px 20px;
+    }
+
+
+    .delete-modal-actions {
+        flex-direction: column-reverse;
+    }
+
+
+    .modal-button {
+        width: 100%;
+    }
+
+}
+        /* =========================================
+   RICERCA E FILTRI
+   ========================================= */
+
+.dashboard-filters {
+    display: grid;
+
+    grid-template-columns:
+        minmax(260px, 1fr)
+        190px
+        170px
+        auto;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.search-box input,
+.filter-select {
+    width: 100%;
+    height: 44px;
+
+    padding: 0 13px;
+
+    border: 1px solid #d3dde8;
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #ffffff;
+    color: #28374b;
+
+    font-size: 13px;
+}
+
+
+.search-box input:focus,
+.filter-select:focus {
+    border-color: #0759d8;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(7, 89, 216, .09);
+}
+
+
+.clear-filters-button {
+    height: 44px;
+
+    padding: 0 16px;
+
+    border: 1px solid #d3dde8;
+    border-radius: 7px;
+
+    background: #ffffff;
+    color: #536176;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.clear-filters-button:hover {
+    border-color: #0759d8;
+    color: #0759d8;
+}
+
+
+@media (max-width: 900px) {
+
+    .dashboard-filters {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard-filters {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+        /* =========================================
+   RISULTATI E ORDINAMENTO
+   ========================================= */
+
+.dashboard-results-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 14px;
+}
+
+
+#resultsCount {
+    color: #687487;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.sort-box {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.sort-box label {
+    margin: 0;
+
+    color: #687487;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.sort-box select {
+    height: 38px;
+
+    padding: 0 11px;
+
+    border: 1px solid #d3dde8;
+    border-radius: 6px;
+
+    outline: none;
+
+    background: #ffffff;
+    color: #344258;
+
+    font-size: 12px;
+}
+
+
+.sort-box select:focus {
+    border-color: #0759d8;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(7, 89, 216, .08);
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard-results-bar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+        /* =========================================
+   PAGINAZIONE
+   ========================================= */
+
+.dashboard-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin: 22px 0 40px;
+}
+
+
+.pagination-button {
+    min-width: 38px;
+    height: 38px;
+
+    padding: 0 11px;
+
+    border: 1px solid #d3dde8;
+    border-radius: 6px;
+
+    background: #ffffff;
+    color: #344258;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.pagination-button:hover:not(:disabled) {
+    border-color: #0759d8;
+    color: #0759d8;
+}
+
+
+.pagination-button.active {
+    border-color: #0759d8;
+
+    background: #0759d8;
+    color: #ffffff;
+}
+
+
+.pagination-button:disabled {
+    opacity: .45;
+    cursor: default;
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard-pagination {
+        flex-wrap: wrap;
+    }
+
+}
+    </style>
+
+</head>
+
+
+<body>
+
+    <header class="admin-header">
+
+        <h1>
+            Turrin Elettronica — Admin
+        </h1>
+
+        <div class="admin-header-actions">
+
+            <a
+                class="live-chat-admin-link"
+                id="liveChatAdminLink"
+                href="admin-chat.html">
+
+                <svg
+                    class="live-chat-admin-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true">
+
+                    <path
+                        d="M5 5h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 3v-3H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round">
+                    </path>
+
+                    <circle cx="8" cy="11.5" r="1"></circle>
+                    <circle cx="12" cy="11.5" r="1"></circle>
+                    <circle cx="16" cy="11.5" r="1"></circle>
+
+                </svg>
+
+                <span>Live Chat</span>
+
+                <span
+                    class="live-chat-unread-badge"
+                    id="liveChatUnreadBadge"
+                    aria-label="0 messaggi non letti"
+                    hidden>
+                    0
+                </span>
+
+            </a>
+
+            <button
+                id="logoutButton"
+                class="logout-button"
+                type="button">
+                Esci
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <div class="dashboard-top">
+
+            <div>
+
+                <h2>
+                    Aggiornamenti
+                </h2>
+
+                <p>
+                    Gestisci gli aggiornamenti pubblicati sul sito.
+                </p>
+
+            </div>
+
+
+            <button
+                id="newUpdateButton"
+                class="new-button"
+                type="button">
+                + Nuovo aggiornamento
+            </button>
+
+        </div>
+<div class="dashboard-filters">
+
+    <div class="search-box">
+
+        <input
+            id="searchInput"
+            type="search"
+            placeholder="Cerca titolo, prodotto o versione..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+    <select
+        id="productFilter"
+        class="filter-select">
+
+        <option value="all">
+            Tutti i prodotti
+        </option>
+
+        <option value="MC3">
+            MC3
+        </option>
+
+        <option value="T-Race Pro">
+            T-Race Pro
+        </option>
+
+        <option value="Tuning Solution">
+            Tuning Solution
+        </option>
+
+        <option value="Check ECU">
+            Check ECU
+        </option>
+
+    </select>
+
+
+    <select
+        id="statusFilter"
+        class="filter-select">
+
+        <option value="all">
+            Tutti gli stati
+        </option>
+
+        <option value="published">
+            Pubblicati
+        </option>
+
+        <option value="draft">
+            Bozze
+        </option>
+
+    </select>
+
+
+    <button
+        id="clearFiltersButton"
+        class="clear-filters-button"
+        type="button">
+
+        Azzera filtri
+
+    </button>
+
+</div>
+        
+<div class="dashboard-results-bar">
+
+    <span id="resultsCount">
+        0 aggiornamenti trovati
+    </span>
+
+
+    <div class="sort-box">
+
+        <label for="sortOrder">
+            Ordina per
+        </label>
+
+
+        <select id="sortOrder">
+
+            <option value="date_desc">
+                Data più recente
+            </option>
+
+            <option value="date_asc">
+                Data meno recente
+            </option>
+
+            <option value="title_asc">
+                Titolo A-Z
+            </option>
+
+            <option value="title_desc">
+                Titolo Z-A
+            </option>
+
+            <option value="product_asc">
+                Prodotto A-Z
+            </option>
+
+            <option value="version_desc">
+                Versione maggiore
+            </option>
+
+            <option value="version_asc">
+                Versione minore
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+        <section
+            class="updates-panel"
+            id="updatesPanel">
+
+            <div class="loading-message">
+                Caricamento aggiornamenti...
+            </div>
+
+        </section>
+        <div
+            id="dashboardPagination"
+            class="dashboard-pagination">
+        </div>
+
+    </main>
+
+<div
+    id="deleteModal"
+    class="delete-modal"
+    aria-hidden="true">
+
+    <div
+        class="delete-modal-backdrop"
+        id="deleteModalBackdrop">
+    </div>
+
+
+    <div
+        class="delete-modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="deleteModalTitle">
+
+        <div class="delete-modal-icon">
+            !
+        </div>
+
+
+        <h3 id="deleteModalTitle">
+            Elimina aggiornamento
+        </h3>
+
+
+        <p>
+            Sei sicuro di voler eliminare
+            questo aggiornamento?
+        </p>
+
+
+        <div
+            id="deleteUpdateName"
+            class="delete-update-name">
+        </div>
+
+
+        <p class="delete-modal-warning">
+            L’operazione eliminerà anche
+            l’immagine associata e non
+            potrà essere annullata.
+        </p>
+
+
+        <div class="delete-modal-actions">
+
+            <button
+                id="cancelDeleteButton"
+                class="modal-button modal-cancel"
+                type="button">
+
+                Annulla
+
+            </button>
+
+
+            <button
+                id="confirmDeleteButton"
+                class="modal-button modal-delete"
+                type="button">
+
+                Elimina
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+    </script>
+
+
+    <script>
+
+        /* =====================================
+           CONFIGURAZIONE SUPABASE
+           ===================================== */
+
+        const SUPABASE_URL =
+            'https://gxlquwudampvcuxiocmh.supabase.co';
+
+
+        const SUPABASE_KEY =
+            'sb_publishable_TXv6HGzmzYe2c-CFD2hkkQ_qzkOa4XR';
+
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /* =====================================
+           ELEMENTI
+           ===================================== */
+
+        const updatesPanel =
+            document.getElementById(
+                'updatesPanel'
+            );
+
+
+        const logoutButton =
+            document.getElementById(
+                'logoutButton'
+            );
+
+
+        const newUpdateButton =
+            document.getElementById(
+                'newUpdateButton'
+            );
+
+        const liveChatUnreadBadge =
+            document.getElementById(
+                'liveChatUnreadBadge'
+            );
+
+        let liveChatRealtimeChannel =
+            null;
+        const deleteModal =
+            document.getElementById(
+                'deleteModal'
+            );
+        
+        
+        const deleteModalBackdrop =
+            document.getElementById(
+                'deleteModalBackdrop'
+            );
+        
+        
+        const cancelDeleteButton =
+            document.getElementById(
+                'cancelDeleteButton'
+            );
+        
+        
+        const confirmDeleteButton =
+            document.getElementById(
+                'confirmDeleteButton'
+            );
+        
+        
+        const deleteUpdateName =
+            document.getElementById(
+                'deleteUpdateName'
+            );
+        const searchInput =
+            document.getElementById(
+                'searchInput'
+            );
+        
+        
+        const productFilter =
+            document.getElementById(
+                'productFilter'
+            );
+        
+        
+        const statusFilter =
+            document.getElementById(
+                'statusFilter'
+            );
+        
+        
+        const clearFiltersButton =
+            document.getElementById(
+                'clearFiltersButton'
+            );
+        const resultsCount =
+            document.getElementById(
+                'resultsCount'
+            );
+        
+        
+        const sortOrder =
+            document.getElementById(
+                'sortOrder'
+            );
+        
+        let allUpdates = [];
+        
+        let pendingDeleteId =
+            null;
+        
+        
+        let pendingDeleteTitle =
+            '';
+        let filteredUpdatesList = [];
+        
+        let currentPage = 1;
+        
+        const ITEMS_PER_PAGE = 10;
+        
+        
+        const dashboardPagination =
+            document.getElementById(
+                'dashboardPagination'
+            );
+        /* =====================================
+           CONTROLLO LOGIN
+           ===================================== */
+
+        async function checkSession() {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .auth
+                    .getSession();
+
+
+            if (
+                error ||
+                !data.session
+            ) {
+
+                window.location.href =
+                    'index.html';
+
+                return false;
+            }
+
+
+            return true;
+        }
+
+
+        /* =====================================
+           CARICA AGGIORNAMENTI
+           ===================================== */
+
+        async function loadUpdates() {
+
+            updatesPanel.innerHTML =
+                `
+                <div class="loading-message">
+                    Caricamento aggiornamenti...
+                </div>
+                `;
+
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from('updates')
+                    .select(`
+                        id,
+                        product_name,
+                        version,
+                        title,
+                        published_at,
+                        published
+                    `)
+                    .order(
+                        'published_at',
+                        {
+                            ascending: false
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(error);
+
+                updatesPanel.innerHTML =
+                    `
+                    <div class="error-message">
+                        Errore durante il caricamento
+                        degli aggiornamenti.
+                    </div>
+                    `;
+
+                return;
+            }
+
+
+            if (
+                !data ||
+                data.length === 0
+            ) {
+
+                updatesPanel.innerHTML =
+                    `
+                    <div class="empty-message">
+                        Nessun aggiornamento presente.
+                    </div>
+                    `;
+
+                return;
+            }
+
+
+            allUpdates =
+                data;
+            
+            
+            applyFilters();
+        }
+
+/* =====================================
+   APPLICA RICERCA E FILTRI
+   ===================================== */
+
+function applyFilters() {
+
+    const searchText =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    const selectedProduct =
+        productFilter.value;
+
+
+    const selectedStatus =
+        statusFilter.value;
+
+
+    let filteredUpdates =
+        allUpdates.filter(
+            update => {
+
+                /* =========================
+                   RICERCA
+                   ========================= */
+
+                const title =
+                    String(
+                        update.title || ''
+                    )
+                    .toLowerCase();
+
+
+                const product =
+                    String(
+                        update.product_name || ''
+                    )
+                    .toLowerCase();
+
+
+                const version =
+                    String(
+                        update.version || ''
+                    )
+                    .toLowerCase();
+
+
+                const matchesSearch =
+                    !searchText ||
+                    title.includes(
+                        searchText
+                    ) ||
+                    product.includes(
+                        searchText
+                    ) ||
+                    version.includes(
+                        searchText
+                    );
+
+
+                /* =========================
+                   PRODOTTO
+                   ========================= */
+
+                const matchesProduct =
+                    selectedProduct ===
+                        'all'
+                    ||
+                    update.product_name ===
+                        selectedProduct;
+
+
+                /* =========================
+                   STATO
+                   ========================= */
+
+                let matchesStatus =
+                    true;
+
+
+                if (
+                    selectedStatus ===
+                    'published'
+                ) {
+
+                    matchesStatus =
+                        update.published ===
+                        true;
+                }
+
+
+                if (
+                    selectedStatus ===
+                    'draft'
+                ) {
+
+                    matchesStatus =
+                        update.published ===
+                        false;
+                }
+
+
+                return (
+                    matchesSearch &&
+                    matchesProduct &&
+                    matchesStatus
+                );
+            }
+        );
+
+
+    /* =========================
+       ORDINAMENTO
+       ========================= */
+
+    switch (
+        sortOrder.value
+    ) {
+
+        case 'date_asc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    new Date(
+                        a.published_at
+                    ) -
+                    new Date(
+                        b.published_at
+                    )
+            );
+
+            break;
+
+
+        case 'date_desc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    new Date(
+                        b.published_at
+                    ) -
+                    new Date(
+                        a.published_at
+                    )
+            );
+
+            break;
+
+
+        case 'title_asc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    String(
+                        a.title || ''
+                    )
+                    .localeCompare(
+                        String(
+                            b.title || ''
+                        ),
+                        'it'
+                    )
+            );
+
+            break;
+
+
+        case 'title_desc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    String(
+                        b.title || ''
+                    )
+                    .localeCompare(
+                        String(
+                            a.title || ''
+                        ),
+                        'it'
+                    )
+            );
+
+            break;
+
+
+        case 'product_asc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    String(
+                        a.product_name || ''
+                    )
+                    .localeCompare(
+                        String(
+                            b.product_name || ''
+                        ),
+                        'it'
+                    )
+            );
+
+            break;
+
+
+        case 'version_desc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    String(
+                        b.version || ''
+                    )
+                    .localeCompare(
+                        String(
+                            a.version || ''
+                        ),
+                        'it',
+                        {
+                            numeric: true,
+                            sensitivity: 'base'
+                        }
+                    )
+            );
+
+            break;
+
+
+        case 'version_asc':
+
+            filteredUpdates.sort(
+                (a, b) =>
+                    String(
+                        a.version || ''
+                    )
+                    .localeCompare(
+                        String(
+                            b.version || ''
+                        ),
+                        'it',
+                        {
+                            numeric: true,
+                            sensitivity: 'base'
+                        }
+                    )
+            );
+
+            break;
+    }
+
+
+    /* =========================
+       CONTEGGIO
+       ========================= */
+
+    const count =
+        filteredUpdates.length;
+
+
+    resultsCount.textContent =
+        count === 1
+            ? '1 aggiornamento trovato'
+            : count +
+              ' aggiornamenti trovati';
+    filteredUpdatesList = filteredUpdates;
+    currentPage = 1;
+
+   renderCurrentPage();
+}
+        sortOrder.addEventListener(
+            'change',
+            applyFilters
+        );
+
+        /* =====================================
+   MOSTRA PAGINA CORRENTE
+   ===================================== */
+
+function renderCurrentPage() {
+
+    const totalItems =
+        filteredUpdatesList.length;
+
+
+    if (totalItems === 0) {
+
+        renderUpdates([]);
+
+        renderPagination();
+
+        return;
+    }
+
+
+    const totalPages =
+        Math.ceil(
+            totalItems /
+            ITEMS_PER_PAGE
+        );
+
+
+    if (
+        currentPage >
+        totalPages
+    ) {
+
+        currentPage =
+            totalPages;
+    }
+
+
+    const startIndex =
+        (
+            currentPage - 1
+        ) *
+        ITEMS_PER_PAGE;
+
+
+    const endIndex =
+        startIndex +
+        ITEMS_PER_PAGE;
+
+
+    const pageUpdates =
+        filteredUpdatesList.slice(
+            startIndex,
+            endIndex
+        );
+
+
+    renderUpdates(
+        pageUpdates
+    );
+
+
+    renderPagination();
+}
+        /* =====================================
+   CREA PAGINAZIONE
+   ===================================== */
+
+function renderPagination() {
+
+    const totalItems =
+        filteredUpdatesList.length;
+
+
+    const totalPages =
+        Math.ceil(
+            totalItems /
+            ITEMS_PER_PAGE
+        );
+
+
+    /*
+     * Una sola pagina:
+     * non serve mostrare i pulsanti.
+     */
+    if (
+        totalPages <= 1
+    ) {
+
+        dashboardPagination.innerHTML =
+            '';
+
+        return;
+    }
+
+
+    let html =
+        `
+        <button
+            class="pagination-button"
+            data-page="prev"
+            type="button"
+            ${currentPage === 1
+                ? 'disabled'
+                : ''}>
+
+            ← Precedente
+
+        </button>
+        `;
+
+
+    for (
+        let page = 1;
+        page <= totalPages;
+        page++
+    ) {
+
+        html +=
+            `
+            <button
+                class="
+                    pagination-button
+                    ${page === currentPage
+                        ? 'active'
+                        : ''}
+                "
+                data-page="${page}"
+                type="button">
+
+                ${page}
+
+            </button>
+            `;
+    }
+
+
+    html +=
+        `
+        <button
+            class="pagination-button"
+            data-page="next"
+            type="button"
+            ${currentPage === totalPages
+                ? 'disabled'
+                : ''}>
+
+            Successivo →
+
+        </button>
+        `;
+
+
+    dashboardPagination.innerHTML =
+        html;
+
+
+    attachPaginationEvents();
+}
+        /* =====================================
+   EVENTI PAGINAZIONE
+   ===================================== */
+
+function attachPaginationEvents() {
+
+    document
+        .querySelectorAll(
+            '.pagination-button'
+        )
+        .forEach(button => {
+
+            button.addEventListener(
+                'click',
+                () => {
+
+                    if (
+                        button.disabled
+                    ) {
+                        return;
+                    }
+
+
+                    const page =
+                        button.dataset.page;
+
+
+                    if (
+                        page === 'prev'
+                    ) {
+
+                        currentPage--;
+                    }
+
+                    else if (
+                        page === 'next'
+                    ) {
+
+                        currentPage++;
+                    }
+
+                    else {
+
+                        currentPage =
+                            Number(page);
+                    }
+
+
+                    renderCurrentPage();
+
+
+                    /*
+                     * Torna all'inizio
+                     * della tabella.
+                     */
+                    updatesPanel
+                        .scrollIntoView({
+                            behavior:
+                                'smooth',
+
+                            block:
+                                'start'
+                        });
+                }
+            );
+
+        });
+}
+        /* =====================================
+           CREA TABELLA
+           ===================================== */
+
+        function renderUpdates(updates) {
+            if (
+                !updates ||
+                updates.length === 0
+            ) {
+            
+                updatesPanel.innerHTML =
+                    `
+                    <div class="empty-message">
+            
+                        Nessun aggiornamento
+                        corrisponde alla ricerca.
+            
+                    </div>
+                    `;
+            
+                return;
+            }
+
+            const rows =
+                updates.map(update => {
+
+                    const date =
+                        new Date(
+                            update.published_at
+                        )
+                        .toLocaleDateString(
+                            'it-IT'
+                        );
+
+
+                    const statusClass =
+                        update.published
+                            ? 'published'
+                            : 'draft';
+
+
+                    const statusText =
+                        update.published
+                            ? 'Pubblicato'
+                            : 'Bozza';
+
+
+                    return `
+                        <tr>
+
+                            <td>
+                                ${escapeHtml(
+                                    update.product_name
+                                )}
+                            </td>
+
+                            <td>
+                                ${escapeHtml(
+                                    update.version || '-'
+                                )}
+                            </td>
+
+                            <td>
+                                ${escapeHtml(
+                                    update.title
+                                )}
+                            </td>
+
+                            <td>
+                                ${date}
+                            </td>
+
+                            <td>
+
+                                <span
+                                    class="status ${statusClass}">
+                                    ${statusText}
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <div class="actions">
+
+                                    <button
+                                        class="action-button edit"
+                                        data-id="${update.id}"
+                                        type="button">
+                                        Modifica
+                                    </button>
+
+                                    <button
+                                        class="action-button delete"
+                                        data-id="${update.id}"
+                                        data-title="${escapeHtml(update.title)}"
+                                        type="button">
+                                        Elimina
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    `;
+
+                }).join('');
+
+
+            updatesPanel.innerHTML =
+                `
+                <table class="updates-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Prodotto</th>
+
+                            <th>Versione</th>
+
+                            <th>Titolo</th>
+
+                            <th>Data</th>
+
+                            <th>Stato</th>
+
+                            <th>Azioni</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${rows}
+
+                    </tbody>
+
+                </table>
+                `;
+
+
+            attachActionEvents();
+        }
+
+        /* =====================================
+           EVENTI RICERCA
+           ===================================== */
+        
+        searchInput.addEventListener(
+            'input',
+            applyFilters
+        );
+        
+        
+        productFilter.addEventListener(
+            'change',
+            applyFilters
+        );
+        
+        
+        statusFilter.addEventListener(
+            'change',
+            applyFilters
+        );
+        
+        clearFiltersButton.addEventListener(
+                'click',
+                () => {
+            
+                    searchInput.value =
+                        '';
+            
+            
+                    productFilter.value =
+                        'all';
+            
+            
+                    statusFilter.value =
+                        'all';
+                    
+                    sortOrder.value =
+                        'date_desc';
+            
+                    applyFilters();
+            
+            
+                    searchInput.focus();
+                }
+            );
+        /* =====================================
+           PROTEZIONE HTML
+           ===================================== */
+
+        function escapeHtml(value) {
+
+            return String(value ?? '')
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+
+        /* =====================================
+           PULSANTI
+           ===================================== */
+
+        function attachActionEvents() {
+
+            document
+                .querySelectorAll(
+                    '.action-button.edit'
+                )
+                .forEach(button => {
+            
+                    button.addEventListener(
+                        'click',
+                        () => {
+            
+                            const id =
+                                button.dataset.id;
+            
+                            window.location.href =
+                                'edit.html?id=' + id;
+                        }
+                    );
+            
+                });
+
+
+document
+    .querySelectorAll(
+        '.action-button.delete'
+    )
+    .forEach(button => {
+
+        button.addEventListener(
+            'click',
+            () => {
+
+                pendingDeleteId =
+                    button.dataset.id;
+
+
+                pendingDeleteTitle =
+                    button.dataset.title
+                    || 'Aggiornamento';
+
+
+                deleteUpdateName.textContent =
+                    pendingDeleteTitle;
+
+
+                deleteModal.classList.add(
+                    'open'
+                );
+
+
+                deleteModal.setAttribute(
+                    'aria-hidden',
+                    'false'
+                );
+
+
+                confirmDeleteButton.focus();
+            }
+        );
+
+    });
+        }
+/* =====================================
+   CHIUDI MODAL
+   ===================================== */
+
+function closeDeleteModal() {
+
+    deleteModal.classList.remove(
+        'open'
+    );
+
+
+    deleteModal.setAttribute(
+        'aria-hidden',
+        'true'
+    );
+
+
+    pendingDeleteId =
+        null;
+
+
+    pendingDeleteTitle =
+        '';
+
+
+    deleteUpdateName.textContent =
+        '';
+
+
+    confirmDeleteButton.disabled =
+        false;
+
+
+    confirmDeleteButton.textContent =
+        'Elimina';
+}
+
+
+/* =====================================
+   ANNULLA
+   ===================================== */
+
+cancelDeleteButton.addEventListener(
+    'click',
+    closeDeleteModal
+);
+
+
+deleteModalBackdrop.addEventListener(
+    'click',
+    closeDeleteModal
+);
+
+
+/* =====================================
+   ESC CHIUDE IL MODAL
+   ===================================== */
+
+document.addEventListener(
+    'keydown',
+    event => {
+
+        if (
+            event.key === 'Escape' &&
+            deleteModal.classList.contains(
+                'open'
+            )
+        ) {
+
+            closeDeleteModal();
+        }
+    }
+);
+
+
+/* =====================================
+   CONFERMA ELIMINAZIONE
+   ===================================== */
+
+confirmDeleteButton.addEventListener(
+    'click',
+    async () => {
+
+        if (!pendingDeleteId)
+            return;
+
+
+        const id =
+            pendingDeleteId;
+
+
+        confirmDeleteButton.disabled =
+            true;
+
+
+        confirmDeleteButton.textContent =
+            'Eliminazione...';
+
+
+        /* =====================================
+           RECUPERA IMAGE_PATH
+           ===================================== */
+
+        const {
+            data: updateData,
+            error: readError
+        } =
+            await supabaseClient
+                .from('updates')
+                .select('image_path')
+                .eq(
+                    'id',
+                    id
+                )
+                .single();
+
+
+        if (readError) {
+
+            console.error(
+                readError
+            );
+
+
+            alert(
+                'Errore durante la lettura dell’aggiornamento.'
+            );
+
+
+            confirmDeleteButton.disabled =
+                false;
+
+
+            confirmDeleteButton.textContent =
+                'Elimina';
+
+
+            return;
+        }
+
+
+        /* =====================================
+           ELIMINA DATABASE
+           ===================================== */
+
+        const {
+            error: deleteError
+        } =
+            await supabaseClient
+                .from('updates')
+                .delete()
+                .eq(
+                    'id',
+                    id
+                );
+
+
+        if (deleteError) {
+
+            console.error(
+                deleteError
+            );
+
+
+            alert(
+                'Errore durante l’eliminazione: ' +
+                deleteError.message
+            );
+
+
+            confirmDeleteButton.disabled =
+                false;
+
+
+            confirmDeleteButton.textContent =
+                'Elimina';
+
+
+            return;
+        }
+
+
+        /* =====================================
+           ELIMINA IMMAGINE
+           ===================================== */
+
+        if (
+            updateData &&
+            updateData.image_path
+        ) {
+
+            const {
+                error: imageError
+            } =
+                await supabaseClient
+                    .storage
+                    .from('updates')
+                    .remove([
+                        updateData.image_path
+                    ]);
+
+
+            if (imageError) {
+
+                console.error(
+                    'Errore eliminazione immagine:',
+                    imageError
+                );
+            }
+        }
+
+
+        /* =====================================
+           CHIUDI E RICARICA
+           ===================================== */
+
+        closeDeleteModal();
+
+
+        await loadUpdates();
+
+    }
+);
+
+        /* =====================================
+           NUOVO AGGIORNAMENTO
+           ===================================== */
+
+            newUpdateButton.addEventListener(
+                'click',
+                () => {
+            
+                    window.location.href =
+                        'new.html';
+                }
+            );
+
+
+        /* =====================================
+           LOGOUT
+           ===================================== */
+
+        logoutButton.addEventListener(
+            'click',
+            async () => {
+
+                await supabaseClient
+                    .auth
+                    .signOut({
+                        scope: 'local'
+                    });
+
+
+                window.location.href =
+                    'index.html';
+            }
+        );
+
+
+
+        /* =====================================
+           LIVE CHAT - NON LETTI
+           ===================================== */
+
+        function renderUnreadBadge(count) {
+
+            if (!liveChatUnreadBadge)
+                return;
+
+            const safeCount =
+                Math.max(
+                    0,
+                    Number(count) || 0
+                );
+
+            if (safeCount === 0) {
+
+                liveChatUnreadBadge.hidden = true;
+                liveChatUnreadBadge.textContent = '0';
+                liveChatUnreadBadge.setAttribute(
+                    'aria-label',
+                    '0 messaggi non letti'
+                );
+
+                return;
+            }
+
+            liveChatUnreadBadge.hidden = false;
+
+            liveChatUnreadBadge.textContent =
+                safeCount > 99
+                    ? '99+'
+                    : String(safeCount);
+
+            liveChatUnreadBadge.setAttribute(
+                'aria-label',
+                safeCount === 1
+                    ? '1 messaggio non letto'
+                    : `${safeCount} messaggi non letti`
+            );
+        }
+
+
+        async function loadUnreadChatCount() {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from('chat_sessions')
+                    .select('unread_count');
+
+            if (error) {
+
+                console.error(
+                    'Errore conteggio Live Chat:',
+                    error
+                );
+
+                renderUnreadBadge(0);
+                return;
+            }
+
+            const unreadCount =
+                (data || [])
+                    .reduce(
+                        (total, session) =>
+                            total +
+                            (
+                                Number(
+                                    session.unread_count
+                                ) || 0
+                            ),
+                        0
+                    );
+
+            renderUnreadBadge(
+                unreadCount
+            );
+        }
+
+
+        async function subscribeUnreadChat() {
+
+            if (liveChatRealtimeChannel) {
+
+                await supabaseClient
+                    .removeChannel(
+                        liveChatRealtimeChannel
+                    );
+            }
+
+            liveChatRealtimeChannel =
+                supabaseClient
+                    .channel(
+                        'turrin-dashboard-chat-unread'
+                    )
+                    .on(
+                        'postgres_changes',
+                        {
+                            event: '*',
+                            schema: 'public',
+                            table: 'chat_sessions'
+                        },
+                        loadUnreadChatCount
+                    )
+                    .subscribe();
+        }
+
+
+        /* =====================================
+           AVVIO
+           ===================================== */
+
+        async function startDashboard() {
+
+            const loggedIn =
+                await checkSession();
+
+
+            if (!loggedIn)
+                return;
+
+
+            await Promise.all([
+                loadUpdates(),
+                loadUnreadChatCount(),
+                subscribeUnreadChat()
+            ]);
+        }
+
+
+        startDashboard();
+
+    </script>
+
+</body>
+
+</html>
