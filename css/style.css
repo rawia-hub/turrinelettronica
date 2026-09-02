@@ -526,6 +526,203 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{f
         flex: 0 0 92%;
         min-width: 92%;
     }.hero-actions{flex-direction:column;align-items:stretch}.btn{width:100%}.product-track{grid-auto-columns:92%}.update-card{grid-template-columns:110px 1fr}.update-card img{width:110px;height:105px}.footer-grid{grid-template-columns:1fr}}
+
+
+/* =========================================
+   MENU PRODOTTI
+   ========================================= */
+
+.nav-products {
+    position: relative;
+}
+
+
+.nav-products-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+    color: inherit;
+
+    font: inherit;
+    font-weight: inherit;
+
+    cursor: pointer;
+}
+
+
+.nav-products-toggle svg {
+    width: 10px;
+    height: 7px;
+
+    transition:
+        transform .2s ease;
+}
+
+
+.nav-products-menu {
+    position: absolute;
+
+    top: calc(100% + 16px);
+    left: 50%;
+
+    z-index: 100;
+
+    min-width: 210px;
+
+    padding: 8px;
+
+    border: 1px solid #e0e7ef;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 16px 38px
+        rgba(16, 38, 68, .13);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translate(-50%, -6px);
+
+    transition:
+        opacity .18s ease,
+        transform .18s ease,
+        visibility .18s ease;
+}
+
+
+.nav-products-menu a {
+    display: block;
+
+    padding: 11px 13px;
+
+    border-radius: 7px;
+
+    color: #27384f;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        background .18s ease,
+        color .18s ease;
+}
+
+
+.nav-products-menu a:hover {
+    background: #f2f6fc;
+    color: #0759d8;
+}
+
+
+.nav-products:hover
+.nav-products-menu,
+.nav-products:focus-within
+.nav-products-menu,
+.nav-products.open
+.nav-products-menu {
+
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translate(-50%, 0);
+}
+
+
+.nav-products.open
+.nav-products-toggle svg {
+
+    transform:
+        rotate(180deg);
+}
+
+
+/* piccolo ponte invisibile:
+   evita che il menu si chiuda
+   mentre sposti il mouse */
+.nav-products::after {
+    content: "";
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    height: 18px;
+}
+
+
+@media (max-width: 900px) {
+
+    .nav-products {
+        width: 100%;
+    }
+
+
+    .nav-products-toggle {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+
+    .nav-products-menu {
+        position: static;
+
+        min-width: 0;
+
+        display: none;
+
+        margin-top: 7px;
+        padding: 6px 0 6px 14px;
+
+        border: 0;
+        border-left: 2px solid #dce7f5;
+        border-radius: 0;
+
+        background: transparent;
+
+        box-shadow: none;
+
+        opacity: 1;
+        visibility: visible;
+
+        transform: none;
+    }
+
+
+    .nav-products.open
+    .nav-products-menu {
+
+        display: block;
+
+        transform: none;
+    }
+
+
+    .nav-products-menu a {
+        padding: 9px 10px;
+    }
+
+
+    .nav-products::after {
+        display: none;
+    }
+
+}
+
 /* =========================================
    PAGINA AGGIORNAMENTI
    ========================================= */
