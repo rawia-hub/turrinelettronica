@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Amministrazione | Turrin Elettronica
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5f9ff,
+                    #eaf2fc
+                );
+
+            color: #162033;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        .login-card {
+            width: 100%;
+            max-width: 420px;
+
+            padding: 38px;
+
+            border: 1px solid #dde6f0;
+            border-radius: 14px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 15px 45px
+                rgba(20, 45, 80, 0.12);
+        }
+
+
+        .logo {
+            margin-bottom: 6px;
+
+            color: #0759d8;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.08em;
+        }
+
+
+        h1 {
+            margin: 0;
+
+            color: #071b3a;
+
+            font-size: 27px;
+        }
+
+
+        .subtitle {
+            margin: 9px 0 30px;
+
+            color: #6b7686;
+
+            font-size: 14px;
+        }
+
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #29384d;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+
+        input {
+            width: 100%;
+            height: 46px;
+
+            padding: 0 13px;
+
+            border: 1px solid #ccd7e4;
+            border-radius: 7px;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+
+        input:focus {
+            border-color: #0759d8;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(7, 89, 216, 0.1);
+        }
+
+
+        button {
+            width: 100%;
+            height: 47px;
+
+            margin-top: 8px;
+
+            border: 0;
+            border-radius: 7px;
+
+            background: #0759d8;
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+
+        button:hover {
+            background: #064ab0;
+        }
+
+
+        button:disabled {
+            opacity: 0.6;
+
+            cursor: wait;
+        }
+
+
+        .message {
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 11px 13px;
+
+            border-radius: 6px;
+
+            font-size: 13px;
+        }
+
+
+        .message.error {
+            display: block;
+
+            color: #a32020;
+            background: #fff0f0;
+        }
+
+
+        .message.success {
+            display: block;
+
+            color: #176328;
+            background: #edfaef;
+        }
+
+
+        .turnstile-wrap {
+            width: 100%;
+            min-height: 0;
+
+            margin-top: 10px;
+
+            overflow: visible;
+        }
+
+
+        .turnstile-wrap:empty {
+            display: none;
+        }
+
+
+        .turnstile-wrap > div {
+            max-width: 100%;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="login-card">
+
+        <div class="logo">
+            Turrin Elettronica
+        </div>
+
+        <h1>
+            Area amministrazione
+        </h1>
+
+        <p class="subtitle">
+            Accedi per gestire gli aggiornamenti.
+        </p>
+
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    id="email"
+                    type="email"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                id="loginButton"
+                type="submit">
+                Accedi
+            </button>
+
+
+            <div
+                id="adminTurnstile"
+                class="turnstile-wrap"
+                aria-live="polite">
+            </div>
+
+        </form>
+
+
+        <div
+            id="message"
+            class="message">
+        </div>
+
+    </main>
+
+
+    <!-- Supabase JS -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+    </script>
+
+
+    <script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit">
+    </script>
+
+
+    <script>
+
+        /*
+         * =====================================
+         * CONFIGURAZIONE SUPABASE
+         * =====================================
+         */
+
+        const SUPABASE_URL =
+            'https://gxlquwudampvcuxiocmh.supabase.co';
+
+
+        const SUPABASE_KEY =
+            'sb_publishable_TXv6HGzmzYe2c-CFD2hkkQ_qzkOa4XR';
+
+
+        /*
+         * Site Key PUBBLICA Cloudflare Turnstile.
+         * Non inserire mai qui la Secret Key.
+         */
+        const TURNSTILE_SITE_KEY =
+            '0x4AAAAAAEk3BroGgbq1bBWm';
+
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /*
+         * =====================================
+         * ELEMENTI PAGINA
+         * =====================================
+         */
+
+        const loginForm =
+            document.getElementById(
+                'loginForm'
+            );
+
+
+        const emailInput =
+            document.getElementById(
+                'email'
+            );
+
+
+        const passwordInput =
+            document.getElementById(
+                'password'
+            );
+
+
+        const loginButton =
+            document.getElementById(
+                'loginButton'
+            );
+
+
+        const message =
+            document.getElementById(
+                'message'
+            );
+
+
+        const turnstileContainer =
+            document.getElementById(
+                'adminTurnstile'
+            );
+
+
+        let turnstileWidgetId =
+            null;
+
+
+        /*
+         * =====================================
+         * CLOUDFLARE TURNSTILE
+         * =====================================
+         */
+
+        function clearTurnstileWidget() {
+
+            if (
+                window.turnstile &&
+                turnstileWidgetId !== null
+            ) {
+
+                try {
+
+                    window.turnstile.remove(
+                        turnstileWidgetId
+                    );
+                }
+                catch (error) {
+
+                    console.warn(
+                        'Reset Turnstile:',
+                        error
+                    );
+                }
+            }
+
+
+            turnstileWidgetId =
+                null;
+
+
+            if (turnstileContainer) {
+
+                turnstileContainer.innerHTML =
+                    '';
+            }
+        }
+
+
+        function getTurnstileToken() {
+
+            if (!TURNSTILE_SITE_KEY) {
+
+                return Promise.reject(
+                    new Error(
+                        'Turnstile Site Key non configurata.'
+                    )
+                );
+            }
+
+
+            if (
+                !window.turnstile ||
+                typeof window.turnstile.render !==
+                    'function'
+            ) {
+
+                return Promise.reject(
+                    new Error(
+                        'Cloudflare Turnstile non disponibile.'
+                    )
+                );
+            }
+
+
+            clearTurnstileWidget();
+
+
+            return new Promise(
+                (resolve, reject) => {
+
+                    let completed =
+                        false;
+
+
+                    const finish =
+                        callback => value => {
+
+                            if (completed)
+                                return;
+
+
+                            completed =
+                                true;
+
+
+                            callback(
+                                value
+                            );
+                        };
+
+
+                    const resolveOnce =
+                        finish(
+                            resolve
+                        );
+
+
+                    const rejectOnce =
+                        finish(
+                            reject
+                        );
+
+
+                    try {
+
+                        turnstileWidgetId =
+                            window.turnstile.render(
+                                turnstileContainer,
+                                {
+                                    sitekey:
+                                        TURNSTILE_SITE_KEY,
+
+                                    theme:
+                                        'light',
+
+                                    language:
+                                        'it',
+
+                                    size:
+                                        'flexible',
+
+                                    appearance:
+                                        'interaction-only',
+
+                                    execution:
+                                        'execute',
+
+                                    action:
+                                        'admin_login',
+
+                                    'response-field':
+                                        false,
+
+                                    callback:
+                                        token => {
+
+                                            if (!token) {
+
+                                                rejectOnce(
+                                                    new Error(
+                                                        'Turnstile non ha restituito un token.'
+                                                    )
+                                                );
+
+                                                return;
+                                            }
+
+
+                                            resolveOnce(
+                                                token
+                                            );
+                                        },
+
+                                    'error-callback':
+                                        errorCode => {
+
+                                            rejectOnce(
+                                                new Error(
+                                                    `Turnstile error ${errorCode}`
+                                                )
+                                            );
+
+
+                                            return true;
+                                        },
+
+                                    'expired-callback':
+                                        () => {
+
+                                            rejectOnce(
+                                                new Error(
+                                                    'Turnstile token scaduto.'
+                                                )
+                                            );
+                                        },
+
+                                    'timeout-callback':
+                                        () => {
+
+                                            rejectOnce(
+                                                new Error(
+                                                    'Turnstile timeout.'
+                                                )
+                                            );
+                                        }
+                                }
+                            );
+
+
+                        if (
+                            turnstileWidgetId ===
+                                undefined ||
+                            turnstileWidgetId ===
+                                null
+                        ) {
+
+                            rejectOnce(
+                                new Error(
+                                    'Impossibile inizializzare Turnstile.'
+                                )
+                            );
+
+                            return;
+                        }
+
+
+                        window.turnstile.execute(
+                            turnstileWidgetId
+                        );
+                    }
+                    catch (error) {
+
+                        rejectOnce(
+                            error
+                        );
+                    }
+                }
+            );
+        }
+
+
+        /*
+         * =====================================
+         * MESSAGGI
+         * =====================================
+         */
+
+        function showMessage(
+            text,
+            type
+        ) {
+
+            message.textContent =
+                text;
+
+            message.className =
+                'message ' + type;
+        }
+
+
+        function clearMessage() {
+
+            message.textContent =
+                '';
+
+            message.className =
+                'message';
+        }
+
+
+        /*
+         * =====================================
+         * LOGIN
+         * =====================================
+         */
+
+        loginForm.addEventListener(
+            'submit',
+            async (event) => {
+
+                event.preventDefault();
+
+                clearMessage();
+
+
+                const email =
+                    emailInput.value.trim();
+
+
+                const password =
+                    passwordInput.value;
+
+
+                loginButton.disabled =
+                    true;
+
+
+                loginButton.textContent =
+                    'Accesso...';
+
+
+                let captchaToken =
+                    '';
+
+
+                try {
+
+                    captchaToken =
+                        await getTurnstileToken();
+                }
+                catch (error) {
+
+                    console.error(
+                        'Errore Turnstile:',
+                        error
+                    );
+
+
+                    showMessage(
+                        'Verifica di sicurezza non riuscita. Riprova.',
+                        'error'
+                    );
+
+
+                    loginButton.disabled =
+                        false;
+
+
+                    loginButton.textContent =
+                        'Accedi';
+
+
+                    return;
+                }
+
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient
+                        .auth
+                        .signInWithPassword({
+
+                            email:
+                                email,
+
+                            password:
+                                password,
+
+                            options: {
+                                captchaToken:
+                                    captchaToken
+                            }
+                        });
+
+
+                clearTurnstileWidget();
+
+
+                if (error) {
+
+                    console.error(
+                        'Errore login:',
+                        error
+                    );
+
+
+                    showMessage(
+                        'Email, password o verifica di sicurezza non corretti.',
+                        'error'
+                    );
+
+
+                    loginButton.disabled =
+                        false;
+
+
+                    loginButton.textContent =
+                        'Accedi';
+
+
+                    return;
+                }
+
+
+                showMessage(
+                    'Accesso effettuato.',
+                    'success'
+                );
+
+
+                /*
+                 * Nel prossimo passaggio
+                 * questa pagina diventerà:
+                 *
+                 * dashboard.html
+                 */
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        'dashboard.html';
+
+                }, 600);
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
