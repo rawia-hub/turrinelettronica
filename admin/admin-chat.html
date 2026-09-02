@@ -2714,7 +2714,50 @@ document.addEventListener(
         }
     }
 );
+notificationButton.addEventListener(
+    'click',
+    async () => {
 
+        if (
+            !('Notification' in window)
+        ) {
+
+            alert(
+                'Questo browser non supporta le notifiche desktop.'
+            );
+
+            return;
+        }
+
+
+        const permission =
+            await Notification
+                .requestPermission();
+
+
+        if (
+            permission ===
+            'granted'
+        ) {
+
+            notificationButton.textContent =
+                '🔔';
+
+
+            notificationButton.title =
+                'Notifiche attive';
+        }
+        else {
+
+            notificationButton.textContent =
+                '🔕';
+
+
+            notificationButton.title =
+                'Notifiche non consentite';
+        }
+    }
+);
 
 document.getElementById(
     'chatAdminDashboard'
@@ -2806,50 +2849,7 @@ document.getElementById(
     );
 
 })();
-notificationButton.addEventListener(
-    'click',
-    async () => {
 
-        if (
-            !('Notification' in window)
-        ) {
-
-            alert(
-                'Questo browser non supporta le notifiche desktop.'
-            );
-
-            return;
-        }
-
-
-        const permission =
-            await Notification
-                .requestPermission();
-
-
-        if (
-            permission ===
-            'granted'
-        ) {
-
-            notificationButton.textContent =
-                '🔔';
-
-
-            notificationButton.title =
-                'Notifiche attive';
-        }
-        else {
-
-            notificationButton.textContent =
-                '🔕';
-
-
-            notificationButton.title =
-                'Notifiche non consentite';
-        }
-    }
-);
 </script>
 
 </body>
