@@ -611,7 +611,16 @@
                             id="chatAdminDashboard">
                             Dashboard
                         </button>
-
+                        <button
+                            type="button"
+                            class="chat-admin-secondary"
+                            id="chatAdminNotifications"
+                            title="Attiva notifiche"
+                            aria-label="Attiva notifiche">
+                        
+                            🔔
+                        
+                        </button>
                         <button
                             type="button"
                             class="chat-admin-secondary"
@@ -983,8 +992,185 @@ let realtimeMessagesChannel =
 
 let renderedMessageIds =
     new Set();
+    
+const ORIGINAL_CHAT_ADMIN_TITLE =
+    document.title;
 
 
+const notificationButton =
+    document.getElementById(
+        'chatAdminNotifications'
+    );
+
+
+let chatAudioContext =
+    null;
+function updateAdminUnreadTitle() {
+
+    const unread =
+        sessions.reduce(
+            (total, session) => {
+
+                return total +
+                    (
+                        Number(
+                            session.unread_count
+                        ) || 0
+                    );
+            },
+            0
+        );
+
+
+    document.title =
+        unread > 0
+            ? `(${unread}) ${ORIGINAL_CHAT_ADMIN_TITLE}`
+            : ORIGINAL_CHAT_ADMIN_TITLE;
+}
+
+
+function playNewMessageSound() {
+
+    try {
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+
+        if (!AudioContext)
+            return;
+
+
+        if (!chatAudioContext) {
+
+            chatAudioContext =
+                new AudioContext();
+        }
+
+
+        if (
+            chatAudioContext.state ===
+            'suspended'
+        ) {
+
+            chatAudioContext.resume();
+        }
+
+
+        const oscillator =
+            chatAudioContext.createOscillator();
+
+
+        const gain =
+            chatAudioContext.createGain();
+
+
+        oscillator.frequency.value =
+            760;
+
+
+        gain.gain.setValueAtTime(
+            .05,
+            chatAudioContext.currentTime
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            .001,
+            chatAudioContext.currentTime + .18
+        );
+
+
+        oscillator.connect(
+            gain
+        );
+
+
+        gain.connect(
+            chatAudioContext.destination
+        );
+
+
+        oscillator.start();
+
+
+        oscillator.stop(
+            chatAudioContext.currentTime + .18
+        );
+
+    }
+    catch (error) {
+
+        console.warn(
+            'Suono Live Chat:',
+            error
+        );
+    }
+}
+
+
+function showAdminDesktopNotification(
+    message
+) {
+
+    if (
+        !('Notification' in window) ||
+        Notification.permission !==
+            'granted'
+    ) {
+        return;
+    }
+
+
+    if (
+        document.visibilityState ===
+        'visible'
+    ) {
+        return;
+    }
+
+
+    const session =
+        sessions.find(
+            item =>
+                item.id ===
+                message.session_id
+        );
+
+
+    const name =
+        session?.visitor_name ||
+        'Cliente';
+
+
+    const notification =
+        new Notification(
+            'Nuovo messaggio Live Chat',
+            {
+                body:
+                    `${name}: ${message.message}`
+            }
+        );
+
+
+    notification.onclick =
+        () => {
+
+            window.focus();
+
+
+            if (session) {
+
+                openSession(
+                    session.id
+                );
+            }
+
+
+            notification.close();
+        };
+}
 
 function clearAdminTurnstileWidget() {
 
@@ -1615,7 +1801,7 @@ async function loadSessions() {
 
     sessions =
         data || [];
-
+    updateAdminUnreadTitle();
 
     if (currentSession) {
 
@@ -2326,7 +2512,18 @@ async function subscribeRealtime() {
 
                     const message =
                         payload.new;
-
+                if (
+                    message.sender ===
+                    'visitor'
+                ) {
+                
+                    playNewMessageSound();
+                
+                
+                    showAdminDesktopNotification(
+                        message
+                    );
+                }
 
                     if (
                         currentSession &&
@@ -2609,7 +2806,50 @@ document.getElementById(
     );
 
 })();
+notificationButton.addEventListener(
+    'click',
+    async () => {
 
+        if (
+            !('Notification' in window)
+        ) {
+
+            alert(
+                'Questo browser non supporta le notifiche desktop.'
+            );
+
+            return;
+        }
+
+
+        const permission =
+            await Notification
+                .requestPermission();
+
+
+        if (
+            permission ===
+            'granted'
+        ) {
+
+            notificationButton.textContent =
+                '🔔';
+
+
+            notificationButton.title =
+                'Notifiche attive';
+        }
+        else {
+
+            notificationButton.textContent =
+                '🔕';
+
+
+            notificationButton.title =
+                'Notifiche non consentite';
+        }
+    }
+);
 </script>
 
 </body>
