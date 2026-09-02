@@ -1,0 +1,2616 @@
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+    <title>Live Chat Admin | Turrin Elettronica</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+            background: #f4f7fb;
+            color: #172a45;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        .chat-admin-shell {
+            min-height: 100vh;
+        }
+
+        .chat-admin-login {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+        }
+
+        .chat-admin-login-card {
+            width: min(420px, 100%);
+            padding: 34px;
+            border: 1px solid #dce5ef;
+            border-radius: 18px;
+            background: #fff;
+            box-shadow:
+                0 24px 60px
+                rgba(20,45,80,.10);
+        }
+
+        .chat-admin-login-card h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        .chat-admin-login-card p {
+            margin: 0 0 24px;
+            color: #718096;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .chat-admin-field {
+            display: grid;
+            gap: 6px;
+            margin-bottom: 13px;
+        }
+
+        .chat-admin-field label {
+            color: #607088;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .chat-admin-field input {
+            min-height: 46px;
+            padding: 0 13px;
+            border: 1px solid #dce5ef;
+            border-radius: 9px;
+            outline: none;
+        }
+
+        .chat-admin-field input:focus,
+        .chat-admin-reply textarea:focus {
+            border-color: #0759d8;
+            box-shadow:
+                0 0 0 3px
+                rgba(7,89,216,.10);
+        }
+
+        .chat-admin-primary,
+        .chat-admin-secondary {
+            min-height: 43px;
+            padding: 0 16px;
+            border-radius: 8px;
+            font-weight: 850;
+            cursor: pointer;
+        }
+
+        .chat-admin-primary {
+            border: 0;
+            background: #0759d8;
+            color: #fff;
+        }
+
+        .chat-admin-secondary {
+            border: 1px solid #d8e2ed;
+            background: #fff;
+            color: #53657b;
+        }
+
+        .chat-admin-error {
+            margin-top: 12px;
+            color: #b42318;
+            font-size: 11px;
+        }
+
+
+        .chat-admin-turnstile {
+            width: 100%;
+            min-height: 0;
+            margin-top: 10px;
+            overflow: visible;
+        }
+
+
+        .chat-admin-turnstile:empty {
+            display: none;
+        }
+
+
+        .chat-admin-turnstile > div {
+            max-width: 100%;
+        }
+
+        .chat-admin-app[hidden],
+        .chat-admin-login[hidden] {
+            display: none !important;
+        }
+
+        .chat-admin-app {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+        }
+
+        .chat-admin-sidebar {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #dce5ef;
+            background: #fff;
+        }
+
+        .chat-admin-sidebar-top {
+            padding: 22px;
+            border-bottom: 1px solid #e4eaf1;
+        }
+
+        .chat-admin-sidebar-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .chat-admin-sidebar-title h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .chat-admin-online {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 9px;
+            color: #4b617a;
+            font-size: 10px;
+        }
+
+        .chat-admin-online::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #45dc86;
+            box-shadow:
+                0 0 8px
+                rgba(69,220,134,.65);
+        }
+
+        .chat-admin-sessions {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .chat-admin-session {
+            width: 100%;
+            display: grid;
+            gap: 6px;
+            padding: 16px 18px;
+            border: 0;
+            border-bottom: 1px solid #eef2f6;
+            background: #fff;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .chat-admin-session:hover,
+        .chat-admin-session.active {
+            background: #f4f8ff;
+        }
+
+        .chat-admin-session-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .chat-admin-session strong {
+            color: #203751;
+            font-size: 12px;
+        }
+
+        .chat-admin-session time {
+            color: #9aa6b5;
+            font-size: 8px;
+        }
+
+        .chat-admin-session p {
+            margin: 0;
+            overflow: hidden;
+            color: #718096;
+            font-size: 10px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .chat-admin-session-badges {
+            display: flex;
+            gap: 6px;
+        }
+
+        .chat-admin-badge {
+            padding: 4px 7px;
+            border-radius: 20px;
+            background: #edf4ff;
+            color: #0759d8;
+            font-size: 7px;
+            font-weight: 900;
+        }
+
+        .chat-admin-badge.closed {
+            background: #eef1f4;
+            color: #758397;
+        }
+
+        .chat-admin-main {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .chat-admin-empty {
+            margin: auto;
+            padding: 30px;
+            color: #8390a1;
+            text-align: center;
+        }
+
+        .chat-admin-conversation[hidden],
+        .chat-admin-empty[hidden] {
+            display: none !important;
+        }
+
+        .chat-admin-conversation {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-admin-header {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 15px 24px;
+            border-bottom: 1px solid #dfe6ee;
+            background: #fff;
+        }
+
+        .chat-admin-header h2 {
+            margin: 0 0 4px;
+            font-size: 18px;
+        }
+
+        .chat-admin-header p {
+            margin: 0;
+            color: #7b899b;
+            font-size: 9px;
+        }
+
+        .chat-admin-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-admin-danger {
+            min-height: 43px;
+            padding: 0 16px;
+            border: 1px solid #d64545;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #c93636;
+            font-weight: 850;
+            cursor: pointer;
+        }
+
+        .chat-admin-danger:hover {
+            background: #fff2f2;
+        }
+
+        .chat-admin-danger[hidden] {
+            display: none !important;
+        }
+
+        .chat-delete-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .chat-delete-modal[hidden] {
+            display: none !important;
+        }
+
+        .chat-delete-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(7,27,58,.55);
+            backdrop-filter: blur(2px);
+        }
+
+        .chat-delete-box {
+            position: relative;
+            width: min(430px, 100%);
+            padding: 28px;
+            border-radius: 14px;
+            background: #ffffff;
+            box-shadow: 0 25px 70px rgba(0,0,0,.25);
+        }
+
+        .chat-delete-box h3 {
+            margin: 0 0 9px;
+            color: #071b3a;
+            font-size: 21px;
+        }
+
+        .chat-delete-box p {
+            margin: 0;
+            color: #687487;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .chat-delete-name {
+            margin: 16px 0;
+            padding: 11px 13px;
+            border-radius: 8px;
+            background: #f5f8fc;
+            color: #27374d;
+            font-size: 12px;
+            font-weight: 850;
+        }
+
+        .chat-delete-warning {
+            color: #9c4a4a !important;
+            font-size: 10px !important;
+        }
+
+        .chat-delete-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 9px;
+            margin-top: 22px;
+        }
+
+        .chat-delete-actions button {
+            min-height: 40px;
+        }
+
+        .chat-admin-messages {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+            padding: 25px;
+        }
+
+        .chat-admin-message {
+            max-width: min(650px, 78%);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .chat-admin-message.visitor {
+            align-self: flex-start;
+        }
+
+        .chat-admin-message.admin {
+            align-self: flex-end;
+            align-items: flex-end;
+        }
+
+        .chat-admin-message-bubble {
+            padding: 11px 14px;
+            border-radius: 13px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        .chat-admin-message.visitor
+        .chat-admin-message-bubble {
+            border: 1px solid #dfe7ef;
+            border-bottom-left-radius: 4px;
+            background: #fff;
+            color: #31465f;
+        }
+
+        .chat-admin-message.admin
+        .chat-admin-message-bubble {
+            border-bottom-right-radius: 4px;
+            background: #0759d8;
+            color: #fff;
+        }
+
+        .chat-admin-message time {
+            color: #98a4b3;
+            font-size: 8px;
+        }
+
+        .chat-admin-reply {
+            position: relative;
+            padding: 16px 24px 20px;
+            border-top: 1px solid #dfe6ee;
+            background: #fff;
+        }
+
+        .chat-admin-reply textarea {
+            width: 100%;
+            min-height: 72px;
+            max-height: 160px;
+            resize: vertical;
+            padding: 13px 110px 13px 13px;
+            border: 1px solid #d9e3ee;
+            border-radius: 11px;
+            outline: none;
+            line-height: 1.5;
+        }
+
+        .chat-admin-send {
+            position: absolute;
+            right: 34px;
+            bottom: 31px;
+        }
+
+        @media(max-width:850px) {
+            .chat-admin-app {
+                grid-template-columns: 280px 1fr;
+            }
+        }
+
+        @media(max-width:680px) {
+            .chat-admin-app {
+                display: block;
+            }
+
+            .chat-admin-sidebar {
+                min-height: 42vh;
+                max-height: 48vh;
+                border-right: 0;
+                border-bottom: 1px solid #dce5ef;
+            }
+
+            .chat-admin-main,
+            .chat-admin-conversation {
+                min-height: 52vh;
+            }
+
+            .chat-admin-message {
+                max-width: 88%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="chat-admin-shell">
+
+    <section
+        class="chat-admin-login"
+        id="chatAdminLogin">
+
+        <form
+            class="chat-admin-login-card"
+            id="chatAdminLoginForm">
+
+            <h1>
+                Live Chat Admin
+            </h1>
+
+            <p>
+                Accedi con l'account amministratore
+                autorizzato in Supabase.
+            </p>
+
+            <div class="chat-admin-field">
+
+                <label for="chatAdminEmail">
+                    Email
+                </label>
+
+                <input
+                    id="chatAdminEmail"
+                    type="email"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+            <div class="chat-admin-field">
+
+                <label for="chatAdminPassword">
+                    Password
+                </label>
+
+                <input
+                    id="chatAdminPassword"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                class="chat-admin-primary">
+
+                Accedi
+
+            </button>
+
+
+            <div
+                class="chat-admin-turnstile"
+                id="chatAdminTurnstile"
+                aria-live="polite">
+            </div>
+
+
+            <div
+                class="chat-admin-error"
+                id="chatAdminLoginError">
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <section
+        class="chat-admin-app"
+        id="chatAdminApp"
+        hidden>
+
+        <aside class="chat-admin-sidebar">
+
+            <div class="chat-admin-sidebar-top">
+
+                <div class="chat-admin-sidebar-title">
+
+                    <h1>
+                        Live Chat
+                    </h1>
+
+                    <div class="chat-admin-actions">
+
+                        <button
+                            type="button"
+                            class="chat-admin-secondary"
+                            id="chatAdminDashboard">
+                            Dashboard
+                        </button>
+
+                        <button
+                            type="button"
+                            class="chat-admin-secondary"
+                            id="chatAdminLogout">
+                            Esci
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <span class="chat-admin-online">
+                    Operatore online
+                </span>
+
+            </div>
+
+
+            <div
+                class="chat-admin-sessions"
+                id="chatAdminSessions">
+            </div>
+
+        </aside>
+
+
+        <main class="chat-admin-main">
+
+            <div
+                class="chat-admin-empty"
+                id="chatAdminEmpty">
+
+                Seleziona una conversazione.
+
+            </div>
+
+
+            <section
+                class="chat-admin-conversation"
+                id="chatAdminConversation"
+                hidden>
+
+                <header class="chat-admin-header">
+
+                    <div>
+
+                        <h2 id="chatAdminVisitorName">
+                            Cliente
+                        </h2>
+
+                        <p id="chatAdminVisitorMeta">
+                        </p>
+
+                    </div>
+
+
+                    <div class="chat-admin-actions">
+
+                        <button
+                            type="button"
+                            class="chat-admin-secondary"
+                            id="chatAdminToggleStatus">
+
+                            Chiudi chat
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="chat-admin-danger"
+                            id="chatAdminDeleteSession"
+                            hidden>
+
+                            Elimina chat
+
+                        </button>
+
+                    </div>
+
+                </header>
+
+
+                <div
+                    class="chat-admin-messages"
+                    id="chatAdminMessages">
+                </div>
+
+
+                <form
+                    class="chat-admin-reply"
+                    id="chatAdminReplyForm">
+
+                    <textarea
+                        id="chatAdminReply"
+                        maxlength="2000"
+                        placeholder="Scrivi una risposta..."
+                        required>
+                    </textarea>
+
+                    <button
+                        type="submit"
+                        class="chat-admin-primary chat-admin-send">
+
+                        Invia
+
+                    </button>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </section>
+
+</div>
+
+
+<div
+    class="chat-delete-modal"
+    id="chatDeleteModal"
+    hidden>
+
+    <div
+        class="chat-delete-backdrop"
+        id="chatDeleteBackdrop">
+    </div>
+
+    <div
+        class="chat-delete-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="chatDeleteTitle">
+
+        <h3 id="chatDeleteTitle">
+            Elimina conversazione
+        </h3>
+
+        <p>
+            Vuoi eliminare definitivamente questa conversazione?
+        </p>
+
+        <div
+            class="chat-delete-name"
+            id="chatDeleteName">
+        </div>
+
+        <p class="chat-delete-warning">
+            Verranno eliminati anche tutti i messaggi associati.
+            L'operazione non puo essere annullata.
+        </p>
+
+        <div class="chat-delete-actions">
+
+            <button
+                type="button"
+                class="chat-admin-secondary"
+                id="chatDeleteCancel">
+                Annulla
+            </button>
+
+            <button
+                type="button"
+                class="chat-admin-danger"
+                id="chatDeleteConfirm">
+                Elimina definitivamente
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+<script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit">
+</script>
+
+
+<script>
+
+const CHAT_ADMIN_SUPABASE_URL =
+    'https://gxlquwudampvcuxiocmh.supabase.co';
+
+
+const CHAT_ADMIN_SUPABASE_ANON_KEY =
+    'sb_publishable_TXv6HGzmzYe2c-CFD2hkkQ_qzkOa4XR';
+
+
+/*
+ * Site Key PUBBLICA Cloudflare Turnstile.
+ * Non inserire mai qui la Secret Key.
+ */
+const CHAT_ADMIN_TURNSTILE_SITE_KEY =
+    '0x4AAAAAAEk3BroGgbq1bBWm';
+
+
+const adminClient =
+    CHAT_ADMIN_SUPABASE_URL &&
+    CHAT_ADMIN_SUPABASE_ANON_KEY
+        ? supabase.createClient(
+            CHAT_ADMIN_SUPABASE_URL,
+            CHAT_ADMIN_SUPABASE_ANON_KEY,
+            {
+                auth: {
+                    persistSession: true,
+                    autoRefreshToken: true,
+                    detectSessionInUrl: false
+                }
+            }
+        )
+        : null;
+
+
+const loginSection =
+    document.getElementById(
+        'chatAdminLogin'
+    );
+
+
+const appSection =
+    document.getElementById(
+        'chatAdminApp'
+    );
+
+
+const loginForm =
+    document.getElementById(
+        'chatAdminLoginForm'
+    );
+
+
+const loginError =
+    document.getElementById(
+        'chatAdminLoginError'
+    );
+
+
+const loginTurnstileContainer =
+    document.getElementById(
+        'chatAdminTurnstile'
+    );
+
+
+let loginTurnstileWidgetId =
+    null;
+
+
+const sessionsContainer =
+    document.getElementById(
+        'chatAdminSessions'
+    );
+
+
+const emptyState =
+    document.getElementById(
+        'chatAdminEmpty'
+    );
+
+
+const conversation =
+    document.getElementById(
+        'chatAdminConversation'
+    );
+
+
+const visitorName =
+    document.getElementById(
+        'chatAdminVisitorName'
+    );
+
+
+const visitorMeta =
+    document.getElementById(
+        'chatAdminVisitorMeta'
+    );
+
+
+const messagesContainer =
+    document.getElementById(
+        'chatAdminMessages'
+    );
+
+
+const replyForm =
+    document.getElementById(
+        'chatAdminReplyForm'
+    );
+
+
+const replyInput =
+    document.getElementById(
+        'chatAdminReply'
+    );
+
+
+const toggleStatusButton =
+    document.getElementById(
+        'chatAdminToggleStatus'
+    );
+
+
+const deleteSessionButton =
+    document.getElementById(
+        'chatAdminDeleteSession'
+    );
+
+
+const deleteModal =
+    document.getElementById(
+        'chatDeleteModal'
+    );
+
+
+const deleteBackdrop =
+    document.getElementById(
+        'chatDeleteBackdrop'
+    );
+
+
+const deleteName =
+    document.getElementById(
+        'chatDeleteName'
+    );
+
+
+const deleteCancelButton =
+    document.getElementById(
+        'chatDeleteCancel'
+    );
+
+
+const deleteConfirmButton =
+    document.getElementById(
+        'chatDeleteConfirm'
+    );
+
+
+let currentUser =
+    null;
+
+
+let currentSession =
+    null;
+
+
+let sessions =
+    [];
+
+
+let presenceChannel =
+    null;
+
+
+let realtimeSessionsChannel =
+    null;
+
+
+let realtimeMessagesChannel =
+    null;
+
+
+let renderedMessageIds =
+    new Set();
+
+
+
+function clearAdminTurnstileWidget() {
+
+    if (
+        window.turnstile &&
+        loginTurnstileWidgetId !== null
+    ) {
+
+        try {
+
+            window.turnstile.remove(
+                loginTurnstileWidgetId
+            );
+        }
+        catch (error) {
+
+            console.warn(
+                'Reset Turnstile:',
+                error
+            );
+        }
+    }
+
+
+    loginTurnstileWidgetId =
+        null;
+
+
+    if (loginTurnstileContainer) {
+
+        loginTurnstileContainer.innerHTML =
+            '';
+    }
+}
+
+
+function getAdminTurnstileToken() {
+
+    if (
+        !CHAT_ADMIN_TURNSTILE_SITE_KEY
+    ) {
+
+        return Promise.reject(
+            new Error(
+                'Turnstile Site Key non configurata.'
+            )
+        );
+    }
+
+
+    if (
+        !window.turnstile ||
+        typeof window.turnstile.render !==
+            'function'
+    ) {
+
+        return Promise.reject(
+            new Error(
+                'Cloudflare Turnstile non disponibile.'
+            )
+        );
+    }
+
+
+    clearAdminTurnstileWidget();
+
+
+    return new Promise(
+        (resolve, reject) => {
+
+            let completed =
+                false;
+
+
+            const finish =
+                callback => value => {
+
+                    if (completed)
+                        return;
+
+
+                    completed =
+                        true;
+
+
+                    callback(
+                        value
+                    );
+                };
+
+
+            const resolveOnce =
+                finish(
+                    resolve
+                );
+
+
+            const rejectOnce =
+                finish(
+                    reject
+                );
+
+
+            try {
+
+                loginTurnstileWidgetId =
+                    window.turnstile.render(
+                        loginTurnstileContainer,
+                        {
+                            sitekey:
+                                CHAT_ADMIN_TURNSTILE_SITE_KEY,
+
+                            theme:
+                                'light',
+
+                            language:
+                                'it',
+
+                            size:
+                                'flexible',
+
+                            appearance:
+                                'interaction-only',
+
+                            execution:
+                                'execute',
+
+                            action:
+                                'admin_chat_login',
+
+                            'response-field':
+                                false,
+
+                            callback:
+                                token => {
+
+                                    if (!token) {
+
+                                        rejectOnce(
+                                            new Error(
+                                                'Turnstile non ha restituito un token.'
+                                            )
+                                        );
+
+                                        return;
+                                    }
+
+
+                                    resolveOnce(
+                                        token
+                                    );
+                                },
+
+                            'error-callback':
+                                errorCode => {
+
+                                    rejectOnce(
+                                        new Error(
+                                            `Turnstile error ${errorCode}`
+                                        )
+                                    );
+
+
+                                    return true;
+                                },
+
+                            'expired-callback':
+                                () => {
+
+                                    rejectOnce(
+                                        new Error(
+                                            'Turnstile token scaduto.'
+                                        )
+                                    );
+                                },
+
+                            'timeout-callback':
+                                () => {
+
+                                    rejectOnce(
+                                        new Error(
+                                            'Turnstile timeout.'
+                                        )
+                                    );
+                                }
+                        }
+                    );
+
+
+                if (
+                    loginTurnstileWidgetId ===
+                        undefined ||
+                    loginTurnstileWidgetId ===
+                        null
+                ) {
+
+                    rejectOnce(
+                        new Error(
+                            'Impossibile inizializzare Turnstile.'
+                        )
+                    );
+
+                    return;
+                }
+
+
+                window.turnstile.execute(
+                    loginTurnstileWidgetId
+                );
+            }
+            catch (error) {
+
+                rejectOnce(
+                    error
+                );
+            }
+        }
+    );
+}
+
+
+function escapeText(
+    value
+) {
+
+    return String(
+        value ?? ''
+    );
+}
+
+
+function formatDateTime(
+    value
+) {
+
+    if (!value)
+        return '';
+
+
+    return new Date(
+        value
+    ).toLocaleString(
+        'it-IT',
+        {
+            day: '2-digit',
+            month: 'short',
+            hour: '2-digit',
+            minute: '2-digit'
+        }
+    );
+}
+
+
+function showLogin() {
+
+    loginSection.hidden =
+        false;
+
+
+    appSection.hidden =
+        true;
+}
+
+
+function showApp() {
+
+    loginSection.hidden =
+        true;
+
+
+    appSection.hidden =
+        false;
+}
+
+
+async function verifyAdmin() {
+
+    if (
+        !adminClient ||
+        !currentUser
+    ) {
+        return false;
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await adminClient
+            .from(
+                'chat_admins'
+            )
+            .select(
+                'user_id'
+            )
+            .eq(
+                'user_id',
+                currentUser.id
+            )
+            .maybeSingle();
+
+
+    if (error) {
+        console.error(
+            'Errore verifica admin:',
+            error
+        );
+
+
+        return false;
+    }
+
+
+    return Boolean(
+        data
+    );
+}
+
+
+async function startPresence() {
+
+    if (
+        !adminClient ||
+        !currentUser
+    ) {
+        return;
+    }
+
+
+    if (presenceChannel) {
+
+        await adminClient.removeChannel(
+            presenceChannel
+        );
+    }
+
+
+    presenceChannel =
+        adminClient.channel(
+            'turrin-support-presence',
+            {
+                config: {
+                    presence: {
+                        key:
+                            `admin-${currentUser.id}`
+                    }
+                }
+            }
+        );
+
+
+    presenceChannel.subscribe(
+        async status => {
+
+            if (
+                status ===
+                'SUBSCRIBED'
+            ) {
+
+                await presenceChannel.track({
+                    role: 'admin',
+                    user_id:
+                        currentUser.id,
+                    online_at:
+                        new Date()
+                            .toISOString()
+                });
+            }
+        }
+    );
+}
+
+
+function renderSessions() {
+
+    sessionsContainer.innerHTML =
+        '';
+
+
+    if (!sessions.length) {
+
+        sessionsContainer.innerHTML = `
+            <div class="chat-admin-empty">
+                Nessuna conversazione.
+            </div>
+        `;
+
+
+        return;
+    }
+
+
+    sessions.forEach(
+        session => {
+
+            const button =
+                document.createElement(
+                    'button'
+                );
+
+
+            button.type =
+                'button';
+
+
+            button.className =
+                'chat-admin-session';
+
+
+            if (
+                currentSession &&
+                currentSession.id ===
+                    session.id
+            ) {
+
+                button.classList.add(
+                    'active'
+                );
+            }
+
+
+            const top =
+                document.createElement(
+                    'div'
+                );
+
+
+            top.className =
+                'chat-admin-session-top';
+
+
+            const name =
+                document.createElement(
+                    'strong'
+                );
+
+
+            name.textContent =
+                session.visitor_name ||
+                'Cliente';
+
+
+            const time =
+                document.createElement(
+                    'time'
+                );
+
+
+            time.textContent =
+                formatDateTime(
+                    session.last_message_at
+                );
+
+
+            top.appendChild(
+                name
+            );
+
+
+            top.appendChild(
+                time
+            );
+
+
+            const preview =
+                document.createElement(
+                    'p'
+                );
+
+
+            preview.textContent =
+                session.last_message_preview ||
+                'Nuova conversazione';
+
+
+            const badges =
+                document.createElement(
+                    'div'
+                );
+
+
+            badges.className =
+                'chat-admin-session-badges';
+
+
+            const status =
+                document.createElement(
+                    'span'
+                );
+
+
+            status.className =
+                'chat-admin-badge';
+
+
+            if (
+                session.status ===
+                'closed'
+            ) {
+
+                status.classList.add(
+                    'closed'
+                );
+            }
+
+
+            status.textContent =
+                session.status ===
+                'closed'
+                    ? 'CHIUSA'
+                    : 'APERTA';
+
+
+            badges.appendChild(
+                status
+            );
+
+
+            if (
+                Number(
+                    session.unread_count
+                ) > 0
+            ) {
+
+                const newBadge =
+                    document.createElement(
+                        'span'
+                    );
+
+                newBadge.className =
+                    'chat-admin-badge';
+
+                const unreadCount =
+                    Number(
+                        session.unread_count
+                    ) || 0;
+
+                newBadge.textContent =
+                    unreadCount === 1
+                        ? '1 NON LETTO'
+                        : `${unreadCount} NON LETTI`;
+
+                badges.appendChild(
+                    newBadge
+                );
+            }
+
+
+            button.appendChild(
+                top
+            );
+
+
+            button.appendChild(
+                preview
+            );
+
+
+            button.appendChild(
+                badges
+            );
+
+
+            button.addEventListener(
+                'click',
+                () => {
+
+                    openSession(
+                        session.id
+                    );
+                }
+            );
+
+
+            sessionsContainer.appendChild(
+                button
+            );
+        }
+    );
+}
+
+
+async function loadSessions() {
+
+    const {
+        data,
+        error
+    } =
+        await adminClient
+            .from(
+                'chat_sessions'
+            )
+            .select(`
+                id,
+                visitor_name,
+                visitor_email,
+                page_url,
+                status,
+                last_message_preview,
+                last_sender,
+                unread_count,
+                created_at,
+                last_message_at
+            `)
+            .order(
+                'last_message_at',
+                {
+                    ascending: false
+                }
+            )
+            .limit(
+                150
+            );
+
+
+    if (error) {
+
+        console.error(
+            'Errore caricamento chat:',
+            error
+        );
+
+
+        return;
+    }
+
+
+    sessions =
+        data || [];
+
+
+    if (currentSession) {
+
+        const refreshed =
+            sessions.find(
+                item =>
+                    item.id ===
+                    currentSession.id
+            );
+
+
+        if (refreshed) {
+
+            currentSession =
+                refreshed;
+        }
+        else {
+
+            currentSession =
+                null;
+
+
+            conversation.hidden =
+                true;
+
+
+            emptyState.hidden =
+                false;
+
+
+            messagesContainer.innerHTML =
+                '';
+
+
+            renderedMessageIds =
+                new Set();
+        }
+    }
+
+
+    renderSessions();
+
+
+    if (currentSession) {
+
+        updateConversationHeader();
+    }
+}
+
+
+function updateConversationHeader() {
+
+    if (!currentSession)
+        return;
+
+
+    visitorName.textContent =
+        currentSession.visitor_name ||
+        'Cliente';
+
+
+    const meta = [];
+
+
+    if (
+        currentSession.visitor_email
+    ) {
+
+        meta.push(
+            currentSession.visitor_email
+        );
+    }
+
+
+    if (
+        currentSession.page_url
+    ) {
+
+        meta.push(
+            currentSession.page_url
+        );
+    }
+
+
+    visitorMeta.textContent =
+        meta.join(
+            ' · '
+        );
+
+
+    toggleStatusButton.textContent =
+        currentSession.status ===
+        'closed'
+            ? 'Riapri chat'
+            : 'Chiudi chat';
+
+
+    deleteSessionButton.hidden =
+        currentSession.status !==
+            'closed';
+}
+
+
+function appendAdminMessage(
+    message
+) {
+
+    const key =
+        String(
+            message.id
+        );
+
+
+    if (
+        renderedMessageIds.has(
+            key
+        )
+    ) {
+        return;
+    }
+
+
+    renderedMessageIds.add(
+        key
+    );
+
+
+    const wrapper =
+        document.createElement(
+            'div'
+        );
+
+
+    wrapper.className =
+        `chat-admin-message ${message.sender}`;
+
+
+    const bubble =
+        document.createElement(
+            'div'
+        );
+
+
+    bubble.className =
+        'chat-admin-message-bubble';
+
+
+    bubble.textContent =
+        escapeText(
+            message.message
+        );
+
+
+    const time =
+        document.createElement(
+            'time'
+        );
+
+
+    time.textContent =
+        formatDateTime(
+            message.created_at
+        );
+
+
+    wrapper.appendChild(
+        bubble
+    );
+
+
+    wrapper.appendChild(
+        time
+    );
+
+
+    messagesContainer.appendChild(
+        wrapper
+    );
+
+
+    requestAnimationFrame(
+        () => {
+
+            messagesContainer.scrollTop =
+                messagesContainer.scrollHeight;
+        }
+    );
+}
+
+
+async function loadMessages(
+    sessionId
+) {
+
+    const {
+        data,
+        error
+    } =
+        await adminClient
+            .from(
+                'chat_messages'
+            )
+            .select(
+                'id, sender, message, created_at'
+            )
+            .eq(
+                'session_id',
+                sessionId
+            )
+            .order(
+                'created_at',
+                {
+                    ascending: true
+                }
+            )
+            .limit(
+                500
+            );
+
+
+    if (error) {
+
+        console.error(
+            'Errore caricamento messaggi:',
+            error
+        );
+
+
+        return;
+    }
+
+
+    renderedMessageIds =
+        new Set();
+
+
+    messagesContainer.innerHTML =
+        '';
+
+
+    (data || [])
+        .forEach(
+            appendAdminMessage
+        );
+}
+
+
+
+async function markSessionAsRead(
+    sessionId
+) {
+
+    const session =
+        sessions.find(
+            item =>
+                item.id ===
+                sessionId
+        );
+
+    if (!session) {
+        return;
+    }
+
+    const {
+        error
+    } =
+        await adminClient
+            .from('chat_sessions')
+            .update({
+                unread_count: 0
+            })
+            .eq(
+                'id',
+                sessionId
+            );
+
+    if (error) {
+
+        console.error(
+            'Errore lettura chat:',
+            error
+        );
+
+        return;
+    }
+
+    session.unread_count = 0;
+
+    if (
+        currentSession &&
+        currentSession.id ===
+            sessionId
+    ) {
+        currentSession.unread_count = 0;
+    }
+
+    renderSessions();
+}
+
+
+async function openSession(
+    sessionId
+) {
+
+    currentSession =
+        sessions.find(
+            item =>
+                item.id ===
+                sessionId
+        ) || null;
+
+
+    if (!currentSession)
+        return;
+
+
+    emptyState.hidden =
+        true;
+
+
+    conversation.hidden =
+        false;
+
+
+    updateConversationHeader();
+
+    renderSessions();
+
+
+    await loadMessages(
+        sessionId
+    );
+
+    await markSessionAsRead(
+        sessionId
+    );
+}
+
+
+replyForm.addEventListener(
+    'submit',
+    async event => {
+
+        event.preventDefault();
+
+
+        if (
+            !currentSession ||
+            !currentUser
+        ) {
+            return;
+        }
+
+
+        const message =
+            replyInput.value
+                .trim();
+
+
+        if (!message)
+            return;
+
+
+        const {
+            error
+        } =
+            await adminClient
+                .from(
+                    'chat_messages'
+                )
+                .insert({
+                    session_id:
+                        currentSession.id,
+
+                    sender:
+                        'admin',
+
+                    sender_user_id:
+                        currentUser.id,
+
+                    message:
+                        message
+                });
+
+
+        if (error) {
+
+            console.error(
+                'Errore invio risposta:',
+                error
+            );
+
+
+            return;
+        }
+
+
+        replyInput.value =
+            '';
+
+
+        replyInput.focus();
+    }
+);
+
+
+replyInput.addEventListener(
+    'keydown',
+    event => {
+
+        if (
+            event.key ===
+                'Enter' &&
+            !event.shiftKey
+        ) {
+
+            event.preventDefault();
+
+            replyForm.requestSubmit();
+        }
+    }
+);
+
+
+toggleStatusButton.addEventListener(
+    'click',
+    async () => {
+
+        if (!currentSession)
+            return;
+
+
+        const newStatus =
+            currentSession.status ===
+                'closed'
+                ? 'open'
+                : 'closed';
+
+
+        const {
+            error
+        } =
+            await adminClient
+                .from(
+                    'chat_sessions'
+                )
+                .update({
+                    status:
+                        newStatus
+                })
+                .eq(
+                    'id',
+                    currentSession.id
+                );
+
+
+        if (error) {
+
+            console.error(
+                'Errore stato chat:',
+                error
+            );
+
+
+            return;
+        }
+
+
+        currentSession.status =
+            newStatus;
+
+
+        updateConversationHeader();
+
+        loadSessions();
+    }
+);
+
+
+
+
+function openDeleteModal() {
+
+    if (
+        !currentSession ||
+        currentSession.status !==
+            'closed'
+    ) {
+        return;
+    }
+
+
+    deleteName.textContent =
+        currentSession.visitor_name ||
+        'Cliente';
+
+
+    deleteModal.hidden =
+        false;
+
+
+    deleteConfirmButton.disabled =
+        false;
+
+
+    deleteConfirmButton.textContent =
+        'Elimina definitivamente';
+
+
+    deleteConfirmButton.focus();
+}
+
+
+function closeDeleteModal() {
+
+    deleteModal.hidden =
+        true;
+
+
+    deleteName.textContent =
+        '';
+
+
+    deleteConfirmButton.disabled =
+        false;
+
+
+    deleteConfirmButton.textContent =
+        'Elimina definitivamente';
+}
+
+
+deleteSessionButton.addEventListener(
+    'click',
+    openDeleteModal
+);
+
+
+deleteCancelButton.addEventListener(
+    'click',
+    closeDeleteModal
+);
+
+
+deleteBackdrop.addEventListener(
+    'click',
+    closeDeleteModal
+);
+
+
+document.addEventListener(
+    'keydown',
+    event => {
+
+        if (
+            event.key === 'Escape' &&
+            !deleteModal.hidden
+        ) {
+
+            closeDeleteModal();
+        }
+    }
+);
+
+
+deleteConfirmButton.addEventListener(
+    'click',
+    async () => {
+
+        if (
+            !currentSession ||
+            currentSession.status !==
+                'closed'
+        ) {
+            return;
+        }
+
+
+        const sessionId =
+            currentSession.id;
+
+
+        deleteConfirmButton.disabled =
+            true;
+
+
+        deleteConfirmButton.textContent =
+            'Eliminazione...';
+
+
+        const {
+            error
+        } =
+            await adminClient.rpc(
+                'delete_chat_session_admin',
+                {
+                    p_session_id:
+                        sessionId
+                }
+            );
+
+
+        if (error) {
+
+            console.error(
+                'Errore eliminazione chat:',
+                error
+            );
+
+
+            deleteConfirmButton.disabled =
+                false;
+
+
+            deleteConfirmButton.textContent =
+                'Riprova';
+
+
+            return;
+        }
+
+
+        closeDeleteModal();
+
+
+        currentSession =
+            null;
+
+
+        renderedMessageIds =
+            new Set();
+
+
+        messagesContainer.innerHTML =
+            '';
+
+
+        conversation.hidden =
+            true;
+
+
+        emptyState.hidden =
+            false;
+
+
+        await loadSessions();
+    }
+);
+
+
+async function subscribeRealtime() {
+
+    if (
+        realtimeSessionsChannel
+    ) {
+
+        await adminClient.removeChannel(
+            realtimeSessionsChannel
+        );
+    }
+
+
+    if (
+        realtimeMessagesChannel
+    ) {
+
+        await adminClient.removeChannel(
+            realtimeMessagesChannel
+        );
+    }
+
+
+    realtimeSessionsChannel =
+        adminClient
+            .channel(
+                'turrin-admin-chat-sessions'
+            )
+            .on(
+                'postgres_changes',
+                {
+                    event: '*',
+                    schema: 'public',
+                    table:
+                        'chat_sessions'
+                },
+                () => {
+
+                    loadSessions();
+                }
+            )
+            .subscribe();
+
+
+    realtimeMessagesChannel =
+        adminClient
+            .channel(
+                'turrin-admin-chat-messages'
+            )
+            .on(
+                'postgres_changes',
+                {
+                    event: 'INSERT',
+                    schema: 'public',
+                    table:
+                        'chat_messages'
+                },
+                payload => {
+
+                    const message =
+                        payload.new;
+
+
+                    if (
+                        currentSession &&
+                        message.session_id ===
+                            currentSession.id
+                    ) {
+
+                        appendAdminMessage(
+                            message
+                        );
+
+                        if (
+                            message.sender === 'visitor' &&
+                            document.visibilityState === 'visible'
+                        ) {
+
+                            markSessionAsRead(
+                                currentSession.id
+                            );
+                        }
+                    }
+
+
+                    loadSessions();
+                }
+            )
+            .subscribe();
+}
+
+
+async function enterAdminApp(
+    user
+) {
+
+    currentUser =
+        user;
+
+
+    const isAdmin =
+        await verifyAdmin();
+
+
+    if (!isAdmin) {
+
+        await adminClient.auth
+            .signOut();
+
+
+        currentUser =
+            null;
+
+
+        loginError.textContent =
+            'Questo account non è autorizzato alla Live Chat.';
+
+
+        showLogin();
+
+
+        return;
+    }
+
+
+    showApp();
+
+
+    await Promise.all([
+        loadSessions(),
+        startPresence(),
+        subscribeRealtime()
+    ]);
+}
+
+
+loginForm.addEventListener(
+    'submit',
+    async event => {
+
+        event.preventDefault();
+
+
+        loginError.textContent =
+            '';
+
+
+        if (!adminClient) {
+
+            loginError.textContent =
+                'Configura URL e anon key Supabase nel file admin-chat.html.';
+
+
+            return;
+        }
+
+
+        const email =
+            document.getElementById(
+                'chatAdminEmail'
+            ).value.trim();
+
+
+        const password =
+            document.getElementById(
+                'chatAdminPassword'
+            ).value;
+
+
+        let captchaToken =
+            '';
+
+
+        try {
+
+            captchaToken =
+                await getAdminTurnstileToken();
+        }
+        catch (error) {
+
+            console.error(
+                'Errore Turnstile:',
+                error
+            );
+
+
+            loginError.textContent =
+                'Verifica di sicurezza non riuscita. Riprova.';
+
+
+            return;
+        }
+
+
+        const {
+            data,
+            error
+        } =
+            await adminClient.auth
+                .signInWithPassword({
+                    email,
+                    password,
+
+                    options: {
+                        captchaToken:
+                            captchaToken
+                    }
+                });
+
+
+        clearAdminTurnstileWidget();
+
+
+        if (error) {
+
+            console.error(
+                'Errore login Live Chat:',
+                error
+            );
+
+
+            loginError.textContent =
+                'Email, password o verifica di sicurezza non corretti.';
+
+
+            return;
+        }
+
+
+        await enterAdminApp(
+            data.user
+        );
+    }
+);
+
+
+
+document.addEventListener(
+    'visibilitychange',
+    () => {
+
+        if (
+            document.visibilityState === 'visible' &&
+            currentSession
+        ) {
+
+            markSessionAsRead(
+                currentSession.id
+            );
+        }
+    }
+);
+
+
+document.getElementById(
+    'chatAdminDashboard'
+)
+.addEventListener(
+    'click',
+    () => {
+
+        window.location.href =
+            'dashboard.html';
+    }
+);
+
+
+document.getElementById(
+    'chatAdminLogout'
+)
+.addEventListener(
+    'click',
+    async () => {
+
+        if (presenceChannel) {
+
+            await presenceChannel.untrack();
+
+            await adminClient.removeChannel(
+                presenceChannel
+            );
+
+            presenceChannel =
+                null;
+        }
+
+
+        await adminClient.auth
+            .signOut();
+
+
+        currentUser =
+            null;
+
+
+        currentSession =
+            null;
+
+
+        showLogin();
+    }
+);
+
+
+(async () => {
+
+    if (!adminClient) {
+
+        loginError.textContent =
+            'Configura URL e anon key Supabase nel file admin-chat.html.';
+
+
+        showLogin();
+
+
+        return;
+    }
+
+
+    const {
+        data
+    } =
+        await adminClient.auth
+            .getSession();
+
+
+    const user =
+        data?.session?.user ||
+        null;
+
+
+    if (!user) {
+
+        showLogin();
+
+        return;
+    }
+
+
+    await enterAdminApp(
+        user
+    );
+
+})();
+
+</script>
+
+</body>
+</html>
