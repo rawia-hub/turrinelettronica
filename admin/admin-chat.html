@@ -1005,6 +1005,16 @@ const notificationButton =
 
 let chatAudioContext =
     null;
+
+
+const CHAT_SOUND_STORAGE_KEY =
+    'turrin_chat_sound_enabled';
+updateNotificationButton();
+
+let chatSoundEnabled =
+    localStorage.getItem(
+        CHAT_SOUND_STORAGE_KEY
+    ) === 'true';
 function updateAdminUnreadTitle() {
 
     const unread =
@@ -1031,39 +1041,24 @@ function updateAdminUnreadTitle() {
 
 function playNewMessageSound() {
 
+    if (
+        !chatSoundEnabled ||
+        !chatAudioContext
+    ) {
+        return;
+    }
+
+
     try {
 
-        const AudioContext =
-            window.AudioContext ||
-            window.webkitAudioContext;
-
-
-        if (!AudioContext)
-            return;
-
-
-        if (!chatAudioContext) {
-
-            chatAudioContext =
-                new AudioContext();
-        }
-
-
-        if (
-            chatAudioContext.state ===
-            'suspended'
-        ) {
-
-            chatAudioContext.resume();
-        }
-
-
         const oscillator =
-            chatAudioContext.createOscillator();
+            chatAudioContext
+                .createOscillator();
 
 
         const gain =
-            chatAudioContext.createGain();
+            chatAudioContext
+                .createGain();
 
 
         oscillator.frequency.value =
@@ -1071,14 +1066,14 @@ function playNewMessageSound() {
 
 
         gain.gain.setValueAtTime(
-            .05,
+            .06,
             chatAudioContext.currentTime
         );
 
 
         gain.gain.exponentialRampToValueAtTime(
             .001,
-            chatAudioContext.currentTime + .18
+            chatAudioContext.currentTime + .20
         );
 
 
@@ -1096,7 +1091,7 @@ function playNewMessageSound() {
 
 
         oscillator.stop(
-            chatAudioContext.currentTime + .18
+            chatAudioContext.currentTime + .20
         );
 
     }
@@ -1106,6 +1101,65 @@ function playNewMessageSound() {
             'Suono Live Chat:',
             error
         );
+    }
+}
+    async function unlockChatSound() {
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+
+    if (!AudioContext)
+        return false;
+
+
+    if (!chatAudioContext) {
+
+        chatAudioContext =
+            new AudioContext();
+    }
+
+
+    if (
+        chatAudioContext.state ===
+        'suspended'
+    ) {
+
+        await chatAudioContext.resume();
+    }
+
+
+    return (
+        chatAudioContext.state ===
+        'running'
+    );
+}
+
+
+function updateNotificationButton() {
+
+    if (!notificationButton)
+        return;
+
+
+    if (chatSoundEnabled) {
+
+        notificationButton.textContent =
+            '🔔';
+
+
+        notificationButton.title =
+            'Suono notifiche attivo';
+    }
+    else {
+
+        notificationButton.textContent =
+            '🔕';
+
+
+        notificationButton.title =
+            'Suono notifiche disattivato';
     }
 }
 
@@ -2718,43 +2772,73 @@ notificationButton.addEventListener(
     'click',
     async () => {
 
-        if (
-            !('Notification' in window)
-        ) {
+        /*
+         * Se il suono è già attivo,
+         * il click lo disattiva.
+         */
+        if (chatSoundEnabled) {
 
-            alert(
-                'Questo browser non supporta le notifiche desktop.'
+            chatSoundEnabled =
+                false;
+
+
+            localStorage.setItem(
+                CHAT_SOUND_STORAGE_KEY,
+                'false'
             );
+
+
+            updateNotificationButton();
+
 
             return;
         }
 
 
-        const permission =
-            await Notification
-                .requestPermission();
+        /*
+         * Riattiva il suono e,
+         * soprattutto, sblocca
+         * AudioContext tramite questo click.
+         */
+        chatSoundEnabled =
+            true;
 
 
+        localStorage.setItem(
+            CHAT_SOUND_STORAGE_KEY,
+            'true'
+        );
+
+
+        const audioReady =
+            await unlockChatSound();
+
+
+        updateNotificationButton();
+
+
+        /*
+         * Piccolo suono di prova.
+         */
+        if (audioReady) {
+
+            playNewMessageSound();
+        }
+
+
+        /*
+         * Il browser chiede il permesso
+         * desktop solo se non è ancora
+         * stato deciso.
+         */
         if (
-            permission ===
-            'granted'
+            'Notification' in window &&
+            Notification.permission ===
+                'default'
         ) {
 
-            notificationButton.textContent =
-                '🔔';
-
-
-            notificationButton.title =
-                'Notifiche attive';
-        }
-        else {
-
-            notificationButton.textContent =
-                '🔕';
-
-
-            notificationButton.title =
-                'Notifiche non consentite';
+            await Notification
+                .requestPermission();
         }
     }
 );
