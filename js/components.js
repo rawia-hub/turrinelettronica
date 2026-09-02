@@ -115,7 +115,16 @@ function initMobileMenu() {
         document.querySelector(
             '.main-nav'
         );
-
+    const productsMenu =
+        document.querySelector(
+            '.nav-products'
+        );
+    
+    
+    const productsToggle =
+        document.querySelector(
+            '.nav-products-toggle'
+        );
 
     if (
         !menuToggle ||
@@ -143,7 +152,77 @@ function initMobileMenu() {
 
         }
     );
+if (
+    productsMenu &&
+    productsToggle
+) {
 
+    productsToggle.addEventListener(
+        'click',
+        event => {
+
+            event.stopPropagation();
+
+
+            const isOpen =
+                productsMenu.classList.toggle(
+                    'open'
+                );
+
+
+            productsToggle.setAttribute(
+                'aria-expanded',
+                isOpen
+            );
+        }
+    );
+
+
+    document.addEventListener(
+        'click',
+        event => {
+
+            if (
+                !productsMenu.contains(
+                    event.target
+                )
+            ) {
+
+                productsMenu.classList.remove(
+                    'open'
+                );
+
+
+                productsToggle.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+            }
+        }
+    );
+
+
+    productsMenu
+        .querySelectorAll('a')
+        .forEach(link => {
+
+            link.addEventListener(
+                'click',
+                () => {
+
+                    productsMenu.classList.remove(
+                        'open'
+                    );
+
+
+                    productsToggle.setAttribute(
+                        'aria-expanded',
+                        'false'
+                    );
+                }
+            );
+        });
+}
 }
 
 
