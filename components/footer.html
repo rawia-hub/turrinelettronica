@@ -1,0 +1,80 @@
+<style>
+.site-footer{background:#071b3a;color:rgba(255,255,255,.76);border-top:1px solid rgba(255,255,255,.08)}
+.site-footer a{color:inherit;text-decoration:none;transition:color .2s ease}
+.site-footer a:hover{color:#fff}
+.site-footer-main{padding:58px 0 42px}
+.site-footer-grid{display:grid;grid-template-columns:minmax(250px,1.35fr) repeat(3,minmax(150px,.7fr));gap:44px}
+.site-footer-name{margin:0;color:#fff;font-size:23px;font-weight:900;letter-spacing:-.025em}
+.site-footer-tagline{margin:11px 0 0;max-width:360px;color:rgba(255,255,255,.62);font-size:12px;line-height:1.75}
+.site-footer-company-data{display:grid;gap:7px;margin-top:22px;color:rgba(255,255,255,.66);font-size:10px;line-height:1.55}
+.site-footer-column h3{margin:2px 0 16px;color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.site-footer-links{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.site-footer-links a{font-size:11px;line-height:1.45}
+.site-footer-contact{display:grid;gap:9px;margin-top:18px}
+.site-footer-contact span{font-size:10px;line-height:1.55}
+.site-footer-bottom{border-top:1px solid rgba(255,255,255,.09)}
+.site-footer-bottom-inner{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:15px 0}
+.site-footer-copyright{margin:0;color:rgba(255,255,255,.5);font-size:9px;line-height:1.5}
+.site-footer-legal-links{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:16px}
+.site-footer-legal-links a{color:rgba(255,255,255,.57);font-size:9px;font-weight:700}
+@media(max-width:940px){.site-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.site-footer-main{padding:48px 0 34px}.site-footer-grid{grid-template-columns:1fr;gap:32px}.site-footer-bottom-inner{align-items:flex-start;flex-direction:column;padding:21px 0}.site-footer-legal-links{justify-content:flex-start}}
+</style>
+
+<footer class="site-footer" aria-label="Footer">
+  <div class="site-footer-main">
+    <div class="container site-footer-grid">
+      <div class="site-footer-brand">
+        <p class="site-footer-name">Turrin Elettronica</p>
+        <p class="site-footer-tagline">Soluzioni hardware e software professionali per il settore automotive, ricerca elettronica e assistenza tecnica specializzata.</p>
+        <div class="site-footer-company-data">
+          <span>Turrin Elettronica S.r.l.</span>
+          <span>Via Settima Strada 12/14 · 35129 Padova (PD) · Italia</span>
+          <span>P. IVA / C.F. 04613810284</span>
+        </div>
+      </div>
+
+      <nav class="site-footer-column" aria-label="Azienda">
+        <h3>Azienda</h3>
+        <ul class="site-footer-links">
+          <li><a href="{{ROOT}}azienda.html">Chi siamo</a></li>
+          <li><a href="{{ROOT}}index.html#aggiornamenti">Aggiornamenti</a></li>
+          <li><a href="{{ROOT}}contatti.html">Contatti</a></li>
+        </ul>
+      </nav>
+
+      <nav class="site-footer-column" aria-label="Prodotti">
+        <h3>Prodotti</h3>
+        <ul class="site-footer-links">
+          <li><a href="{{ROOT}}prodotti/mc3.html">MC3</a></li>
+          <li><a href="{{ROOT}}prodotti/t-race-pro.html">T-Race Pro</a></li>
+          <li><a href="{{ROOT}}prodotti/tuning-solution.html">Tuning Solution</a></li>
+          <li><a href="{{ROOT}}prodotti/check-ecu.html">Check ECU</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer-column">
+        <h3>Assistenza</h3>
+        <ul class="site-footer-links">
+          <li><a href="mailto:ufficio@turrinelettronica.it">Ufficio</a></li>
+          <li><a href="mailto:support@turrinelettronica.it">Supporto tecnico</a></li>
+          <li><a href="tel:+390498079039">+39 049 8079039</a></li>
+        </ul>
+        <div class="site-footer-contact">
+          <span>Lun–Ven 08.30–13.00 / 14.00–17.30</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-footer-bottom">
+    <div class="container site-footer-bottom-inner">
+      <p class="site-footer-copyright">© 2026 Turrin Elettronica S.r.l. · Tutti i diritti riservati.</p>
+      <nav class="site-footer-legal-links" aria-label="Informazioni legali">
+        <a href="{{ROOT}}privacy.html">Privacy</a>
+        <a href="{{ROOT}}cookie-policy.html">Cookie</a>
+        <a href="{{ROOT}}note-legali.html">Note legali</a>
+      </nav>
+    </div>
+  </div>
+</footer>
