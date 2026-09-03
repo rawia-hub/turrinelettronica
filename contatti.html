@@ -1791,7 +1791,11 @@
 
                   execution:
                     'execute',
-
+                  retry:
+                    'auto',
+                  
+                  'retry-interval':
+                    3000,
                   action:
                     'contact_form',
 
@@ -1818,18 +1822,55 @@
                       );
                     },
 
-                  'error-callback':
-                    errorCode => {
-
-                      rejectOnce(
-                        new Error(
-                          `Turnstile error ${errorCode}`
-                        )
-                      );
-
-
-                      return true;
-                    },
+        'error-callback':
+            errorCode => {
+          
+              console.warn(
+                'Turnstile error:',
+                errorCode
+              );
+          
+          
+              const errorFamily =
+                Math.floor(
+                  Number(errorCode) / 1000
+                );
+          
+          
+              /*
+               * Gli errori 300xxx e 600xxx
+               * sono retryable secondo Cloudflare.
+               * Lasciamo quindi il widget aperto
+               * e gli permettiamo di riprovare.
+               */
+              if (
+                errorFamily === 300 ||
+                errorFamily === 600
+              ) {
+          
+                showFormStatus(
+                  'La verifica di sicurezza sta riprovando. Attendi qualche secondo...',
+                  ''
+                );
+          
+          
+                return true;
+              }
+          
+          
+              /*
+               * Errori non recuperabili:
+               * interrompiamo l'invio.
+               */
+              rejectOnce(
+                new Error(
+                  `Verifica di sicurezza non riuscita (${errorCode}).`
+                )
+              );
+          
+          
+              return true;
+            },
 
                   'expired-callback':
                     () => {
