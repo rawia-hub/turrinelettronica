@@ -1,0 +1,2361 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Tutti gli aggiornamenti software e hardware di Turrin Elettronica per MC3, T-Race Pro, Tuning Solution e Check ECU."
+    >
+
+    <title>
+        Aggiornamenti | Turrin Elettronica
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <style>
+
+        /* =========================================
+           PAGINA AGGIORNAMENTI
+           ========================================= */
+
+        .updates-archive {
+            overflow: hidden;
+
+            background: #ffffff;
+        }
+
+
+        /* =========================================
+           HERO
+           ========================================= */
+
+        .updates-archive-hero {
+            position: relative;
+
+            padding: 76px 0 62px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 82% 18%,
+                    rgba(7, 89, 216, .12),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f7faff 0%,
+                    #ffffff 56%,
+                    #f1f6fd 100%
+                );
+
+            border-bottom:
+                1px solid #e3eaf2;
+        }
+
+
+        .updates-archive-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            right: -210px;
+            bottom: -300px;
+
+            border:
+                1px solid
+                rgba(7, 89, 216, .10);
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 58px
+                rgba(7, 89, 216, .025),
+                0 0 0 116px
+                rgba(7, 89, 216, .015);
+
+            pointer-events: none;
+        }
+
+
+        .updates-archive-hero-inner {
+            position: relative;
+
+            z-index: 1;
+
+            max-width: 860px;
+        }
+
+
+        .updates-archive-eyebrow {
+            display: inline-flex;
+
+            margin-bottom: 15px;
+
+            color: #0759d8;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: .11em;
+        }
+
+
+        .updates-archive-hero h1 {
+            margin: 0;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    39px,
+                    5vw,
+                    58px
+                );
+
+            line-height: 1.05;
+
+            letter-spacing: -.045em;
+        }
+
+
+        .updates-archive-hero p {
+            max-width: 760px;
+
+            margin: 20px 0 0;
+
+            color: #637286;
+
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+
+        /* =========================================
+           ARCHIVIO
+           ========================================= */
+
+        .updates-archive-content {
+            padding: 65px 0 88px;
+        }
+
+
+        .updates-toolbar {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(260px, 360px);
+
+            align-items: end;
+
+            gap: 28px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .updates-toolbar-title {
+            margin: 0 0 8px;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    27px,
+                    3.2vw,
+                    38px
+                );
+
+            line-height: 1.14;
+
+            letter-spacing: -.035em;
+        }
+
+
+        .updates-toolbar-copy {
+            max-width: 700px;
+
+            margin: 0;
+
+            color: #718095;
+
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+
+        .updates-search {
+            position: relative;
+        }
+
+
+        .updates-search svg {
+            position: absolute;
+
+            top: 50%;
+            left: 15px;
+
+            width: 18px;
+            height: 18px;
+
+            transform:
+                translateY(-50%);
+
+            color: #7b899c;
+
+            pointer-events: none;
+        }
+
+
+        .updates-search input {
+            width: 100%;
+            height: 48px;
+
+            padding:
+                0 44px 0 44px;
+
+            border:
+                1px solid #d6e0eb;
+
+            border-radius: 9px;
+
+            outline: none;
+
+            background: #ffffff;
+            color: #263a55;
+
+            font-size: 12px;
+
+            box-shadow:
+                0 7px 22px
+                rgba(25, 51, 84, .045);
+
+            transition:
+                border-color .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .updates-search input:focus {
+            border-color: #0759d8;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(7, 89, 216, .08);
+        }
+
+
+        .updates-search-clear {
+            position: absolute;
+
+            top: 50%;
+            right: 9px;
+
+            width: 31px;
+            height: 31px;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            transform:
+                translateY(-50%);
+
+            padding: 0;
+
+            border: 0;
+            border-radius: 50%;
+
+            background: transparent;
+            color: #8190a3;
+
+            font-size: 18px;
+
+            cursor: pointer;
+        }
+
+
+        .updates-search-clear.visible {
+            display: inline-flex;
+        }
+
+
+        .updates-search-clear:hover {
+            background: #f1f5fa;
+            color: #31465f;
+        }
+
+
+        /* =========================================
+           FILTRI
+           ========================================= */
+
+        .updates-filter-block {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            gap: 16px;
+
+            margin-bottom: 27px;
+
+            padding: 17px 18px;
+
+            border:
+                1px solid #dfe7f0;
+
+            border-radius: 11px;
+
+            background: #f9fbfd;
+        }
+
+
+        .updates-filter-left {
+            display: flex;
+
+            align-items: center;
+            flex-wrap: wrap;
+
+            gap: 9px;
+        }
+
+
+        .updates-filter-label {
+            margin-right: 5px;
+
+            color: #65758a;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+
+        .updates-filter {
+            min-height: 37px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 14px;
+
+            border:
+                1px solid #d6e0eb;
+
+            border-radius: 999px;
+
+            background: #ffffff;
+            color: #53647a;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition:
+                background .2s ease,
+                border-color .2s ease,
+                color .2s ease,
+                transform .2s ease;
+        }
+
+
+        .updates-filter:hover {
+            transform:
+                translateY(-1px);
+
+            border-color: #aebed1;
+            color: #0759d8;
+        }
+
+
+        .updates-filter.active {
+            border-color: #0759d8;
+
+            background: #0759d8;
+            color: #ffffff;
+
+            box-shadow:
+                0 6px 15px
+                rgba(7, 89, 216, .16);
+        }
+
+
+        .updates-results-count {
+            color: #8290a1;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================================
+           GRID
+           ========================================= */
+
+        .updates-page-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(0, 1fr)
+                );
+
+            gap: 24px;
+        }
+
+
+        .updates-page-card {
+            position: relative;
+
+            min-width: 0;
+
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+
+            border:
+                1px solid #dfe7f0;
+
+            border-radius: 15px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 10px 32px
+                rgba(24, 50, 83, .055);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease,
+                border-color .25s ease;
+        }
+
+
+        .updates-page-card:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #cbd8e7;
+
+            box-shadow:
+                0 18px 46px
+                rgba(22, 49, 83, .11);
+        }
+
+
+        .update-card-image-link {
+            display: block;
+
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        .update-card-image {
+            position: relative;
+
+            aspect-ratio: 16 / 10;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e9f1fb,
+                    #f8fbff
+                );
+        }
+
+
+        .update-card-image img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition:
+                transform .45s ease;
+        }
+
+
+        .updates-page-card:hover
+        .update-card-image img {
+            transform:
+                scale(1.035);
+        }
+
+
+        .update-card-image::after {
+            content: "";
+
+            position: absolute;
+
+            inset: auto 0 0;
+
+            height: 32%;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    transparent,
+                    rgba(7, 27, 58, .12)
+                );
+
+            pointer-events: none;
+        }
+
+
+        .update-card-product-badge {
+            position: absolute;
+
+            left: 15px;
+            top: 15px;
+
+            z-index: 2;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            min-height: 28px;
+
+            padding: 0 10px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, .75);
+
+            border-radius: 999px;
+
+            background:
+                rgba(255, 255, 255, .91);
+
+            color: #0759d8;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: .045em;
+
+            box-shadow:
+                0 5px 15px
+                rgba(7, 27, 58, .10);
+
+            backdrop-filter:
+                blur(9px);
+        }
+
+
+        .update-card-placeholder {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+
+            color: #ffffff;
+
+            text-align: center;
+
+            font-size: 24px;
+            font-weight: 900;
+
+            letter-spacing: -.025em;
+        }
+
+
+        .update-card-placeholder::before {
+            content: "";
+
+            position: absolute;
+
+            width: 170px;
+            height: 170px;
+
+            right: -65px;
+            bottom: -85px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, .18);
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 35px
+                rgba(255, 255, 255, .035),
+                0 0 0 70px
+                rgba(255, 255, 255, .022);
+        }
+
+
+        .update-card-placeholder span {
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        .update-card-placeholder.te-mc3 {
+            background:
+                linear-gradient(
+                    135deg,
+                    #0759d8,
+                    #071b3a
+                );
+        }
+
+
+        .update-card-placeholder.te-trace {
+            background:
+                linear-gradient(
+                    135deg,
+                    #17263e,
+                    #0759d8
+                );
+        }
+
+
+        .update-card-placeholder.te-tuning {
+            background:
+                linear-gradient(
+                    135deg,
+                    #09598f,
+                    #071b3a
+                );
+        }
+
+
+        .update-card-placeholder.te-check {
+            background:
+                linear-gradient(
+                    135deg,
+                    #315a80,
+                    #071b3a
+                );
+        }
+
+
+        /* =========================================
+           CONTENUTO CARD
+           ========================================= */
+
+        .update-card-content {
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 22px 22px 20px;
+        }
+
+
+        .update-card-meta {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 12px;
+
+            margin-bottom: 11px;
+        }
+
+
+        .update-card-product {
+            color: #0759d8;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+
+        .update-card-version {
+            color: #8a97a8;
+
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+
+        .update-card-title-link {
+            color: inherit;
+
+            text-decoration: none;
+        }
+
+
+        .update-card-title {
+            margin: 0;
+
+            color: #132e4e;
+
+            font-size: 18px;
+            line-height: 1.32;
+
+            letter-spacing: -.02em;
+
+            transition:
+                color .2s ease;
+        }
+
+
+        .update-card-title-link:hover
+        .update-card-title {
+            color: #0759d8;
+        }
+
+
+        .update-card-description {
+            margin: 12px 0 0;
+
+            display: -webkit-box;
+
+            overflow: hidden;
+
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+
+            color: #718095;
+
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+
+        .update-card-footer {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 14px;
+
+            margin-top: auto;
+            padding-top: 19px;
+        }
+
+
+        .update-card-date {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #8996a7;
+
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+
+        .update-card-date svg {
+            width: 14px;
+            height: 14px;
+        }
+
+
+        .updates-read-more {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            color: #0759d8;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+        }
+
+
+        .updates-read-more span {
+            transition:
+                transform .2s ease;
+        }
+
+
+        .updates-read-more:hover span {
+            transform:
+                translateX(3px);
+        }
+
+
+        /* =========================================
+           CARICAMENTO / EMPTY
+           ========================================= */
+
+        .updates-page-message,
+        .updates-page-empty {
+            grid-column: 1 / -1;
+
+            padding: 48px 25px;
+
+            border:
+                1px dashed #d5dfeb;
+
+            border-radius: 12px;
+
+            background: #f9fbfd;
+
+            color: #768599;
+
+            font-size: 12px;
+            line-height: 1.6;
+
+            text-align: center;
+        }
+
+
+        .updates-page-message.error {
+            border-color: #f0cdcd;
+
+            background: #fff7f7;
+            color: #a64040;
+        }
+
+
+        .updates-page-empty {
+            display: none;
+        }
+
+
+        .updates-load-more {
+            display: flex;
+
+            justify-content: center;
+
+            padding-top: 37px;
+        }
+
+
+        .load-more-button {
+            min-width: 160px;
+            min-height: 45px;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 21px;
+
+            border:
+                1px solid #cdd9e7;
+
+            border-radius: 8px;
+
+            background: #ffffff;
+            color: #344a65;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                color .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .load-more-button:hover {
+            transform:
+                translateY(-2px);
+
+            border-color: #0759d8;
+            color: #0759d8;
+
+            box-shadow:
+                0 8px 22px
+                rgba(7, 89, 216, .08);
+        }
+
+
+        /* =========================================
+           CTA FINALE
+           ========================================= */
+
+        .updates-license {
+            margin-top: 64px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 35px;
+
+            padding: 31px 34px;
+
+            border:
+                1px solid #dbe5f0;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f6f9fd,
+                    #edf4fc
+                );
+        }
+
+
+        .updates-license h2 {
+            margin: 0;
+
+            color: #071b3a;
+
+            font-size: 21px;
+        }
+
+
+        .updates-license p {
+            max-width: 720px;
+
+            margin: 8px 0 0;
+
+            color: #718095;
+
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+
+        .updates-license .btn {
+            flex: 0 0 auto;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media(max-width: 980px) {
+
+            .updates-toolbar {
+                grid-template-columns: 1fr;
+            }
+
+
+            .updates-search {
+                max-width: 520px;
+            }
+
+
+            .updates-page-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+            }
+
+        }
+
+
+        @media(max-width: 680px) {
+
+            .updates-archive-hero {
+                padding: 59px 0 48px;
+            }
+
+
+            .updates-archive-content {
+                padding: 50px 0 68px;
+            }
+
+
+            .updates-filter-block {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .updates-filter-left {
+                width: 100%;
+            }
+
+
+            .updates-filter-label {
+                width: 100%;
+
+                margin:
+                    0 0 2px;
+            }
+
+
+            .updates-filter {
+                flex:
+                    1 1 auto;
+            }
+
+
+            .updates-page-grid {
+                grid-template-columns: 1fr;
+
+                gap: 19px;
+            }
+
+
+            .update-card-content {
+                padding: 20px;
+            }
+
+
+            .updates-license {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                margin-top: 48px;
+
+                padding: 26px 23px;
+            }
+
+
+            .updates-license .btn {
+                width: 100%;
+            }
+
+        }
+
+
+        @media(max-width: 420px) {
+
+            .update-card-meta,
+            .update-card-footer {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .updates-read-more {
+                margin-top: 2px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <div
+        id="siteHeader"
+        data-root="./">
+    </div>
+
+
+    <main class="updates-archive">
+
+        <!-- =========================
+             HERO
+             ========================= -->
+
+        <section class="updates-archive-hero">
+
+            <div class="container">
+
+                <div
+                    class="
+                        updates-archive-hero-inner
+                        reveal
+                        reveal-up
+                    ">
+
+                    <span class="updates-archive-eyebrow">
+                        Aggiornamenti
+                    </span>
+
+                    <h1>
+                        Tutti gli aggiornamenti
+                    </h1>
+
+                    <p>
+                        Consulta le ultime versioni software e hardware
+                        per MC3, T-Race Pro, Tuning Solution e Check ECU,
+                        con nuove funzionalità, nuove ECU supportate
+                        e miglioramenti aggiunti regolarmente.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ARCHIVIO
+             ========================= -->
+
+        <section class="updates-archive-content">
+
+            <div class="container">
+
+                <div class="updates-toolbar">
+
+                    <div
+                        class="
+                            reveal
+                            reveal-left
+                        ">
+
+                        <h2 class="updates-toolbar-title">
+                            Novità software e hardware
+                        </h2>
+
+                        <p class="updates-toolbar-copy">
+                            Filtra per prodotto oppure cerca
+                            un titolo o una versione specifica.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="
+                            updates-search
+                            reveal
+                            reveal-right
+                        ">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true">
+
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="6.5"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8">
+                            </circle>
+
+                            <path
+                                d="M16 16l4 4"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round">
+                            </path>
+
+                        </svg>
+
+
+                        <input
+                            id="updatesSearchInput"
+                            type="search"
+                            placeholder="Cerca aggiornamenti..."
+                            autocomplete="off"
+                            aria-label="Cerca aggiornamenti"
+                        >
+
+
+                        <button
+                            id="updatesSearchClear"
+                            class="updates-search-clear"
+                            type="button"
+                            aria-label="Cancella ricerca"
+                            title="Cancella ricerca">
+                            ×
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FILTRI -->
+
+                <div
+                    class="
+                        updates-filter-block
+                        reveal
+                        reveal-up
+                    ">
+
+                    <div
+                        class="updates-filter-left"
+                        id="updatesFilters">
+
+                        <span class="updates-filter-label">
+                            Filtra
+                        </span>
+
+
+                        <button
+                            type="button"
+                            class="updates-filter"
+                            data-product="all">
+                            Tutti
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="updates-filter"
+                            data-product="check">
+                            Check ECU
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="updates-filter"
+                            data-product="mc3">
+                            MC3
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="updates-filter"
+                            data-product="trace">
+                            T-Race Pro
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="updates-filter"
+                            data-product="tuning">
+                            Tuning Solution
+                        </button>
+
+                    </div>
+
+
+                    <span
+                        class="updates-results-count"
+                        id="updatesResultsCount">
+                        Caricamento...
+                    </span>
+
+                </div>
+
+
+                <!-- GRID -->
+
+                <div
+                    class="updates-page-grid"
+                    id="allUpdatesGrid"
+                    data-stagger>
+
+                    <div class="updates-page-message">
+                        Caricamento aggiornamenti...
+                    </div>
+
+                </div>
+
+
+                <!-- NESSUN RISULTATO -->
+
+                <div
+                    class="updates-page-empty"
+                    id="updatesEmpty">
+
+                    Nessun aggiornamento corrisponde
+                    ai filtri selezionati.
+
+                </div>
+
+
+                <!-- CARICA ALTRI -->
+
+                <div class="updates-load-more">
+
+                    <button
+                        id="loadMoreButton"
+                        class="load-more-button"
+                        type="button">
+
+                        Carica altri
+
+                    </button>
+
+                </div>
+
+
+                <!-- LICENZA -->
+
+                <div
+                    class="
+                        updates-license
+                        reveal
+                        reveal-up
+                    ">
+
+                    <div>
+
+                        <h2>
+                            Mantieni i tuoi strumenti sempre aggiornati
+                        </h2>
+
+                        <p>
+                            Con una licenza attiva accedi
+                            all'assistenza file e agli aggiornamenti
+                            software e hardware disponibili per
+                            i prodotti Turrin Elettronica.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        class="btn btn-primary"
+                        href="contatti.html">
+
+                        Contattaci
+                        <span>→</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <div id="siteFooter"></div>
+
+
+    <!-- =========================
+         SUPABASE
+         ========================= -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+    </script>
+
+
+    <script>
+
+        /* =====================================
+           SUPABASE
+           ===================================== */
+
+        const SUPABASE_URL =
+            'https://gxlquwudampvcuxiocmh.supabase.co';
+
+
+        const SUPABASE_KEY =
+            'sb_publishable_TXv6HGzmzYe2c-CFD2hkkQ_qzkOa4XR';
+
+
+        const publicSupabase =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+
+        /* =====================================
+           ELEMENTI
+           ===================================== */
+
+        const updatesGrid =
+            document.getElementById(
+                'allUpdatesGrid'
+            );
+
+
+        const updatesEmpty =
+            document.getElementById(
+                'updatesEmpty'
+            );
+
+
+        const filterButtons =
+            document.querySelectorAll(
+                '.updates-filter'
+            );
+
+
+        const loadMoreButton =
+            document.getElementById(
+                'loadMoreButton'
+            );
+
+
+        const updatesSearchInput =
+            document.getElementById(
+                'updatesSearchInput'
+            );
+
+
+        const updatesSearchClear =
+            document.getElementById(
+                'updatesSearchClear'
+            );
+
+
+        const updatesResultsCount =
+            document.getElementById(
+                'updatesResultsCount'
+            );
+
+
+
+        /* =====================================
+           STATO
+           ===================================== */
+
+        const ITEMS_PER_LOAD =
+            9;
+
+
+        const VALID_FILTERS =
+            new Set([
+                'all',
+                'mc3',
+                'trace',
+                'tuning',
+                'check'
+            ]);
+
+
+        let allUpdates =
+            [];
+
+
+        let currentFilter =
+            'all';
+
+
+        let currentSearch =
+            '';
+
+
+        let visibleCount =
+            ITEMS_PER_LOAD;
+
+
+
+        /* =====================================
+           FILTRO DA URL
+           ===================================== */
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const productFromUrl =
+            urlParams.get(
+                'product'
+            );
+
+
+        if (
+            productFromUrl &&
+            VALID_FILTERS.has(
+                productFromUrl
+            )
+        ) {
+
+            currentFilter =
+                productFromUrl;
+        }
+
+
+
+        /* =====================================
+           ESCAPE HTML
+           ===================================== */
+
+        function escapeHtml(value) {
+
+            return String(
+                value ?? ''
+            )
+                .replaceAll(
+                    '&',
+                    '&amp;'
+                )
+                .replaceAll(
+                    '<',
+                    '&lt;'
+                )
+                .replaceAll(
+                    '>',
+                    '&gt;'
+                )
+                .replaceAll(
+                    '"',
+                    '&quot;'
+                )
+                .replaceAll(
+                    "'",
+                    '&#039;'
+                );
+        }
+
+
+
+        /* =====================================
+           DATA
+           ===================================== */
+
+        function formatDate(value) {
+
+            if (!value)
+                return '';
+
+
+            const date =
+                new Date(
+                    value
+                );
+
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return '';
+            }
+
+
+            return date.toLocaleDateString(
+                'it-IT',
+                {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                }
+            );
+        }
+
+
+
+        /* =====================================
+           URL IMMAGINE
+           ===================================== */
+
+        function getImageUrl(
+            imagePath
+        ) {
+
+            if (!imagePath)
+                return null;
+
+
+            const {
+                data
+            } =
+                publicSupabase
+                    .storage
+                    .from(
+                        'updates'
+                    )
+                    .getPublicUrl(
+                        imagePath
+                    );
+
+
+            return data?.publicUrl
+                || null;
+        }
+
+
+
+        /* =====================================
+           PLACEHOLDER
+           ===================================== */
+
+        function getProductClass(
+            productKey
+        ) {
+
+            switch (
+                productKey
+            ) {
+
+                case 'mc3':
+                    return 'te-mc3';
+
+                case 'trace':
+                    return 'te-trace';
+
+                case 'tuning':
+                    return 'te-tuning';
+
+                case 'check':
+                    return 'te-check';
+
+                default:
+                    return 'te-mc3';
+            }
+        }
+
+
+
+        /* =====================================
+           URL DETTAGLIO
+           ===================================== */
+
+        function getUpdateUrl(
+            update
+        ) {
+
+            return (
+                'aggiornamento.html?id=' +
+                encodeURIComponent(
+                    update.id
+                )
+            );
+        }
+
+
+
+        /* =====================================
+           CREA CARD
+           ===================================== */
+
+        function createUpdateCard(
+            update
+        ) {
+
+            const imageUrl =
+                getImageUrl(
+                    update.image_path
+                );
+
+
+            const product =
+                escapeHtml(
+                    update.product_name ||
+                    ''
+                );
+
+
+            const version =
+                escapeHtml(
+                    update.version ||
+                    ''
+                );
+
+
+            const title =
+                escapeHtml(
+                    update.title ||
+                    ''
+                );
+
+
+            const description =
+                escapeHtml(
+                    update.description ||
+                    ''
+                );
+
+
+            const date =
+                escapeHtml(
+                    formatDate(
+                        update.published_at
+                    )
+                );
+
+
+            const detailUrl =
+                getUpdateUrl(
+                    update
+                );
+
+
+            let imageContent;
+
+
+            if (imageUrl) {
+
+                imageContent = `
+
+                    <img
+                        src="${escapeHtml(
+                            imageUrl
+                        )}"
+                        alt="${title}"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                `;
+
+            }
+            else {
+
+                imageContent = `
+
+                    <div
+                        class="
+                            update-card-placeholder
+                            ${getProductClass(
+                                update.product_key
+                            )}
+                        ">
+
+                        <span>
+                            ${product}
+                        </span>
+
+                    </div>
+                `;
+            }
+
+
+            return `
+
+                <article
+                    class="
+                        updates-page-card
+                        reveal
+                        reveal-up
+                    ">
+
+                    <a
+                        class="update-card-image-link"
+                        href="${detailUrl}"
+                        aria-label="Apri ${title}">
+
+                        <div class="update-card-image">
+
+                            ${imageContent}
+
+                            <span
+                                class="update-card-product-badge">
+
+                                ${product}
+
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <div class="update-card-content">
+
+                        <div class="update-card-meta">
+
+                            <span class="update-card-product">
+                                ${product}
+                            </span>
+
+
+                            ${
+                                version
+                                    ? `
+                                        <span
+                                            class="update-card-version">
+
+                                            v. ${version}
+
+                                        </span>
+                                      `
+                                    : ''
+                            }
+
+                        </div>
+
+
+                        <a
+                            class="update-card-title-link"
+                            href="${detailUrl}">
+
+                            <h2 class="update-card-title">
+                                ${title}
+                            </h2>
+
+                        </a>
+
+
+                        ${
+                            description
+                                ? `
+                                    <p class="update-card-description">
+                                        ${description}
+                                    </p>
+                                  `
+                                : ''
+                        }
+
+
+                        <div class="update-card-footer">
+
+                            <time
+                                class="update-card-date"
+                                datetime="${escapeHtml(
+                                    update.published_at ||
+                                    ''
+                                )}">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true">
+
+                                    <rect
+                                        x="4"
+                                        y="5"
+                                        width="16"
+                                        height="15"
+                                        rx="2"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.7">
+                                    </rect>
+
+                                    <path
+                                        d="M8 3v4M16 3v4M4 9h16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.7"
+                                        stroke-linecap="round">
+                                    </path>
+
+                                </svg>
+
+                                ${date}
+
+                            </time>
+
+
+                            <a
+                                href="${detailUrl}"
+                                class="updates-read-more">
+
+                                Leggi aggiornamento
+                                <span>→</span>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+            `;
+        }
+
+
+
+        /* =====================================
+           FILTRA DATI
+           ===================================== */
+
+        function getFilteredUpdates() {
+
+            const normalizedSearch =
+                currentSearch
+                    .trim()
+                    .toLowerCase();
+
+
+            return allUpdates.filter(
+                update => {
+
+                    const matchesProduct =
+                        currentFilter ===
+                            'all'
+                        ||
+                        update.product_key ===
+                            currentFilter;
+
+
+                    if (!matchesProduct)
+                        return false;
+
+
+                    if (!normalizedSearch)
+                        return true;
+
+
+                    const searchableText =
+                        [
+                            update.product_name,
+                            update.version,
+                            update.title,
+                            update.description
+                        ]
+                        .join(' ')
+                        .toLowerCase();
+
+
+                    return searchableText.includes(
+                        normalizedSearch
+                    );
+                }
+            );
+        }
+
+
+
+        /* =====================================
+           CONTEGGIO RISULTATI
+           ===================================== */
+
+        function updateResultsCount(
+            filteredCount
+        ) {
+
+            if (!updatesResultsCount)
+                return;
+
+
+            if (
+                filteredCount ===
+                1
+            ) {
+
+                updatesResultsCount.textContent =
+                    '1 aggiornamento';
+
+                return;
+            }
+
+
+            updatesResultsCount.textContent =
+                filteredCount +
+                ' aggiornamenti';
+        }
+
+
+
+        /* =====================================
+           MOSTRA AGGIORNAMENTI
+           ===================================== */
+
+        function renderUpdates() {
+
+            const filteredUpdates =
+                getFilteredUpdates();
+
+
+            updateResultsCount(
+                filteredUpdates.length
+            );
+
+
+            if (
+                filteredUpdates.length ===
+                0
+            ) {
+
+                updatesGrid.innerHTML =
+                    '';
+
+
+                updatesEmpty.style.display =
+                    'block';
+
+
+                loadMoreButton.style.display =
+                    'none';
+
+
+                return;
+            }
+
+
+            updatesEmpty.style.display =
+                'none';
+
+
+            const visibleUpdates =
+                filteredUpdates.slice(
+                    0,
+                    visibleCount
+                );
+
+
+            updatesGrid.innerHTML =
+                visibleUpdates
+                    .map(
+                        createUpdateCard
+                    )
+                    .join('');
+
+
+            loadMoreButton.style.display =
+                visibleCount <
+                filteredUpdates.length
+                    ? 'inline-flex'
+                    : 'none';
+
+
+            /*
+             * Le card vengono create dinamicamente:
+             * riattiviamo la motion globale se disponibile.
+             */
+            if (
+                typeof window
+                    .initGlobalMotion ===
+                'function'
+            ) {
+
+                window
+                    .initGlobalMotion();
+            }
+        }
+
+
+
+        /* =====================================
+           FILTRO ATTIVO
+           ===================================== */
+
+        function updateActiveFilter() {
+
+            filterButtons.forEach(
+                button => {
+
+                    button.classList.toggle(
+                        'active',
+                        button.dataset.product ===
+                            currentFilter
+                    );
+
+                }
+            );
+        }
+
+
+
+        /* =====================================
+           URL FILTRO
+           ===================================== */
+
+        function updateUrl() {
+
+            const url =
+                new URL(
+                    window.location.href
+                );
+
+
+            if (
+                currentFilter ===
+                'all'
+            ) {
+
+                url.searchParams.delete(
+                    'product'
+                );
+            }
+            else {
+
+                url.searchParams.set(
+                    'product',
+                    currentFilter
+                );
+            }
+
+
+            window.history.replaceState(
+                {},
+                '',
+                url.pathname +
+                url.search +
+                url.hash
+            );
+        }
+
+
+
+        /* =====================================
+           EVENTI FILTRI
+           ===================================== */
+
+        filterButtons.forEach(
+            button => {
+
+                button.addEventListener(
+                    'click',
+                    () => {
+
+                        currentFilter =
+                            button.dataset.product;
+
+
+                        visibleCount =
+                            ITEMS_PER_LOAD;
+
+
+                        updateActiveFilter();
+
+
+                        updateUrl();
+
+
+                        renderUpdates();
+                    }
+                );
+
+            }
+        );
+
+
+
+        /* =====================================
+           RICERCA
+           ===================================== */
+
+        function updateSearchClearButton() {
+
+            updatesSearchClear
+                .classList.toggle(
+                    'visible',
+                    updatesSearchInput
+                        .value
+                        .length > 0
+                );
+        }
+
+
+        updatesSearchInput
+            .addEventListener(
+                'input',
+                () => {
+
+                    currentSearch =
+                        updatesSearchInput
+                            .value;
+
+
+                    visibleCount =
+                        ITEMS_PER_LOAD;
+
+
+                    updateSearchClearButton();
+
+
+                    renderUpdates();
+                }
+            );
+
+
+        updatesSearchClear
+            .addEventListener(
+                'click',
+                () => {
+
+                    updatesSearchInput
+                        .value =
+                        '';
+
+
+                    currentSearch =
+                        '';
+
+
+                    visibleCount =
+                        ITEMS_PER_LOAD;
+
+
+                    updateSearchClearButton();
+
+
+                    renderUpdates();
+
+
+                    updatesSearchInput
+                        .focus();
+                }
+            );
+
+
+
+        /* =====================================
+           CARICA ALTRI
+           ===================================== */
+
+        loadMoreButton
+            .addEventListener(
+                'click',
+                () => {
+
+                    visibleCount +=
+                        ITEMS_PER_LOAD;
+
+
+                    renderUpdates();
+                }
+            );
+
+
+
+        /* =====================================
+           CARICA SUPABASE
+           ===================================== */
+
+        async function loadUpdates() {
+
+            const {
+                data,
+                error
+            } =
+                await publicSupabase
+                    .from(
+                        'updates'
+                    )
+                    .select(`
+                        id,
+                        product_key,
+                        product_name,
+                        version,
+                        title,
+                        description,
+                        image_path,
+                        published_at
+                    `)
+                    .eq(
+                        'published',
+                        true
+                    )
+                    .order(
+                        'published_at',
+                        {
+                            ascending:
+                                false
+                        }
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    'Errore caricamento aggiornamenti:',
+                    error
+                );
+
+
+                updatesGrid.innerHTML =
+                    `
+
+                    <div
+                        class="
+                            updates-page-message
+                            error
+                        ">
+
+                        Impossibile caricare
+                        gli aggiornamenti.
+                        Riprova tra poco.
+
+                    </div>
+                    `;
+
+
+                updatesResultsCount
+                    .textContent =
+                    'Errore';
+
+
+                return;
+            }
+
+
+            allUpdates =
+                data || [];
+
+
+            updateActiveFilter();
+
+
+            renderUpdates();
+        }
+
+
+
+        /* =====================================
+           AVVIO
+           ===================================== */
+
+        updateActiveFilter();
+
+
+        updateSearchClearButton();
+
+
+        loadUpdates();
+
+    </script>
+
+
+    <script src="js/components.js"></script>
+
+</body>
+
+</html>
