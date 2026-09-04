@@ -3118,7 +3118,591 @@
     }
 
 }
+/* =========================================================
+   BENEFITS V3
+   ========================================================= */
 
+.home-benefits-v3 {
+    position: relative;
+    overflow: hidden;
+
+    padding: 72px 0;
+
+    background:
+        radial-gradient(
+            circle at 82% 18%,
+            rgba(29,126,255,.16),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #071b3a,
+            #092b58
+        );
+}
+
+
+.home-benefits-v3-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 30px;
+}
+
+
+.home-benefits-v3-head > span {
+    color: #67adff;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: .10em;
+    text-transform: uppercase;
+}
+
+
+.home-benefits-v3-head h2 {
+    max-width: 570px;
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            27px,
+            3.3vw,
+            39px
+        );
+
+    font-weight: 700;
+    line-height: 1.1;
+
+    letter-spacing: -.035em;
+
+    text-align: right;
+}
+
+
+.home-benefits-v3-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 13px;
+}
+
+
+.home-benefit-v3 {
+    min-height: 185px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
+}
+
+
+.home-benefit-v3:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,.20);
+
+    background:
+        rgba(255,255,255,.075);
+}
+
+
+.home-benefit-number,
+.home-benefit-symbol {
+    color: #62aaff;
+
+    font-size: 31px;
+    font-weight: 600;
+
+    line-height: 1;
+}
+
+
+.home-benefit-v3 h3 {
+    margin: 24px 0 0;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.home-benefit-v3 p {
+    margin: 7px 0 0;
+
+    color:
+        rgba(255,255,255,.60);
+
+    font-size: 9.5px;
+    font-weight: 400;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   AZIENDA V3
+   ========================================================= */
+
+.home-company-v3 {
+    padding: 94px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f7faff
+        );
+}
+
+
+.home-company-v3-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, .92fr)
+        minmax(420px, 1.08fr);
+
+    align-items: center;
+
+    gap: 75px;
+}
+
+
+.home-company-v3-label {
+    display: inline-flex;
+
+    margin-bottom: 15px;
+
+    color: #0759d8;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: .10em;
+    text-transform: uppercase;
+}
+
+
+.home-company-v3 h2 {
+    max-width: 670px;
+
+    margin: 0;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            36px,
+            4.4vw,
+            54px
+        );
+
+    font-weight: 700;
+
+    line-height: 1.05;
+
+    letter-spacing: -.043em;
+}
+
+
+.home-company-v3 h2 span {
+    color: #0759d8;
+}
+
+
+.home-company-v3-copy p {
+    max-width: 690px;
+
+    margin: 16px 0 0;
+
+    color: #6b7a8e;
+
+    font-size: 12.5px;
+    font-weight: 400;
+
+    line-height: 1.8;
+}
+
+
+.home-company-v3-intro {
+    margin-top: 21px !important;
+
+    font-size: 13.5px !important;
+
+    color: #596b81 !important;
+}
+
+
+/* TRE PILASTRI */
+
+.home-company-v3-pillars {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0,1fr));
+
+    gap: 10px;
+
+    margin-top: 27px;
+}
+
+
+.home-company-v3-pillars > div {
+    padding: 15px;
+
+    border:
+        1px solid #dfe7f0;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+}
+
+
+.home-company-v3-pillars strong {
+    display: block;
+
+    color: #203751;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.home-company-v3-pillars span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #7d8b9c;
+
+    font-size: 8.5px;
+    line-height: 1.55;
+}
+
+
+.home-company-v3-actions {
+    display: flex;
+
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 26px;
+}
+
+
+/* =========================================================
+   VISUAL AZIENDA
+   ========================================================= */
+
+.home-company-v3-visual {
+    position: relative;
+}
+
+
+.home-company-v3-panel {
+    position: relative;
+
+    min-height: 485px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 34px;
+
+    border-radius: 22px;
+
+    background:
+        radial-gradient(
+            circle at 78% 22%,
+            rgba(49,150,255,.24),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #071b3a,
+            #06366d
+        );
+
+    box-shadow:
+        0 23px 60px
+        rgba(15,45,82,.17);
+}
+
+
+.home-company-v3-panel::after {
+    content: "";
+
+    position: absolute;
+
+    width: 340px;
+    height: 340px;
+
+    right: -130px;
+    bottom: -155px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 45px
+        rgba(255,255,255,.025),
+        0 0 0 90px
+        rgba(255,255,255,.015);
+}
+
+
+.home-company-v3-panel-label {
+    position: relative;
+    z-index: 2;
+
+    color: #68afff;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+
+.home-company-v3-panel h3 {
+    position: relative;
+    z-index: 2;
+
+    max-width: 480px;
+
+    margin: 19px 0 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            28px,
+            3.2vw,
+            41px
+        );
+
+    font-weight: 600;
+
+    line-height: 1.12;
+
+    letter-spacing: -.035em;
+}
+
+
+/* FLOW */
+
+.home-company-v3-flow {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+
+    gap: 10px;
+
+    margin-top: 35px;
+}
+
+
+.home-company-v3-flow > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    min-height: 57px;
+
+    padding: 0 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    color:
+        rgba(255,255,255,.83);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.home-company-v3-flow span {
+    width: 29px;
+    height: 29px;
+
+    display: grid;
+    place-items: center;
+
+    flex: 0 0 auto;
+
+    border-radius: 8px;
+
+    background:
+        rgba(76,160,255,.15);
+
+    color: #6db2ff;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+
+/* RISULTATO */
+
+.home-company-v3-result {
+    position: relative;
+    z-index: 2;
+
+    margin-top: auto;
+
+    padding-top: 25px;
+}
+
+
+.home-company-v3-result span {
+    display: block;
+
+    color: #68afff;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+
+.home-company-v3-result strong {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width: 1000px) {
+
+    .home-benefits-v3-grid {
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+    }
+
+
+    .home-company-v3-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+}
+
+
+@media(max-width: 650px) {
+
+    .home-benefits-v3 {
+        padding: 58px 0;
+    }
+
+
+    .home-benefits-v3-head {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .home-benefits-v3-head h2 {
+        text-align: left;
+    }
+
+
+    .home-benefits-v3-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .home-company-v3 {
+        padding: 68px 0;
+    }
+
+
+    .home-company-v3-pillars {
+        grid-template-columns: 1fr;
+    }
+
+
+    .home-company-v3-panel {
+        min-height: 440px;
+
+        padding: 27px;
+    }
+
+
+    .home-company-v3-actions {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    .home-company-v3-actions .btn {
+        width: 100%;
+    }
+
+}
   </style>
 
 </head>
@@ -4329,111 +4913,154 @@
        R&D / BENEFIT
        ====================================================== -->
 
-  <section class="home-v2-benefits">
+<section class="home-benefits-v3">
 
-    <section class="benefits">
+    <div class="container">
 
-      <div
-        class="container benefits-grid"
-        data-stagger>
-
-        <article class="benefit">
-
-          <div class="benefit-icon shield">
-            ✓
-          </div>
-
-          <div>
-
-            <strong>
-              <span
-                data-count="30"
-                data-suffix="+">
-                0
-              </span>
-              anni di esperienza
-            </strong>
+        <div
+            class="
+                home-benefits-v3-head
+                reveal
+                reveal-up
+            ">
 
             <span>
-              Esperienza tecnica maturata
-              nel settore automotive.
+                Turrin Elettronica
             </span>
 
-          </div>
+            <h2>
+                Esperienza tecnica,
+                competenze integrate.
+            </h2>
 
-        </article>
-
-
-        <article class="benefit">
-
-          <div class="benefit-icon">
-            ◉
-          </div>
-
-          <div>
-
-            <strong>
-              Engineering integrato
-            </strong>
-
-            <span>
-              Hardware, elettronica
-              e software nello stesso processo.
-            </span>
-
-          </div>
-
-        </article>
+        </div>
 
 
-        <article class="benefit">
-
-          <div class="benefit-icon">
-            ↻
-          </div>
-
-          <div>
-
-            <strong>
-              Ricerca e sviluppo
-            </strong>
-
-            <span>
-              Prodotti e tecnologie
-              in evoluzione continua.
-            </span>
-
-          </div>
-
-        </article>
+        <div
+            class="home-benefits-v3-grid"
+            data-stagger>
 
 
-        <article class="benefit">
+            <article
+                class="
+                    home-benefit-v3
+                    reveal
+                    reveal-up
+                ">
 
-          <div class="benefit-icon">
-            ◎
-          </div>
+                <strong class="home-benefit-number">
+                    <span
+                        data-count="30"
+                        data-suffix="+">
+                        0
+                    </span>
+                </strong>
 
-          <div>
+                <div>
 
-            <strong>
-              Supporto tecnico
-            </strong>
+                    <h3>
+                        Anni di esperienza
+                    </h3>
 
-            <span>
-              Assistenza professionale
-              e conoscenza dei sistemi sviluppati.
-            </span>
+                    <p>
+                        Know-how maturato nello sviluppo
+                        di tecnologie professionali
+                        per il settore automotive.
+                    </p>
 
-          </div>
+                </div>
 
-        </article>
+            </article>
 
-      </div>
 
-    </section>
+            <article
+                class="
+                    home-benefit-v3
+                    reveal
+                    reveal-up
+                ">
 
-  </section>
+                <strong class="home-benefit-number">
+                    3
+                </strong>
+
+                <div>
+
+                    <h3>
+                        Divisioni integrate
+                    </h3>
+
+                    <p>
+                        Automotive Technologies,
+                        Electronic Engineering
+                        e Software Engineering.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="
+                    home-benefit-v3
+                    reveal
+                    reveal-up
+                ">
+
+                <strong class="home-benefit-symbol">
+                    R&amp;D
+                </strong>
+
+                <div>
+
+                    <h3>
+                        Ricerca e sviluppo
+                    </h3>
+
+                    <p>
+                        Tecnologie, prodotti e software
+                        sviluppati attraverso ricerca
+                        ed evoluzione continua.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="
+                    home-benefit-v3
+                    reveal
+                    reveal-up
+                ">
+
+                <strong class="home-benefit-symbol">
+                    360°
+                </strong>
+
+                <div>
+
+                    <h3>
+                        Engineering integrato
+                    </h3>
+
+                    <p>
+                        Hardware, firmware, backend
+                        e software pensati come parti
+                        dello stesso sistema.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
 
 
   <!-- ======================================================
@@ -4514,91 +5141,184 @@
        AZIENDA
        ====================================================== -->
 
-  <section
-    class="home-about-v2"
+ <section
+    class="home-company-v3"
     id="azienda">
 
-    <div class="container home-about-v2-grid">
-
-      <div
-        class="
-          home-about-v2-copy
-          reveal
-          reveal-left
-        ">
-
-        <span class="home-kicker">
-          Turrin Elettronica
-        </span>
+    <div class="container home-company-v3-grid">
 
 
-        <div class="home-section-head">
+        <!-- TESTO -->
 
-          <h2>
-            Un'unica azienda,
-            competenze che si completano.
-          </h2>
+        <div
+            class="
+                home-company-v3-copy
+                reveal
+                reveal-left
+            ">
+
+            <span class="home-company-v3-label">
+                Azienda
+            </span>
+
+
+            <h2>
+                Da oltre 30 anni
+                trasformiamo competenze
+                <span>in tecnologia.</span>
+            </h2>
+
+
+            <p class="home-company-v3-intro">
+
+                Turrin Elettronica nasce dall'esperienza
+                nel settore automotive e continua a evolversi
+                integrando sviluppo elettronico,
+                hardware e software.
+
+            </p>
+
+
+            <p>
+
+                Oggi questa esperienza costituisce la base
+                di tre aree complementari:
+                Automotive Technologies,
+                Electronic Engineering
+                e la nuova divisione Software Engineering.
+
+            </p>
+
+
+            <div class="home-company-v3-pillars">
+
+                <div>
+
+                    <strong>
+                        Automotive
+                    </strong>
+
+                    <span>
+                        Prodotti e tecnologie professionali.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Elettronica
+                    </strong>
+
+                    <span>
+                        Hardware, firmware e sistemi embedded.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Software
+                    </strong>
+
+                    <span>
+                        Applicazioni, backend e soluzioni digitali.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-company-v3-actions">
+
+                <a
+                    class="btn btn-primary"
+                    href="azienda.html">
+
+                    Scopri Turrin Elettronica
+                    <span>→</span>
+
+                </a>
+
+
+                <a
+                    class="btn btn-outline"
+                    href="contatti.html">
+
+                    Contattaci
+
+                </a>
+
+            </div>
 
         </div>
 
 
-        <p>
-          L'esperienza costruita nello sviluppo di strumenti
-          professionali automotive diventa oggi la base
-          per ampliare l'attività verso Electronic Engineering
-          e Software Engineering.
-        </p>
+        <!-- VISUAL -->
+
+        <div
+            class="
+                home-company-v3-visual
+                reveal
+                reveal-right
+            ">
+
+            <div class="home-company-v3-panel">
+
+                <span class="home-company-v3-panel-label">
+                    Engineering
+                </span>
+
+                <h3>
+                    Una sola struttura.
+                    Tre competenze che
+                    lavorano insieme.
+                </h3>
 
 
-        <p>
-          La direzione resta la stessa: trasformare
-          esigenze tecniche concrete in soluzioni
-          affidabili, evolute e utilizzabili ogni giorno.
-        </p>
+                <div class="home-company-v3-flow">
+
+                    <div>
+                        <span>01</span>
+                        Automotive
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        Electronic
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        Software
+                    </div>
+
+                </div>
 
 
-        <a href="azienda.html">
+                <div class="home-company-v3-result">
 
-          Scopri di più sull'azienda
-          <span>→</span>
+                    <span>
+                        Integrated Technology
+                    </span>
 
-        </a>
+                    <strong>
+                        Dall'idea al sistema completo.
+                    </strong>
 
-      </div>
+                </div>
 
-
-      <div
-        class="
-          home-about-v2-image
-          reveal
-          reveal-right
-        ">
-
-        <img
-          src="assets/building.png"
-          alt="Sede Turrin Elettronica"
-          loading="lazy"
-        >
-
-
-        <div class="home-about-badge">
-
-          <strong>
-            3 divisioni
-          </strong>
-
-          <span>
-            Automotive · Elettronica · Software
-          </span>
+            </div>
 
         </div>
-
-      </div>
 
     </div>
 
-  </section>
-
+</section>
 
 </main>
 
