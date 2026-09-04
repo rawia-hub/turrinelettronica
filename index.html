@@ -1,0 +1,3217 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Turrin Elettronica integra competenze automotive, elettroniche e software per sviluppare prodotti, sistemi hardware e soluzioni digitali professionali."
+  >
+
+  <title>
+    Turrin Elettronica | Automotive, Elettronica e Software
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+
+  <style>
+
+    /* =========================================================
+       HOME - NUOVO POSIZIONAMENTO
+       Automotive · Electronic · Software Engineering
+       ========================================================= */
+
+    .home-v2 {
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+
+    .home-v2 *,
+    .home-v2 *::before,
+    .home-v2 *::after {
+      box-sizing: border-box;
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .home-hero-v2 {
+      position: relative;
+      overflow: hidden;
+
+      padding: 84px 0 76px;
+
+      background:
+        radial-gradient(
+          circle at 73% 28%,
+          rgba(29, 126, 255, .18),
+          transparent 27%
+        ),
+        linear-gradient(
+          128deg,
+          #06162f 0%,
+          #08254a 47%,
+          #063a78 100%
+        );
+    }
+
+
+    .home-hero-v2::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          115deg,
+          rgba(255,255,255,.035),
+          transparent 28%,
+          transparent 68%,
+          rgba(39,139,255,.07)
+        );
+
+      pointer-events: none;
+    }
+
+
+    .home-hero-v2::after {
+      content: "";
+
+      position: absolute;
+
+      width: 610px;
+      height: 610px;
+
+      right: -250px;
+      bottom: -390px;
+
+      border:
+        1px solid
+        rgba(87,166,255,.17);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 0 75px
+        rgba(56,151,255,.035),
+        0 0 0 150px
+        rgba(56,151,255,.02);
+
+      pointer-events: none;
+    }
+
+
+    .home-hero-v2-grid {
+      position: relative;
+      z-index: 1;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.03fr)
+        minmax(390px, .97fr);
+
+      align-items: center;
+
+      gap: 64px;
+    }
+
+
+    .home-hero-v2-copy {
+      max-width: 760px;
+    }
+
+
+    .home-kicker {
+      display: inline-flex;
+
+      margin-bottom: 18px;
+
+      color: #71b5ff;
+
+      font-size: 11px;
+      font-weight: 900;
+
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+
+    .home-hero-v2 h1 {
+      margin: 0;
+
+      color: #ffffff;
+
+      font-size:
+        clamp(43px, 5.6vw, 69px);
+
+      line-height: 1.02;
+
+      letter-spacing: -.047em;
+    }
+
+
+    .home-hero-v2 h1 span {
+      color: #3995ff;
+    }
+
+
+    .home-hero-v2-copy > p {
+      max-width: 690px;
+
+      margin: 25px 0 0;
+
+      color: rgba(255,255,255,.73);
+
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+
+    .home-hero-v2-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 31px;
+    }
+
+
+    .home-hero-v2 .btn-outline {
+      border-color: rgba(255,255,255,.40);
+      color: #ffffff;
+      background: rgba(255,255,255,.035);
+    }
+
+
+    .home-hero-v2 .btn-outline:hover {
+      border-color: rgba(255,255,255,.68);
+      color: #ffffff;
+      background: rgba(255,255,255,.09);
+    }
+
+
+    .home-hero-proof {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 31px;
+    }
+
+
+    .home-hero-proof span {
+      min-height: 30px;
+
+      display: inline-flex;
+      align-items: center;
+
+      padding: 0 10px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.12);
+
+      border-radius: 999px;
+
+      color: rgba(255,255,255,.61);
+      background: rgba(255,255,255,.04);
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: .035em;
+    }
+
+
+    .home-hero-v2-visual {
+      position: relative;
+
+      min-height: 470px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .home-hero-visual-glow {
+      position: absolute;
+
+      width: 430px;
+      height: 430px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(50,153,255,.29),
+          rgba(50,153,255,.06) 48%,
+          transparent 69%
+        );
+
+      filter: blur(2px);
+    }
+
+
+    .home-hero-v2-visual img {
+      position: relative;
+      z-index: 2;
+
+      width: min(620px, 108%);
+
+      max-height: 450px;
+
+      object-fit: contain;
+
+      filter:
+        drop-shadow(
+          0 28px 44px
+          rgba(0,0,0,.25)
+        );
+    }
+
+
+    .home-hero-engineering-card {
+      position: absolute;
+      z-index: 3;
+
+      right: 0;
+      bottom: 27px;
+
+      width: 230px;
+
+      padding: 17px 18px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.17);
+
+      border-radius: 13px;
+
+      background:
+        rgba(4,21,45,.77);
+
+      backdrop-filter: blur(13px);
+
+      box-shadow:
+        0 17px 40px
+        rgba(0,0,0,.20);
+    }
+
+
+    .home-hero-engineering-card span {
+      display: block;
+
+      color: #67adff;
+
+      font-size: 8px;
+      font-weight: 900;
+
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+
+    .home-hero-engineering-card strong {
+      display: block;
+
+      margin-top: 7px;
+
+      color: #ffffff;
+
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+
+    /* =========================================================
+       SEZIONI COMUNI
+       ========================================================= */
+
+    .home-section-head {
+      max-width: 790px;
+
+      margin-bottom: 34px;
+    }
+
+
+    .home-section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+
+      text-align: center;
+    }
+
+
+    .home-section-head h2 {
+      margin: 0;
+
+      color: #071b3a;
+
+      font-size:
+        clamp(31px, 3.7vw, 46px);
+
+      line-height: 1.1;
+
+      letter-spacing: -.038em;
+    }
+
+
+    .home-section-head p {
+      margin: 14px 0 0;
+
+      color: #6b7a8e;
+
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+
+    /* =========================================================
+       DIVISIONI
+       ========================================================= */
+
+    .home-divisions {
+      position: relative;
+
+      padding: 82px 0 87px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #f8fbff 0%,
+          #ffffff 100%
+        );
+    }
+
+
+    .home-divisions-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0,1fr));
+
+      gap: 18px;
+    }
+
+
+    .home-division-card {
+      position: relative;
+
+      min-height: 410px;
+
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 28px;
+
+      border-radius: 18px;
+
+      color: #ffffff;
+
+      text-decoration: none;
+
+      box-shadow:
+        0 17px 42px
+        rgba(14,38,70,.11);
+
+      transition:
+        transform .27s ease,
+        box-shadow .27s ease;
+    }
+
+
+    .home-division-card:hover {
+      transform:
+        translateY(-6px);
+
+      box-shadow:
+        0 25px 56px
+        rgba(14,38,70,.16);
+    }
+
+
+    .home-division-card.automotive {
+      background:
+        radial-gradient(
+          circle at 90% 18%,
+          rgba(73,169,255,.28),
+          transparent 31%
+        ),
+        linear-gradient(
+          145deg,
+          #063d80,
+          #071b3a 76%
+        );
+    }
+
+
+    .home-division-card.electronic {
+      background:
+        radial-gradient(
+          circle at 88% 15%,
+          rgba(74,236,165,.22),
+          transparent 29%
+        ),
+        linear-gradient(
+          145deg,
+          #0c6147,
+          #063529 78%
+        );
+    }
+
+
+    .home-division-card.software {
+      background:
+        radial-gradient(
+          circle at 88% 15%,
+          rgba(166,112,255,.27),
+          transparent 29%
+        ),
+        linear-gradient(
+          145deg,
+          #5130a0,
+          #251954 78%
+        );
+    }
+
+
+    .home-division-card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 240px;
+      height: 240px;
+
+      right: -98px;
+      bottom: -116px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.13);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 0 42px
+        rgba(255,255,255,.025),
+        0 0 0 84px
+        rgba(255,255,255,.014);
+
+      pointer-events: none;
+    }
+
+
+    .home-division-top {
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      gap: 16px;
+    }
+
+
+    .home-division-icon {
+      width: 54px;
+      height: 54px;
+
+      display: grid;
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(255,255,255,.16);
+
+      border-radius: 14px;
+
+      background:
+        rgba(255,255,255,.10);
+    }
+
+
+    .home-division-icon svg {
+      width: 27px;
+      height: 27px;
+
+      fill: none;
+      stroke: currentColor;
+
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+
+    .home-new-badge {
+      min-height: 25px;
+
+      display: inline-flex;
+      align-items: center;
+
+      padding: 0 9px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.22);
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,.12);
+
+      color: #ffffff;
+
+      font-size: 8px;
+      font-weight: 900;
+
+      text-transform: uppercase;
+      letter-spacing: .065em;
+    }
+
+
+    .home-division-card h3 {
+      position: relative;
+      z-index: 1;
+
+      margin: 31px 0 0;
+
+      color: #ffffff;
+
+      font-size: 27px;
+      line-height: 1.02;
+
+      letter-spacing: -.035em;
+    }
+
+
+    .home-division-card > p {
+      position: relative;
+      z-index: 1;
+
+      margin: 15px 0 0;
+
+      color: rgba(255,255,255,.72);
+
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+
+    .home-division-list {
+      position: relative;
+      z-index: 1;
+
+      display: grid;
+
+      gap: 9px;
+
+      margin:
+        23px 0 25px;
+
+      padding: 0;
+
+      list-style: none;
+    }
+
+
+    .home-division-list li {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      color: rgba(255,255,255,.72);
+
+      font-size: 10px;
+    }
+
+
+    .home-division-list li::before {
+      content: "";
+
+      width: 5px;
+      height: 5px;
+
+      flex: 0 0 auto;
+
+      border-radius: 50%;
+
+      background: currentColor;
+      opacity: .75;
+    }
+
+
+    .home-division-link {
+      position: relative;
+      z-index: 1;
+
+      margin-top: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+
+      color: #ffffff;
+
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+
+    .home-division-arrow {
+      width: 37px;
+      height: 37px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 10px;
+
+      background: #ffffff;
+      color: #0a3567;
+
+      font-size: 18px;
+
+      transition:
+        transform .2s ease;
+    }
+
+
+    .home-division-card.electronic
+    .home-division-arrow {
+      color: #0c6147;
+    }
+
+
+    .home-division-card.software
+    .home-division-arrow {
+      color: #5130a0;
+    }
+
+
+    .home-division-card:hover
+    .home-division-arrow {
+      transform:
+        translateX(3px);
+    }
+
+
+    /* =========================================================
+       AUTOMOTIVE / PRODOTTI
+       ========================================================= */
+
+    .home-products-area {
+      padding: 80px 0 84px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #f4f8fd,
+          #edf4fb
+        );
+    }
+
+
+    .home-products-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      gap: 28px;
+
+      margin-bottom: 29px;
+    }
+
+
+    .home-products-head .home-section-head {
+      margin-bottom: 0;
+    }
+
+
+    .home-products-note {
+      max-width: 360px;
+
+      color: #8090a4;
+
+      font-size: 10px;
+      line-height: 1.6;
+
+      text-align: right;
+    }
+
+
+    .home-products-area .products {
+      padding: 0;
+      background: transparent;
+    }
+
+
+    /* =========================================================
+       ELECTRONIC ENGINEERING
+       ========================================================= */
+
+    .home-electronic {
+      padding: 88px 0;
+
+      background: #ffffff;
+    }
+
+
+    .home-engineering-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, .88fr)
+        minmax(0, 1.12fr);
+
+      align-items: center;
+
+      gap: 67px;
+    }
+
+
+    .home-engineering-copy p {
+      margin: 18px 0 0;
+
+      color: #69798c;
+
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+
+    .home-capabilities {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 13px;
+
+      margin-top: 28px;
+    }
+
+
+    .home-capability {
+      min-height: 115px;
+
+      padding: 18px;
+
+      border:
+        1px solid #dfe7f0;
+
+      border-radius: 12px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 9px 27px
+        rgba(22,48,81,.045);
+    }
+
+
+    .home-capability strong {
+      display: block;
+
+      color: #203751;
+
+      font-size: 12px;
+    }
+
+
+    .home-capability span {
+      display: block;
+
+      margin-top: 7px;
+
+      color: #7b899b;
+
+      font-size: 9px;
+      line-height: 1.6;
+    }
+
+
+    .home-engineering-proof {
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 470px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 40px;
+
+      border:
+        1px solid #d8e4ed;
+
+      border-radius: 22px;
+
+      background:
+        radial-gradient(
+          circle at 50% 42%,
+          rgba(61,204,151,.18),
+          transparent 35%
+        ),
+        linear-gradient(
+          145deg,
+          #082f27,
+          #071b3a
+        );
+
+      box-shadow:
+        0 20px 52px
+        rgba(17,46,63,.13);
+    }
+
+
+    .home-engineering-proof::before,
+    .home-engineering-proof::after {
+      content: "";
+
+      position: absolute;
+
+      border:
+        1px solid
+        rgba(98,232,178,.11);
+
+      border-radius: 50%;
+    }
+
+
+    .home-engineering-proof::before {
+      width: 330px;
+      height: 330px;
+    }
+
+
+    .home-engineering-proof::after {
+      width: 420px;
+      height: 420px;
+    }
+
+
+    .home-engineering-proof img {
+      position: relative;
+      z-index: 2;
+
+      width: min(420px, 94%);
+      max-height: 340px;
+
+      object-fit: contain;
+
+      filter:
+        drop-shadow(
+          0 26px 34px
+          rgba(0,0,0,.32)
+        );
+    }
+
+
+    .home-engineering-proof-label {
+      position: absolute;
+      z-index: 3;
+
+      left: 24px;
+      bottom: 24px;
+
+      max-width: 285px;
+
+      padding: 16px 17px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.15);
+
+      border-radius: 12px;
+
+      background:
+        rgba(5,28,38,.78);
+
+      backdrop-filter: blur(12px);
+    }
+
+
+    .home-engineering-proof-label span {
+      display: block;
+
+      color: #73e0b8;
+
+      font-size: 8px;
+      font-weight: 900;
+
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+
+    .home-engineering-proof-label strong {
+      display: block;
+
+      margin-top: 6px;
+
+      color: #ffffff;
+
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+
+    /* =========================================================
+       SOFTWARE ENGINEERING
+       ========================================================= */
+
+    .home-software {
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 88px 0;
+
+      background:
+        linear-gradient(
+          140deg,
+          #f7f5ff,
+          #ffffff 54%,
+          #f0f5ff
+        );
+    }
+
+
+    .home-software::after {
+      content: "";
+
+      position: absolute;
+
+      width: 380px;
+      height: 380px;
+
+      right: -180px;
+      top: -180px;
+
+      border:
+        1px solid
+        rgba(94,61,180,.09);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 0 50px
+        rgba(94,61,180,.02),
+        0 0 0 100px
+        rgba(94,61,180,.012);
+    }
+
+
+    .home-software-grid {
+      position: relative;
+      z-index: 1;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, .9fr)
+        minmax(0, 1.1fr);
+
+      align-items: center;
+
+      gap: 68px;
+    }
+
+
+    .home-software-copy p {
+      margin: 18px 0 0;
+
+      color: #6b788c;
+
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+
+    .home-software-note {
+      margin-top: 20px;
+
+      padding: 14px 15px;
+
+      border:
+        1px solid #e0daf5;
+
+      border-radius: 10px;
+
+      background:
+        rgba(255,255,255,.72);
+
+      color: #665c83;
+
+      font-size: 10px;
+      line-height: 1.65;
+    }
+
+
+    .home-software-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 25px;
+    }
+
+
+    .home-software-services {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 14px;
+    }
+
+
+    .home-software-service {
+      min-height: 150px;
+
+      padding: 20px;
+
+      border:
+        1px solid #e1ddf1;
+
+      border-radius: 13px;
+
+      background:
+        rgba(255,255,255,.88);
+
+      box-shadow:
+        0 12px 31px
+        rgba(67,49,111,.055);
+    }
+
+
+    .home-software-service-icon {
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 15px;
+
+      border-radius: 10px;
+
+      background: #f0ebff;
+      color: #6243ba;
+    }
+
+
+    .home-software-service-icon svg {
+      width: 19px;
+      height: 19px;
+
+      fill: none;
+      stroke: currentColor;
+
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+
+    .home-software-service strong {
+      display: block;
+
+      color: #30284a;
+
+      font-size: 12px;
+    }
+
+
+    .home-software-service span {
+      display: block;
+
+      margin-top: 7px;
+
+      color: #817996;
+
+      font-size: 9px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       BENEFIT / R&D
+       ========================================================= */
+
+    .home-v2-benefits {
+      padding: 32px 0;
+
+      background: #071b3a;
+    }
+
+
+    .home-v2-benefits .benefits {
+      padding: 0;
+      background: transparent;
+    }
+
+
+    .home-v2-benefits .benefit {
+      border-color:
+        rgba(255,255,255,.10);
+
+      background:
+        rgba(255,255,255,.045);
+    }
+
+
+    .home-v2-benefits .benefit strong {
+      color: #ffffff;
+    }
+
+
+    .home-v2-benefits .benefit > div > span {
+      color:
+        rgba(255,255,255,.58);
+    }
+
+
+    /* =========================================================
+       AGGIORNAMENTI
+       ========================================================= */
+
+    .home-v2
+    .shared-updates-section {
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff,
+          #f7faff
+        );
+    }
+
+
+    /* =========================================================
+       AZIENDA
+       ========================================================= */
+
+    .home-about-v2 {
+      padding: 88px 0;
+
+      background: #ffffff;
+    }
+
+
+    .home-about-v2-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(370px, .92fr);
+
+      align-items: center;
+
+      gap: 65px;
+    }
+
+
+    .home-about-v2-copy p {
+      margin: 18px 0 0;
+
+      color: #69788c;
+
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+
+    .home-about-v2-copy a {
+      display: inline-flex;
+      align-items: center;
+
+      gap: 7px;
+
+      margin-top: 24px;
+
+      color: #0759d8;
+
+      font-size: 11px;
+      font-weight: 900;
+
+      text-decoration: none;
+    }
+
+
+    .home-about-v2-image {
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 390px;
+
+      border:
+        1px solid #dfe7f0;
+
+      border-radius: 18px;
+
+      background: #edf2f7;
+
+      box-shadow:
+        0 17px 42px
+        rgba(20,47,82,.09);
+    }
+
+
+    .home-about-v2-image img {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+
+    .home-about-badge {
+      position: absolute;
+
+      left: 20px;
+      bottom: 20px;
+
+      padding: 14px 16px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.62);
+
+      border-radius: 11px;
+
+      background:
+        rgba(255,255,255,.90);
+
+      color: #203751;
+
+      box-shadow:
+        0 10px 29px
+        rgba(6,27,58,.12);
+
+      backdrop-filter: blur(10px);
+    }
+
+
+    .home-about-badge strong {
+      display: block;
+
+      color: #0759d8;
+
+      font-size: 19px;
+    }
+
+
+    .home-about-badge span {
+      display: block;
+
+      margin-top: 4px;
+
+      color: #758397;
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media(max-width: 1050px) {
+
+      .home-hero-v2-grid,
+      .home-engineering-grid,
+      .home-software-grid,
+      .home-about-v2-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .home-hero-v2-grid,
+      .home-engineering-grid,
+      .home-software-grid,
+      .home-about-v2-grid {
+        gap: 45px;
+      }
+
+
+      .home-hero-v2-visual {
+        max-width: 760px;
+      }
+
+
+      .home-divisions-grid {
+        grid-template-columns:
+          repeat(2, minmax(0,1fr));
+      }
+
+
+      .home-division-card.software {
+        grid-column: 1 / -1;
+      }
+
+    }
+
+
+    @media(max-width: 760px) {
+
+      .home-hero-v2 {
+        padding: 62px 0 56px;
+      }
+
+
+      .home-hero-v2-visual {
+        min-height: 360px;
+      }
+
+
+      .home-hero-engineering-card {
+        right: 14px;
+        bottom: 8px;
+      }
+
+
+      .home-divisions,
+      .home-products-area,
+      .home-electronic,
+      .home-software,
+      .home-about-v2 {
+        padding-top: 65px;
+        padding-bottom: 67px;
+      }
+
+
+      .home-divisions-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .home-division-card.software {
+        grid-column: auto;
+      }
+
+
+      .home-products-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+
+      .home-products-note {
+        max-width: 100%;
+        text-align: left;
+      }
+
+
+      .home-capabilities,
+      .home-software-services {
+        grid-template-columns: 1fr;
+      }
+
+
+      .home-engineering-proof {
+        min-height: 390px;
+      }
+
+    }
+
+
+    @media(max-width: 520px) {
+
+      .home-hero-v2-actions,
+      .home-software-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+
+      .home-hero-v2-actions .btn,
+      .home-software-actions .btn {
+        width: 100%;
+      }
+
+
+      .home-division-card {
+        min-height: 390px;
+
+        padding: 24px;
+      }
+
+
+      .home-division-card h3 {
+        font-size: 25px;
+      }
+
+
+      .home-hero-engineering-card {
+        width: 205px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div
+  id="siteHeader"
+  data-root="./">
+</div>
+
+
+<main
+  class="home-v2"
+  id="top">
+
+
+  <!-- ======================================================
+       HERO
+       ====================================================== -->
+
+  <section class="home-hero-v2">
+
+    <div class="container home-hero-v2-grid">
+
+      <div
+        class="
+          home-hero-v2-copy
+          reveal
+          reveal-left
+        ">
+
+        <span class="home-kicker">
+          Hardware · Elettronica · Software
+        </span>
+
+
+        <h1>
+          Tecnologia che unisce
+          <span>engineering e software.</span>
+        </h1>
+
+
+        <p>
+          Turrin Elettronica integra competenze automotive,
+          elettroniche e informatiche per sviluppare prodotti
+          professionali, sistemi hardware e nuove soluzioni digitali.
+        </p>
+
+
+        <div class="home-hero-v2-actions">
+
+          <a
+            class="btn btn-primary"
+            href="#divisioni">
+
+            Scopri le nostre soluzioni
+            <span>→</span>
+
+          </a>
+
+
+          <a
+            class="btn btn-outline"
+            href="contatti.html">
+
+            Contattaci
+
+          </a>
+
+        </div>
+
+
+        <div class="home-hero-proof">
+
+          <span>
+            Automotive Technologies
+          </span>
+
+          <span>
+            Electronic Engineering
+          </span>
+
+          <span>
+            Software Engineering
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="
+          home-hero-v2-visual
+          reveal
+          reveal-right
+        ">
+
+        <div class="home-hero-visual-glow"></div>
+
+
+        <img
+          src="assets/hero-tech.png"
+          alt="Tecnologie Turrin Elettronica"
+          class="motion-float"
+        >
+
+
+        <div class="home-hero-engineering-card">
+
+          <span>
+            Un'unica visione
+          </span>
+
+          <strong>
+            Tre aree integrate per sviluppare
+            soluzioni tecnologiche complete.
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       TRE DIVISIONI
+       ====================================================== -->
+
+  <section
+    class="home-divisions"
+    id="divisioni">
+
+    <div class="container">
+
+      <div
+        class="
+          home-section-head
+          center
+          reveal
+          reveal-up
+        ">
+
+        <span class="home-kicker">
+          Le nostre divisioni
+        </span>
+
+        <h2>
+          Tre competenze, un'unica visione.
+        </h2>
+
+        <p>
+          Dall'esperienza automotive e nello sviluppo elettronico
+          nasce una struttura che integra hardware, software
+          e nuove tecnologie digitali.
+        </p>
+
+      </div>
+
+
+      <div
+        class="home-divisions-grid"
+        data-stagger>
+
+
+        <!-- AUTOMOTIVE -->
+
+        <a
+          class="
+            home-division-card
+            automotive
+            reveal
+            reveal-up
+          "
+          href="#prodotti">
+
+          <div class="home-division-top">
+
+            <span class="home-division-icon">
+
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true">
+
+                <path
+                  d="M4 15.5V11l2-4h12l2 4v4.5">
+                </path>
+
+                <path
+                  d="M5 15.5h14">
+                </path>
+
+                <circle cx="7.5" cy="15.5" r="1.5"></circle>
+                <circle cx="16.5" cy="15.5" r="1.5"></circle>
+
+                <path
+                  d="M7 11h10">
+                </path>
+
+              </svg>
+
+            </span>
+
+          </div>
+
+
+          <h3>
+            Automotive<br>
+            Technologies
+          </h3>
+
+
+          <p>
+            Soluzioni hardware e software dedicate
+            alla programmazione, gestione e analisi
+            delle centraline elettroniche.
+          </p>
+
+
+          <ul class="home-division-list">
+
+            <li>Programmazione ECU / TCU</li>
+            <li>Diagnosi e verifica</li>
+            <li>Remapping e tuning</li>
+            <li>Prodotti e aggiornamenti professionali</li>
+
+          </ul>
+
+
+          <span class="home-division-link">
+
+            Scopri le soluzioni Automotive
+
+            <span class="home-division-arrow">
+              →
+            </span>
+
+          </span>
+
+        </a>
+
+
+        <!-- ELECTRONIC -->
+
+        <a
+          class="
+            home-division-card
+            electronic
+            reveal
+            reveal-up
+          "
+          href="#elettronica">
+
+          <div class="home-division-top">
+
+            <span class="home-division-icon">
+
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true">
+
+                <rect
+                  x="7"
+                  y="7"
+                  width="10"
+                  height="10"
+                  rx="1.5">
+                </rect>
+
+                <path
+                  d="M9 3v4M12 3v4M15 3v4M9 17v4M12 17v4M15 17v4M3 9h4M3 12h4M3 15h4M17 9h4M17 12h4M17 15h4">
+                </path>
+
+              </svg>
+
+            </span>
+
+          </div>
+
+
+          <h3>
+            Electronic<br>
+            Engineering
+          </h3>
+
+
+          <p>
+            Sviluppo elettronico e integrazione
+            hardware/software alla base dei sistemi
+            professionali realizzati dall'azienda.
+          </p>
+
+
+          <ul class="home-division-list">
+
+            <li>Sistemi hardware dedicati</li>
+            <li>Integrazione hardware + software</li>
+            <li>Firmware e sistemi embedded</li>
+            <li>Prototipazione e sviluppo tecnico</li>
+
+          </ul>
+
+
+          <span class="home-division-link">
+
+            Scopri l'Engineering Elettronico
+
+            <span class="home-division-arrow">
+              →
+            </span>
+
+          </span>
+
+        </a>
+
+
+        <!-- SOFTWARE -->
+
+        <a
+          class="
+            home-division-card
+            software
+            reveal
+            reveal-up
+          "
+          href="#software">
+
+          <div class="home-division-top">
+
+            <span class="home-division-icon">
+
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true">
+
+                <path
+                  d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14">
+                </path>
+
+              </svg>
+
+            </span>
+
+
+            <span class="home-new-badge">
+              Nuova divisione
+            </span>
+
+          </div>
+
+
+          <h3>
+            Software<br>
+            Engineering
+          </h3>
+
+
+          <p>
+            Nuova area dedicata allo sviluppo
+            di applicazioni software e soluzioni digitali,
+            dal frontend ai servizi backend.
+          </p>
+
+
+          <ul class="home-division-list">
+
+            <li>Web applications</li>
+            <li>Desktop software</li>
+            <li>Backend, API e database</li>
+            <li>Applicazioni Android</li>
+
+          </ul>
+
+
+          <span class="home-division-link">
+
+            Scopri il Software Engineering
+
+            <span class="home-division-arrow">
+              →
+            </span>
+
+          </span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       AUTOMOTIVE / PRODOTTI
+       ====================================================== -->
+
+  <section
+    class="home-products-area"
+    id="prodotti">
+
+    <div class="container">
+
+      <div
+        class="
+          home-products-head
+          reveal
+          reveal-up
+        ">
+
+        <div class="home-section-head">
+
+          <span class="home-kicker">
+            Automotive Technologies
+          </span>
+
+          <h2>
+            Strumenti professionali
+            per il settore automotive.
+          </h2>
+
+          <p>
+            Prodotti hardware e software sviluppati
+            per supportare professionisti che lavorano
+            sulle centraline elettroniche.
+          </p>
+
+        </div>
+
+
+        <p class="home-products-note">
+          Questa area raccoglie i prodotti Automotive
+          attualmente disponibili.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <section class="products">
+
+      <div class="container products-wrap reveal reveal-soft">
+
+        <button
+          class="carousel-arrow prev"
+          type="button"
+          aria-label="Prodotti precedenti">
+          ‹
+        </button>
+
+
+        <div
+          class="product-track"
+          id="productTrack">
+
+
+          <article class="product-card">
+
+            <div class="product-image">
+
+              <img
+                src="images/products/mc3.webp"
+                alt="MC3 Turrin Elettronica">
+
+            </div>
+
+
+            <div class="product-info">
+
+              <h2>
+                MC3
+              </h2>
+
+              <p>
+                Sistema hardware e software professionale
+                per la programmazione di ECU e TCU.
+              </p>
+
+            </div>
+
+
+            <a href="prodotti/mc3.html">
+
+              Scopri di più
+              <span>→</span>
+
+            </a>
+
+          </article>
+
+
+          <article class="product-card">
+
+            <div class="product-image">
+
+              <img
+                src="images/products/t-race-pro.webp"
+                alt="T-Race Pro">
+
+            </div>
+
+
+            <div class="product-info">
+
+              <h2>
+                T-Race Pro
+              </h2>
+
+              <p>
+                Software professionale dedicato
+                al remapping e alla gestione
+                delle mappe ECU.
+              </p>
+
+            </div>
+
+
+            <a href="prodotti/t-race-pro.html">
+
+              Scopri di più
+              <span>→</span>
+
+            </a>
+
+          </article>
+
+
+          <article class="product-card">
+
+            <div class="product-image">
+
+              <img
+                src="images/products/tuning-solution.webp"
+                alt="Tuning Solution">
+
+            </div>
+
+
+            <div class="product-info">
+
+              <h2>
+                Tuning Solution
+              </h2>
+
+              <p>
+                Soluzioni software dedicate
+                alla gestione delle funzioni
+                disponibili sulle ECU supportate.
+              </p>
+
+            </div>
+
+
+            <a href="prodotti/tuning-solution.html">
+
+              Scopri di più
+              <span>→</span>
+
+            </a>
+
+          </article>
+
+
+          <article class="product-card">
+
+            <div class="product-image">
+
+              <img
+                src="images/products/check-ecu.webp"
+                alt="Check ECU">
+
+            </div>
+
+
+            <div class="product-info">
+
+              <h2>
+                Check ECU
+              </h2>
+
+              <p>
+                Software professionale per
+                diagnosi e verifica delle
+                centraline elettroniche supportate.
+              </p>
+
+            </div>
+
+
+            <a href="prodotti/check-ecu.html">
+
+              Scopri di più
+              <span>→</span>
+
+            </a>
+
+          </article>
+
+        </div>
+
+
+        <button
+          class="carousel-arrow next"
+          type="button"
+          aria-label="Prodotti successivi">
+          ›
+        </button>
+
+      </div>
+
+    </section>
+
+  </section>
+
+
+  <!-- ======================================================
+       ELECTRONIC ENGINEERING
+       ====================================================== -->
+
+  <section
+    class="home-electronic"
+    id="elettronica">
+
+    <div class="container home-engineering-grid">
+
+      <div
+        class="
+          home-engineering-copy
+          reveal
+          reveal-left
+        ">
+
+        <span class="home-kicker">
+          Electronic Engineering
+        </span>
+
+
+        <div class="home-section-head">
+
+          <h2>
+            Dall'elettronica
+            al sistema completo.
+          </h2>
+
+        </div>
+
+
+        <p>
+          L'esperienza maturata nello sviluppo dei prodotti
+          Turrin unisce progettazione elettronica, hardware,
+          firmware e software in un unico processo tecnico.
+        </p>
+
+
+        <div class="home-capabilities">
+
+          <div class="home-capability">
+
+            <strong>
+              Hardware dedicato
+            </strong>
+
+            <span>
+              Sistemi progettati per lavorare insieme
+              al software e alle procedure operative.
+            </span>
+
+          </div>
+
+
+          <div class="home-capability">
+
+            <strong>
+              Firmware &amp; Embedded
+            </strong>
+
+            <span>
+              Logica di controllo e integrazione
+              tra dispositivi e applicazioni software.
+            </span>
+
+          </div>
+
+
+          <div class="home-capability">
+
+            <strong>
+              Integrazione
+            </strong>
+
+            <span>
+              Hardware e software sviluppati
+              come parti dello stesso sistema.
+            </span>
+
+          </div>
+
+
+          <div class="home-capability">
+
+            <strong>
+              Sviluppo tecnico
+            </strong>
+
+            <span>
+              Evoluzione, test e miglioramento
+              continuo delle soluzioni realizzate.
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="home-software-actions">
+
+          <a
+            class="btn btn-primary"
+            href="azienda.html">
+
+            Scopri l'azienda
+            <span>→</span>
+
+          </a>
+
+
+          <a
+            class="btn btn-outline"
+            href="contatti.html">
+
+            Parliamo del progetto
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="
+          home-engineering-proof
+          reveal
+          reveal-right
+        ">
+
+        <img
+          src="images/products/mc3.webp"
+          alt="Esempio di hardware sviluppato da Turrin Elettronica"
+          loading="lazy"
+        >
+
+
+        <div class="home-engineering-proof-label">
+
+          <span>
+            Esperienza interna
+          </span>
+
+          <strong>
+            I prodotti automotive dimostrano
+            l'integrazione tra hardware
+            e software sviluppata dall'azienda.
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       SOFTWARE ENGINEERING
+       ====================================================== -->
+
+  <section
+    class="home-software"
+    id="software">
+
+    <div class="container home-software-grid">
+
+      <div
+        class="
+          home-software-copy
+          reveal
+          reveal-left
+        ">
+
+        <span class="home-kicker">
+          Software Engineering · Nuova divisione
+        </span>
+
+
+        <div class="home-section-head">
+
+          <h2>
+            Nuove soluzioni digitali,
+            costruite su misura.
+          </h2>
+
+        </div>
+
+
+        <p>
+          La nuova divisione Software Engineering amplia
+          le competenze dell'azienda verso applicazioni web,
+          software desktop, servizi backend e applicazioni Android.
+        </p>
+
+
+        <div class="home-software-note">
+          La divisione è in fase di sviluppo: in questa fase
+          presentiamo competenze e servizi, senza attribuire
+          all'azienda progetti o portfolio non ancora realizzati.
+        </div>
+
+
+        <div class="home-software-actions">
+
+          <a
+            class="btn btn-primary"
+            href="contatti.html">
+
+            Richiedi informazioni
+            <span>→</span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="
+          home-software-services
+          reveal
+          reveal-right
+        ">
+
+
+        <article class="home-software-service">
+
+          <div class="home-software-service-icon">
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true">
+
+              <rect
+                x="3"
+                y="5"
+                width="18"
+                height="14"
+                rx="2">
+              </rect>
+
+              <path
+                d="M3 9h18">
+              </path>
+
+            </svg>
+
+          </div>
+
+
+          <strong>
+            Web Applications
+          </strong>
+
+          <span>
+            Portali, dashboard, gestionali
+            e applicazioni web responsive.
+          </span>
+
+        </article>
+
+
+        <article class="home-software-service">
+
+          <div class="home-software-service-icon">
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true">
+
+              <path
+                d="M7 7h10v10H7z">
+              </path>
+
+              <path
+                d="M4 4h16M4 20h16">
+              </path>
+
+            </svg>
+
+          </div>
+
+
+          <strong>
+            Desktop Software
+          </strong>
+
+          <span>
+            Applicazioni professionali
+            dedicate a workflow e strumenti tecnici.
+          </span>
+
+        </article>
+
+
+        <article class="home-software-service">
+
+          <div class="home-software-service-icon">
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true">
+
+              <ellipse
+                cx="12"
+                cy="6"
+                rx="7"
+                ry="3">
+              </ellipse>
+
+              <path
+                d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6">
+              </path>
+
+            </svg>
+
+          </div>
+
+
+          <strong>
+            Backend &amp; Database
+          </strong>
+
+          <span>
+            API, autenticazione, database,
+            cloud e servizi realtime.
+          </span>
+
+        </article>
+
+
+        <article class="home-software-service">
+
+          <div class="home-software-service-icon">
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true">
+
+              <rect
+                x="7"
+                y="3"
+                width="10"
+                height="18"
+                rx="2">
+              </rect>
+
+              <path
+                d="M10 6h4M11 18h2">
+              </path>
+
+            </svg>
+
+          </div>
+
+
+          <strong>
+            Android Applications
+          </strong>
+
+          <span>
+            Applicazioni mobile collegate
+            a servizi digitali e sistemi aziendali.
+          </span>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       R&D / BENEFIT
+       ====================================================== -->
+
+  <section class="home-v2-benefits">
+
+    <section class="benefits">
+
+      <div
+        class="container benefits-grid"
+        data-stagger>
+
+        <article class="benefit">
+
+          <div class="benefit-icon shield">
+            ✓
+          </div>
+
+          <div>
+
+            <strong>
+              <span
+                data-count="30"
+                data-suffix="+">
+                0
+              </span>
+              anni di esperienza
+            </strong>
+
+            <span>
+              Esperienza tecnica maturata
+              nel settore automotive.
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <article class="benefit">
+
+          <div class="benefit-icon">
+            ◉
+          </div>
+
+          <div>
+
+            <strong>
+              Engineering integrato
+            </strong>
+
+            <span>
+              Hardware, elettronica
+              e software nello stesso processo.
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <article class="benefit">
+
+          <div class="benefit-icon">
+            ↻
+          </div>
+
+          <div>
+
+            <strong>
+              Ricerca e sviluppo
+            </strong>
+
+            <span>
+              Prodotti e tecnologie
+              in evoluzione continua.
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <article class="benefit">
+
+          <div class="benefit-icon">
+            ◎
+          </div>
+
+          <div>
+
+            <strong>
+              Supporto tecnico
+            </strong>
+
+            <span>
+              Assistenza professionale
+              e conoscenza dei sistemi sviluppati.
+            </span>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </section>
+
+
+  <!-- ======================================================
+       AGGIORNAMENTI - COMPONENTE CONDIVISO
+       ====================================================== -->
+
+  <section
+    class="shared-updates-section"
+    id="aggiornamenti"
+    data-updates-component
+    data-updates-root="./"
+    data-updates-product="all"
+    data-updates-limit="9"
+    data-updates-carousel="true">
+
+    <div class="container">
+
+      <div class="shared-updates-heading reveal reveal-up">
+
+        <div class="shared-updates-heading-copy">
+
+          <span class="section-label">
+            Ultimi aggiornamenti
+          </span>
+
+          <h2>
+            Sempre un passo avanti.
+          </h2>
+
+          <p>
+            Nuove versioni, compatibilità
+            e funzionalità disponibili
+            per i prodotti Turrin Elettronica.
+          </p>
+
+        </div>
+
+
+        <a
+          class="shared-updates-all-link"
+          href="aggiornamenti.html">
+
+          Vedi tutti gli aggiornamenti
+          <span>→</span>
+
+        </a>
+
+      </div>
+
+
+      <div class="shared-updates-carousel reveal reveal-soft">
+
+        <div
+          class="shared-updates-track"
+          data-updates-grid>
+
+          <div class="shared-updates-message">
+            Caricamento aggiornamenti...
+          </div>
+
+        </div>
+
+
+        <div
+          class="shared-updates-dots"
+          data-updates-dots
+          aria-label="Navigazione aggiornamenti">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       AZIENDA
+       ====================================================== -->
+
+  <section
+    class="home-about-v2"
+    id="azienda">
+
+    <div class="container home-about-v2-grid">
+
+      <div
+        class="
+          home-about-v2-copy
+          reveal
+          reveal-left
+        ">
+
+        <span class="home-kicker">
+          Turrin Elettronica
+        </span>
+
+
+        <div class="home-section-head">
+
+          <h2>
+            Un'unica azienda,
+            competenze che si completano.
+          </h2>
+
+        </div>
+
+
+        <p>
+          L'esperienza costruita nello sviluppo di strumenti
+          professionali automotive diventa oggi la base
+          per ampliare l'attività verso Electronic Engineering
+          e Software Engineering.
+        </p>
+
+
+        <p>
+          La direzione resta la stessa: trasformare
+          esigenze tecniche concrete in soluzioni
+          affidabili, evolute e utilizzabili ogni giorno.
+        </p>
+
+
+        <a href="azienda.html">
+
+          Scopri di più sull'azienda
+          <span>→</span>
+
+        </a>
+
+      </div>
+
+
+      <div
+        class="
+          home-about-v2-image
+          reveal
+          reveal-right
+        ">
+
+        <img
+          src="assets/building.png"
+          alt="Sede Turrin Elettronica"
+          loading="lazy"
+        >
+
+
+        <div class="home-about-badge">
+
+          <strong>
+            3 divisioni
+          </strong>
+
+          <span>
+            Automotive · Elettronica · Software
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<div id="siteFooter"></div>
+
+
+<script>
+
+/* =========================================================
+   CAROUSEL PRODOTTI
+   ========================================================= */
+
+(() => {
+
+    const track =
+        document.getElementById('productTrack');
+
+    const prev =
+        document.querySelector('.carousel-arrow.prev');
+
+    const next =
+        document.querySelector('.carousel-arrow.next');
+
+    if (!track)
+        return;
+
+
+    const originalCards =
+        Array.from(
+            track.querySelectorAll('.product-card')
+        );
+
+    const originalCount =
+        originalCards.length;
+
+
+    originalCards.forEach(card => {
+
+        const clone =
+            card.cloneNode(true);
+
+        clone.setAttribute(
+            'aria-hidden',
+            'true'
+        );
+
+        clone.dataset.clone =
+            'true';
+
+        track.appendChild(clone);
+    });
+
+
+    let position = 0;
+    let loopWidth = 0;
+
+    let running = true;
+    let isDragging = false;
+    let didDrag = false;
+
+    let dragStartX = 0;
+    let dragStartPosition = 0;
+
+    let lastTime =
+        performance.now();
+
+    const speed = 22;
+
+
+    function calculateLoopWidth() {
+
+        const firstOriginal =
+            track.children[0];
+
+        const firstClone =
+            track.children[originalCount];
+
+        if (!firstOriginal || !firstClone)
+            return;
+
+        loopWidth =
+            firstClone.offsetLeft -
+            firstOriginal.offsetLeft;
+    }
+
+
+    function normalizePosition() {
+
+        if (loopWidth <= 0)
+            return;
+
+        while (position >= loopWidth) {
+            position -= loopWidth;
+        }
+
+        while (position < 0) {
+            position += loopWidth;
+        }
+    }
+
+
+    function updatePosition() {
+
+        track.style.transform =
+            `translate3d(${-position}px, 0, 0)`;
+    }
+
+
+    function animate(currentTime) {
+
+        const delta =
+            Math.min(
+                (currentTime - lastTime) / 1000,
+                0.05
+            );
+
+        lastTime =
+            currentTime;
+
+        if (
+            running &&
+            !isDragging &&
+            loopWidth > 0
+        ) {
+
+            position +=
+                speed * delta;
+
+            normalizePosition();
+
+            updatePosition();
+        }
+
+        requestAnimationFrame(
+            animate
+        );
+    }
+
+
+    function cardStep() {
+
+        const card =
+            track.querySelector('.product-card');
+
+        if (!card)
+            return 0;
+
+        const style =
+            getComputedStyle(track);
+
+        const gap =
+            parseFloat(style.gap) || 16;
+
+        return (
+            card.offsetWidth +
+            gap
+        );
+    }
+
+
+    if (next) {
+
+        next.addEventListener(
+            'click',
+            () => {
+
+                position +=
+                    cardStep();
+
+                normalizePosition();
+
+                updatePosition();
+            }
+        );
+
+
+        next.addEventListener(
+            'mouseenter',
+            () => {
+
+                running = false;
+            }
+        );
+
+
+        next.addEventListener(
+            'mouseleave',
+            () => {
+
+                running = true;
+
+                lastTime =
+                    performance.now();
+            }
+        );
+    }
+
+
+    if (prev) {
+
+        prev.addEventListener(
+            'click',
+            () => {
+
+                position -=
+                    cardStep();
+
+                normalizePosition();
+
+                updatePosition();
+            }
+        );
+
+
+        prev.addEventListener(
+            'mouseenter',
+            () => {
+
+                running = false;
+            }
+        );
+
+
+        prev.addEventListener(
+            'mouseleave',
+            () => {
+
+                running = true;
+
+                lastTime =
+                    performance.now();
+            }
+        );
+    }
+
+
+    track.addEventListener(
+        'mouseenter',
+        () => {
+
+            if (!isDragging) {
+                running = false;
+            }
+        }
+    );
+
+
+    track.addEventListener(
+        'mouseleave',
+        () => {
+
+            if (!isDragging) {
+
+                running = true;
+
+                lastTime =
+                    performance.now();
+            }
+        }
+    );
+
+
+    track.addEventListener(
+        'pointerdown',
+        event => {
+
+            isDragging = true;
+            didDrag = false;
+
+            running = false;
+
+            dragStartX =
+                event.clientX;
+
+            dragStartPosition =
+                position;
+        }
+    );
+
+
+    track.addEventListener(
+        'pointermove',
+        event => {
+
+            if (!isDragging)
+                return;
+
+            const deltaX =
+                event.clientX -
+                dragStartX;
+
+
+            if (
+                Math.abs(deltaX) > 5
+            ) {
+
+                if (!didDrag) {
+
+                    didDrag = true;
+
+                    track.classList.add(
+                        'is-dragging'
+                    );
+
+
+                    if (
+                        !track.hasPointerCapture(
+                            event.pointerId
+                        )
+                    ) {
+
+                        track.setPointerCapture(
+                            event.pointerId
+                        );
+                    }
+                }
+            }
+
+
+            if (!didDrag)
+                return;
+
+
+            position =
+                dragStartPosition -
+                deltaX;
+
+            normalizePosition();
+
+            updatePosition();
+        }
+    );
+
+
+    track.addEventListener(
+        'pointerup',
+        event => {
+
+            if (!isDragging)
+                return;
+
+            isDragging = false;
+
+            track.classList.remove(
+                'is-dragging'
+            );
+
+
+            if (
+                track.hasPointerCapture(
+                    event.pointerId
+                )
+            ) {
+
+                track.releasePointerCapture(
+                    event.pointerId
+                );
+            }
+
+
+            lastTime =
+                performance.now();
+
+
+            if (
+                event.pointerType === 'touch' ||
+                event.pointerType === 'pen'
+            ) {
+
+                running = true;
+            }
+        }
+    );
+
+
+    track.addEventListener(
+        'pointercancel',
+        () => {
+
+            isDragging = false;
+            running = true;
+
+            track.classList.remove(
+                'is-dragging'
+            );
+
+            lastTime =
+                performance.now();
+        }
+    );
+
+
+    track.addEventListener(
+        'click',
+        event => {
+
+            if (didDrag) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                didDrag = false;
+            }
+        },
+        true
+    );
+
+
+    window.addEventListener(
+        'resize',
+        () => {
+
+            calculateLoopWidth();
+
+            normalizePosition();
+
+            updatePosition();
+        }
+    );
+
+
+    window.addEventListener(
+        'load',
+        () => {
+
+            calculateLoopWidth();
+
+            normalizePosition();
+
+            updatePosition();
+        }
+    );
+
+
+    calculateLoopWidth();
+
+    requestAnimationFrame(
+        animate
+    );
+
+})();
+
+
+</script>
+
+
+<script src="js/updates.js"></script>
+
+<script src="js/components.js"></script>
+
+</body>
+
+</html>
