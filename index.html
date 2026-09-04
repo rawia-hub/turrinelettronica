@@ -3703,6 +3703,208 @@
     }
 
 }
+    /* =========================================================
+   HOME - POLISH FINALE
+   ========================================================= */
+
+
+/* ---------- TYPOGRAPHY ---------- */
+
+.home-v2 h1,
+.home-v2 h2,
+.home-v2 h3 {
+    font-weight: 700;
+}
+
+.home-v2 p {
+    font-weight: 400;
+}
+
+
+/* label sezioni tutte coerenti */
+
+.home-kicker,
+.home-electronic-label,
+.home-software-label,
+.home-company-v3-label,
+.home-benefits-v3-head > span,
+.section-label {
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: .10em;
+    text-transform: uppercase;
+}
+
+
+/* ---------- SPAZI TRA LE SEZIONI ---------- */
+
+.home-divisions,
+.home-products-area,
+.home-electronic-v2,
+.home-software-v2,
+.home-company-v3 {
+    padding-top: 88px;
+    padding-bottom: 88px;
+}
+
+
+/* ---------- TITOLI PRINCIPALI ---------- */
+
+.home-section-head h2,
+.home-electronic-v2 h2,
+.home-software-v2 h2,
+.home-company-v3 h2 {
+    font-weight: 700;
+    letter-spacing: -.04em;
+}
+
+
+/* ---------- TESTI DESCRITTIVI ---------- */
+
+.home-section-head p,
+.home-electronic-intro,
+.home-software-intro,
+.home-company-v3-copy p {
+    color: #68788c;
+
+    font-size: 13px;
+    line-height: 1.75;
+}
+
+
+/* ---------- BUTTON ---------- */
+
+.home-v2 .btn {
+    min-height: 46px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 19px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+
+.home-v2 .btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.home-v2 .btn-primary:hover {
+    box-shadow:
+        0 9px 22px
+        rgba(7,89,216,.18);
+}
+
+
+/* ---------- CARD ---------- */
+
+.home-division-card,
+.home-products-area .product-card,
+.home-electronic-capability,
+.home-software-service-v2 {
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+
+/* niente hover eccessivo */
+
+.home-electronic-capability:hover,
+.home-software-service-v2:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(25,50,80,.07);
+}
+
+
+/* ---------- BENEFITS ---------- */
+
+.home-benefit-v3 h3 {
+    font-weight: 600;
+}
+
+.home-benefit-v3 p {
+    font-weight: 400;
+}
+
+
+/* ---------- HEADER ---------- */
+
+/* link normali + dropdown identici */
+
+.main-nav > a,
+.nav-dropdown-toggle {
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #162033;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+
+.main-nav > a:hover,
+.nav-dropdown-toggle:hover {
+    color: #0759d8;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width: 768px) {
+
+    .home-divisions,
+    .home-products-area,
+    .home-electronic-v2,
+    .home-software-v2,
+    .home-company-v3 {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+
+
+    .home-v2 .btn {
+        min-height: 45px;
+    }
+
+}
   </style>
 
 </head>
