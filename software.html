@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Software Engineering Turrin Elettronica: applicazioni web, software desktop, backend, API, database, cloud e applicazioni Android sviluppate su misura."
+  >
+
+  <title>Software Engineering | Turrin Elettronica</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+
+    .software-page {
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .software-page *,
+    .software-page *::before,
+    .software-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* HERO */
+
+    .software-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 82px;
+      background:
+        radial-gradient(circle at 78% 24%, rgba(109,72,197,.18), transparent 28%),
+        linear-gradient(135deg, #120d2c 0%, #24175a 48%, #3d268e 100%);
+    }
+
+    .software-hero::after {
+      content: "";
+      position: absolute;
+      width: 620px;
+      height: 620px;
+      right: -270px;
+      bottom: -390px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 70px rgba(255,255,255,.018),
+        0 0 0 140px rgba(255,255,255,.010);
+      pointer-events: none;
+    }
+
+    .software-hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0,.92fr) minmax(420px,1.08fr);
+      align-items: center;
+      gap: 70px;
+    }
+
+    .software-hero-copy {
+      max-width: 720px;
+    }
+
+    .software-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 17px;
+      color: #b49cff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .software-kicker-badge {
+      min-height: 25px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 9px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #ffffff;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .software-hero h1 {
+      margin: 0;
+      color: #ffffff;
+      font-size: clamp(43px,5.6vw,68px);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -.047em;
+    }
+
+    .software-hero h1 span {
+      color: #9f7cff;
+    }
+
+    .software-hero-copy > p {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: rgba(255,255,255,.72);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.78;
+    }
+
+    .software-hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .software-hero .btn-outline {
+      border-color: rgba(255,255,255,.34);
+      color: #ffffff;
+      background: rgba(255,255,255,.035);
+    }
+
+    .software-hero .btn-outline:hover {
+      border-color: rgba(255,255,255,.62);
+      background: rgba(255,255,255,.08);
+      color: #ffffff;
+    }
+
+    .software-hero-tags {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 29px;
+    }
+
+    .software-hero-tags span {
+      min-height: 29px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.62);
+      font-size: 8.5px;
+      font-weight: 600;
+    }
+
+    .software-hero-visual {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      background: #171038;
+      box-shadow: 0 28px 70px rgba(0,0,0,.28);
+    }
+
+    .software-hero-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 42%;
+    }
+
+    .software-hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(25,16,59,.02) 25%,
+          rgba(25,16,59,.18) 58%,
+          rgba(20,13,48,.88) 100%
+        );
+    }
+
+    .software-hero-card {
+      position: absolute;
+      z-index: 2;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 17px 18px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      background: rgba(31,19,70,.79);
+      backdrop-filter: blur(13px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.16);
+    }
+
+    .software-hero-card span {
+      display: block;
+      color: #b49cff;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .software-hero-card strong {
+      display: block;
+      max-width: 470px;
+      margin-top: 6px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    /* COMMON */
+
+    .software-section-head {
+      max-width: 790px;
+      margin-bottom: 34px;
+    }
+
+    .software-section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .software-section-label {
+      display: inline-flex;
+      margin-bottom: 14px;
+      color: #6948c5;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .software-section-head h2,
+    .software-process-copy h2,
+    .software-integration-copy h2,
+    .software-projects-copy h2 {
+      margin: 0;
+      color: #071b3a;
+      font-size: clamp(31px,3.8vw,47px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -.04em;
+    }
+
+    .software-section-head p,
+    .software-process-copy p,
+    .software-integration-copy p,
+    .software-projects-copy p {
+      margin: 14px 0 0;
+      color: #6c788c;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.78;
+    }
+
+    /* SERVICES */
+
+    .software-services {
+      padding: 88px 0;
+      background: linear-gradient(180deg,#f8f6ff 0%,#ffffff 100%);
+    }
+
+    .software-services-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 15px;
+    }
+
+    .software-service-card {
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      border: 1px solid #e3def0;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 10px 28px rgba(59,43,106,.055);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .software-service-card:hover {
+      transform: translateY(-4px);
+      border-color: #d3c7f2;
+      box-shadow: 0 18px 38px rgba(59,43,106,.09);
+    }
+
+    .software-service-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: #f0ebff;
+      color: #6948c5;
+    }
+
+    .software-service-icon svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .software-service-card h3 {
+      margin: 22px 0 0;
+      color: #2e2942;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .software-service-card p {
+      margin: 10px 0 0;
+      color: #7c758f;
+      font-size: 10.5px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .software-service-list {
+      display: grid;
+      gap: 8px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .software-service-list li {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #6f6881;
+      font-size: 9.5px;
+      line-height: 1.45;
+    }
+
+    .software-service-list li::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: #8f6ce0;
+    }
+
+    /* PROCESS */
+
+    .software-process {
+      padding: 92px 0;
+      background: #ffffff;
+    }
+
+    .software-process-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr);
+      align-items: center;
+      gap: 70px;
+    }
+
+    .software-process-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .software-process-step {
+      display: grid;
+      grid-template-columns: 49px 1fr;
+      gap: 16px;
+      padding: 18px 19px;
+      border: 1px solid #e2e7ef;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(24,47,80,.045);
+    }
+
+    .software-process-number {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: linear-gradient(135deg,#5b3eb1,#7b59d9);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .software-process-step h3 {
+      margin: 1px 0 5px;
+      color: #27354b;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .software-process-step p {
+      margin: 0;
+      color: #778396;
+      font-size: 9.5px;
+      line-height: 1.65;
+    }
+
+    /* INTEGRATION */
+
+    .software-integration {
+      padding: 92px 0;
+      background: linear-gradient(145deg,#101830,#18264a);
+    }
+
+    .software-integration-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
+      align-items: center;
+      gap: 68px;
+    }
+
+    .software-integration-copy .software-section-label {
+      color: #8cbfff;
+    }
+
+    .software-integration-copy h2 {
+      color: #ffffff;
+    }
+
+    .software-integration-copy h2 span {
+      color: #8cbfff;
+    }
+
+    .software-integration-copy p {
+      color: rgba(255,255,255,.66);
+    }
+
+    .software-integration-note {
+      margin-top: 21px;
+      padding: 15px 16px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 10px;
+      background: rgba(255,255,255,.045);
+      color: rgba(255,255,255,.67);
+      font-size: 9.5px;
+      line-height: 1.65;
+    }
+
+    .software-integration-diagram {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 13px;
+    }
+
+    .software-integration-node {
+      min-height: 150px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 13px;
+      background: rgba(255,255,255,.05);
+    }
+
+    .software-integration-node span {
+      display: inline-flex;
+      margin-bottom: 13px;
+      color: #86b9ff;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .software-integration-node strong {
+      display: block;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .software-integration-node p {
+      margin: 7px 0 0;
+      color: rgba(255,255,255,.55);
+      font-size: 9.5px;
+      line-height: 1.6;
+    }
+
+    /* PROJECT TYPES */
+
+    .software-projects {
+      padding: 92px 0;
+      background: linear-gradient(180deg,#ffffff,#f8f9fc);
+    }
+
+    .software-projects-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr);
+      gap: 70px;
+      align-items: start;
+    }
+
+    .software-projects-list {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .software-project-card {
+      min-height: 145px;
+      padding: 18px;
+      border: 1px solid #e0e6ef;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 8px 25px rgba(25,48,80,.045);
+    }
+
+    .software-project-card strong {
+      display: block;
+      color: #243650;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .software-project-card span {
+      display: block;
+      margin-top: 7px;
+      color: #7c899a;
+      font-size: 9.5px;
+      line-height: 1.6;
+    }
+
+    /* CTA */
+
+    .software-cta {
+      padding: 76px 0;
+      background: linear-gradient(135deg,#f5f2ff,#eef4ff);
+    }
+
+    .software-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 36px 38px;
+      border: 1px solid #dfd9f0;
+      border-radius: 18px;
+      background: #ffffff;
+      box-shadow: 0 14px 40px rgba(57,40,103,.065);
+    }
+
+    .software-cta h2 {
+      margin: 0;
+      color: #071b3a;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .software-cta p {
+      margin: 8px 0 0;
+      color: #718095;
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .software-cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+
+    @media(max-width:1050px) {
+
+      .software-hero-grid,
+      .software-process-grid,
+      .software-integration-grid,
+      .software-projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .software-hero-grid,
+      .software-process-grid,
+      .software-integration-grid,
+      .software-projects-grid {
+        gap: 45px;
+      }
+
+      .software-services-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media(max-width:700px) {
+
+      .software-hero {
+        padding: 64px 0 58px;
+      }
+
+      .software-hero-visual {
+        min-height: 410px;
+      }
+
+      .software-services,
+      .software-process,
+      .software-integration,
+      .software-projects {
+        padding: 68px 0;
+      }
+
+      .software-services-grid,
+      .software-integration-diagram,
+      .software-projects-list {
+        grid-template-columns: 1fr;
+      }
+
+      .software-cta {
+        padding: 58px 0;
+      }
+
+      .software-cta-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 28px 24px;
+      }
+
+      .software-cta-actions {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .software-cta-actions .btn {
+        width: 100%;
+      }
+    }
+
+    @media(max-width:480px) {
+
+      .software-hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .software-hero-actions .btn {
+        width: 100%;
+      }
+
+      .software-process-step {
+        grid-template-columns: 42px 1fr;
+      }
+
+      .software-process-number {
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div id="siteHeader" data-root="./"></div>
+
+<main class="software-page">
+
+  <section class="software-hero">
+
+    <div class="container software-hero-grid">
+
+      <div class="software-hero-copy reveal reveal-left">
+
+        <div class="software-kicker">
+          Software Engineering
+          <span class="software-kicker-badge">Nuova divisione</span>
+        </div>
+
+        <h1>
+          Dal codice alla
+          <span>soluzione digitale.</span>
+        </h1>
+
+        <p>
+          Progettiamo applicazioni software e soluzioni digitali
+          su misura, integrando frontend, backend, database,
+          cloud e mobile in un unico processo di sviluppo.
+        </p>
+
+        <div class="software-hero-actions">
+
+          <a class="btn btn-primary" href="contatti.html">
+            Parliamo del progetto
+            <span>→</span>
+          </a>
+
+          <a class="btn btn-outline" href="#servizi">
+            Scopri i servizi
+          </a>
+
+        </div>
+
+        <div class="software-hero-tags">
+          <span>Web Applications</span>
+          <span>Desktop Software</span>
+          <span>Backend &amp; API</span>
+          <span>Android</span>
+        </div>
+
+      </div>
+
+      <div class="software-hero-visual reveal reveal-right">
+
+        <img
+          src="images/home/software-engineering.webp"
+          alt="Software Engineering e sviluppo applicazioni"
+        >
+
+        <div class="software-hero-card">
+          <span>Integrated Software Development</span>
+          <strong>
+            Frontend, backend, database e applicazioni
+            progettati come parti dello stesso sistema.
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="software-services" id="servizi">
+
+    <div class="container">
+
+      <div class="software-section-head center reveal reveal-up">
+        <span class="software-section-label">Cosa sviluppiamo</span>
+        <h2>Soluzioni software su misura.</h2>
+        <p>
+          La divisione nasce per sviluppare applicazioni
+          e strumenti digitali costruiti attorno
+          alle esigenze operative del progetto.
+        </p>
+      </div>
+
+      <div class="software-services-grid" data-stagger>
+
+        <article class="software-service-card reveal reveal-up">
+          <div class="software-service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="M3 9h18"></path>
+            </svg>
+          </div>
+          <h3>Web Applications</h3>
+          <p>
+            Applicazioni web responsive, dashboard
+            e portali dedicati a processi e servizi aziendali.
+          </p>
+          <ul class="software-service-list">
+            <li>Dashboard operative</li>
+            <li>Portali aziendali</li>
+            <li>Gestionali web</li>
+            <li>Interfacce responsive</li>
+          </ul>
+        </article>
+
+        <article class="software-service-card reveal reveal-up">
+          <div class="software-service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="4" width="14" height="12" rx="2"></rect>
+              <path d="M9 20h6M12 16v4"></path>
+            </svg>
+          </div>
+          <h3>Desktop Software</h3>
+          <p>
+            Applicazioni professionali dedicate
+            a workflow tecnici e strumenti operativi.
+          </p>
+          <ul class="software-service-list">
+            <li>Software tecnici</li>
+            <li>Tool interni</li>
+            <li>Interfacce professionali</li>
+            <li>Workflow dedicati</li>
+          </ul>
+        </article>
+
+        <article class="software-service-card reveal reveal-up">
+          <div class="software-service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <ellipse cx="12" cy="6" rx="7" ry="3"></ellipse>
+              <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"></path>
+            </svg>
+          </div>
+          <h3>Backend &amp; API</h3>
+          <p>
+            Servizi backend, database, autenticazione
+            e API per applicazioni moderne.
+          </p>
+          <ul class="software-service-list">
+            <li>Database</li>
+            <li>Autenticazione</li>
+            <li>API</li>
+            <li>Realtime &amp; cloud</li>
+          </ul>
+        </article>
+
+        <article class="software-service-card reveal reveal-up">
+          <div class="software-service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="7" y="3" width="10" height="18" rx="2"></rect>
+              <path d="M10 6h4M11 18h2"></path>
+            </svg>
+          </div>
+          <h3>Android Applications</h3>
+          <p>
+            Applicazioni mobile collegate
+            a backend, database e servizi digitali aziendali.
+          </p>
+          <ul class="software-service-list">
+            <li>App operative</li>
+            <li>Companion app</li>
+            <li>Integrazione API</li>
+            <li>Servizi cloud</li>
+          </ul>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="software-process">
+
+    <div class="container software-process-grid">
+
+      <div class="software-process-copy reveal reveal-left">
+        <span class="software-section-label">Metodo</span>
+        <h2>Dall'esigenza al prodotto software.</h2>
+        <p>
+          Ogni progetto parte da un problema concreto.
+          Analizziamo flussi, utenti e integrazioni necessarie
+          prima di definire architettura, interfacce e sviluppo.
+        </p>
+      </div>
+
+      <div class="software-process-list reveal reveal-right">
+
+        <article class="software-process-step">
+          <span class="software-process-number">01</span>
+          <div>
+            <h3>Analisi</h3>
+            <p>
+              Obiettivi, utenti, workflow, dati e integrazioni
+              vengono definiti prima dello sviluppo.
+            </p>
+          </div>
+        </article>
+
+        <article class="software-process-step">
+          <span class="software-process-number">02</span>
+          <div>
+            <h3>Architettura &amp; UX</h3>
+            <p>
+              Definiamo struttura applicativa, interfaccia,
+              database e logica dei servizi.
+            </p>
+          </div>
+        </article>
+
+        <article class="software-process-step">
+          <span class="software-process-number">03</span>
+          <div>
+            <h3>Development</h3>
+            <p>
+              Frontend, backend e integrazioni vengono sviluppati
+              come parti dello stesso sistema.
+            </p>
+          </div>
+        </article>
+
+        <article class="software-process-step">
+          <span class="software-process-number">04</span>
+          <div>
+            <h3>Test &amp; evoluzione</h3>
+            <p>
+              Verifica, correzioni e aggiornamenti accompagnano
+              l'applicazione dopo il rilascio.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="software-integration">
+
+    <div class="container software-integration-grid">
+
+      <div class="software-integration-copy reveal reveal-left">
+
+        <span class="software-section-label">Il nostro vantaggio</span>
+
+        <h2>
+          Software che può dialogare
+          con <span>hardware ed elettronica.</span>
+        </h2>
+
+        <p>
+          La nuova divisione nasce all'interno di un'azienda
+          che sviluppa già prodotti elettronici e software professionali.
+          Questo permette di progettare soluzioni digitali
+          che non si fermano all'interfaccia.
+        </p>
+
+        <div class="software-integration-note">
+          Quando il progetto lo richiede, software, elettronica
+          e sistemi hardware possono essere pensati insieme
+          fin dall'inizio.
+        </div>
+
+      </div>
+
+      <div class="software-integration-diagram reveal reveal-right">
+
+        <article class="software-integration-node">
+          <span>01</span>
+          <strong>Hardware / Device</strong>
+          <p>Dispositivi, interfacce e sistemi elettronici.</p>
+        </article>
+
+        <article class="software-integration-node">
+          <span>02</span>
+          <strong>Backend / Cloud</strong>
+          <p>API, database, autenticazione e servizi centralizzati.</p>
+        </article>
+
+        <article class="software-integration-node">
+          <span>03</span>
+          <strong>Web / Desktop</strong>
+          <p>Interfacce operative, dashboard e strumenti tecnici.</p>
+        </article>
+
+        <article class="software-integration-node">
+          <span>04</span>
+          <strong>Mobile</strong>
+          <p>Applicazioni Android e servizi collegati.</p>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="software-projects">
+
+    <div class="container software-projects-grid">
+
+      <div class="software-projects-copy reveal reveal-left">
+        <span class="software-section-label">Applicazioni</span>
+        <h2>Per quali progetti?</h2>
+        <p>
+          La divisione è pensata per sviluppare software su misura,
+          soprattutto quando un'applicazione deve integrarsi
+          con processi, dati o sistemi tecnici.
+        </p>
+      </div>
+
+      <div class="software-projects-list reveal reveal-right">
+
+        <article class="software-project-card">
+          <strong>Dashboard e pannelli di controllo</strong>
+          <span>
+            Interfacce per monitorare dati, utenti,
+            richieste e attività operative.
+          </span>
+        </article>
+
+        <article class="software-project-card">
+          <strong>Gestionali su misura</strong>
+          <span>
+            Applicazioni costruite attorno ai flussi reali dell'azienda.
+          </span>
+        </article>
+
+        <article class="software-project-card">
+          <strong>Portali e aree riservate</strong>
+          <span>
+            Accessi utenti, contenuti, dati e servizi dedicati.
+          </span>
+        </article>
+
+        <article class="software-project-card">
+          <strong>Software collegato a dispositivi</strong>
+          <span>
+            Applicazioni web, desktop o mobile connesse
+            a hardware e sistemi elettronici.
+          </span>
+        </article>
+
+        <article class="software-project-card">
+          <strong>Strumenti interni</strong>
+          <span>
+            Tool per semplificare procedure,
+            automazioni e attività ripetitive.
+          </span>
+        </article>
+
+        <article class="software-project-card">
+          <strong>Applicazioni mobile</strong>
+          <span>
+            Companion app, servizi operativi
+            e accesso mobile ai dati.
+          </span>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="software-cta">
+
+    <div class="container">
+
+      <div class="software-cta-inner reveal reveal-up">
+
+        <div>
+          <h2>Hai un progetto software da sviluppare?</h2>
+          <p>
+            Raccontaci l'esigenza: possiamo valutare insieme
+            architettura, interfaccia, backend e integrazioni necessarie.
+          </p>
+        </div>
+
+        <div class="software-cta-actions">
+
+          <a class="btn btn-outline" href="azienda.html">
+            Scopri Turrin Elettronica
+          </a>
+
+          <a class="btn btn-primary" href="contatti.html">
+            Parliamo del progetto
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="js/components.js"></script>
+
+</body>
+</html>
