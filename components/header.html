@@ -1,0 +1,682 @@
+<style>
+/* =========================================================
+   HEADER - MENU SOLUZIONI / PRODOTTI
+   ========================================================= */
+
+.main-nav {
+    overflow: visible;
+}
+
+.nav-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav > a,
+.nav-dropdown-toggle {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: #162033;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        color .2s ease;
+}
+
+
+.main-nav > a:hover,
+.main-nav > a:focus-visible,
+.nav-dropdown-toggle:hover,
+.nav-dropdown-toggle:focus-visible {
+    color: #0759d8;
+    outline: none;
+}
+
+.nav-dropdown-toggle svg {
+    width: 12px;
+    height: 12px;
+    transition: transform .2s ease;
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    z-index: 1200;
+    top: calc(100% + 13px);
+    left: 50%;
+    width: 265px;
+    display: grid;
+    gap: 4px;
+    padding: 9px;
+    border: 1px solid #dfe7f0;
+    border-radius: 12px;
+    background: rgba(255,255,255,.98);
+    box-shadow: 0 18px 48px rgba(7,27,58,.14);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -7px);
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+
+.nav-dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    width: 13px;
+    height: 13px;
+    border-left: 1px solid #dfe7f0;
+    border-top: 1px solid #dfe7f0;
+    background: #ffffff;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.nav-dropdown-menu a {
+    position: relative;
+    z-index: 1;
+    display: grid !important;
+    gap: 3px;
+    padding: 11px 12px !important;
+    border-radius: 8px;
+    color: #243a55 !important;
+    text-decoration: none;
+    white-space: normal;
+}
+
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a:focus-visible {
+    background: #f2f6fb;
+    color: #0759d8 !important;
+}
+
+.nav-dropdown-menu strong {
+    color: inherit;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.nav-dropdown-menu span {
+    color: #8794a5;
+    font-size: 8px;
+    font-weight: 500;
+    line-height: 1.45;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+}
+
+.nav-dropdown:hover .nav-dropdown-toggle svg {
+    transform: rotate(180deg);
+}
+
+/*
+ * Piccolo ponte invisibile tra il pulsante e il menu.
+ * Permette di spostare il mouse verso il dropdown senza
+ * perderne l'hover nel piccolo spazio verticale.
+ */
+.nav-dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: 14px;
+}
+
+.nav-dropdown-new {
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+    min-height: 18px;
+    margin-left: 5px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #f0ebff;
+    color: #6243ba;
+    font-size: 7px;
+    font-weight: 900;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   STATO ATTIVO PAGINA CORRENTE
+   ========================================================= */
+
+.main-nav > a.nav-current,
+.nav-dropdown.is-current > .nav-dropdown-toggle {
+    color: #0759d8;
+}
+
+.nav-dropdown.is-current > .nav-dropdown-toggle::after,
+.main-nav > a.nav-current::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: 1px;
+
+    width: 18px;
+    height: 2px;
+
+    border-radius: 999px;
+
+    background: #0759d8;
+
+    transform: translateX(-50%);
+}
+
+.main-nav > a,
+.nav-dropdown-toggle {
+    position: relative;
+}
+
+.nav-dropdown-menu a.nav-current {
+    background: #eef5ff;
+    color: #0759d8 !important;
+}
+
+.nav-dropdown-menu a.nav-current::before {
+    content: "";
+
+    position: absolute;
+    left: 4px;
+    top: 50%;
+
+    width: 3px;
+    height: 22px;
+
+    border-radius: 999px;
+
+    background: #0759d8;
+
+    transform: translateY(-50%);
+}
+
+@media (max-width: 900px) {
+    .main-nav.open {
+        overflow: visible;
+    }
+
+    .nav-dropdown {
+        width: 100%;
+        display: block;
+    }
+
+    .nav-dropdown::after {
+        display: none;
+    }
+
+    .nav-dropdown-toggle {
+        width: 100%;
+        min-height: 46px;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+
+    .main-nav > a,
+    .nav-dropdown-toggle {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .nav-dropdown-menu {
+        position: static;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        display: grid;
+        gap: 3px;
+        margin: 0;
+        padding: 0 0 0 11px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        pointer-events: none;
+        transition: max-height .25s ease, margin .25s ease, padding .25s ease;
+    }
+
+    .nav-dropdown-menu::before {
+        display: none;
+    }
+
+    .nav-dropdown.open .nav-dropdown-menu {
+        max-height: 380px;
+        margin: 2px 0 8px;
+        padding: 3px 0 4px 11px;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    .nav-dropdown-menu a {
+        padding: 9px 11px !important;
+        border-left: 2px solid #e0e8f1;
+        border-radius: 0 7px 7px 0;
+    }
+
+    .nav-dropdown-menu a:hover,
+    .nav-dropdown-menu a:focus-visible {
+        border-left-color: #0759d8;
+    }
+}
+
+    @media (max-width: 900px) {
+
+        .main-nav > a.nav-current::after,
+        .nav-dropdown.is-current > .nav-dropdown-toggle::after {
+            display: none;
+        }
+
+        .main-nav > a.nav-current,
+        .nav-dropdown.is-current > .nav-dropdown-toggle {
+            color: #0759d8;
+        }
+
+        .nav-dropdown-menu a.nav-current {
+            border-left-color: #0759d8;
+            background: #f1f6fd;
+        }
+    }
+
+
+
+/* =========================================================
+   MENU TABLET / MOBILE - ALLINEAMENTO E STRUTTURA
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .site-header .main-nav.open {
+        align-items: stretch !important;
+        text-align: left !important;
+        gap: 0 !important;
+    }
+
+    /*
+     * Tutte le voci principali hanno la stessa geometria:
+     * Soluzioni, Prodotti, Aggiornamenti, Azienda, Contatti.
+     */
+    .site-header .main-nav > a,
+    .site-header .nav-dropdown-toggle {
+        width: 100% !important;
+        min-height: 50px !important;
+
+        display: flex !important;
+        align-items: center !important;
+
+        margin: 0 !important;
+        padding: 0 5px !important;
+
+        color: #162033;
+
+        font-size: 14px;
+        font-weight: 700;
+
+        line-height: 1.2;
+
+        text-align: left !important;
+    }
+
+    .site-header .main-nav > a {
+        justify-content: flex-start !important;
+    }
+
+    .site-header .nav-dropdown-toggle {
+        justify-content: space-between !important;
+    }
+
+    /*
+     * Separatori leggeri per rendere leggibile il menu
+     * senza creare "blocchi" troppo pesanti.
+     */
+    .site-header .nav-dropdown,
+    .site-header .main-nav > a {
+        border-bottom:
+            1px solid
+            #edf1f6;
+    }
+
+    .site-header .main-nav > a:last-child {
+        border-bottom: 0;
+    }
+
+    .site-header .nav-dropdown {
+        width: 100%;
+        margin: 0;
+    }
+
+    .site-header .nav-dropdown-toggle svg {
+        width: 13px;
+        height: 13px;
+
+        flex: 0 0 auto;
+
+        margin-left: 16px;
+    }
+
+    /*
+     * Sottomenu mobile.
+     * Rimane dentro al flusso del menu e non si sovrappone.
+     */
+    .site-header .nav-dropdown-menu {
+        width: 100% !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        border: 0 !important;
+        border-radius: 0 !important;
+
+        background: #f7f9fc !important;
+
+        box-shadow: none !important;
+    }
+
+    .site-header
+    .nav-dropdown.open
+    .nav-dropdown-menu {
+        max-height: 430px;
+
+        margin: 0 0 8px !important;
+        padding: 7px !important;
+
+        border-radius: 9px !important;
+    }
+
+    .site-header .nav-dropdown-menu a {
+        width: 100% !important;
+
+        display: block !important;
+
+        margin: 0 !important;
+        padding: 10px 11px !important;
+
+        border: 0 !important;
+        border-radius: 7px !important;
+
+        text-align: left !important;
+    }
+
+    .site-header .nav-dropdown-menu a + a {
+        margin-top: 2px !important;
+    }
+
+    .site-header .nav-dropdown-menu strong {
+        display: block;
+
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .site-header .nav-dropdown-menu > a > span {
+        display: block;
+
+        margin-top: 3px;
+
+        font-size: 8.5px;
+        font-weight: 400;
+
+        line-height: 1.45;
+    }
+
+    .site-header
+    .nav-dropdown-menu
+    a.nav-current {
+        background: #edf4ff !important;
+        color: #0759d8 !important;
+    }
+
+    .site-header
+    .nav-dropdown-menu
+    a.nav-current::before {
+        display: none;
+    }
+
+    /*
+     * Sul mobile non mostriamo la barretta desktop
+     * sotto la voce attiva.
+     */
+    .site-header
+    .main-nav > a.nav-current::after,
+    .site-header
+    .nav-dropdown.is-current
+    > .nav-dropdown-toggle::after {
+        display: none !important;
+    }
+
+    /*
+     * La freccia ruota solo quando il relativo
+     * sottomenu e realmente aperto.
+     */
+    .site-header
+    .nav-dropdown.open
+    .nav-dropdown-toggle svg {
+        transform: rotate(180deg);
+    }
+
+}
+
+
+/* Smartphone piu stretti */
+
+@media (max-width: 520px) {
+
+    .site-header .main-nav > a,
+    .site-header .nav-dropdown-toggle {
+        min-height: 48px !important;
+
+        font-size: 13.5px;
+    }
+
+    .site-header .nav-dropdown-menu strong {
+        font-size: 10.5px;
+    }
+
+}
+
+</style>
+
+<header class="site-header">
+
+    <div class="container header-inner">
+
+        <a
+            class="brand"
+            href="{{ROOT}}index.html">
+
+            <img
+                src="{{ROOT}}assets/logo-turrin.png"
+                alt="Turrin Elettronica"
+                class="brand-logo"
+            >
+
+            <span class="brand-name">
+                Turrin Elettronica
+            </span>
+
+        </a>
+
+
+        <nav
+            class="main-nav"
+            aria-label="Navigazione principale">
+
+            <div class="nav-dropdown">
+
+                <button
+                    class="nav-dropdown-toggle"
+                    type="button"
+                    aria-expanded="false">
+
+                    Soluzioni
+
+                    <svg
+                        viewBox="0 0 12 12"
+                        aria-hidden="true">
+                        <path
+                            d="M2.5 4.5L6 8l3.5-3.5"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                        </path>
+                    </svg>
+
+                </button>
+
+                <div class="nav-dropdown-menu">
+
+                    <a href="{{ROOT}}automotive.html">
+                        <strong>
+                            Automotive Technologies
+                        </strong>
+                        <span>
+                            ECU, TCU e strumenti professionali automotive
+                        </span>
+                    </a>
+
+                    <a href="{{ROOT}}elettronica.html">
+                        <strong>
+                            Electronic Engineering
+                        </strong>
+                        <span>
+                            Hardware, firmware e sistemi embedded
+                        </span>
+                    </a>
+
+                    <a href="{{ROOT}}software.html">
+                        <strong>
+                            Software Engineering
+                            <span class="nav-dropdown-new">Nuovo</span>
+                        </strong>
+                        <span>
+                            Web, desktop, backend, database e Android
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="nav-dropdown">
+
+                <button
+                    class="nav-dropdown-toggle"
+                    type="button"
+                    aria-expanded="false">
+
+                    Prodotti
+
+                    <svg
+                        viewBox="0 0 12 12"
+                        aria-hidden="true">
+                        <path
+                            d="M2.5 4.5L6 8l3.5-3.5"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                        </path>
+                    </svg>
+
+                </button>
+
+                <div class="nav-dropdown-menu">
+
+                    <a href="{{ROOT}}prodotti/mc3.html">
+                        <strong>MC3</strong>
+                        <span>Programmazione professionale ECU / TCU</span>
+                    </a>
+
+                    <a href="{{ROOT}}prodotti/t-race-pro.html">
+                        <strong>T-Race Pro</strong>
+                        <span>Software professionale per il remapping</span>
+                    </a>
+
+                    <a href="{{ROOT}}prodotti/tuning-solution.html">
+                        <strong>Tuning Solution</strong>
+                        <span>Soluzioni software per i file ECU</span>
+                    </a>
+
+                    <a href="{{ROOT}}prodotti/check-ecu.html">
+                        <strong>Check ECU</strong>
+                        <span>Diagnosi e verifica centraline</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <a href="{{ROOT}}aggiornamenti.html">
+                Aggiornamenti
+            </a>
+
+
+            <a href="{{ROOT}}azienda.html">
+                Azienda
+            </a>
+
+
+            <a href="{{ROOT}}contatti.html">
+                Contatti
+            </a>
+
+        </nav>
+
+
+        <a
+            class="quote-button"
+            href="{{ROOT}}contatti.html">
+
+            Richiedi preventivo
+
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Apri menu"
+            aria-expanded="false">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
+</header>
