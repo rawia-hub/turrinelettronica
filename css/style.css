@@ -2413,4 +2413,41 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%} button{f
     }
 
 }
+.site-nav .nav-link,
+.site-nav .nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #102548;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1;
+}
 
+.site-nav .nav-dropdown-toggle:hover,
+.site-nav .nav-link:hover {
+  color: #0d5be1;
+}
+
+.site-nav .nav-dropdown-toggle:focus-visible,
+.site-nav .nav-link:focus-visible {
+  outline: none;
+  color: #0d5be1;
+}
+.site-nav .nav-dropdown-toggle svg,
+.site-nav .nav-dropdown-toggle .dropdown-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.8;
+  transition: transform .2s ease;
+}
+
+.site-nav .nav-item.open .nav-dropdown-toggle svg,
+.site-nav .nav-item.open .nav-dropdown-toggle .dropdown-icon {
+  transform: rotate(180deg);
+}
