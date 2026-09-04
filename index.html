@@ -3905,6 +3905,29 @@
     }
 
 }
+    /* TABLET - DIVISIONI */
+
+@media (min-width: 651px) and (max-width: 900px) {
+
+    .home-divisions-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .home-divisions-grid
+    .home-division-card:last-child {
+        grid-column: 1 / -1;
+
+        min-height: 340px;
+    }
+
+    .home-divisions-grid
+    .home-division-card:last-child
+    .home-division-card-content {
+        max-width: 52%;
+    }
+
+}
   </style>
 
 </head>
