@@ -1,0 +1,1509 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Automotive Technologies Turrin Elettronica: strumenti hardware e software professionali per programmazione ECU e TCU, remapping, diagnosi, verifica e aggiornamenti."
+  >
+
+  <title>
+    Automotive Technologies | Turrin Elettronica
+  </title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <style>
+
+    /* =========================================================
+       AUTOMOTIVE TECHNOLOGIES PAGE
+       ========================================================= */
+
+    .automotive-page {
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .automotive-page *,
+    .automotive-page *::before,
+    .automotive-page *::after {
+      box-sizing: border-box;
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .automotive-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 82px;
+      background:
+        radial-gradient(
+          circle at 78% 24%,
+          rgba(32, 136, 255, .20),
+          transparent 29%
+        ),
+        linear-gradient(
+          135deg,
+          #04152d 0%,
+          #08264f 48%,
+          #0759d8 100%
+        );
+    }
+
+    .automotive-hero::after {
+      content: "";
+      position: absolute;
+      width: 620px;
+      height: 620px;
+      right: -270px;
+      bottom: -390px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 70px rgba(255,255,255,.018),
+        0 0 0 140px rgba(255,255,255,.010);
+      pointer-events: none;
+    }
+
+    .automotive-hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0,.92fr) minmax(420px,1.08fr);
+      align-items: center;
+      gap: 70px;
+    }
+
+    .automotive-hero-copy {
+      max-width: 720px;
+    }
+
+    .automotive-kicker {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 17px;
+      color: #76b9ff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .automotive-hero h1 {
+      margin: 0;
+      color: #ffffff;
+      font-size: clamp(43px,5.6vw,68px);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -.047em;
+    }
+
+    .automotive-hero h1 span {
+      color: #4ba0ff;
+    }
+
+    .automotive-hero-copy > p {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: rgba(255,255,255,.72);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.78;
+    }
+
+    .automotive-hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .automotive-hero .btn-outline {
+      border-color: rgba(255,255,255,.34);
+      color: #ffffff;
+      background: rgba(255,255,255,.035);
+    }
+
+    .automotive-hero .btn-outline:hover {
+      border-color: rgba(255,255,255,.62);
+      background: rgba(255,255,255,.08);
+      color: #ffffff;
+    }
+
+    .automotive-hero-tags {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 29px;
+    }
+
+    .automotive-hero-tags span {
+      min-height: 29px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.62);
+      font-size: 8.5px;
+      font-weight: 600;
+    }
+
+    .automotive-hero-visual {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      background: #061a35;
+      box-shadow: 0 28px 70px rgba(0,0,0,.28);
+    }
+
+    .automotive-hero-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .automotive-hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4,24,54,.00) 24%,
+          rgba(4,24,54,.13) 56%,
+          rgba(4,24,54,.88) 100%
+        );
+    }
+
+    .automotive-hero-card {
+      position: absolute;
+      z-index: 2;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 17px 18px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      background: rgba(4,30,66,.79);
+      backdrop-filter: blur(13px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.16);
+    }
+
+    .automotive-hero-card span {
+      display: block;
+      color: #79baff;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .automotive-hero-card strong {
+      display: block;
+      max-width: 470px;
+      margin-top: 6px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+
+    /* =========================================================
+       COMMON
+       ========================================================= */
+
+    .automotive-section-head {
+      max-width: 790px;
+      margin-bottom: 34px;
+    }
+
+    .automotive-section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .automotive-section-label {
+      display: inline-flex;
+      margin-bottom: 14px;
+      color: #0759d8;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .automotive-section-head h2,
+    .automotive-focus-copy h2,
+    .automotive-ecosystem-copy h2 {
+      margin: 0;
+      color: #071b3a;
+      font-size: clamp(31px,3.8vw,47px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -.04em;
+    }
+
+    .automotive-section-head p,
+    .automotive-focus-copy p,
+    .automotive-ecosystem-copy p {
+      margin: 14px 0 0;
+      color: #6c788c;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.78;
+    }
+
+
+    /* =========================================================
+       AREAS
+       ========================================================= */
+
+    .automotive-areas {
+      padding: 88px 0;
+      background:
+        linear-gradient(
+          180deg,
+          #f4f8fd 0%,
+          #ffffff 100%
+        );
+    }
+
+    .automotive-areas-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 15px;
+    }
+
+    .automotive-area-card {
+      min-height: 255px;
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      border: 1px solid #dce5f0;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 10px 28px rgba(25,54,89,.055);
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+    .automotive-area-card:hover {
+      transform: translateY(-4px);
+      border-color: #c8d8ea;
+      box-shadow: 0 18px 38px rgba(25,54,89,.09);
+    }
+
+    .automotive-area-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: #edf4ff;
+      color: #0759d8;
+    }
+
+    .automotive-area-icon svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .automotive-area-card h3 {
+      margin: 22px 0 0;
+      color: #24384e;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .automotive-area-card p {
+      margin: 10px 0 0;
+      color: #748596;
+      font-size: 10.5px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       PRODUCTS
+       ========================================================= */
+
+    .automotive-products {
+      padding: 92px 0;
+      background: #ffffff;
+    }
+
+    .automotive-products-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .automotive-product-card {
+      min-width: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #dfe7f0;
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 12px 34px rgba(21,47,80,.07);
+      transition:
+        transform .28s ease,
+        box-shadow .28s ease,
+        border-color .28s ease;
+    }
+
+    .automotive-product-card:hover {
+      transform: translateY(-6px);
+      border-color: #cbd8e7;
+      box-shadow: 0 22px 48px rgba(21,47,80,.13);
+    }
+
+    .automotive-product-image {
+      position: relative;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 25px;
+      background:
+        radial-gradient(
+          circle at 50% 42%,
+          rgba(72,150,255,.13),
+          transparent 41%
+        ),
+        linear-gradient(145deg,#f9fbfe,#edf4fb);
+      border-bottom: 1px solid #e6edf5;
+    }
+
+    .automotive-product-image::after {
+      content: "";
+      position: absolute;
+      width: 185px;
+      height: 185px;
+      right: -90px;
+      bottom: -105px;
+      border: 1px solid rgba(7,89,216,.08);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 35px rgba(7,89,216,.018),
+        0 0 0 70px rgba(7,89,216,.010);
+      pointer-events: none;
+    }
+
+    .automotive-product-image img {
+      position: relative;
+      z-index: 2;
+      width: auto;
+      max-width: 94%;
+      height: auto;
+      max-height: 175px;
+      object-fit: contain;
+      filter:
+        drop-shadow(
+          0 14px 18px
+          rgba(12,31,55,.16)
+        );
+      transition: transform .32s ease;
+    }
+
+    .automotive-product-card:hover
+    .automotive-product-image img {
+      transform:
+        translateY(-4px)
+        scale(1.025);
+    }
+
+    .automotive-product-content {
+      flex: 1;
+      padding: 21px 21px 12px;
+    }
+
+    .automotive-product-content span {
+      display: inline-flex;
+      margin-bottom: 8px;
+      color: #0759d8;
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .automotive-product-content h3 {
+      margin: 0;
+      color: #071b3a;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+
+    .automotive-product-content p {
+      margin: 10px 0 0;
+      color: #718095;
+      font-size: 10.5px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .automotive-product-card > a {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding: 0 21px;
+      border-top: 1px solid #e7edf4;
+      color: #0759d8;
+      font-size: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      transition:
+        background .2s ease,
+        color .2s ease;
+    }
+
+    .automotive-product-card > a:hover {
+      background: #f7faff;
+    }
+
+    .automotive-product-card > a span {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 9px;
+      background: #edf4ff;
+      color: #0759d8;
+      font-size: 17px;
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease;
+    }
+
+    .automotive-product-card > a:hover span {
+      transform: translateX(3px);
+      background: #0759d8;
+      color: #ffffff;
+    }
+
+
+    /* =========================================================
+       FOCUS
+       ========================================================= */
+
+    .automotive-focus {
+      padding: 92px 0;
+      background:
+        linear-gradient(
+          145deg,
+          #071b3a,
+          #0b356b
+        );
+    }
+
+    .automotive-focus-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr);
+      align-items: center;
+      gap: 68px;
+    }
+
+    .automotive-focus-copy .automotive-section-label {
+      color: #81bdff;
+    }
+
+    .automotive-focus-copy h2 {
+      color: #ffffff;
+    }
+
+    .automotive-focus-copy h2 span {
+      color: #81bdff;
+    }
+
+    .automotive-focus-copy p {
+      color: rgba(255,255,255,.66);
+    }
+
+    .automotive-focus-note {
+      margin-top: 21px;
+      padding: 15px 16px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 10px;
+      background: rgba(255,255,255,.045);
+      color: rgba(255,255,255,.67);
+      font-size: 9.5px;
+      line-height: 1.65;
+    }
+
+    .automotive-focus-grid-list {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 13px;
+    }
+
+    .automotive-focus-card {
+      min-height: 150px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 13px;
+      background: rgba(255,255,255,.05);
+    }
+
+    .automotive-focus-card span {
+      display: inline-flex;
+      margin-bottom: 13px;
+      color: #83beff;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .automotive-focus-card strong {
+      display: block;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .automotive-focus-card p {
+      margin: 7px 0 0;
+      color: rgba(255,255,255,.55);
+      font-size: 9.5px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       ECOSYSTEM
+       ========================================================= */
+
+    .automotive-ecosystem {
+      padding: 92px 0;
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff,
+          #f7faff
+        );
+    }
+
+    .automotive-ecosystem-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr);
+      gap: 70px;
+      align-items: start;
+    }
+
+    .automotive-ecosystem-list {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .automotive-ecosystem-card {
+      min-height: 145px;
+      padding: 18px;
+      border: 1px solid #e0e6ef;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 8px 25px rgba(25,48,80,.045);
+    }
+
+    .automotive-ecosystem-card strong {
+      display: block;
+      color: #243650;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .automotive-ecosystem-card span {
+      display: block;
+      margin-top: 7px;
+      color: #7c899a;
+      font-size: 9.5px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       SHARED UPDATES
+       ========================================================= */
+
+    .automotive-page
+    .shared-updates-section {
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff,
+          #f7faff
+        );
+    }
+
+
+    /* =========================================================
+       CTA
+       ========================================================= */
+
+    .automotive-cta {
+      padding: 76px 0;
+      background:
+        linear-gradient(
+          135deg,
+          #eef5ff,
+          #f5f8fc
+        );
+    }
+
+    .automotive-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 36px 38px;
+      border: 1px solid #d9e4f0;
+      border-radius: 18px;
+      background: #ffffff;
+      box-shadow: 0 14px 40px rgba(26,52,88,.06);
+    }
+
+    .automotive-cta h2 {
+      margin: 0;
+      color: #071b3a;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .automotive-cta p {
+      margin: 8px 0 0;
+      color: #718095;
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .automotive-cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media(max-width:1050px) {
+
+      .automotive-hero-grid,
+      .automotive-focus-grid,
+      .automotive-ecosystem-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .automotive-hero-grid,
+      .automotive-focus-grid,
+      .automotive-ecosystem-grid {
+        gap: 45px;
+      }
+
+      .automotive-areas-grid,
+      .automotive-products-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+    }
+
+
+    @media(max-width:700px) {
+
+      .automotive-hero {
+        padding: 64px 0 58px;
+      }
+
+      .automotive-hero-visual {
+        min-height: 410px;
+      }
+
+      .automotive-areas,
+      .automotive-products,
+      .automotive-focus,
+      .automotive-ecosystem {
+        padding: 68px 0;
+      }
+
+      .automotive-areas-grid,
+      .automotive-products-grid,
+      .automotive-focus-grid-list,
+      .automotive-ecosystem-list {
+        grid-template-columns: 1fr;
+      }
+
+      .automotive-cta {
+        padding: 58px 0;
+      }
+
+      .automotive-cta-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 28px 24px;
+      }
+
+      .automotive-cta-actions {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .automotive-cta-actions .btn {
+        width: 100%;
+      }
+    }
+
+
+    @media(max-width:480px) {
+
+      .automotive-hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .automotive-hero-actions .btn {
+        width: 100%;
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div id="siteHeader" data-root="./"></div>
+
+
+<main class="automotive-page">
+
+
+  <!-- ======================================================
+       HERO
+       ====================================================== -->
+
+  <section class="automotive-hero">
+
+    <div class="container automotive-hero-grid">
+
+      <div class="automotive-hero-copy reveal reveal-left">
+
+        <span class="automotive-kicker">
+          Automotive Technologies
+        </span>
+
+        <h1>
+          Tecnologia professionale
+          per il <span>mondo automotive.</span>
+        </h1>
+
+        <p>
+          Sviluppiamo strumenti hardware e software dedicati
+          alla programmazione, gestione, analisi e verifica
+          delle centraline elettroniche, con prodotti pensati
+          per professionisti del settore.
+        </p>
+
+        <div class="automotive-hero-actions">
+
+          <a
+            class="btn btn-primary"
+            href="#prodotti">
+
+            Scopri i prodotti
+            <span>→</span>
+
+          </a>
+
+          <a
+            class="btn btn-outline"
+            href="contatti.html">
+
+            Contattaci
+
+          </a>
+
+        </div>
+
+        <div class="automotive-hero-tags">
+          <span>ECU / TCU</span>
+          <span>Remapping</span>
+          <span>Diagnosi &amp; Verifica</span>
+          <span>Aggiornamenti</span>
+        </div>
+
+      </div>
+
+
+      <div class="automotive-hero-visual reveal reveal-right">
+
+        <img
+          src="images/home/automotive-technologies-wide.webp"
+          alt="Automotive Technologies Turrin Elettronica"
+        >
+
+        <div class="automotive-hero-card">
+
+          <span>
+            Automotive Engineering
+          </span>
+
+          <strong>
+            Hardware e software sviluppati
+            per lavorare insieme in strumenti
+            professionali dedicati al settore automotive.
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       AREAS
+       ====================================================== -->
+
+  <section class="automotive-areas">
+
+    <div class="container">
+
+      <div class="automotive-section-head center reveal reveal-up">
+
+        <span class="automotive-section-label">
+          Cosa facciamo
+        </span>
+
+        <h2>
+          Quattro aree, un unico ecosistema.
+        </h2>
+
+        <p>
+          Le nostre soluzioni Automotive combinano
+          programmazione, tuning, diagnosi
+          e aggiornamento continuo degli strumenti.
+        </p>
+
+      </div>
+
+
+      <div class="automotive-areas-grid" data-stagger>
+
+        <article class="automotive-area-card reveal reveal-up">
+
+          <div class="automotive-area-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 8h14v8H5z"></path>
+              <path d="M8 5v3M16 5v3M8 16v3M16 16v3"></path>
+            </svg>
+          </div>
+
+          <h3>
+            ECU / TCU Programming
+          </h3>
+
+          <p>
+            Soluzioni professionali per lavorare
+            sulle centraline elettroniche
+            attraverso strumenti dedicati.
+          </p>
+
+        </article>
+
+
+        <article class="automotive-area-card reveal reveal-up">
+
+          <div class="automotive-area-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 16l4-5 4 3 5-7 3 3"></path>
+              <path d="M4 20h16"></path>
+            </svg>
+          </div>
+
+          <h3>
+            Remapping &amp; Tuning
+          </h3>
+
+          <p>
+            Software dedicato all'analisi
+            e alla gestione delle mappe ECU
+            e delle funzioni disponibili.
+          </p>
+
+        </article>
+
+
+        <article class="automotive-area-card reveal reveal-up">
+
+          <div class="automotive-area-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6"></circle>
+              <path d="M16 16l4 4"></path>
+            </svg>
+          </div>
+
+          <h3>
+            Diagnosi &amp; Verifica
+          </h3>
+
+          <p>
+            Strumenti software per supportare
+            l'analisi e la verifica delle centraline
+            elettroniche supportate.
+          </p>
+
+        </article>
+
+
+        <article class="automotive-area-card reveal reveal-up">
+
+          <div class="automotive-area-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 12a8 8 0 1 1-2.3-5.7"></path>
+              <path d="M20 4v6h-6"></path>
+            </svg>
+          </div>
+
+          <h3>
+            Aggiornamenti continui
+          </h3>
+
+          <p>
+            Nuove versioni, compatibilità
+            e funzionalità per mantenere
+            gli strumenti sempre evoluti.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       PRODUCTS
+       ====================================================== -->
+
+  <section
+    class="automotive-products"
+    id="prodotti">
+
+    <div class="container">
+
+      <div class="automotive-section-head reveal reveal-up">
+
+        <span class="automotive-section-label">
+          Prodotti
+        </span>
+
+        <h2>
+          Le soluzioni Automotive Turrin.
+        </h2>
+
+        <p>
+          Quattro prodotti con funzioni diverse,
+          progettati per accompagnare il lavoro
+          quotidiano dei professionisti automotive.
+        </p>
+
+      </div>
+
+
+      <div class="automotive-products-grid" data-stagger>
+
+
+        <article class="automotive-product-card reveal reveal-up">
+
+          <div class="automotive-product-image">
+
+            <img
+              src="images/products/mc3.webp"
+              alt="MC3 Turrin Elettronica"
+            >
+
+          </div>
+
+          <div class="automotive-product-content">
+
+            <span>
+              Hardware + Software
+            </span>
+
+            <h3>
+              MC3
+            </h3>
+
+            <p>
+              Sistema professionale hardware
+              e software per la programmazione
+              di ECU e TCU.
+            </p>
+
+          </div>
+
+          <a href="prodotti/mc3.html">
+            Scopri MC3
+            <span>→</span>
+          </a>
+
+        </article>
+
+
+        <article class="automotive-product-card reveal reveal-up">
+
+          <div class="automotive-product-image">
+
+            <img
+              src="images/products/t-race-pro.webp"
+              alt="T-Race Pro"
+            >
+
+          </div>
+
+          <div class="automotive-product-content">
+
+            <span>
+              Remapping
+            </span>
+
+            <h3>
+              T-Race Pro
+            </h3>
+
+            <p>
+              Software professionale dedicato
+              al remapping e alla gestione
+              delle mappe ECU.
+            </p>
+
+          </div>
+
+          <a href="prodotti/t-race-pro.html">
+            Scopri T-Race Pro
+            <span>→</span>
+          </a>
+
+        </article>
+
+
+        <article class="automotive-product-card reveal reveal-up">
+
+          <div class="automotive-product-image">
+
+            <img
+              src="images/products/tuning-solution.webp"
+              alt="Tuning Solution"
+            >
+
+          </div>
+
+          <div class="automotive-product-content">
+
+            <span>
+              Tuning Software
+            </span>
+
+            <h3>
+              Tuning Solution
+            </h3>
+
+            <p>
+              Soluzioni software dedicate
+              alla gestione delle funzioni
+              disponibili sulle ECU supportate.
+            </p>
+
+          </div>
+
+          <a href="prodotti/tuning-solution.html">
+            Scopri Tuning Solution
+            <span>→</span>
+          </a>
+
+        </article>
+
+
+        <article class="automotive-product-card reveal reveal-up">
+
+          <div class="automotive-product-image">
+
+            <img
+              src="images/products/check-ecu.webp"
+              alt="Check ECU"
+            >
+
+          </div>
+
+          <div class="automotive-product-content">
+
+            <span>
+              Diagnosi &amp; Verifica
+            </span>
+
+            <h3>
+              Check ECU
+            </h3>
+
+            <p>
+              Software professionale per
+              diagnosi e verifica delle
+              centraline elettroniche supportate.
+            </p>
+
+          </div>
+
+          <a href="prodotti/check-ecu.html">
+            Scopri Check ECU
+            <span>→</span>
+          </a>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       FOCUS
+       ====================================================== -->
+
+  <section class="automotive-focus">
+
+    <div class="container automotive-focus-grid">
+
+      <div class="automotive-focus-copy reveal reveal-left">
+
+        <span class="automotive-section-label">
+          Ecosistema Automotive
+        </span>
+
+        <h2>
+          Prodotti diversi,
+          pensati per <span>lavorare insieme.</span>
+        </h2>
+
+        <p>
+          L'offerta Turrin copre momenti differenti
+          del lavoro sulle centraline elettroniche:
+          programmazione, analisi, tuning,
+          diagnosi e verifica.
+        </p>
+
+        <div class="automotive-focus-note">
+          Ogni prodotto mantiene una funzione specifica,
+          ma tutti condividono lo stesso obiettivo:
+          rendere il lavoro tecnico più efficace,
+          aggiornabile e professionale.
+        </div>
+
+      </div>
+
+
+      <div class="automotive-focus-grid-list reveal reveal-right">
+
+        <article class="automotive-focus-card">
+          <span>01</span>
+          <strong>Programmazione</strong>
+          <p>
+            Hardware e software dedicati
+            alla gestione delle ECU / TCU.
+          </p>
+        </article>
+
+        <article class="automotive-focus-card">
+          <span>02</span>
+          <strong>Analisi</strong>
+          <p>
+            Strumenti software pensati
+            per lavorare sui dati e sulle mappe.
+          </p>
+        </article>
+
+        <article class="automotive-focus-card">
+          <span>03</span>
+          <strong>Tuning</strong>
+          <p>
+            Funzioni dedicate alle operazioni
+            disponibili sulle ECU supportate.
+          </p>
+        </article>
+
+        <article class="automotive-focus-card">
+          <span>04</span>
+          <strong>Verifica</strong>
+          <p>
+            Supporto software
+            alla diagnosi e al controllo
+            delle centraline.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       ECOSYSTEM / SUPPORT
+       ====================================================== -->
+
+  <section class="automotive-ecosystem">
+
+    <div class="container automotive-ecosystem-grid">
+
+      <div class="automotive-ecosystem-copy reveal reveal-left">
+
+        <span class="automotive-section-label">
+          Per il lavoro quotidiano
+        </span>
+
+        <h2>
+          Tecnologia che continua
+          a evolversi.
+        </h2>
+
+        <p>
+          L'Automotive Technologies non è composta
+          solo dai prodotti: aggiornamenti,
+          assistenza e sviluppo continuo
+          fanno parte dell'esperienza Turrin.
+        </p>
+
+      </div>
+
+
+      <div class="automotive-ecosystem-list reveal reveal-right">
+
+        <article class="automotive-ecosystem-card">
+          <strong>Aggiornamenti software</strong>
+          <span>
+            Nuove versioni e funzioni
+            disponibili attraverso
+            l'evoluzione dei prodotti.
+          </span>
+        </article>
+
+        <article class="automotive-ecosystem-card">
+          <strong>Aggiornamenti hardware</strong>
+          <span>
+            Evoluzione degli strumenti
+            quando il progetto lo richiede.
+          </span>
+        </article>
+
+        <article class="automotive-ecosystem-card">
+          <strong>Supporto tecnico</strong>
+          <span>
+            Assistenza basata sulla conoscenza
+            diretta dei sistemi sviluppati.
+          </span>
+        </article>
+
+        <article class="automotive-ecosystem-card">
+          <strong>Ricerca &amp; sviluppo</strong>
+          <span>
+            Sviluppo continuo di nuove funzioni,
+            compatibilità e soluzioni tecniche.
+          </span>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       UPDATES
+       ====================================================== -->
+
+  <section
+    class="shared-updates-section"
+    id="aggiornamenti"
+    data-updates-component
+    data-updates-root="./"
+    data-updates-product="all"
+    data-updates-limit="9"
+    data-updates-carousel="true">
+
+    <div class="container">
+
+      <div class="shared-updates-heading reveal reveal-up">
+
+        <div class="shared-updates-heading-copy">
+
+          <span class="section-label">
+            Ultimi aggiornamenti
+          </span>
+
+          <h2>
+            Automotive in continua evoluzione.
+          </h2>
+
+          <p>
+            Le ultime versioni e novità
+            disponibili per MC3, T-Race Pro,
+            Tuning Solution e Check ECU.
+          </p>
+
+        </div>
+
+        <a
+          class="shared-updates-all-link"
+          href="aggiornamenti.html">
+
+          Vedi tutti gli aggiornamenti
+          <span>→</span>
+
+        </a>
+
+      </div>
+
+
+      <div class="shared-updates-carousel reveal reveal-soft">
+
+        <div
+          class="shared-updates-track"
+          data-updates-grid>
+
+          <div class="shared-updates-message">
+            Caricamento aggiornamenti...
+          </div>
+
+        </div>
+
+        <div
+          class="shared-updates-dots"
+          data-updates-dots
+          aria-label="Navigazione aggiornamenti">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================================
+       CTA
+       ====================================================== -->
+
+  <section class="automotive-cta">
+
+    <div class="container">
+
+      <div class="automotive-cta-inner reveal reveal-up">
+
+        <div>
+
+          <h2>
+            Vuoi conoscere la soluzione più adatta al tuo lavoro?
+          </h2>
+
+          <p>
+            Contattaci per informazioni sui prodotti,
+            sulle funzionalità disponibili
+            e sulle soluzioni Automotive Turrin.
+          </p>
+
+        </div>
+
+
+        <div class="automotive-cta-actions">
+
+          <a
+            class="btn btn-outline"
+            href="azienda.html">
+
+            Scopri Turrin Elettronica
+
+          </a>
+
+          <a
+            class="btn btn-primary"
+            href="contatti.html">
+
+            Contattaci
+            <span>→</span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<div id="siteFooter"></div>
+
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+<script src="js/updates.js"></script>
+<script src="js/components.js"></script>
+
+</body>
+
+</html>
