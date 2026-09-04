@@ -2222,6 +2222,417 @@
         translateY(-5px)
         scale(1.035);
 }
+    /* =========================================================
+   ELECTRONIC ENGINEERING V2
+   ========================================================= */
+
+.home-electronic-v2 {
+    padding: 92px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f7fafc
+        );
+}
+
+
+.home-electronic-v2-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, .92fr)
+        minmax(420px, 1.08fr);
+
+    align-items: center;
+
+    gap: 72px;
+}
+
+
+/* LABEL */
+
+.home-electronic-label {
+    display: inline-flex;
+
+    margin-bottom: 15px;
+
+    color: #0b8b69;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: .10em;
+    text-transform: uppercase;
+}
+
+
+/* TITOLO */
+
+.home-electronic-v2 h2 {
+    max-width: 610px;
+
+    margin: 0;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            35px,
+            4.2vw,
+            52px
+        );
+
+    font-weight: 700;
+
+    line-height: 1.06;
+
+    letter-spacing: -.042em;
+}
+
+
+.home-electronic-v2 h2 span {
+    color: #0b8b69;
+}
+
+
+/* INTRO */
+
+.home-electronic-intro {
+    max-width: 660px;
+
+    margin: 20px 0 0;
+
+    color: #68788b;
+
+    font-size: 13px;
+    font-weight: 400;
+
+    line-height: 1.8;
+}
+
+
+/* CAPABILITIES */
+
+.home-electronic-capabilities {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-top: 28px;
+}
+
+
+.home-electronic-capability {
+    min-height: 116px;
+
+    display: grid;
+
+    grid-template-columns:
+        42px 1fr;
+
+    gap: 13px;
+
+    padding: 17px;
+
+    border:
+        1px solid #dfe8e5;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 25px
+        rgba(19,57,48,.045);
+}
+
+
+.home-electronic-capability-icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: #eaf8f3;
+    color: #0b8b69;
+}
+
+
+.home-electronic-capability-icon svg {
+    width: 20px;
+    height: 20px;
+
+    fill: none;
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+.home-electronic-capability strong {
+    display: block;
+
+    margin-top: 1px;
+
+    color: #203751;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.home-electronic-capability span {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #7b8999;
+
+    font-size: 9.5px;
+    font-weight: 400;
+
+    line-height: 1.6;
+}
+
+
+/* PROVA DEL KNOW-HOW */
+
+.home-electronic-proof {
+    margin-top: 20px;
+
+    padding: 15px 17px;
+
+    border:
+        1px solid #d7e8e2;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f2faf7,
+            #ffffff
+        );
+}
+
+
+.home-electronic-proof strong {
+    display: block;
+
+    color: #08785b;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.home-electronic-proof span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #718194;
+
+    font-size: 9.5px;
+    line-height: 1.6;
+}
+
+
+/* BUTTON */
+
+.home-electronic-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   FOTO
+   ========================================================= */
+
+.home-electronic-visual {
+    position: relative;
+
+    min-height: 560px;
+
+    overflow: hidden;
+
+    border-radius: 21px;
+
+    background: #071b3a;
+
+    box-shadow:
+        0 22px 55px
+        rgba(14,43,61,.16);
+}
+
+
+.home-electronic-visual img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position:
+        center 33%;
+
+    transition:
+        transform .6s ease;
+}
+
+
+.home-electronic-visual:hover img {
+    transform:
+        scale(1.025);
+}
+
+
+/* gradiente sull'immagine */
+
+.home-electronic-visual-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(4,40,34,.02) 20%,
+            rgba(4,40,34,.14) 48%,
+            rgba(3,37,31,.78) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* CARD SOPRA FOTO */
+
+.home-electronic-visual-card {
+    position: absolute;
+
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+
+    padding: 17px 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.17);
+
+    border-radius: 12px;
+
+    background:
+        rgba(4,36,31,.76);
+
+    backdrop-filter:
+        blur(13px);
+
+    box-shadow:
+        0 13px 30px
+        rgba(0,0,0,.14);
+}
+
+
+.home-electronic-visual-card span {
+    display: block;
+
+    color: #62d8ae;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+
+.home-electronic-visual-card strong {
+    display: block;
+
+    max-width: 390px;
+
+    margin-top: 6px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width: 1000px) {
+
+    .home-electronic-v2-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .home-electronic-visual {
+        min-height: 500px;
+    }
+
+}
+
+
+@media(max-width: 650px) {
+
+    .home-electronic-v2 {
+        padding: 68px 0;
+    }
+
+
+    .home-electronic-capabilities {
+        grid-template-columns: 1fr;
+    }
+
+
+    .home-electronic-visual {
+        min-height: 410px;
+
+        border-radius: 17px;
+    }
+
+
+    .home-electronic-actions {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    .home-electronic-actions .btn {
+        width: 100%;
+    }
+
+}
   </style>
 
 </head>
@@ -2841,160 +3252,290 @@
        ELECTRONIC ENGINEERING
        ====================================================== -->
 
-  <section
-    class="home-electronic"
+<section
+    class="home-electronic-v2"
     id="elettronica">
 
-    <div class="container home-engineering-grid">
+    <div class="container home-electronic-v2-grid">
 
-      <div
-        class="
-          home-engineering-copy
-          reveal
-          reveal-left
-        ">
-
-        <span class="home-kicker">
-          Electronic Engineering
-        </span>
-
-
-        <div class="home-section-head">
-
-          <h2>
-            Dall'elettronica
-            al sistema completo.
-          </h2>
-
-        </div>
-
-
-        <p>
-          L'esperienza maturata nello sviluppo dei prodotti
-          Turrin unisce progettazione elettronica, hardware,
-          firmware e software in un unico processo tecnico.
-        </p>
-
-
-        <div class="home-capabilities">
-
-          <div class="home-capability">
-
-            <strong>
-              Hardware dedicato
-            </strong>
-
-            <span>
-              Sistemi progettati per lavorare insieme
-              al software e alle procedure operative.
-            </span>
-
-          </div>
-
-
-          <div class="home-capability">
-
-            <strong>
-              Firmware &amp; Embedded
-            </strong>
-
-            <span>
-              Logica di controllo e integrazione
-              tra dispositivi e applicazioni software.
-            </span>
-
-          </div>
-
-
-          <div class="home-capability">
-
-            <strong>
-              Integrazione
-            </strong>
-
-            <span>
-              Hardware e software sviluppati
-              come parti dello stesso sistema.
-            </span>
-
-          </div>
-
-
-          <div class="home-capability">
-
-            <strong>
-              Sviluppo tecnico
-            </strong>
-
-            <span>
-              Evoluzione, test e miglioramento
-              continuo delle soluzioni realizzate.
-            </span>
-
-          </div>
-
-        </div>
-
+        <!-- TESTO -->
 
         <div
-          class="home-software-actions">
+            class="
+                home-electronic-v2-copy
+                reveal
+                reveal-left
+            ">
 
-          <a
-            class="btn btn-primary"
-            href="azienda.html">
-
-            Scopri l'azienda
-            <span>→</span>
-
-          </a>
+            <span class="home-electronic-label">
+                Electronic Engineering
+            </span>
 
 
-          <a
-            class="btn btn-outline"
-            href="contatti.html">
+            <h2>
+                Dall'idea al
+                <span>sistema elettronico.</span>
+            </h2>
 
-            Parliamo del progetto
 
-          </a>
+            <p class="home-electronic-intro">
+                Sviluppiamo soluzioni elettroniche integrando
+                hardware, firmware e software in un unico processo
+                tecnico, dalla progettazione fino al test
+                e all'evoluzione del prodotto.
+            </p>
+
+
+            <div class="home-electronic-capabilities">
+
+                <article class="home-electronic-capability">
+
+                    <span class="home-electronic-capability-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true">
+
+                            <rect
+                                x="6"
+                                y="6"
+                                width="12"
+                                height="12"
+                                rx="2">
+                            </rect>
+
+                            <path
+                                d="
+                                    M9 2v4
+                                    M15 2v4
+                                    M9 18v4
+                                    M15 18v4
+                                    M2 9h4
+                                    M2 15h4
+                                    M18 9h4
+                                    M18 15h4
+                                ">
+                            </path>
+
+                        </svg>
+
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Hardware Design
+                        </strong>
+
+                        <span>
+                            Sviluppo di sistemi elettronici
+                            dedicati alle esigenze del progetto.
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="home-electronic-capability">
+
+                    <span class="home-electronic-capability-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true">
+
+                            <path
+                                d="M8 8h8v8H8z">
+                            </path>
+
+                            <path
+                                d="
+                                    M4 4h4
+                                    M16 4h4
+                                    M4 20h4
+                                    M16 20h4
+                                ">
+                            </path>
+
+                        </svg>
+
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Embedded Systems
+                        </strong>
+
+                        <span>
+                            Hardware e logica di controllo
+                            progettati per lavorare insieme.
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="home-electronic-capability">
+
+                    <span class="home-electronic-capability-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true">
+
+                            <path
+                                d="
+                                    M8 8l-4 4 4 4
+                                    M16 8l4 4-4 4
+                                    M14 5l-4 14
+                                ">
+                            </path>
+
+                        </svg>
+
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Firmware Development
+                        </strong>
+
+                        <span>
+                            Software embedded per il controllo
+                            e la comunicazione dei dispositivi.
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="home-electronic-capability">
+
+                    <span class="home-electronic-capability-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true">
+
+                            <path
+                                d="
+                                    M4 17l4-4 3 3 6-8 3 3
+                                ">
+                            </path>
+
+                            <path
+                                d="M4 21h16">
+                            </path>
+
+                        </svg>
+
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Prototyping &amp; Testing
+                        </strong>
+
+                        <span>
+                            Prototipazione, verifica
+                            e miglioramento continuo
+                            delle soluzioni sviluppate.
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="home-electronic-proof">
+
+                <strong>
+                    Hardware + Firmware + Software
+                </strong>
+
+                <span>
+                    Il know-how maturato nello sviluppo dei prodotti
+                    automotive Turrin costituisce la base tecnica
+                    dell'Electronic Engineering.
+                </span>
+
+            </div>
+
+
+            <div class="home-electronic-actions">
+
+                <a
+                    class="btn btn-primary"
+                    href="azienda.html">
+
+                    Scopri l'azienda
+                    <span>→</span>
+
+                </a>
+
+
+                <a
+                    class="btn btn-outline"
+                    href="contatti.html">
+
+                    Parliamo del progetto
+
+                </a>
+
+            </div>
 
         </div>
 
-      </div>
+
+        <!-- FOTO -->
+
+        <div
+            class="
+                home-electronic-visual
+                reveal
+                reveal-right
+            ">
+
+            <img
+                src="images/home/electronic-engineering.webp"
+                alt="Sviluppo elettronico e sistemi embedded"
+                loading="lazy"
+            >
 
 
-      <div
-        class="
-          home-engineering-proof
-          reveal
-          reveal-right
-        ">
-
-        <img
-          src="images/products/mc3.webp"
-          alt="Esempio di hardware sviluppato da Turrin Elettronica"
-          loading="lazy"
-        >
+            <div class="home-electronic-visual-overlay"></div>
 
 
-        <div class="home-engineering-proof-label">
+            <div class="home-electronic-visual-card">
 
-          <span>
-            Esperienza interna
-          </span>
+                <span>
+                    Integrated Engineering
+                </span>
 
-          <strong>
-            I prodotti automotive dimostrano
-            l'integrazione tra hardware
-            e software sviluppata dall'azienda.
-          </strong>
+                <strong>
+                    Elettronica e software
+                    progettati come un unico sistema.
+                </strong>
+
+            </div>
 
         </div>
-
-      </div>
 
     </div>
 
-  </section>
+</section>
 
 
   <!-- ======================================================
