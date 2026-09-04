@@ -49,25 +49,33 @@
        HERO
        ========================================================= */
 
-    .home-hero-v2 {
-      position: relative;
-      overflow: hidden;
+.home-hero-v2 {
+    position: relative;
+    overflow: hidden;
 
-      padding: 84px 0 76px;
+    min-height: 560px;
 
-      background:
-        radial-gradient(
-          circle at 73% 28%,
-          rgba(29, 126, 255, .18),
-          transparent 27%
-        ),
+    display: flex;
+    align-items: center;
+
+    padding: 84px 0 76px;
+
+    background:
         linear-gradient(
-          128deg,
-          #06162f 0%,
-          #08254a 47%,
-          #063a78 100%
-        );
-    }
+            90deg,
+            rgba(3, 17, 38, .96) 0%,
+            rgba(3, 17, 38, .88) 32%,
+            rgba(3, 17, 38, .48) 58%,
+            rgba(3, 17, 38, .10) 100%
+        ),
+        url("images/home/hero-bg.webp");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    color: #ffffff;
+}
 
 
     .home-hero-v2::before {
