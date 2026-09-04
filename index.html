@@ -424,32 +424,15 @@
     }
 
 
-    .home-division-card {
-      position: relative;
+.home-division-card {
+    position: relative;
+    overflow: hidden;
 
-      min-height: 410px;
+    background-size: cover;
+    background-position: center;
 
-      overflow: hidden;
-
-      display: flex;
-      flex-direction: column;
-
-      padding: 28px;
-
-      border-radius: 18px;
-
-      color: #ffffff;
-
-      text-decoration: none;
-
-      box-shadow:
-        0 17px 42px
-        rgba(14,38,70,.11);
-
-      transition:
-        transform .27s ease,
-        box-shadow .27s ease;
-    }
+    min-height: 430px;
+}
 
 
     .home-division-card:hover {
@@ -462,49 +445,40 @@
     }
 
 
-    .home-division-card.automotive {
-      background:
-        radial-gradient(
-          circle at 90% 18%,
-          rgba(73,169,255,.28),
-          transparent 31%
-        ),
+.home-division-card.automotive {
+    background-image:
         linear-gradient(
-          145deg,
-          #063d80,
-          #071b3a 76%
-        );
-    }
-
-
-    .home-division-card.electronic {
-      background:
-        radial-gradient(
-          circle at 88% 15%,
-          rgba(74,236,165,.22),
-          transparent 29%
+            180deg,
+            rgba(4, 29, 62, .18) 0%,
+            rgba(4, 29, 62, .72) 58%,
+            rgba(4, 29, 62, .96) 100%
         ),
+        url("images/home/division-automotive.webp");
+}
+
+
+.home-division-card.electronic {
+    background-image:
         linear-gradient(
-          145deg,
-          #0c6147,
-          #063529 78%
-        );
-    }
-
-
-    .home-division-card.software {
-      background:
-        radial-gradient(
-          circle at 88% 15%,
-          rgba(166,112,255,.27),
-          transparent 29%
+            180deg,
+            rgba(3, 55, 39, .15) 0%,
+            rgba(3, 55, 39, .72) 58%,
+            rgba(3, 55, 39, .96) 100%
         ),
+        url("images/home/division-electronic.webp");
+}
+
+
+.home-division-card.software {
+    background-image:
         linear-gradient(
-          145deg,
-          #5130a0,
-          #251954 78%
-        );
-    }
+            180deg,
+            rgba(40, 23, 83, .14) 0%,
+            rgba(40, 23, 83, .72) 58%,
+            rgba(40, 23, 83, .97) 100%
+        ),
+        url("images/home/division-software.webp");
+}
 
 
     .home-division-card::after {
@@ -625,10 +599,10 @@
 
       margin: 15px 0 0;
 
-      color: rgba(255,255,255,.72);
-
-      font-size: 11px;
-      line-height: 1.7;
+      color: rgba(255,255,255,.78);
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 1.65;
     }
 
 
@@ -650,14 +624,11 @@
 
 
     .home-division-list li {
-      display: flex;
-      align-items: center;
+   font-size: 12px;
+    font-weight: 400;
 
-      gap: 8px;
-
-      color: rgba(255,255,255,.72);
-
-      font-size: 10px;
+    color:
+        rgba(255,255,255,.73);
     }
 
 
