@@ -1864,6 +1864,352 @@
 .home-new-badge {
     font-weight: 600;
 }
+/* =========================================================
+   HOME - PRODOTTI AUTOMOTIVE
+   RESTYLING PREMIUM
+   ========================================================= */
+
+.home-products-area {
+    padding: 82px 0 88px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f5f9fd 0%,
+            #edf4fb 100%
+        );
+}
+
+
+/* spazio tra le card */
+
+.home-products-area .product-track {
+    gap: 20px;
+}
+
+
+/* CARD */
+
+.home-products-area .product-card {
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 455px;
+
+    display: flex;
+    flex-direction: column;
+
+    border:
+        1px solid #dfe7f0;
+
+    border-radius: 17px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 12px 34px
+        rgba(21, 47, 80, .07);
+
+    transition:
+        transform .28s ease,
+        box-shadow .28s ease,
+        border-color .28s ease;
+}
+
+
+.home-products-area .product-card:hover {
+    transform:
+        translateY(-6px);
+
+    border-color:
+        #cbd8e7;
+
+    box-shadow:
+        0 22px 48px
+        rgba(21, 47, 80, .13);
+}
+
+
+/* =========================================================
+   AREA IMMAGINE
+   ========================================================= */
+
+.home-products-area .product-image {
+    position: relative;
+
+    height: 235px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 28px;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(72, 150, 255, .13),
+            transparent 41%
+        ),
+        linear-gradient(
+            145deg,
+            #f9fbfe,
+            #edf4fb
+        );
+
+    border-bottom:
+        1px solid #e6edf5;
+}
+
+
+/* piccolo effetto tecnico */
+
+.home-products-area .product-image::after {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: -92px;
+    bottom: -105px;
+
+    border:
+        1px solid
+        rgba(7, 89, 216, .08);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 35px
+        rgba(7, 89, 216, .018),
+        0 0 0 70px
+        rgba(7, 89, 216, .010);
+
+    pointer-events: none;
+}
+
+
+/* immagini prodotti */
+
+.home-products-area .product-image img {
+    position: relative;
+
+    z-index: 2;
+
+    width: auto;
+    max-width: 90%;
+
+    height: auto;
+    max-height: 180px;
+
+    object-fit: contain;
+
+    transition:
+        transform .32s ease;
+
+    filter:
+        drop-shadow(
+            0 14px 18px
+            rgba(12, 31, 55, .16)
+        );
+}
+
+
+.home-products-area
+.product-card:hover
+.product-image img {
+
+    transform:
+        translateY(-4px)
+        scale(1.025);
+}
+
+
+/* =========================================================
+   TESTO
+   ========================================================= */
+
+.home-products-area .product-info {
+    flex: 1;
+
+    padding:
+        22px 22px 12px;
+}
+
+
+.home-products-area .product-info h2 {
+    margin: 0;
+
+    color: #071b3a;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: -.025em;
+}
+
+
+.home-products-area .product-info p {
+    margin: 10px 0 0;
+
+    color: #718095;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   LINK IN BASSO
+   ========================================================= */
+
+.home-products-area .product-card > a {
+    min-height: 59px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-top: auto;
+
+    padding: 0 22px;
+
+    border-top:
+        1px solid #e7edf4;
+
+    color: #0759d8;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+}
+
+
+.home-products-area
+.product-card > a:hover {
+
+    background: #f7faff;
+}
+
+
+/* freccia */
+
+.home-products-area
+.product-card > a span {
+
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    flex: 0 0 auto;
+
+    border-radius: 9px;
+
+    background: #edf4ff;
+
+    color: #0759d8;
+
+    font-size: 17px;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease;
+}
+
+
+.home-products-area
+.product-card > a:hover span {
+
+    transform:
+        translateX(3px);
+
+    background: #0759d8;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   FRECCE CAROSELLO
+   ========================================================= */
+
+.home-products-area .carousel-arrow {
+    width: 44px;
+    height: 44px;
+
+    border:
+        1px solid #d3deea;
+
+    border-radius: 11px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    color: #193650;
+
+    box-shadow:
+        0 8px 22px
+        rgba(20, 46, 79, .09);
+
+    font-weight: 400;
+}
+
+
+.home-products-area .carousel-arrow:hover {
+    border-color: #0759d8;
+
+    background: #0759d8;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width: 700px) {
+
+    .home-products-area {
+        padding:
+            65px 0 70px;
+    }
+
+
+    .home-products-area .product-card {
+        min-height: 430px;
+    }
+
+
+    .home-products-area .product-image {
+        height: 220px;
+    }
+
+
+    .home-products-area
+    .product-image img {
+
+        max-height: 165px;
+    }
+
+}
   </style>
 
 </head>
