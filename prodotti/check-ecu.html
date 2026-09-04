@@ -1,0 +1,3044 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Check ECU | Turrin Elettronica
+    </title>
+
+    <meta
+        name="description"
+        content="Check ECU, software professionale per verifica, ripristino e riverginazione dei dati EEPROM e Flash delle centraline elettroniche."
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .check-page img {
+            max-width: 100%;
+        }
+
+
+        /* =========================================
+           HERO
+           ========================================= */
+
+        .check-page .check-hero {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 105px 0 95px;
+
+            background:
+                radial-gradient(
+                    circle at 82% 42%,
+                    rgba(7,89,216,.14),
+                    transparent 31%
+                ),
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #f7faff 56%,
+                    #edf4ff 100%
+                );
+        }
+
+
+        .check-page .check-hero::after {
+            content: "";
+
+            position: absolute;
+
+            right: -190px;
+            top: -230px;
+
+            width: 650px;
+            height: 650px;
+
+            border:
+                1px solid
+                rgba(7,89,216,.08);
+
+            border-radius: 50%;
+        }
+
+
+        .check-page .check-hero-grid {
+            position: relative;
+
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0,1fr)
+                minmax(420px,.95fr);
+
+            align-items: center;
+
+            gap: 75px;
+        }
+
+
+        .check-page .check-kicker {
+            display: inline-block;
+
+            margin-bottom: 18px;
+
+            color: #0759d8;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: .13em;
+
+            text-transform: uppercase;
+        }
+
+
+        .check-page .check-hero h1 {
+            margin: 0;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    54px,
+                    7vw,
+                    84px
+                );
+
+            line-height: .95;
+
+            letter-spacing: -.05em;
+        }
+
+
+        .check-page .check-hero h1 span {
+            color: #0759d8;
+        }
+
+
+        .check-page .check-hero h2 {
+            max-width: 670px;
+
+            margin:
+                25px 0 18px;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    30px,
+                    4vw,
+                    45px
+                );
+
+            line-height: 1.1;
+        }
+
+
+        .check-page .check-hero-description {
+            max-width: 620px;
+
+            margin:
+                0 0 25px;
+
+            color: #617084;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+
+        .check-page .check-tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .check-page .check-tags span {
+            padding: 7px 11px;
+
+            border:
+                1px solid #d8e3ef;
+
+            border-radius: 30px;
+
+            background: #ffffff;
+
+            color: #415168;
+
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+
+        .check-page .check-hero-visual {
+            position: relative;
+
+            min-height: 470px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .check-page .check-hero-glow {
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(7,89,216,.23),
+                    transparent 68%
+                );
+        }
+
+
+        .check-page .check-hero-image {
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+
+            max-height: 445px;
+
+            object-fit: contain;
+
+            filter:
+                drop-shadow(
+                    0 30px 34px
+                    rgba(7,27,58,.20)
+                );
+        }
+
+
+        .check-page .check-floating-card {
+            position: absolute;
+
+            z-index: 3;
+
+            min-width: 160px;
+
+            padding: 12px 15px;
+
+            border:
+                1px solid #d7e2ee;
+
+            border-radius: 9px;
+
+            background:
+                rgba(255,255,255,.93);
+
+            box-shadow:
+                0 14px 35px
+                rgba(20,45,80,.12);
+
+            backdrop-filter:
+                blur(10px);
+        }
+
+
+        .check-page .check-floating-card span {
+            display: block;
+
+            margin-bottom: 3px;
+
+            color: #8290a2;
+
+            font-size: 9px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: .08em;
+        }
+
+
+        .check-page .check-floating-card strong {
+            color: #172a45;
+
+            font-size: 11px;
+        }
+
+
+        .check-page .check-card-top {
+            right: 0;
+            top: 18%;
+        }
+
+
+        .check-page .check-card-bottom {
+            left: 2%;
+            bottom: 16%;
+        }
+
+
+        /* =========================================
+           COMMON
+           ========================================= */
+
+        .check-page .check-section {
+            padding: 110px 0;
+        }
+
+
+        .check-page .check-section-heading {
+            max-width: 760px;
+
+            margin-bottom: 48px;
+        }
+
+
+        .check-page .check-section-heading.center {
+            margin-left: auto;
+            margin-right: auto;
+
+            text-align: center;
+        }
+
+
+        .check-page .section-label {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #0759d8;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: .12em;
+
+            text-transform: uppercase;
+        }
+
+
+        .check-page .check-section-heading h2 {
+            margin:
+                0 0 16px;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    35px,
+                    5vw,
+                    52px
+                );
+
+            line-height: 1.08;
+
+            letter-spacing: -.025em;
+        }
+
+
+        .check-page .check-section-heading h2 span {
+            color: #0759d8;
+        }
+
+
+        .check-page .check-section-heading p {
+            max-width: 670px;
+
+            margin: 0;
+
+            color: #657489;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =========================================
+           CORE / EEPROM FLASH
+           ========================================= */
+
+        .check-page .check-core {
+            background: #ffffff;
+        }
+
+
+        .check-page .check-core-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0,.95fr)
+                minmax(420px,1.05fr);
+
+            align-items: center;
+
+            gap: 80px;
+        }
+
+
+        .check-page .check-core-copy h2 {
+            margin:
+                0 0 18px;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    36px,
+                    5vw,
+                    52px
+                );
+
+            line-height: 1.08;
+
+            letter-spacing: -.025em;
+        }
+
+
+        .check-page .check-core-copy h2 span {
+            color: #0759d8;
+        }
+
+
+        .check-page .check-core-copy > p {
+            margin:
+                0 0 30px;
+
+            color: #647286;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+
+        .check-page .check-core-list {
+            display: grid;
+
+            gap: 14px;
+        }
+
+
+        .check-page .check-core-item {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 13px;
+        }
+
+
+        .check-page .check-core-icon {
+            width: 30px;
+            height: 30px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #edf4ff;
+
+            color: #0759d8;
+
+            font-size: 11px;
+            font-weight: 900;
+        }
+
+
+        .check-page .check-core-item strong {
+            display: block;
+
+            margin-bottom: 3px;
+
+            color: #1c2e47;
+
+            font-size: 13px;
+        }
+
+
+        .check-page .check-core-item span {
+            color: #788597;
+
+            font-size: 11px;
+
+            line-height: 1.55;
+        }
+
+
+        /* =========================================
+           SCAN VISUAL
+           ========================================= */
+
+        .check-page .scan-terminal {
+            position: relative;
+
+            min-height: 430px;
+
+            overflow: hidden;
+
+            padding: 30px;
+
+            border:
+                1px solid #19365f;
+
+            border-radius: 18px;
+
+            background:
+                radial-gradient(
+                    circle at 75% 25%,
+                    rgba(7,89,216,.28),
+                    transparent 38%
+                ),
+                #071b3a;
+
+            box-shadow:
+                0 30px 65px
+                rgba(7,27,58,.20);
+        }
+
+
+        .check-page .scan-terminal-header {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding-bottom: 18px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.10);
+        }
+
+
+        .check-page .scan-terminal-header span {
+            color: #8298b5;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            letter-spacing: .11em;
+        }
+
+
+        .check-page .scan-status {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #55df93;
+
+            font-size: 8px;
+            font-weight: 900;
+        }
+
+
+        .check-page .scan-status::before {
+            content: "";
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #45dc86;
+
+            box-shadow:
+                0 0 9px
+                rgba(69,220,134,.75);
+        }
+
+
+        .check-page .scan-stage {
+            position: relative;
+
+            min-height: 315px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0,1fr)
+                );
+
+            gap: 12px;
+
+            padding-top: 28px;
+        }
+
+
+        .check-page .scan-card {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 22px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.045);
+        }
+
+
+        .check-page .scan-card small {
+            display: block;
+
+            margin-bottom: 22px;
+
+            color: #647b99;
+
+            font-size: 8px;
+            font-weight: 900;
+
+            letter-spacing: .11em;
+        }
+
+
+        .check-page .scan-card strong {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #ffffff;
+
+            font-size: 17px;
+        }
+
+
+        .check-page .scan-card span {
+            color: #8fa3bd;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+        }
+
+
+        .check-page .scan-line {
+            position: absolute;
+
+            z-index: 5;
+
+            left: 0;
+            right: 0;
+            top: -10%;
+
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #4f9cff,
+                    transparent
+                );
+
+            box-shadow:
+                0 0 18px
+                rgba(79,156,255,.85);
+
+            animation:
+                checkScan
+                3.4s ease-in-out
+                infinite;
+        }
+
+
+        @keyframes checkScan {
+
+            0% {
+                top: 5%;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 95%;
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================================
+           MODULES
+           ========================================= */
+
+        .check-page .check-modules {
+            position: relative;
+
+            overflow: hidden;
+
+            background: #071b3a;
+        }
+
+
+        .check-page .check-modules::before {
+            content: "";
+
+            position: absolute;
+
+            right: -260px;
+            top: -290px;
+
+            width: 720px;
+            height: 720px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(7,89,216,.30),
+                    transparent 68%
+                );
+        }
+
+
+        .check-page .check-modules
+        .check-section-heading {
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .check-page .check-modules
+        .section-label {
+            color: #66aaff;
+        }
+
+
+        .check-page .check-modules
+        .check-section-heading h2 {
+            color: #ffffff;
+        }
+
+
+        .check-page .check-modules
+        .check-section-heading p {
+            color: #aebdd0;
+        }
+
+
+        .check-page .module-grid {
+            position: relative;
+
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(0,1fr)
+                );
+
+            gap: 14px;
+        }
+
+
+        .check-page .module-card {
+            min-height: 180px;
+
+            padding: 25px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            border-radius: 13px;
+
+            background:
+                rgba(255,255,255,.045);
+
+            transition:
+                transform .22s ease,
+                background .22s ease,
+                border-color .22s ease;
+        }
+
+
+        .check-page .module-card:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(102,170,255,.42);
+
+            background:
+                rgba(7,89,216,.10);
+        }
+
+
+        .check-page .module-index {
+            display: block;
+
+            margin-bottom: 34px;
+
+            color: #6f86a4;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            letter-spacing: .10em;
+        }
+
+
+        .check-page .module-card h3 {
+            margin:
+                0 0 9px;
+
+            color: #ffffff;
+
+            font-size: 19px;
+        }
+
+
+        .check-page .module-card p {
+            margin: 0;
+
+            color: #9fb0c6;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           OFFLINE / DONGLE
+           ========================================= */
+
+        .check-page .check-offline {
+            background:
+                linear-gradient(
+                    135deg,
+                    #f8fbff,
+                    #ffffff 55%,
+                    #eef5ff
+                );
+        }
+
+
+        .check-page .offline-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0,1fr)
+                minmax(380px,.85fr);
+
+            align-items: center;
+
+            gap: 75px;
+        }
+
+
+        .check-page .offline-copy h2 {
+            margin:
+                0 0 18px;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    36px,
+                    5vw,
+                    52px
+                );
+
+            line-height: 1.08;
+
+            letter-spacing: -.025em;
+        }
+
+
+        .check-page .offline-copy h2 span {
+            color: #0759d8;
+        }
+
+
+        .check-page .offline-copy p {
+            max-width: 620px;
+
+            margin: 0;
+
+            color: #657489;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+
+        .check-page .dongle-card {
+            position: relative;
+
+            min-height: 340px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            padding: 34px;
+
+            overflow: hidden;
+
+            border:
+                1px solid #dce5ef;
+
+            border-radius: 18px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 22px 55px
+                rgba(20,45,80,.09);
+        }
+
+
+        .check-page .dongle-card::after {
+            content: "";
+
+            position: absolute;
+
+            right: -120px;
+            bottom: -140px;
+
+            width: 310px;
+            height: 310px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(7,89,216,.16),
+                    transparent 68%
+                );
+        }
+
+
+        .check-page .dongle-label {
+            color: #8694a7;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            letter-spacing: .11em;
+
+            text-transform: uppercase;
+        }
+
+
+        .check-page .dongle-symbol {
+            position: relative;
+
+            z-index: 2;
+
+            width: 110px;
+            height: 110px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin:
+                30px auto;
+
+            border:
+                1px solid #cfe0f4;
+
+            border-radius: 28px;
+
+            background: #edf4ff;
+
+            color: #0759d8;
+
+            font-size: 24px;
+            font-weight: 900;
+
+            letter-spacing: -.03em;
+        }
+
+
+        .check-page .dongle-card strong {
+            position: relative;
+
+            z-index: 2;
+
+            color: #172c48;
+
+            font-size: 20px;
+        }
+
+
+        .check-page .dongle-card p {
+            position: relative;
+
+            z-index: 2;
+
+            margin:
+                8px 0 0;
+
+            color: #758397;
+
+            font-size: 11px;
+
+            line-height: 1.55;
+        }
+
+
+        /* =========================================
+           VEHICLES / COVERAGE
+           ========================================= */
+
+        .check-page .check-coverage {
+            background: #ffffff;
+        }
+
+
+        .check-page .coverage-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    minmax(0,1fr)
+                );
+
+            gap: 14px;
+        }
+
+
+        .check-page .coverage-card {
+            min-height: 180px;
+
+            padding: 25px;
+
+            border:
+                1px solid #dde6ef;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #ffffff,
+                    #f8fbff
+                );
+        }
+
+
+        .check-page .coverage-card span {
+            display: block;
+
+            margin-bottom: 28px;
+
+            color: #8c99aa;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            letter-spacing: .1em;
+        }
+
+
+        .check-page .coverage-card strong {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #172c48;
+
+            font-size: 18px;
+        }
+
+
+        .check-page .coverage-card p {
+            margin: 0;
+
+            color: #748296;
+
+            font-size: 11px;
+
+            line-height: 1.55;
+        }
+
+
+        .check-page .coverage-action {
+            margin-top: 34px;
+
+            text-align: center;
+        }
+
+
+        /* =========================================
+           UPDATES
+           ========================================= */
+
+        .check-page .check-updates {
+            background: #f5f8fc;
+        }
+
+
+        .check-page .check-updates-heading {
+            display: flex;
+
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 40px;
+
+            margin-bottom: 42px;
+        }
+
+
+        .check-page .check-updates-heading > div {
+            max-width: 700px;
+        }
+
+
+        .check-page .check-updates-heading h2 {
+            margin:
+                0 0 14px;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    35px,
+                    5vw,
+                    50px
+                );
+
+            line-height: 1.08;
+
+            letter-spacing: -.025em;
+        }
+
+
+        .check-page .check-updates-heading p {
+            max-width: 620px;
+
+            margin: 0;
+
+            color: #657489;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        .check-page .updates-all-link {
+            flex-shrink: 0;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: #0759d8;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            text-decoration: none;
+        }
+
+
+        .check-page .updates-all-link span {
+            transition:
+                transform .2s ease;
+        }
+
+
+        .check-page .updates-all-link:hover span {
+            transform:
+                translateX(4px);
+        }
+
+
+        .check-page .check-updates-grid {
+        
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(0,1fr)
+                );
+
+            gap: 18px;
+        }
+
+
+        .check-page .check-update-card {
+            overflow: hidden;
+
+            border:
+                1px solid #dde6ef;
+
+            border-radius: 14px;
+
+            background: #ffffff;
+
+            color: inherit;
+
+            text-decoration: none;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+
+        .check-page .check-update-card:hover {
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 17px 38px
+                rgba(20,45,80,.08);
+        }
+
+
+        .check-page .check-update-image {
+            width: 100%;
+            height: 190px;
+
+            object-fit: cover;
+
+            background: #eaf0f7;
+        }
+
+
+        .check-page .check-update-placeholder {
+            height: 190px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #071b3a,
+                    #0759d8
+                );
+
+            color:
+                rgba(255,255,255,.70);
+
+            font-size: 18px;
+            font-weight: 900;
+
+            letter-spacing: .07em;
+        }
+
+
+        .check-page .check-update-content {
+            padding: 22px;
+        }
+
+
+        .check-page .check-update-meta {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .check-page .check-update-meta span {
+            padding: 5px 8px;
+
+            border-radius: 20px;
+
+            background: #edf4ff;
+
+            color: #61738a;
+
+            font-size: 8px;
+            font-weight: 800;
+        }
+
+
+        .check-page .check-update-card h3 {
+            margin:
+                0 0 9px;
+
+            color: #172c48;
+
+            font-size: 18px;
+
+            line-height: 1.3;
+        }
+
+
+        .check-page .check-update-card p {
+            margin:
+                0 0 16px;
+
+            color: #748296;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        .check-page .check-update-more {
+            color: #0759d8;
+
+            font-size: 10px;
+            font-weight: 900;
+        }
+
+
+        .check-page .updates-loading,
+        .check-page .updates-empty {
+            grid-column:
+                1 / -1;
+
+            padding: 45px;
+
+            border:
+                1px solid #dde6ef;
+
+            border-radius: 13px;
+
+            background: #ffffff;
+
+            color: #758397;
+
+            text-align: center;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================
+           CTA
+           ========================================= */
+
+        .check-page .product-cta {
+            padding: 75px 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0759d8,
+                    #06429e
+                );
+
+            color: #ffffff;
+        }
+
+
+        .check-page .product-cta-inner {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 35px;
+        }
+
+
+        .check-page .product-cta h2 {
+            margin:
+                0 0 8px;
+
+            font-size: 32px;
+        }
+
+
+        .check-page .product-cta p {
+            margin: 0;
+
+            color: #dbe8ff;
+        }
+
+
+
+
+        /* =========================================
+           VIDEO CHECK ECU
+           ========================================= */
+
+        .check-page .check-video-section {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #f6f9fd 100%
+                );
+        }
+
+
+        .check-page .check-video-shell {
+            max-width: 1080px;
+
+            margin: 0 auto;
+
+            padding: 12px;
+
+            border:
+                1px solid #dce5ef;
+
+            border-radius: 21px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 28px 68px
+                rgba(20,45,80,.12);
+        }
+
+
+        .check-page .check-video-frame {
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 14px;
+
+            background: #071b3a;
+        }
+
+
+        .check-page .check-video {
+            display: block;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            object-fit: contain;
+
+            background: #071b3a;
+        }
+
+
+        .check-page .check-video-play {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 11px;
+
+            border: 0;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(7,89,216,.15),
+                    rgba(7,27,58,.18) 45%,
+                    rgba(7,27,58,.48) 100%
+                );
+
+            color: #ffffff;
+
+            cursor: pointer;
+
+            transition:
+                opacity .25s ease,
+                background .25s ease;
+        }
+
+
+        .check-page .check-video-play:hover {
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(7,89,216,.27),
+                    rgba(7,27,58,.18) 47%,
+                    rgba(7,27,58,.48) 100%
+                );
+        }
+
+
+        .check-page .check-video-play.hidden {
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+
+        .check-page .check-video-play-icon {
+            width: 72px;
+            height: 72px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding-left: 5px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.45);
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.94);
+
+            color: #0759d8;
+
+            box-shadow:
+                0 16px 35px
+                rgba(0,0,0,.20);
+
+            font-size: 22px;
+
+            transition:
+                transform .22s ease;
+        }
+
+
+        .check-page
+        .check-video-play:hover
+        .check-video-play-icon {
+            transform:
+                scale(1.07);
+        }
+
+
+        .check-page .check-video-play-text {
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+
+        .check-page .check-video-play small {
+            color:
+                rgba(255,255,255,.70);
+
+            font-size: 9px;
+            font-weight: 800;
+
+            letter-spacing: .08em;
+        }
+
+
+        /* =========================================
+           SECURITY → COVERAGE SPACING
+           ========================================= */
+
+        .check-page .check-offline {
+            padding-top: 90px;
+            padding-bottom: 45px;
+        }
+
+
+        .check-page .check-coverage {
+            padding-top: 55px;
+            padding-bottom: 100px;
+        }
+
+
+        /* =========================================
+           COVERAGE IMAGE CARDS
+           ========================================= */
+
+        .check-page .coverage-grid {
+            gap: 18px;
+        }
+
+
+        .check-page .coverage-card {
+            position: relative;
+
+            min-height: 445px;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 18px;
+
+            overflow: hidden;
+
+            border:
+                1px solid #dce5ef;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #fbfdff 100%
+                );
+
+            box-shadow:
+                0 10px 28px
+                rgba(20,45,80,.045);
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .check-page .coverage-card:hover {
+            transform:
+                translateY(-6px);
+
+            border-color:
+                #bdd4f2;
+
+            box-shadow:
+                0 22px 48px
+                rgba(20,45,80,.10);
+        }
+
+
+        .check-page .coverage-card-top {
+            position: relative;
+
+            z-index: 2;
+
+            min-height: 42px;
+
+            display: flex;
+
+            align-items: flex-start;
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+
+        .check-page .coverage-card
+        .coverage-card-number {
+            display: block;
+
+            margin: 0;
+
+            color: #0759d8;
+
+            font-size: 12px;
+            font-weight: 900;
+
+            letter-spacing: .08em;
+        }
+
+
+        .check-page .coverage-card
+        .coverage-card-symbol {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-width: 47px;
+            height: 28px;
+
+            margin: 0;
+
+            padding: 0 9px;
+
+            border-radius: 20px;
+
+            background: #edf4ff;
+
+            color: #0759d8;
+
+            font-size: 7px;
+            font-weight: 900;
+
+            letter-spacing: .08em;
+        }
+
+
+        .check-page .coverage-card-visual {
+            position: relative;
+
+            height: 235px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin:
+                2px -5px 5px;
+
+            overflow: hidden;
+        }
+
+
+        .check-page .coverage-card-visual::before {
+            content: "";
+
+            position: absolute;
+
+            width: 205px;
+            height: 205px;
+
+            border:
+                1px solid
+                rgba(7,89,216,.12);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(7,89,216,.08),
+                    transparent 68%
+                );
+        }
+
+
+        .check-page .coverage-card-visual img {
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            transition:
+                transform .35s ease;
+        }
+
+
+        .check-page .coverage-card:hover
+        .coverage-card-visual img {
+            transform:
+                translateY(-4px)
+                scale(1.025);
+        }
+
+
+        .check-page .coverage-card-copy {
+            margin-top: auto;
+
+            padding:
+                14px 8px 8px;
+
+            border-top:
+                1px solid #e5ebf2;
+        }
+
+
+        .check-page .coverage-card-copy h3 {
+            margin:
+                0 0 8px;
+
+            color: #071b3a;
+
+            font-size: 22px;
+        }
+
+
+        .check-page .coverage-card-copy p {
+            margin: 0;
+
+            color: #718096;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        .check-page .coverage-action {
+            margin-top: 38px;
+        }
+
+
+        @media(max-width:650px) {
+
+            .check-page .check-offline {
+                padding-top: 65px;
+                padding-bottom: 35px;
+            }
+
+
+            .check-page .check-coverage {
+                padding-top: 50px;
+                padding-bottom: 75px;
+            }
+
+
+            .check-page .coverage-card {
+                min-height: 420px;
+            }
+
+
+            .check-page .coverage-card-visual {
+                height: 225px;
+            }
+
+
+            .check-page .check-video-shell {
+                padding: 7px;
+
+                border-radius: 15px;
+            }
+
+
+            .check-page .check-video-frame {
+                border-radius: 10px;
+            }
+
+
+            .check-page .check-video-play-icon {
+                width: 58px;
+                height: 58px;
+
+                font-size: 18px;
+            }
+
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media(max-width:1000px) {
+
+            .check-page .check-hero-grid,
+            .check-page .check-core-grid,
+            .check-page .offline-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .check-page .module-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
+            }
+
+
+            .check-page .coverage-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
+            }
+
+
+            .check-page .check-updates-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
+            }
+
+        }
+
+
+        @media(max-width:650px) {
+
+            .check-page .check-hero,
+            .check-page .check-section {
+                padding:
+                    75px 0;
+            }
+
+
+            .check-page .check-floating-card {
+                display: none;
+            }
+
+
+            .check-page .scan-stage,
+            .check-page .module-grid,
+            .check-page .coverage-grid,
+            .check-page .check-updates-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .check-page .check-updates-heading,
+            .check-page .product-cta-inner {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+
+        @media(
+            prefers-reduced-motion:
+            reduce
+        ) {
+
+            .check-page .scan-line,
+            .check-page .motion-float {
+                animation: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div
+    id="siteHeader"
+    data-root="../">
+</div>
+
+
+<main class="check-page">
+
+
+    <!-- =========================================
+         HERO
+         ========================================= -->
+
+    <section class="check-hero">
+
+        <div class="container check-hero-grid">
+
+            <div class="check-hero-content reveal reveal-left">
+
+                <span class="check-kicker">
+                    Software professionale
+                </span>
+
+
+                <h1>
+                    Check
+                    <span>ECU</span>
+                </h1>
+
+
+                <h2>
+                    Verifica, ripristino e riverginazione
+                    dei dati EEPROM e Flash.
+                </h2>
+
+
+                <p class="check-hero-description">
+                    Software professionale dedicato
+                    all'elaborazione dei dati contenuti
+                    nelle memorie EEPROM e Flash delle
+                    centraline elettroniche supportate.
+                </p>
+
+
+                <div class="check-tags" data-stagger>
+
+                    <span>ECU</span>
+                    <span>FRM</span>
+                    <span>ABS</span>
+                    <span>AIRBAG</span>
+                    <span>CLUSTER</span>
+                    <span>GEARBOX</span>
+
+                </div>
+
+
+                <div class="hero-actions">
+
+                    <a
+                        href="../index.html#contatti"
+                        class="button-primary">
+
+                        Richiedi preventivo
+
+                    </a>
+
+
+                    <a
+                        href="#funzioni"
+                        class="button-secondary">
+
+                        Scopri Check ECU ↓
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="check-hero-visual reveal reveal-right">
+
+                <div class="check-hero-glow"></div>
+
+
+                <img
+                    src="../images/products/check-ecu.webp"
+                    alt="Software Check ECU"
+                    class="check-hero-image motion-float"
+                >
+
+
+                <div class="check-floating-card check-card-top">
+
+                    <span>
+                        Memorie
+                    </span>
+
+                    <strong>
+                        EEPROM + Flash
+                    </strong>
+
+                </div>
+
+
+                <div class="check-floating-card check-card-bottom">
+
+                    <span>
+                        Utilizzo
+                    </span>
+
+                    <strong>
+                        Online
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         EEPROM / FLASH
+         ========================================= -->
+
+    <section
+        class="check-section check-core"
+        id="funzioni">
+
+        <div class="container check-core-grid">
+
+            <div class="check-core-copy reveal reveal-left">
+
+                <span class="section-label">
+                    EEPROM & Flash Restorer
+                </span>
+
+
+                <h2>
+                    Il file della centralina.
+                    <span>Sotto controllo.</span>
+                </h2>
+
+
+                <p>
+                    Check ECU è dedicato alla verifica,
+                    al ripristino e alla riverginazione
+                    dei dati contenuti nelle memorie
+                    EEPROM e Flash delle centraline
+                    elettroniche supportate.
+                </p>
+
+
+                <div class="check-core-list" data-stagger>
+
+                    <div class="check-core-item">
+
+                        <span class="check-core-icon">
+                            ✓
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Verifica dei dati
+                            </strong>
+
+                            <span>
+                                Gestione dei file delle unità
+                                elettroniche supportate.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="check-core-item">
+
+                        <span class="check-core-icon">
+                            ↻
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Ripristino e riverginazione
+                            </strong>
+
+                            <span>
+                                Funzioni dedicate alle unità
+                                per cui l'operazione è prevista.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="check-core-item">
+
+                        <span class="check-core-icon">
+                            CRC
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Calcolo checksum
+                            </strong>
+
+                            <span>
+                                Funzioni di checksum sulle
+                                configurazioni supportate.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="reveal reveal-right">
+
+                <div class="scan-terminal">
+
+                    <div class="scan-terminal-header">
+
+                        <span>
+                            CHECK ECU · FILE ANALYSIS
+                        </span>
+
+                        <span class="scan-status">
+                            READY
+                        </span>
+
+                    </div>
+
+
+                    <div class="scan-stage">
+
+                        <span
+                            class="scan-line"
+                            aria-hidden="true">
+                        </span>
+
+
+                        <div class="scan-card">
+
+                            <small>
+                                MEMORY
+                            </small>
+
+                            <strong>
+                                EEPROM
+                            </strong>
+
+                            <span>
+                                Verifica e gestione
+                                dei dati supportati.
+                            </span>
+
+                        </div>
+
+
+                        <div class="scan-card">
+
+                            <small>
+                                MEMORY
+                            </small>
+
+                            <strong>
+                                FLASH
+                            </strong>
+
+                            <span>
+                                Elaborazione delle
+                                configurazioni supportate.
+                            </span>
+
+                        </div>
+
+
+                        <div class="scan-card">
+
+                            <small>
+                                SERVICE
+                            </small>
+
+                            <strong>
+                                RESTORE
+                            </strong>
+
+                            <span>
+                                Funzioni di ripristino
+                                disponibili nel database.
+                            </span>
+
+                        </div>
+
+
+                        <div class="scan-card">
+
+                            <small>
+                                SERVICE
+                            </small>
+
+                            <strong>
+                                CHECKSUM
+                            </strong>
+
+                            <span>
+                                Calcolo sulle unità
+                                compatibili.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+           <div
+    class="tech-divider"
+    aria-hidden="true">
+    </div>  
+
+
+    <!-- =========================================
+         VIDEO
+         ========================================= -->
+
+    <section class="check-section check-video-section">
+
+        <div class="container">
+
+            <div class="check-section-heading center reveal reveal-up">
+
+                <span class="section-label">
+                    Guardalo in azione
+                </span>
+
+
+                <h2>
+                    Scopri Check ECU
+                    <span>in meno di un minuto.</span>
+                </h2>
+
+
+                <p>
+                    Una breve presentazione del software
+                    per vedere Check ECU direttamente
+                    nel suo ambiente di lavoro.
+                </p>
+
+            </div>
+
+
+            <div class="check-video-shell reveal reveal-soft">
+
+                <div class="check-video-frame">
+
+                    <video
+                        id="checkEcuVideo"
+                        class="check-video"
+                        controls
+                        preload="metadata"
+                        playsinline
+                        poster="../images/products/check-ecu.webp">
+
+                        <source
+                            src="https://www.turrinelettronica.com/wp-content/uploads/2026/06/Video-di-presentazione-Check-ECU.mp4"
+                            type="video/mp4"
+                        >
+
+                        Il tuo browser non supporta
+                        la riproduzione video.
+
+                    </video>
+
+
+                    <button
+                        id="checkVideoPlay"
+                        class="check-video-play"
+                        type="button"
+                        aria-label="Riproduci il video di Check ECU">
+
+                        <span class="check-video-play-icon">
+                            ▶
+                        </span>
+
+                        <span class="check-video-play-text">
+                            Guarda Check ECU
+                        </span>
+
+                        <small>
+                            00:48
+                        </small>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         MODULES
+         ========================================= -->
+
+    <section class="check-section check-modules">
+
+        <div class="container">
+
+            <div class="check-section-heading reveal reveal-up">
+
+                <span class="section-label">
+                    Unità supportate
+                </span>
+
+
+                <h2>
+                    Non solo ECU motore.
+                </h2>
+
+
+                <p>
+                    Check ECU comprende funzioni dedicate
+                    a diverse tipologie di centraline e
+                    moduli elettronici presenti nel database.
+                </p>
+
+            </div>
+
+
+            <div class="module-grid" data-stagger>
+
+                <article class="module-card">
+
+                    <span class="module-index">
+                        01
+                    </span>
+
+                    <h3>
+                        ECU
+                    </h3>
+
+                    <p>
+                        Centraline motore supportate.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card">
+
+                    <span class="module-index">
+                        02
+                    </span>
+
+                    <h3>
+                        Airbag
+                    </h3>
+
+                    <p>
+                        Unità Airbag presenti
+                        nel database Check ECU.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card">
+
+                    <span class="module-index">
+                        03
+                    </span>
+
+                    <h3>
+                        Cluster / BSI
+                    </h3>
+
+                    <p>
+                        Quadri strumenti, dashboard
+                        e unità BSI supportate.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card">
+
+                    <span class="module-index">
+                        04
+                    </span>
+
+                    <h3>
+                        Gearbox
+                    </h3>
+
+                    <p>
+                        Moduli cambio presenti
+                        nelle liste supportate.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card">
+
+                    <span class="module-index">
+                        05
+                    </span>
+
+                    <h3>
+                        ABS / FRM
+                    </h3>
+
+                    <p>
+                        Unità ABS e moduli FRM
+                        compatibili con il software.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card">
+
+                    <span class="module-index">
+                        06
+                    </span>
+
+                    <h3>
+                        Altri moduli
+                    </h3>
+
+                    <p>
+                        Gateway, immobilizer,
+                        key module, light module
+                        e altre unità supportate.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         OFFLINE
+         ========================================= -->
+
+    <section class="check-section check-offline">
+
+        <div class="container offline-grid">
+
+            <div class="offline-copy reveal reveal-left">
+
+                <span class="section-label">
+                    Security Dongle Key
+                </span>
+
+
+                <h2>
+                    Lavora
+                    <span>online.</span>
+                </h2>
+
+
+                <p>
+                    Check ECU funziona online
+                    tramite una Security Dongle Key
+                    dedicata.
+                </p>
+
+            </div>
+
+
+            <div class="dongle-card reveal reveal-right">
+
+                <span class="dongle-label">
+                    CHECK ECU SECURITY
+                </span>
+
+
+                <div class="dongle-symbol">
+                    USB
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Security Dongle Key
+                    </strong>
+
+                    <p>
+                        Chiave dedicata per
+                        l'utilizzo online del software.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         VEHICLES
+         ========================================= -->
+
+    <section class="check-section check-coverage">
+
+        <div class="container">
+
+            <div class="check-section-heading center reveal reveal-up">
+
+                <span class="section-label">
+                    Copertura
+                </span>
+
+
+                <h2>
+                    Dall'auto
+                    <span>al trattore.</span>
+                </h2>
+
+
+                <p>
+                    Check ECU lavora sui dati delle
+                    centraline elettroniche supportate
+                    installate su auto, moto, camion
+                    e trattori.
+                </p>
+
+            </div>
+
+
+            <div class="coverage-grid" data-stagger>
+
+                <article class="coverage-card">
+
+                    <div class="coverage-card-top">
+
+                        <span class="coverage-card-number">
+                            01
+                        </span>
+
+                        <span
+                            class="coverage-card-symbol"
+                            aria-hidden="true">
+                            CAR
+                        </span>
+
+                    </div>
+
+
+                    <div class="coverage-card-visual">
+
+                        <img
+                            src="../images/products/check-coverage/check-auto.webp"
+                            alt="Automobile, applicazioni Check ECU"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="coverage-card-copy">
+
+                        <h3>
+                            Auto
+                        </h3>
+
+                        <p>
+                            Centraline elettroniche
+                            supportate installate
+                            su autovetture.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="coverage-card">
+
+                    <div class="coverage-card-top">
+
+                        <span class="coverage-card-number">
+                            02
+                        </span>
+
+                        <span
+                            class="coverage-card-symbol"
+                            aria-hidden="true">
+                            MOTO
+                        </span>
+
+                    </div>
+
+
+                    <div class="coverage-card-visual">
+
+                        <img
+                            src="../images/products/check-coverage/check-moto.webp"
+                            alt="Motocicletta, applicazioni Check ECU"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="coverage-card-copy">
+
+                        <h3>
+                            Moto
+                        </h3>
+
+                        <p>
+                            Centraline elettroniche
+                            supportate installate
+                            su motocicli.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="coverage-card">
+
+                    <div class="coverage-card-top">
+
+                        <span class="coverage-card-number">
+                            03
+                        </span>
+
+                        <span
+                            class="coverage-card-symbol"
+                            aria-hidden="true">
+                            TRUCK
+                        </span>
+
+                    </div>
+
+
+                    <div class="coverage-card-visual">
+
+                        <img
+                            src="../images/products/check-coverage/check-camion.webp"
+                            alt="Camion, applicazioni Check ECU"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="coverage-card-copy">
+
+                        <h3>
+                            Camion
+                        </h3>
+
+                        <p>
+                            Centraline elettroniche
+                            supportate installate
+                            su camion.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="coverage-card">
+
+                    <div class="coverage-card-top">
+
+                        <span class="coverage-card-number">
+                            04
+                        </span>
+
+                        <span
+                            class="coverage-card-symbol"
+                            aria-hidden="true">
+                            AGRI
+                        </span>
+
+                    </div>
+
+
+                    <div class="coverage-card-visual">
+
+                        <img
+                            src="../images/products/check-coverage/check-trattore.webp"
+                            alt="Trattore, applicazioni Check ECU"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+
+                    <div class="coverage-card-copy">
+
+                        <h3>
+                            Trattori
+                        </h3>
+
+                        <p>
+                            Centraline elettroniche
+                            supportate installate
+                            su trattori.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="coverage-action reveal reveal-up">
+
+                <a
+                    href="https://www.turrinelettronica.com/en/files/CheckEcu-Supported-Car_EcuList.pdf"
+                    class="button-secondary"
+                    target="_blank"
+                    rel="noopener">
+
+                    Visualizza ECU supportate →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================================
+         AGGIORNAMENTI CONDIVISI
+         ========================================= -->
+
+    <section
+        class="shared-updates-section"
+        data-updates-component
+        data-updates-product="check"
+        data-updates-limit="9"
+        data-updates-root="../"
+        data-updates-carousel="true">
+
+        <div class="container">
+
+            <div class="shared-updates-heading reveal reveal-up">
+
+                <div class="shared-updates-heading-copy">
+
+                    <span class="section-label">
+                        Aggiornamenti
+                    </span>
+
+                    <h2>
+                        Check ECU continua ad evolversi.
+                    </h2>
+
+                    <p>
+                        Con una licenza attiva puoi accedere
+                        agli aggiornamenti con nuove funzionalità
+                        e nuove centraline supportate.
+                    </p>
+
+                </div>
+
+                <a
+                    href="../aggiornamenti.html?product=check"
+                    class="shared-updates-all-link">
+
+                    Tutti gli aggiornamenti Check ECU
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+            <div class="shared-updates-carousel reveal reveal-soft">
+
+                <div
+                    class="shared-updates-track"
+                    data-updates-grid>
+
+                    <div class="shared-updates-message">
+                        Caricamento aggiornamenti...
+                    </div>
+
+                </div>
+
+                <div
+                    class="shared-updates-dots"
+                    data-updates-dots
+                    aria-label="Navigazione aggiornamenti Check ECU">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CTA
+         ========================================= -->
+
+    <section class="product-cta">
+
+        <div
+            class="
+                container
+                product-cta-inner
+                reveal
+                reveal-up
+            ">
+
+            <div>
+
+                <h2>
+                    Vuoi maggiori informazioni
+                    su Check ECU?
+                </h2>
+
+
+                <p>
+                    Contattaci per informazioni,
+                    compatibilità e preventivi.
+                </p>
+
+            </div>
+
+
+            <a
+                href="../index.html#contatti"
+                class="button-primary">
+
+                Richiedi informazioni
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<div id="siteFooter"></div>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+<script>
+
+/* =========================================
+   VIDEO CHECK ECU
+   ========================================= */
+
+const checkVideo =
+    document.getElementById(
+        'checkEcuVideo'
+    );
+
+
+const checkVideoPlay =
+    document.getElementById(
+        'checkVideoPlay'
+    );
+
+
+if (
+    checkVideo &&
+    checkVideoPlay
+) {
+
+    checkVideoPlay.addEventListener(
+        'click',
+        async () => {
+
+            try {
+
+                await checkVideo.play();
+
+                checkVideoPlay.classList.add(
+                    'hidden'
+                );
+
+            }
+            catch (error) {
+
+                console.error(
+                    'Impossibile avviare il video:',
+                    error
+                );
+            }
+
+        }
+    );
+
+
+    checkVideo.addEventListener(
+        'play',
+        () => {
+
+            checkVideoPlay.classList.add(
+                'hidden'
+            );
+
+        }
+    );
+
+
+    checkVideo.addEventListener(
+        'ended',
+        () => {
+
+            checkVideoPlay.classList.remove(
+                'hidden'
+            );
+
+        }
+    );
+
+}
+
+</script>
+
+
+<script src="../js/updates.js"></script>
+<script src="../js/components.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,5383 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        MC3 | Turrin Elettronica
+    </title>
+
+    <meta
+        name="description"
+        content="MC3, sistema professionale hardware e software per la programmazione delle centraline automotive tramite OBD, Bench e Boot."
+    >
+
+
+    <!--
+        Se il tuo style.css contiene già
+        header/footer generali puoi mantenerlo.
+    -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+body {
+    margin: 0;
+}
+       .mc3-page img {
+    max-width: 100%;
+}
+
+
+
+
+
+/* =========================================
+   HERO MC3
+   ========================================= */
+.mc3-page .updates-all-link {
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding-bottom: 4px;
+
+    border-bottom:
+        1px solid #0759d8;
+
+    color: #0759d8;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+
+.mc3-page .updates-all-link span {
+    transition:
+        transform .2s ease;
+}
+
+
+.mc3-page .updates-all-link:hover span {
+    transform:
+        translateX(4px);
+}
+.mc3-page .product-hero {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 105px 0 95px;
+
+    background:
+        radial-gradient(
+            circle at 80% 45%,
+            rgba(7, 89, 216, .10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8fbff 55%,
+            #edf5ff 100%
+        );
+}
+
+
+.mc3-page .product-hero::before {
+    content: "";
+
+    position: absolute;
+
+    right: -180px;
+    top: -200px;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(7, 89, 216, .08);
+}
+
+
+.mc3-page .product-hero-grid {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(420px, .9fr);
+
+    align-items: center;
+
+    gap: 80px;
+}
+
+
+.mc3-page .product-kicker {
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: #0759d8;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: .13em;
+
+    text-transform: uppercase;
+}
+
+
+.mc3-page .product-hero h1 {
+    margin: 0;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            58px,
+            7vw,
+            92px
+        );
+
+    line-height: .95;
+
+    letter-spacing: -.045em;
+}
+
+
+.mc3-page .product-hero h2 {
+    max-width: 650px;
+
+    margin:
+        24px 0 20px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            31px,
+            4vw,
+            48px
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -.025em;
+}
+
+
+.mc3-page .product-hero h2 span {
+    color: #0759d8;
+}
+
+
+.mc3-page .product-hero-description {
+    max-width: 620px;
+
+    margin:
+        0 0 24px;
+
+    color: #5c6b7e;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+}
+
+
+.mc3-page .product-hero-description strong {
+    color: #25364c;
+}
+
+
+/* OBD BENCH BOOT */
+
+.mc3-page .hero-modes {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+
+.mc3-page .hero-mode {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 13px;
+
+    border:
+        1px solid #dbe5f0;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,.85);
+
+    color: #314158;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: .06em;
+}
+
+
+.mc3-page .hero-mode-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #0759d8;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(7,89,216,.10);
+}
+
+
+/* PULSANTI */
+
+.mc3-page .hero-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+.mc3-page .button-primary,
+.mc3-page .button-secondary {
+    min-height: 48px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 0 22px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+
+.mc3-page .button-primary {
+    border:
+        1px solid #0759d8;
+
+    background: #0759d8;
+    color: #ffffff;
+}
+
+
+.mc3-page .button-primary:hover {
+    transform:
+        translateY(-2px);
+
+    background: #064bb5;
+}
+
+
+.mc3-page .button-secondary {
+    border:
+        1px solid #ccd8e6;
+
+    background:
+        rgba(255,255,255,.85);
+
+    color: #263750;
+}
+
+
+.mc3-page .button-secondary:hover {
+    transform:
+        translateY(-2px);
+
+    border-color: #0759d8;
+
+    color: #0759d8;
+}
+
+
+/* TRE VANTAGGI */
+
+.mc3-page .hero-features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 0;
+
+    max-width: 660px;
+
+    margin-top: 42px;
+
+    padding-top: 23px;
+
+    border-top:
+        1px solid #dce5ef;
+}
+
+
+.mc3-page .hero-features > div {
+    padding-right: 20px;
+}
+
+
+.mc3-page .hero-features > div +
+div {
+    padding-left: 20px;
+
+    border-left:
+        1px solid #dce5ef;
+}
+
+
+.mc3-page .hero-features strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #15263e;
+
+    font-size: 12px;
+}
+
+
+.mc3-page .hero-features span {
+    display: block;
+
+    color: #768396;
+
+    font-size: 11px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================
+   IMMAGINE MC3
+   ========================================= */
+
+.mc3-page .product-hero-visual {
+    position: relative;
+
+    min-height: 490px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mc3-page .hero-glow {
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.20),
+            rgba(7,89,216,.03) 55%,
+            transparent 72%
+        );
+
+    filter:
+        blur(5px);
+}
+
+
+.mc3-page .hero-device {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mc3-page .hero-device img {
+    width: 88%;
+    max-height: 450px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 30px 32px
+            rgba(6,28,61,.22)
+        );
+
+    animation:
+        mc3Float
+        5s ease-in-out
+        infinite;
+}
+
+
+@keyframes mc3Float {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-10px);
+    }
+
+}
+
+
+/* MINI CARD INTORNO AL PRODOTTO */
+
+.mc3-page .hero-floating-card {
+    position: absolute;
+
+    z-index: 3;
+
+    min-width: 160px;
+
+    padding: 13px 16px;
+
+    border:
+        1px solid
+        rgba(205,218,233,.8);
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.90);
+
+    box-shadow:
+        0 14px 35px
+        rgba(23,48,80,.11);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+.mc3-page .hero-floating-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #8290a2;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+
+.mc3-page .hero-floating-card strong {
+    color: #1c2d45;
+
+    font-size: 11px;
+}
+
+
+.mc3-page .hero-card-top {
+    right: 0;
+    top: 18%;
+}
+
+
+.mc3-page .hero-card-bottom {
+    left: 0;
+    bottom: 15%;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:1000px) {
+
+    .mc3-page .product-hero-grid {
+        grid-template-columns:
+            1fr;
+
+        gap: 45px;
+    }
+
+
+    .mc3-page .product-hero-visual {
+        min-height: 410px;
+    }
+
+
+    .mc3-page .hero-device img {
+        max-width: 520px;
+    }
+
+}
+
+
+@media(max-width:650px) {
+
+    .mc3-page .product-hero {
+        padding:
+            65px 0 55px;
+    }
+
+
+    .mc3-page .hero-features {
+        grid-template-columns:
+            1fr;
+
+        gap: 15px;
+    }
+
+
+    .mc3-page .hero-features > div {
+        padding:
+            0 0 15px;
+    }
+
+
+    .mc3-page .hero-features > div +
+    div {
+        padding:
+            15px 0;
+
+        border-left: 0;
+
+        border-top:
+            1px solid #e1e8ef;
+    }
+
+
+    .mc3-page .product-hero-visual {
+        min-height: 330px;
+    }
+
+
+    .mc3-page .hero-floating-card {
+        display: none;
+    }
+
+}
+        @media (
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .mc3-page .hero-device img {
+        animation: none;
+    }
+
+}
+
+        /* =========================================
+           SEZIONI
+           ========================================= */
+
+        .product-section {
+            padding: 85px 0;
+        }
+
+
+        .product-section.alt {
+            background: #f7f9fc;
+        }
+
+
+        .section-heading {
+            max-width: 740px;
+
+            margin-bottom: 38px;
+        }
+
+
+        .section-heading.center {
+            margin-left: auto;
+            margin-right: auto;
+
+            text-align: center;
+        }
+
+
+        .section-label {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #0759d8;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: .11em;
+        }
+
+
+        .section-heading h2 {
+            margin:
+                0 0 14px;
+
+            color: #071b3a;
+
+            font-size:
+                clamp(
+                    28px,
+                    4vw,
+                    40px
+                );
+
+            line-height: 1.2;
+        }
+
+
+        .section-heading p {
+            margin: 0;
+
+            color: #617084;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =========================================
+           PANORAMICA
+           ========================================= */
+
+        .mc3-story {
+    padding: 110px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f6f9fd 100%
+        );
+}
+
+
+.mc3-story-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(380px, .9fr)
+        minmax(0, 1.1fr);
+
+    gap: 90px;
+
+    align-items: start;
+}
+
+
+.mc3-story-visual {
+    position: sticky;
+
+    top: 120px;
+
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mc3-device-stage {
+    position: relative;
+
+    width: 100%;
+    max-width: 480px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mc3-device-stage img {
+    position: relative;
+
+    z-index: 2;
+
+    width: 90%;
+
+    filter:
+        drop-shadow(
+            0 35px 40px
+            rgba(7,27,58,.22)
+        );
+
+    transition:
+        transform .4s ease;
+}
+
+
+.mc3-device-stage:hover img {
+    transform:
+        translateY(-8px)
+        scale(1.02);
+}
+@media (max-width: 768px) {
+    .mc3-story-visual {
+        display: none;
+    }
+}
+
+
+.device-glow {
+    position: absolute;
+
+    width: 340px;
+    height: 340px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.18),
+            rgba(7,89,216,0) 68%
+        );
+
+    filter: blur(8px);
+}
+
+
+.device-tag {
+    position: absolute;
+
+    z-index: 3;
+
+    padding: 8px 12px;
+
+    border:
+        1px solid
+        rgba(7,89,216,.18);
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,.92);
+
+    color: #0759d8;
+
+    box-shadow:
+        0 8px 22px
+        rgba(20,45,80,.10);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: .08em;
+}
+
+
+.tag-obd {
+    top: 15%;
+    left: 3%;
+}
+
+
+.tag-bench {
+    right: 0;
+    top: 42%;
+}
+
+
+.tag-boot {
+    bottom: 16%;
+    left: 12%;
+}
+
+
+.story-intro {
+    margin-bottom: 70px;
+}
+
+
+.story-intro h2 {
+    max-width: 600px;
+
+    margin:
+        0 0 18px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            36px,
+            5vw,
+            55px
+        );
+
+    line-height: 1.08;
+}
+
+
+.story-intro p {
+    max-width: 570px;
+
+    color: #617084;
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+
+.story-step {
+    display: grid;
+
+    grid-template-columns:
+        65px 1fr;
+
+    gap: 20px;
+
+    min-height: 240px;
+
+    padding:
+        45px 0;
+
+    border-top:
+        1px solid #dfe7ef;
+}
+
+
+.story-number {
+    color: #0759d8;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+
+.story-step h3 {
+    margin:
+        0 0 12px;
+
+    color: #071b3a;
+
+    font-size: 27px;
+}
+
+
+.story-step p {
+    max-width: 520px;
+
+    margin: 0;
+
+    color: #657489;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+@media(max-width:900px) {
+
+    .mc3-story-grid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+
+    .mc3-story-visual {
+        position: relative;
+
+        top: auto;
+
+        min-height: 360px;
+    }
+
+}
+
+
+        .overview-visual img {
+            max-height: 330px;
+
+            object-fit: contain;
+        }
+
+
+        .overview-content h2 {
+            margin:
+                0 0 18px;
+
+            color: #071b3a;
+
+            font-size: 34px;
+        }
+
+
+        .overview-content p {
+            margin:
+                0 0 18px;
+
+            color: #58687b;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================
+           MODALITÀ
+           ========================================= */
+/* =========================================
+   MODALITÀ MC3
+   ========================================= */
+
+.mc3-modes {
+    padding: 100px 0;
+
+    background: #071b3a;
+}
+
+
+.mc3-modes .section-heading h2 {
+    color: #ffffff;
+}
+
+
+.mc3-modes .section-heading p {
+    color: #aebdd1;
+}
+
+
+.mode-tabs {
+    display: flex;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+
+.mode-tab {
+    min-width: 120px;
+    height: 45px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    border-radius: 7px;
+
+    background: transparent;
+    color: #bcc9da;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+}
+
+
+.mode-tab:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+
+.mode-tab.active {
+    border-color: #0759d8;
+
+    background: #0759d8;
+    color: #ffffff;
+}
+
+
+.mode-panel {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+
+    min-height: 390px;
+
+    padding: 55px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+
+.mode-label {
+    color: #4f9cff;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: .12em;
+}
+
+
+.mode-panel h3 {
+    margin:
+        12px 0 16px;
+
+    color: #ffffff;
+
+    font-size: 32px;
+
+    line-height: 1.2;
+}
+
+
+.mode-panel p {
+    max-width: 520px;
+
+    color: #b5c3d6;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.mode-panel ul {
+    margin:
+        25px 0 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.mode-panel li {
+    margin-bottom: 11px;
+
+    color: #e8eef7;
+
+    font-size: 14px;
+}
+
+
+.mode-panel li::before {
+    content: "✓";
+
+    margin-right: 10px;
+
+    color: #4f9cff;
+
+    font-weight: 900;
+}
+
+
+.mode-visual {
+    min-height: 280px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.35),
+            rgba(7,27,58,.25) 65%
+        );
+}
+
+
+/* =========================================
+   DIAGRAMMA MODALITÀ MC3
+   ========================================= */
+
+.mc3-page .mode-visual {
+    position: relative;
+
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px;
+
+    overflow: hidden;
+
+    border-radius: 13px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(7, 89, 216, .22),
+            rgba(6, 21, 46, .35) 70%
+        );
+}
+
+
+.mc3-page .mode-diagram {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        65px
+        1fr
+        65px
+        1fr;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.mc3-page .diagram-node {
+    min-height: 105px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    text-align: center;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease;
+}
+
+
+.mc3-page .diagram-node:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(79,156,255,.65);
+
+    background:
+        rgba(7,89,216,.14);
+}
+
+
+.mc3-page .diagram-small {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #8297b5;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    letter-spacing: .12em;
+}
+
+
+.mc3-page .diagram-node strong {
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+}
+
+
+.mc3-page .diagram-mc3 {
+    border-color:
+        rgba(79,156,255,.5);
+
+    background:
+        rgba(7,89,216,.18);
+}
+
+
+.mc3-page .diagram-mc3 strong {
+    color: #5fa9ff;
+
+    font-size: 24px;
+
+    letter-spacing: -.03em;
+}
+
+
+/* CONNESSIONE */
+
+.mc3-page .diagram-connection {
+    display: flex;
+
+    align-items: center;
+}
+
+
+.mc3-page .connection-dot {
+    flex: 0 0 6px;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #4f9cff;
+
+    box-shadow:
+        0 0 10px
+        rgba(79,156,255,.7);
+}
+
+
+.mc3-page .connection-line {
+    position: relative;
+
+    flex: 1;
+
+    height: 2px;
+
+    overflow: hidden;
+
+    background:
+        rgba(79,156,255,.22);
+}
+
+
+.mc3-page .connection-line::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #4f9cff,
+            transparent
+        );
+
+    animation:
+        mc3DataFlow
+        2s linear
+        infinite;
+}
+
+
+@keyframes mc3DataFlow {
+
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 100%;
+    }
+
+}
+
+
+/* STATO */
+
+.mc3-page .diagram-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 35px;
+
+    padding: 8px 13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius: 30px;
+
+    color: #aebed2;
+
+    background:
+        rgba(0,0,0,.12);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.mc3-page .status-light {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #42da83;
+
+    box-shadow:
+        0 0 9px
+        rgba(66,218,131,.75);
+}
+
+
+@media(max-width:650px) {
+
+    .mc3-page .mode-diagram {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    .mc3-page .diagram-connection {
+        width: 2px;
+        height: 35px;
+
+        margin: auto;
+
+        flex-direction: column;
+    }
+
+
+    .mc3-page .connection-line {
+        width: 2px;
+        height: 100%;
+    }
+
+
+    .mc3-page .mode-visual {
+        padding: 25px;
+    }
+
+}
+
+
+@media(max-width:800px) {
+
+    .mode-panel {
+        grid-template-columns: 1fr;
+
+        padding: 30px;
+    }
+
+
+    .mode-tabs {
+        flex-wrap: wrap;
+    }
+
+}
+       
+
+/* =========================================
+   PACCHETTI MC3
+   ========================================= */
+
+.mc3-page .mc3-packages {
+    padding: 105px 0;
+
+    background: #f6f9fd;
+}
+
+
+.mc3-page .package-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 10px;
+
+    max-width: 950px;
+
+    margin:
+        0 auto 35px;
+}
+
+
+.mc3-page .package-button {
+    min-height: 43px;
+
+    padding: 0 17px;
+
+    border: 1px solid #d6e1ec;
+    border-radius: 7px;
+
+    background: #ffffff;
+    color: #526176;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+
+.mc3-page .package-button:hover {
+    transform:
+        translateY(-2px);
+
+    border-color: #0759d8;
+
+    color: #0759d8;
+}
+
+
+.mc3-page .package-button.active {
+    border-color: #0759d8;
+
+    background: #0759d8;
+    color: #ffffff;
+}
+
+
+/* PANNELLO */
+
+.mc3-page .package-detail {
+    display: grid;
+
+    grid-template-columns:
+        1.15fr .85fr;
+
+    align-items: stretch;
+
+    overflow: hidden;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    border: 1px solid #dfe7ef;
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 18px 50px
+        rgba(20,45,80,.08);
+}
+
+
+.mc3-page .package-detail-content {
+    padding: 52px;
+}
+
+
+.mc3-page .package-detail-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #0759d8;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: .12em;
+}
+
+
+.mc3-page .package-detail h3 {
+    margin:
+        0 0 16px;
+
+    color: #071b3a;
+
+    font-size: 31px;
+}
+
+
+.mc3-page .package-detail p {
+    max-width: 520px;
+
+    margin:
+        0 0 25px;
+
+    color: #657489;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.mc3-page .package-detail ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.mc3-page .package-detail li {
+    margin-bottom: 10px;
+
+    color: #344258;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+.mc3-page .package-detail li::before {
+    content: "✓";
+
+    margin-right: 10px;
+
+    color: #0759d8;
+
+    font-weight: 900;
+}
+
+
+/* VISUALE DESTRA */
+
+.mc3-page .package-detail-visual {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 330px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.18),
+            rgba(7,27,58,.02) 65%
+        ),
+        #071b3a;
+}
+
+
+.mc3-page .package-detail-visual span {
+    margin-bottom: 5px;
+
+    color: #7692b7;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: .15em;
+}
+
+
+.mc3-page .package-detail-visual strong {
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            72px
+        );
+
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+@media(max-width:800px) {
+
+    .mc3-page .package-detail {
+        grid-template-columns: 1fr;
+    }
+
+
+    .mc3-page .package-detail-content {
+        padding: 32px;
+    }
+
+
+    .mc3-page .package-detail-visual {
+        min-height: 220px;
+    }
+
+}
+
+
+/* =========================================
+   KIT MC3
+   ========================================= */
+
+.mc3-page .mc3-kit-section {
+    padding: 110px 0;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+
+.mc3-page .mc3-kit-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(360px, .85fr);
+
+    align-items: center;
+
+    gap: 75px;
+
+    margin-top: 45px;
+}
+
+
+/* =========================================
+   IMMAGINE
+   ========================================= */
+
+.mc3-page .mc3-kit-visual {
+    position: relative;
+}
+
+
+.mc3-page .kit-image-stage {
+    position: relative;
+
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 45px;
+
+    overflow: hidden;
+
+    border: 1px solid #e1e8f0;
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(7,89,216,.11),
+            transparent 58%
+        ),
+        linear-gradient(
+            145deg,
+            #f8fbff,
+            #eef4fb
+        );
+}
+
+
+.mc3-page .kit-image-glow {
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(7,89,216,.08);
+
+    filter: blur(30px);
+}
+
+
+.mc3-page .kit-main-image {
+    position: relative;
+
+    z-index: 1;
+
+    width: 92%;
+    max-height: 430px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 28px 30px
+            rgba(7,27,58,.18)
+        );
+}
+
+
+/* =========================================
+   HOTSPOT
+   ========================================= */
+
+.mc3-page .kit-hotspot {
+    position: absolute;
+
+    z-index: 4;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform:
+        translate(-50%, -50%);
+
+    padding: 0;
+
+    border:
+        2px solid #ffffff;
+
+    border-radius: 50%;
+
+    background: #0759d8;
+    color: #ffffff;
+
+    box-shadow:
+        0 0 0 7px
+        rgba(7,89,216,.13);
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+
+.mc3-page .kit-hotspot span {
+    font-size: 11px;
+    font-weight: 900;
+}
+
+
+.mc3-page .kit-hotspot:hover,
+.mc3-page .kit-hotspot.active {
+    transform:
+        translate(-50%, -50%)
+        scale(1.15);
+
+    background: #064ab0;
+
+    box-shadow:
+        0 0 0 10px
+        rgba(7,89,216,.16);
+}
+
+
+.mc3-page .kit-hotspot.active::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -9px;
+
+    border:
+        1px solid
+        rgba(7,89,216,.4);
+
+    border-radius: 50%;
+
+    animation:
+        kitPulse 1.7s ease-out
+        infinite;
+}
+
+
+@keyframes kitPulse {
+
+    0% {
+        opacity: 1;
+        transform: scale(.75);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+}
+
+
+.mc3-page .kit-visual-caption {
+    margin-top: 12px;
+
+    color: #8390a2;
+
+    text-align: center;
+
+    font-size: 10px;
+}
+
+
+/* =========================================
+   CONTENUTO
+   ========================================= */
+
+.mc3-page .mc3-kit-content {
+    padding-right: 20px;
+}
+
+
+.mc3-page .kit-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #0759d8;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: .13em;
+}
+
+
+.mc3-page .mc3-kit-content h3 {
+    margin:
+        0 0 16px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            28px,
+            4vw,
+            38px
+        );
+
+    line-height: 1.15;
+}
+
+
+.mc3-page .mc3-kit-content > p {
+    min-height: 80px;
+
+    margin:
+        0 0 30px;
+
+    color: #657489;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   ELENCO ACCESSORI
+   ========================================= */
+
+.mc3-page .kit-items {
+    display: grid;
+
+    gap: 8px;
+}
+
+
+.mc3-page .kit-item-button {
+    width: 100%;
+
+    min-height: 54px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 0 17px;
+
+    border: 1px solid #e0e7ef;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #425168;
+
+    text-align: left;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease,
+        color .2s ease;
+}
+
+
+.mc3-page .kit-item-button:hover {
+    transform:
+        translateX(4px);
+
+    border-color: #0759d8;
+
+    color: #0759d8;
+}
+
+
+.mc3-page .kit-item-button.active {
+    border-color:
+        rgba(7,89,216,.35);
+
+    background: #edf4ff;
+    color: #0759d8;
+}
+
+
+.mc3-page .kit-item-number {
+    width: 30px;
+
+    flex-shrink: 0;
+
+    color: #8a98aa;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+.mc3-page .kit-item-button.active
+.kit-item-number {
+    color: #0759d8;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:950px) {
+
+    .mc3-page .mc3-kit-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .mc3-page .mc3-kit-content {
+        padding-right: 0;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .mc3-page .mc3-kit-section {
+        padding: 70px 0;
+    }
+
+
+    .mc3-page .kit-image-stage {
+        min-height: 350px;
+
+        padding: 25px;
+    }
+
+
+    .mc3-page .kit-hotspot {
+        width: 30px;
+        height: 30px;
+    }
+
+}
+
+
+@media(
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .mc3-page
+    .kit-hotspot.active::after {
+        animation: none;
+    }
+
+}
+
+
+/* =========================================
+   IMMAGINE
+   ========================================= */
+
+.mc3-page .mc3-kit-visual {
+    position: relative;
+}
+
+
+.mc3-page .kit-image-stage {
+    position: relative;
+
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 45px;
+
+    overflow: hidden;
+
+    border: 1px solid #e1e8f0;
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(7,89,216,.11),
+            transparent 58%
+        ),
+        linear-gradient(
+            145deg,
+            #f8fbff,
+            #eef4fb
+        );
+}
+
+
+.mc3-page .kit-image-glow {
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(7,89,216,.08);
+
+    filter: blur(30px);
+}
+
+
+.mc3-page .kit-main-image {
+    position: relative;
+
+    z-index: 1;
+
+    width: 92%;
+    max-height: 430px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 28px 30px
+            rgba(7,27,58,.18)
+        );
+}
+
+
+/* =========================================
+   HOTSPOT
+   ========================================= */
+
+.mc3-page .kit-hotspot {
+    position: absolute;
+
+    z-index: 4;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform:
+        translate(-50%, -50%);
+
+    padding: 0;
+
+    border:
+        2px solid #ffffff;
+
+    border-radius: 50%;
+
+    background: #0759d8;
+    color: #ffffff;
+
+    box-shadow:
+        0 0 0 7px
+        rgba(7,89,216,.13);
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+
+.mc3-page .kit-hotspot span {
+    font-size: 11px;
+    font-weight: 900;
+}
+
+
+.mc3-page .kit-hotspot:hover,
+.mc3-page .kit-hotspot.active {
+    transform:
+        translate(-50%, -50%)
+        scale(1.15);
+
+    background: #064ab0;
+
+    box-shadow:
+        0 0 0 10px
+        rgba(7,89,216,.16);
+}
+
+
+.mc3-page .kit-hotspot.active::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -9px;
+
+    border:
+        1px solid
+        rgba(7,89,216,.4);
+
+    border-radius: 50%;
+
+    animation:
+        kitPulse 1.7s ease-out
+        infinite;
+}
+
+
+@keyframes kitPulse {
+
+    0% {
+        opacity: 1;
+        transform: scale(.75);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+}
+
+
+.mc3-page .kit-visual-caption {
+    margin-top: 12px;
+
+    color: #8390a2;
+
+    text-align: center;
+
+    font-size: 10px;
+}
+
+
+/* =========================================
+   CONTENUTO
+   ========================================= */
+
+.mc3-page .mc3-kit-content {
+    padding-right: 20px;
+}
+
+
+.mc3-page .kit-label {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #0759d8;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: .13em;
+}
+
+
+.mc3-page .mc3-kit-content h3 {
+    margin:
+        0 0 16px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            28px,
+            4vw,
+            38px
+        );
+
+    line-height: 1.15;
+}
+
+
+.mc3-page .mc3-kit-content > p {
+    min-height: 80px;
+
+    margin:
+        0 0 30px;
+
+    color: #657489;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   ELENCO ACCESSORI
+   ========================================= */
+
+.mc3-page .kit-items {
+    display: grid;
+
+    gap: 8px;
+}
+
+
+.mc3-page .kit-item-button {
+    width: 100%;
+
+    min-height: 54px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 0 17px;
+
+    border: 1px solid #e0e7ef;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #425168;
+
+    text-align: left;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease,
+        color .2s ease;
+}
+
+
+.mc3-page .kit-item-button:hover {
+    transform:
+        translateX(4px);
+
+    border-color: #0759d8;
+
+    color: #0759d8;
+}
+
+
+.mc3-page .kit-item-button.active {
+    border-color:
+        rgba(7,89,216,.35);
+
+    background: #edf4ff;
+    color: #0759d8;
+}
+
+
+.mc3-page .kit-item-number {
+    width: 30px;
+
+    flex-shrink: 0;
+
+    color: #8a98aa;
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+.mc3-page .kit-item-button.active
+.kit-item-number {
+    color: #0759d8;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:950px) {
+
+    .mc3-page .mc3-kit-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .mc3-page .mc3-kit-content {
+        padding-right: 0;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .mc3-page .mc3-kit-section {
+        padding: 70px 0;
+    }
+
+
+    .mc3-page .kit-image-stage {
+        min-height: 350px;
+
+        padding: 25px;
+    }
+
+
+    .mc3-page .kit-hotspot {
+        width: 30px;
+        height: 30px;
+    }
+
+}
+
+
+@media(
+    prefers-reduced-motion:
+    reduce
+) {
+
+    .mc3-page
+    .kit-hotspot.active::after {
+        animation: none;
+    }
+
+}
+
+
+/* =========================================
+   LICENZA MC3
+   ========================================= */
+
+.mc3-page .mc3-license {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 110px 0;
+
+    background: #071b3a;
+}
+
+
+.mc3-page .mc3-license::before {
+    content: "";
+
+    position: absolute;
+
+    right: -160px;
+    top: -220px;
+
+    width: 620px;
+    height: 620px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(7,89,216,.33),
+            transparent 68%
+        );
+}
+
+
+.mc3-page .mc3-license-grid {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        330px;
+
+    align-items: center;
+
+    gap: 90px;
+}
+
+
+/* TESTO */
+
+.mc3-page .mc3-license
+.section-label {
+    color: #5ba4ff;
+}
+
+
+.mc3-page .mc3-license-intro h2 {
+    max-width: 620px;
+
+    margin:
+        0 0 20px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            52px
+        );
+
+    line-height: 1.08;
+
+    letter-spacing: -.025em;
+}
+
+
+.mc3-page .mc3-license-intro p {
+    max-width: 610px;
+
+    margin:
+        0 0 12px;
+
+    color: #b6c5d8;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+/* CARD LICENZA */
+
+.mc3-page .mc3-license-card {
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    border-radius: 17px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    box-shadow:
+        0 25px 55px
+        rgba(0,0,0,.16);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+.mc3-page .license-status {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: #aebed2;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: .11em;
+}
+
+
+.mc3-page .license-status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #41dd83;
+
+    box-shadow:
+        0 0 12px
+        rgba(65,221,131,.8);
+}
+
+
+.mc3-page .license-duration {
+    display: flex;
+    align-items: baseline;
+
+    gap: 10px;
+
+    margin:
+        38px 0 35px;
+}
+
+
+.mc3-page .license-duration strong {
+    color: #ffffff;
+
+    font-size: 82px;
+
+    line-height: .8;
+
+    letter-spacing: -.06em;
+}
+
+
+.mc3-page .license-duration span {
+    color: #66aaff;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    letter-spacing: .1em;
+}
+
+
+.mc3-page .license-included {
+    padding-top: 19px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.13);
+}
+
+
+.mc3-page .license-included span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #8398b4;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+
+.mc3-page .license-included strong {
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+
+/* BENEFIT */
+
+.mc3-page .license-benefits {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0,1fr)
+        );
+
+    gap: 14px;
+
+    margin-top: 65px;
+}
+
+
+.mc3-page .license-benefit {
+    display: flex;
+
+    gap: 15px;
+
+    padding: 21px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+}
+
+
+.mc3-page .license-benefit:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(91,164,255,.4);
+
+    background:
+        rgba(7,89,216,.10);
+}
+
+
+.mc3-page .license-benefit-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(7,89,216,.18);
+
+    color: #66aaff;
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+
+.mc3-page .license-benefit strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.mc3-page .license-benefit p {
+    margin: 0;
+
+    color: #98aac1;
+
+    font-size: 11px;
+
+    line-height: 1.55;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:950px) {
+
+    .mc3-page .mc3-license-grid {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+
+    .mc3-page .mc3-license-card {
+        max-width: 380px;
+    }
+
+
+    .mc3-page .license-benefits {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .mc3-page .mc3-license {
+        padding: 75px 0;
+    }
+
+
+    .mc3-page .license-benefits {
+        grid-template-columns: 1fr;
+    }
+
+
+    .mc3-page .license-duration strong {
+        font-size: 65px;
+    }
+
+}
+
+/* =========================================
+   ULTIMI AGGIORNAMENTI MC3
+   ========================================= */
+
+.mc3-page .mc3-updates-section {
+    padding: 110px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7f9fc 0%,
+            #ffffff 100%
+        );
+}
+
+
+/* HEADER */
+
+.mc3-page .mc3-updates-heading {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    margin-bottom: 42px;
+}
+
+
+.mc3-page .mc3-updates-heading > div {
+    max-width: 700px;
+}
+
+
+.mc3-page .mc3-updates-heading h2 {
+    margin:
+        0 0 14px;
+
+    color: #071b3a;
+
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            48px
+        );
+
+    line-height: 1.1;
+
+    letter-spacing: -.025em;
+}
+
+
+.mc3-page .mc3-updates-heading p {
+    margin: 0;
+
+    max-width: 650px;
+
+    color: #667589;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+.mc3-page . {
+    flex-shrink: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding-bottom: 4px;
+
+    border-bottom:
+        1px solid #0759d8;
+
+    color: #0759d8;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+
+.mc3-page . span {
+    transition:
+        transform .2s ease;
+}
+
+
+.mc3-page .:hover span {
+    transform:
+        translateX(4px);
+}
+
+
+/* =========================================
+   LAYOUT
+   ========================================= */
+
+.mc3-page .mc3-updates-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(340px, .75fr);
+
+    gap: 22px;
+
+    align-items: stretch;
+}
+
+
+.mc3-page .mc3-updates-side {
+    display: grid;
+
+    grid-template-rows:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 22px;
+}
+
+
+/* =========================================
+   AGGIORNAMENTO PRINCIPALE
+   ========================================= */
+
+.mc3-page .update-featured {
+    position: relative;
+
+    min-height: 520px;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background: #071b3a;
+
+    box-shadow:
+        0 20px 55px
+        rgba(18,41,73,.10);
+}
+
+
+.mc3-page .update-featured-image {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: .62;
+
+    transition:
+        transform .5s ease;
+}
+
+
+.mc3-page .update-featured:hover
+.update-featured-image {
+    transform:
+        scale(1.025);
+}
+
+
+.mc3-page .update-featured-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5,20,43,.08) 10%,
+            rgba(5,20,43,.82) 75%,
+            rgba(5,20,43,.97) 100%
+        );
+}
+
+
+.mc3-page .update-featured-content {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 38px;
+}
+
+
+.mc3-page .update-featured-meta {
+    margin-bottom: 12px;
+
+    color: #8cbbff;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+}
+
+
+.mc3-page .update-featured h3 {
+    max-width: 650px;
+
+    margin:
+        0 0 12px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            25px,
+            3vw,
+            34px
+        );
+
+    line-height: 1.2;
+}
+
+
+.mc3-page .update-featured p {
+    max-width: 640px;
+
+    margin:
+        0 0 22px;
+
+    color: #c8d4e3;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+.mc3-page .update-featured-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   AGGIORNAMENTI SECONDARI
+   ========================================= */
+
+.mc3-page .update-compact {
+    display: grid;
+
+    grid-template-columns:
+        150px 1fr;
+
+    min-height: 245px;
+
+    overflow: hidden;
+
+    border:
+        1px solid #dfe7ef;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.mc3-page .update-compact:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 38px
+        rgba(20,45,80,.09);
+}
+
+
+.mc3-page .update-compact-image {
+    width: 100%;
+    height: 100%;
+
+    min-height: 245px;
+
+    object-fit: cover;
+
+    background: #edf2f7;
+}
+
+
+.mc3-page .update-compact-content {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 22px;
+}
+
+
+.mc3-page .update-compact-meta {
+    margin-bottom: 9px;
+
+    color: #0759d8;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: .06em;
+
+    text-transform: uppercase;
+}
+
+
+.mc3-page .update-compact h3 {
+    margin:
+        0 0 9px;
+
+    color: #071b3a;
+
+    font-size: 18px;
+
+    line-height: 1.3;
+}
+
+
+.mc3-page .update-compact p {
+    display:
+        -webkit-box;
+
+    margin:
+        0 0 15px;
+
+    overflow: hidden;
+
+    color: #6a788c;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+
+.mc3-page .update-compact-link {
+    margin-top: auto;
+
+    color: #0759d8;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+
+/* =========================================
+   NESSUNA IMMAGINE
+   ========================================= */
+
+.mc3-page .update-image-placeholder {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 100%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0a2a59,
+            #0759d8
+        );
+
+    color:
+        rgba(255,255,255,.8);
+
+    font-size: 38px;
+    font-weight: 900;
+}
+
+
+/* LOADING */
+
+.mc3-page .updates-loading {
+    grid-column:
+        1 / -1;
+
+    padding: 50px;
+
+    color: #788699;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media(max-width:950px) {
+
+    .mc3-page .mc3-updates-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .mc3-page .mc3-updates-side {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0,1fr)
+            );
+
+        grid-template-rows: auto;
+    }
+
+}
+
+
+@media(max-width:700px) {
+
+    .mc3-page .mc3-updates-section {
+        padding: 75px 0;
+    }
+
+
+    .mc3-page .mc3-updates-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .mc3-page .mc3-updates-side {
+        grid-template-columns: 1fr;
+    }
+
+
+    .mc3-page .update-featured {
+        min-height: 450px;
+    }
+
+
+    .mc3-page .update-featured-content {
+        padding: 27px;
+    }
+
+
+    .mc3-page .update-compact {
+        grid-template-columns:
+            120px 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .mc3-page .update-compact {
+        grid-template-columns: 1fr;
+    }
+
+
+    .mc3-page .update-compact-image {
+        height: 180px;
+        min-height: 180px;
+    }
+
+}
+
+        .product-update-content h3 {
+            margin:
+                0 0 9px;
+
+            color: #071b3a;
+
+            font-size: 18px;
+
+            line-height: 1.35;
+        }
+
+
+        .product-update-content p {
+            margin:
+                0 0 16px;
+
+            color: #667589;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+
+        .updates-loading {
+            grid-column:
+                1 / -1;
+
+            padding: 30px;
+
+            text-align: center;
+
+            color: #718096;
+        }
+
+
+
+        /* =========================================
+           CTA
+           ========================================= */
+
+        .product-cta {
+            padding: 75px 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0759d8,
+                    #06429e
+                );
+
+            color: #ffffff;
+        }
+
+
+        .product-cta-inner {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 35px;
+        }
+
+
+        .product-cta h2 {
+            margin:
+                0 0 8px;
+
+            font-size: 32px;
+        }
+
+
+        .product-cta p {
+            margin: 0;
+
+            color: #dbe8ff;
+        }
+
+
+        .product-cta .button-secondary {
+            flex-shrink: 0;
+
+            border-color: #ffffff;
+
+            color: #0759d8;
+        }
+
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+
+        .site-footer {
+            padding: 38px 0;
+
+            background: #06152e;
+
+            color: #aebcd0;
+
+            font-size: 12px;
+        }
+
+
+        .footer-inner {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .footer-inner strong {
+            color: #ffffff;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+
+        @media (
+            max-width: 1000px
+        ) {
+
+            .product-hero-grid,
+            .overview-grid,
+            .kit-grid,
+            .license-box {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .product-hero-image {
+                min-height: 340px;
+            }
+
+
+            .feature-grid,
+            .packages-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
+            }
+
+
+            .product-updates-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
+            }
+
+        }
+
+
+        @media (
+            max-width: 760px
+        ) {
+
+
+           
+            .product-hero {
+                padding:
+                    58px 0;
+            }
+
+
+            .product-hero-grid {
+                gap: 30px;
+            }
+
+
+            .product-section {
+                padding:
+                    62px 0;
+            }
+
+
+            .feature-grid,
+            .packages-grid,
+            .product-updates-grid,
+            .license-features {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .product-cta-inner,
+            .footer-inner {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div
+    id="siteHeader"
+    data-root="../">
+</div>
+
+
+
+<main class="mc3-page">
+
+
+    <!-- =========================================
+         HERO
+         ========================================= -->
+
+<section class="product-hero">
+
+    <div class="container product-hero-grid">
+
+        <div class="product-hero-content reveal reveal-left">
+
+            <span class="product-kicker">
+                Programmazione ECU professionale
+            </span>
+
+
+            <h1>
+                MC3
+            </h1>
+
+
+            <h2>
+                Un solo strumento.
+                <span>Più modi di lavorare.</span>
+            </h2>
+
+
+            <p class="product-hero-description">
+                Sistema hardware e software professionale
+                per la lettura e scrittura delle centraline
+                elettroniche attraverso
+                <strong>OBD, Bench e Boot</strong>.
+            </p>
+
+
+            <div class="hero-modes">
+
+                <div class="hero-mode">
+                    <span class="hero-mode-dot"></span>
+                    OBD
+                </div>
+
+                <div class="hero-mode">
+                    <span class="hero-mode-dot"></span>
+                    BENCH
+                </div>
+
+                <div class="hero-mode">
+                    <span class="hero-mode-dot"></span>
+                    BOOT
+                </div>
+
+            </div>
+
+
+            <div class="hero-actions">
+
+                <a
+                    href="../index.html#contatti"
+                    class="button-primary">
+
+                    Richiedi preventivo
+
+                </a>
+
+
+                <a
+                    href="#funzionalita"
+                    class="button-secondary">
+
+                    Scopri MC3
+                    <span>↓</span>
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-features" data-stagger>
+
+                <div>
+                    <strong>
+                        Hardware + Software
+                    </strong>
+
+                    <span>
+                        Un unico ambiente di lavoro
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>
+                        Collegamento guidato
+                    </strong>
+
+                    <span>
+                        Procedure e pinout dedicati
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>
+                        Aggiornabile
+                    </strong>
+
+                    <span>
+                        Nuovi protocolli e funzioni
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="product-hero-visual reveal reveal-right">
+
+            <div class="hero-glow"></div>
+
+
+            <div class="hero-device">
+
+                <img
+                    src="../images/products/mc3.webp"
+                    alt="Programmatore MC3 Turrin Elettronica"
+                >
+
+            </div>
+
+
+            <div class="hero-floating-card hero-card-top">
+
+                <span>
+                    Modalità
+                </span>
+
+                <strong>
+                    OBD · Bench · Boot
+                </strong>
+
+            </div>
+
+
+            <div class="hero-floating-card hero-card-bottom">
+
+                <span>
+                    Sistema
+                </span>
+
+                <strong>
+                    Hardware + Software
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+    <!-- =========================================
+         PANORAMICA
+         ========================================= -->
+
+<section
+    class="mc3-story"
+    id="funzionalita">
+
+    <div class="container mc3-story-grid">
+
+        <div class="mc3-story-visual reveal reveal-left">
+
+            <div class="mc3-device-stage">
+
+                <div class="device-glow"></div>
+
+                <img
+                    src="../images/products/mc3.webp"
+                    alt="MC3 Turrin Elettronica"
+                >
+
+                <span class="device-tag tag-obd">
+                    OBD
+                </span>
+
+                <span class="device-tag tag-bench">
+                    BENCH
+                </span>
+
+                <span class="device-tag tag-boot">
+                    BOOT
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="mc3-story-content" data-stagger>
+
+            <div class="story-intro reveal">
+
+                <span class="section-label">
+                    Come funziona
+                </span>
+
+                <h2>
+                    Dalla centralina al file
+                    in pochi passaggi.
+                </h2>
+
+                <p>
+                    MC3 combina hardware e software
+                    in un unico ambiente di lavoro
+                    progettato per guidare l'operatore
+                    durante ogni fase della programmazione.
+                </p>
+
+            </div>
+
+
+            <article class="story-step reveal">
+
+                <span class="story-number">
+                    01
+                </span>
+
+                <div>
+
+                    <h3>
+                        Seleziona la centralina
+                    </h3>
+
+                    <p>
+                        Scegli marca, modello e tipo
+                        di centralina dal software MC3.
+                        Il sistema mostra le modalità
+                        disponibili.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-step reveal">
+
+                <span class="story-number">
+                    02
+                </span>
+
+                <div>
+
+                    <h3>
+                        Segui il collegamento
+                    </h3>
+
+                    <p>
+                        Pinout, connessioni e indicazioni
+                        operative vengono presentati
+                        direttamente nell'interfaccia.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-step reveal">
+
+                <span class="story-number">
+                    03
+                </span>
+
+                <div>
+
+                    <h3>
+                        Identifica la ECU
+                    </h3>
+
+                    <p>
+                        MC3 identifica i dati disponibili
+                        della centralina prima di procedere
+                        con le operazioni.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="story-step reveal">
+
+                <span class="story-number">
+                    04
+                </span>
+
+                <div>
+
+                    <h3>
+                        Leggi e scrivi
+                    </h3>
+
+                    <p>
+                        Esegui le operazioni supportate
+                        su EEPROM, Micro e Flash tramite
+                        OBD, Bench oppure Boot.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+    <!-- =========================================
+         MODALITÀ
+         ========================================= -->
+
+<section class="mc3-modes">
+
+    <div class="container">
+
+        <div class="section-heading center reveal reveal-up">
+
+            <span class="section-label">
+                Modalità operative
+            </span>
+
+            <h2>
+                Scegli come lavorare
+            </h2>
+
+            <p>
+                MC3 supporta diverse modalità
+                operative in base alla centralina
+                e all'intervento da eseguire.
+            </p>
+
+        </div>
+
+
+        <div class="mode-tabs" data-stagger>
+
+            <button
+                class="mode-tab active"
+                data-mode="obd"
+                type="button">
+                OBD
+            </button>
+
+            <button
+                class="mode-tab"
+                data-mode="bench"
+                type="button">
+                Bench
+            </button>
+
+            <button
+                class="mode-tab"
+                data-mode="boot"
+                type="button">
+                Boot
+            </button>
+
+        </div>
+
+
+        <div class="mode-panel reveal reveal-soft">
+
+            <div>
+
+                <span
+                    id="modeLabel"
+                    class="mode-label">
+                    OBD
+                </span>
+
+                <h3 id="modeTitle">
+                    Lavora direttamente dal veicolo
+                </h3>
+
+                <p id="modeText">
+                    Collegati attraverso la presa
+                    diagnostica senza rimuovere
+                    o aprire la centralina.
+                </p>
+
+                <ul id="modeFeatures">
+
+                    <li>
+                        Collegamento rapido
+                    </li>
+
+                    <li>
+                        Nessuna apertura ECU
+                    </li>
+
+                    <li>
+                        Lettura e scrittura supportate
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+ <div
+    class="mode-visual"
+    id="modeVisual"
+    data-mode="obd">
+
+    <div class="mode-diagram">
+
+        <div class="diagram-node diagram-source">
+
+            <span class="diagram-small">
+                SORGENTE
+            </span>
+
+            <strong id="diagramSource">
+                VEICOLO
+            </strong>
+
+        </div>
+
+
+        <div class="diagram-connection">
+
+            <span class="connection-dot"></span>
+
+            <span class="connection-line"></span>
+
+            <span class="connection-dot"></span>
+
+        </div>
+
+
+        <div class="diagram-node diagram-middle">
+
+            <span class="diagram-small">
+                COLLEGAMENTO
+            </span>
+
+            <strong id="diagramConnection">
+                PRESA OBD
+            </strong>
+
+        </div>
+
+
+        <div class="diagram-connection">
+
+            <span class="connection-dot"></span>
+
+            <span class="connection-line"></span>
+
+            <span class="connection-dot"></span>
+
+        </div>
+
+
+        <div class="diagram-node diagram-mc3">
+
+            <span class="diagram-small">
+                PROGRAMMATORE
+            </span>
+
+            <strong>
+                MC3
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="diagram-status">
+
+        <span class="status-light"></span>
+
+        <span id="diagramStatus">
+            Collegamento OBD
+        </span>
+
+    </div>
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+    <!-- =========================================
+         PACCHETTI
+         ========================================= -->
+
+<section class="mc3-packages">
+
+    <div class="container">
+
+        <div class="section-heading center reveal">
+
+            <span class="section-label">
+                Configurabile
+            </span>
+
+            <h2>
+                Un MC3.
+                I pacchetti che ti servono.
+            </h2>
+
+            <p>
+                Configura il sistema in base alle
+                tipologie di centraline su cui lavori.
+            </p>
+
+        </div>
+
+
+        <div class="package-selector" data-stagger>
+
+            <button
+                class="package-button active"
+                data-package="ecu"
+                type="button">
+                ECU OBD & Boot
+            </button>
+
+            <button
+                class="package-button"
+                data-package="bench"
+                type="button">
+                ECU Bench
+            </button>
+
+            <button
+                class="package-button"
+                data-package="airbag"
+                type="button">
+                Airbag
+            </button>
+
+            <button
+                class="package-button"
+                data-package="body"
+                type="button">
+                Body / BSI
+            </button>
+
+            <button
+                class="package-button"
+                data-package="abs"
+                type="button">
+                ABS
+            </button>
+
+            <button
+                class="package-button"
+                data-package="adas"
+                type="button">
+                ADAS
+            </button>
+
+            <button
+                class="package-button"
+                data-package="cluster"
+                type="button">
+                Cluster
+            </button>
+
+            <button
+                class="package-button"
+                data-package="eps"
+                type="button">
+                EPS
+            </button>
+
+        </div>
+
+
+        <div class="package-detail reveal reveal-soft">
+
+            <div class="package-detail-content">
+
+                <span
+                    id="packageLabel"
+                    class="package-detail-label">
+                    PACCHETTO MC3
+                </span>
+
+                <h3 id="packageTitle">
+                    ECU OBD & Boot
+                </h3>
+
+                <p id="packageText">
+                    Operazioni di lettura e scrittura
+                    sulle centraline motore supportate
+                    tramite OBD e Boot.
+                </p>
+
+
+                <ul id="packageFeatures">
+
+                    <li>
+                        Lettura ECU
+                    </li>
+
+                    <li>
+                        Scrittura ECU
+                    </li>
+
+                    <li>
+                        Procedure guidate
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="package-detail-visual">
+
+                <span>
+                    MC3
+                </span>
+
+                <strong id="packageVisual">
+                    ECU
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+           <div
+    class="tech-divider"
+    aria-hidden="true">
+    </div>  
+
+
+    <!-- =========================================
+         KIT
+         ========================================= -->
+
+<section class="mc3-kit-section">
+
+    <div class="container">
+
+        <div class="section-heading center reveal reveal-up">
+
+            <span class="section-label">
+                Hardware
+            </span>
+
+            <h2>
+                Tutto quello che ti serve.
+                In un unico kit.
+            </h2>
+
+            <p>
+                MC3 viene fornito con gli accessori
+                necessari per lavorare nelle principali
+                modalità operative.
+            </p>
+
+        </div>
+
+
+        <div class="mc3-kit-grid">
+
+            <!-- =========================
+                 IMMAGINE KIT
+                 ========================= -->
+
+            <div class="mc3-kit-visual reveal reveal-left">
+
+                <div class="kit-image-stage">
+
+                    <div class="kit-image-glow"></div>
+
+                    <img
+                        src="../images/products/mc3-kit.webp"
+                        alt="Kit completo MC3"
+                        class="kit-main-image"
+                    >
+
+
+                    <!-- HOTSPOT -->
+
+                    <button
+                        class="kit-hotspot active"
+                        data-kit="device"
+                        type="button"
+                        aria-label="Dispositivo MC3"
+                        style="left:48%; top:42%;">
+
+                        <span>1</span>
+
+                    </button>
+
+
+                    <button
+                        class="kit-hotspot"
+                        data-kit="obd"
+                        type="button"
+                        aria-label="Cavo OBD"
+                        style="left:22%; top:62%;">
+
+                        <span>2</span>
+
+                    </button>
+
+
+                    <button
+                        class="kit-hotspot"
+                        data-kit="bench"
+                        type="button"
+                        aria-label="Cavo Bench Boot"
+                        style="left:72%; top:60%;">
+
+                        <span>3</span>
+
+                    </button>
+
+
+                    <button
+                        class="kit-hotspot"
+                        data-kit="power"
+                        type="button"
+                        aria-label="Alimentatore"
+                        style="left:78%; top:27%;">
+
+                        <span>4</span>
+
+                    </button>
+
+
+                    <button
+                        class="kit-hotspot"
+                        data-kit="usb"
+                        type="button"
+                        aria-label="Cavo USB"
+                        style="left:30%; top:28%;">
+
+                        <span>5</span>
+
+                    </button>
+
+                </div>
+
+
+                <div class="kit-visual-caption">
+
+                    <span>
+                        Passa sui punti per esplorare il kit
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 CONTENUTO
+                 ========================= -->
+
+            <div class="mc3-kit-content reveal reveal-right">
+
+                <span class="kit-label">
+                    KIT MC3
+                </span>
+
+
+                <h3 id="kitTitle">
+                    Programmatore MC3
+                </h3>
+
+
+                <p id="kitDescription">
+
+                    Il cuore del sistema.
+                    L'interfaccia hardware collega
+                    il computer alla centralina e
+                    gestisce le operazioni supportate
+                    tramite OBD, Bench e Boot.
+
+                </p>
+
+
+                <div class="kit-items" data-stagger>
+
+
+                    <button
+                        class="kit-item-button active"
+                        data-kit="device"
+                        type="button">
+
+                        <span class="kit-item-number">
+                            01
+                        </span>
+
+                        <span>
+                            Programmatore MC3
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="kit-item-button"
+                        data-kit="obd"
+                        type="button">
+
+                        <span class="kit-item-number">
+                            02
+                        </span>
+
+                        <span>
+                            Cavo OBD
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="kit-item-button"
+                        data-kit="bench"
+                        type="button">
+
+                        <span class="kit-item-number">
+                            03
+                        </span>
+
+                        <span>
+                            Cavo Bench / Boot
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="kit-item-button"
+                        data-kit="power"
+                        type="button">
+
+                        <span class="kit-item-number">
+                            04
+                        </span>
+
+                        <span>
+                            Alimentatore MC3
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="kit-item-button"
+                        data-kit="usb"
+                        type="button">
+
+                        <span class="kit-item-number">
+                            05
+                        </span>
+
+                        <span>
+                            Cavo USB A-B
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="kit-item-button"
+                        data-kit="case"
+                        type="button">
+
+                        <span class="kit-item-number">
+                            06
+                        </span>
+
+                        <span>
+                            Valigia
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- =========================================
+         LICENZA
+         ========================================= -->
+
+<section class="mc3-license">
+
+    <div class="container">
+
+        <div class="mc3-license-grid">
+
+            <div class="mc3-license-intro reveal reveal-left">
+
+                <span class="section-label">
+                    Licenza MC3
+                </span>
+
+
+                <h2>
+                    Mantieni MC3
+                    sempre aggiornato.
+                </h2>
+
+
+                <p>
+                    Con la licenza attiva hai accesso
+                    agli aggiornamenti software,
+                    ai nuovi protocolli supportati
+                    e all'assistenza tecnica.
+                </p>
+
+
+                <p>
+                    Il primo anno di licenza
+                    è incluso con MC3.
+                </p>
+
+            </div>
+
+
+            <div class="mc3-license-card reveal reveal-right">
+
+                <div class="license-status">
+
+                    <span class="license-status-dot"></span>
+
+                    LICENZA MC3
+
+                </div>
+
+
+                <div class="license-duration">
+
+                    <strong data-count="12">
+                        0
+                    </strong>
+
+                    <span>
+                        MESI
+                    </span>
+
+                </div>
+
+
+                <div class="license-included">
+
+                    <span>
+                        Inclusa con MC3
+                    </span>
+
+                    <strong>
+                        Primo anno
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="license-benefits reveal" data-stagger>
+
+
+            <div class="license-benefit">
+
+                <span class="license-benefit-icon">
+                    ↻
+                </span>
+
+                <div>
+
+                    <strong>
+                        Aggiornamenti software
+                    </strong>
+
+                    <p>
+                        Accesso alle nuove versioni
+                        del software MC3.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="license-benefit">
+
+                <span class="license-benefit-icon">
+                    +
+                </span>
+
+                <div>
+
+                    <strong>
+                        Nuovi protocolli
+                    </strong>
+
+                    <p>
+                        Nuove centraline e procedure
+                        vengono aggiunte nel tempo.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="license-benefit">
+
+                <span class="license-benefit-icon">
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Assistenza tecnica
+                    </strong>
+
+                    <p>
+                        Supporto tecnico durante
+                        il periodo di licenza.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="license-benefit">
+
+                <span class="license-benefit-icon">
+                    ⇩
+                </span>
+
+                <div>
+
+                    <strong>
+                        Database aggiornato
+                    </strong>
+
+                    <p>
+                        Disponibilità degli aggiornamenti
+                        relativi alle unità supportate.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- =========================================
+         AGGIORNAMENTI CONDIVISI
+         ========================================= -->
+
+    <section
+        class="shared-updates-section"
+        data-updates-component
+        data-updates-product="mc3"
+        data-updates-limit="9"
+        data-updates-root="../"
+        data-updates-carousel="true">
+
+        <div class="container">
+
+            <div class="shared-updates-heading reveal reveal-up">
+
+                <div class="shared-updates-heading-copy">
+
+                    <span class="section-label">
+                        Ultime novità
+                    </span>
+
+                    <h2>
+                        MC3 continua ad evolversi.
+                    </h2>
+
+                    <p>
+                        Nuove versioni, centraline supportate
+                        e funzionalità vengono aggiunte
+                        attraverso gli aggiornamenti software.
+                    </p>
+
+                </div>
+
+                <a
+                    href="../aggiornamenti.html?product=mc3"
+                    class="shared-updates-all-link">
+
+                    Tutti gli aggiornamenti MC3
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+            <div class="shared-updates-carousel reveal reveal-soft">
+
+                <div
+                    class="shared-updates-track"
+                    data-updates-grid>
+
+                    <div class="shared-updates-message">
+                        Caricamento aggiornamenti...
+                    </div>
+
+                </div>
+
+                <div
+                    class="shared-updates-dots"
+                    data-updates-dots
+                    aria-label="Navigazione aggiornamenti MC3">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    
+    <!-- =========================================
+         CTA
+         ========================================= -->
+
+    <section class="product-cta">
+
+        <div
+            class="
+                container
+                product-cta-inner  
+                reveal 
+                reveal-up
+            ">
+
+            <div>
+
+                <h2>
+                    Vuoi maggiori informazioni su MC3?
+                </h2>
+
+                <p>
+                    Contattaci per informazioni,
+                    compatibilità e preventivi.
+                </p>
+
+            </div>
+
+
+            <a
+                href="../index.html#contatti"
+                class="button-secondary">
+
+                Contattaci
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+<div id="siteFooter"></div>
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+<script>
+
+/* =====================================
+   MODALITÀ MC3
+   ===================================== */
+
+const modeData = {
+
+    obd: {
+
+        label: 'OBD',
+
+        title:
+            'Lavora direttamente dal veicolo',
+
+        text:
+            'Collegati attraverso la presa diagnostica senza rimuovere o aprire la centralina.',
+
+        features: [
+            'Collegamento rapido',
+            'Nessuna apertura ECU',
+            'Lettura e scrittura supportate'
+        ],
+
+        source:
+            'VEICOLO',
+
+        connection:
+            'PRESA OBD',
+
+        status:
+            'Collegamento OBD'
+    },
+
+
+    bench: {
+
+        label: 'BENCH',
+
+        title:
+            'Programmazione direttamente a banco',
+
+        text:
+            'Collega MC3 direttamente al connettore della centralina per eseguire le operazioni supportate a banco.',
+
+        features: [
+            'Centralina fuori dal veicolo',
+            'Collegamento tramite connettore ECU',
+            'Pinout guidato dal software'
+        ],
+
+        source:
+            'ECU',
+
+        connection:
+            'CONNETTORE',
+
+        status:
+            'Collegamento Bench'
+    },
+
+
+    boot: {
+
+        label: 'BOOT',
+
+        title:
+            'Accesso avanzato alla centralina',
+
+        text:
+            'Accedi direttamente alla scheda elettronica per le procedure che richiedono la modalità Boot.',
+
+        features: [
+            'Accesso diretto alla scheda',
+            'Procedure dedicate',
+            'Operazioni avanzate'
+        ],
+
+        source:
+            'ECU APERTA',
+
+        connection:
+            'BOOT PIN',
+
+        status:
+            'Collegamento Boot'
+    }
+
+};
+
+
+document
+    .querySelectorAll('.mode-tab')
+    .forEach(button => {
+
+        button.addEventListener(
+            'click',
+            () => {
+
+                const mode =
+                    button.dataset.mode;
+
+
+                const data =
+                    modeData[mode];
+
+
+                document
+                    .querySelectorAll('.mode-tab')
+                    .forEach(tab => {
+
+                        tab.classList.remove(
+                            'active'
+                        );
+
+                    });
+
+
+                button.classList.add(
+                    'active'
+                );
+
+
+                document.getElementById(
+                    'modeLabel'
+                ).textContent =
+                    data.label;
+
+
+                document.getElementById(
+                    'modeTitle'
+                ).textContent =
+                    data.title;
+
+
+                document.getElementById(
+                    'modeText'
+                ).textContent =
+                    data.text;
+
+
+               document.getElementById(
+                    'diagramSource'
+                ).textContent =
+                    data.source;
+                
+                
+                document.getElementById(
+                    'diagramConnection'
+                ).textContent =
+                    data.connection;
+                
+                
+                document.getElementById(
+                    'diagramStatus'
+                ).textContent =
+                    data.status;
+                
+                
+                document.getElementById(
+                    'modeVisual'
+                ).dataset.mode =
+                    mode;
+
+
+                document.getElementById(
+                    'modeFeatures'
+                ).innerHTML =
+                    data.features
+                        .map(
+                            item =>
+                                `<li>${item}</li>`
+                        )
+                        .join('');
+
+            }
+
+        );
+
+    });
+
+/* =====================================
+   ANIMAZIONE SCROLL
+   ===================================== */
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target
+                            .classList
+                            .add(
+                                'visible'
+                            );
+
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: .15
+        }
+    );
+
+
+document
+    .querySelectorAll('.reveal')
+    .forEach(element => {
+
+        revealObserver.observe(
+            element
+        );
+
+    });
+    const packageData = {
+
+    ecu: {
+        title: 'ECU OBD & Boot',
+        visual: 'ECU',
+        text:
+            'Operazioni di lettura e scrittura sulle centraline motore supportate tramite OBD e Boot.',
+        features: [
+            'Lettura ECU',
+            'Scrittura ECU',
+            'Procedure guidate'
+        ]
+    },
+
+
+    bench: {
+        title: 'ECU Bench',
+        visual: 'BENCH',
+        text:
+            'Lavora direttamente a banco sulle centraline motore supportate attraverso il connettore ECU.',
+        features: [
+            'Lettura a banco',
+            'Scrittura a banco',
+            'Pinout dedicati'
+        ]
+    },
+
+
+    airbag: {
+        title: 'Airbag',
+        visual: 'AIRBAG',
+        text:
+            'Funzioni dedicate alle centraline Airbag supportate attraverso le procedure disponibili in MC3.',
+        features: [
+            'Centraline Airbag',
+            'Procedure dedicate',
+            'Nuove unità tramite aggiornamenti'
+        ]
+    },
+
+
+    body: {
+        title: 'Body / BSI',
+        visual: 'BODY',
+        text:
+            'Operazioni dedicate ai Body Computer e alle centraline BSI supportate.',
+        features: [
+            'Lettura',
+            'Scrittura',
+            'Supporto Body / BSI'
+        ]
+    },
+
+
+    abs: {
+        title: 'ABS',
+        visual: 'ABS',
+        text:
+            'Funzioni dedicate alle centraline ABS presenti nel database MC3.',
+        features: [
+            'Centraline ABS',
+            'Procedure dedicate',
+            'Database aggiornabile'
+        ]
+    },
+
+
+    adas: {
+        title: 'ADAS',
+        visual: 'ADAS',
+        text:
+            'Supporto alle centraline dei sistemi avanzati di assistenza alla guida compatibili.',
+        features: [
+            'Centraline ADAS',
+            'Procedure dedicate',
+            'Supporto progressivamente aggiornato'
+        ]
+    },
+
+
+    cluster: {
+        title: 'Cluster',
+        visual: 'CLUSTER',
+        text:
+            'Operazioni dedicate ai quadri strumenti e alle unità Cluster supportate.',
+        features: [
+            'Quadri strumenti',
+            'Lettura',
+            'Scrittura'
+        ]
+    },
+
+
+    eps: {
+        title: 'EPS',
+        visual: 'EPS',
+        text:
+            'Funzioni dedicate alle centraline dei sistemi di sterzo elettrico supportati.',
+        features: [
+            'Centraline EPS',
+            'Procedure guidate',
+            'Database aggiornabile'
+        ]
+    }
+
+};
+    document
+    .querySelectorAll(
+        '.package-button'
+    )
+    .forEach(button => {
+
+        button.addEventListener(
+            'click',
+            () => {
+
+                const packageKey =
+                    button.dataset.package;
+
+
+                const data =
+                    packageData[
+                        packageKey
+                    ];
+
+
+                if (!data)
+                    return;
+
+
+                document
+                    .querySelectorAll(
+                        '.package-button'
+                    )
+                    .forEach(item => {
+
+                        item.classList.remove(
+                            'active'
+                        );
+
+                    });
+
+
+                button.classList.add(
+                    'active'
+                );
+
+
+                document.getElementById(
+                    'packageTitle'
+                ).textContent =
+                    data.title;
+
+
+                document.getElementById(
+                    'packageText'
+                ).textContent =
+                    data.text;
+
+
+                document.getElementById(
+                    'packageVisual'
+                ).textContent =
+                    data.visual;
+
+
+                document.getElementById(
+                    'packageFeatures'
+                ).innerHTML =
+                    data.features
+                        .map(
+                            feature =>
+                                `<li>${feature}</li>`
+                        )
+                        .join('');
+
+            }
+        );
+
+    });
+    /* =====================================
+   KIT MC3
+   ===================================== */
+
+const kitData = {
+
+    device: {
+
+        title:
+            'Programmatore MC3',
+
+        description:
+            `Il cuore del sistema.
+             L'interfaccia hardware collega
+             il computer alla centralina e
+             gestisce le operazioni supportate
+             tramite OBD, Bench e Boot.`
+
+    },
+
+
+    obd: {
+
+        title:
+            'Cavo OBD',
+
+        description:
+            `Permette il collegamento di MC3
+             alla presa diagnostica del veicolo
+             per le operazioni OBD supportate.`
+
+    },
+
+
+    bench: {
+
+        title:
+            'Cavo Bench / Boot',
+
+        description:
+            `Utilizzato per le connessioni
+             a banco e per le procedure Boot
+             previste dalle centraline supportate.`
+
+    },
+
+
+    power: {
+
+        title:
+            'Alimentatore MC3',
+
+        description:
+            `Fornisce l'alimentazione necessaria
+             durante le operazioni a banco.`
+
+    },
+
+
+    usb: {
+
+        title:
+            'Cavo USB A-B',
+
+        description:
+            `Collega MC3 al computer
+             sul quale viene utilizzato
+             il software di gestione.`
+
+    },
+
+
+    case: {
+
+        title:
+            'Valigia',
+
+        description:
+            `Permette di trasportare e conservare
+             MC3 e i relativi accessori
+             in modo ordinato e protetto.`
+
+    }
+
+};
+
+
+/* =====================================
+   SELEZIONE ACCESSORIO
+   ===================================== */
+
+function selectKitItem(
+    key
+) {
+
+    const data =
+        kitData[key];
+
+
+    if (!data)
+        return;
+
+
+    document.getElementById(
+        'kitTitle'
+    ).textContent =
+        data.title;
+
+
+    document.getElementById(
+        'kitDescription'
+    ).textContent =
+        data.description;
+
+
+    document
+        .querySelectorAll(
+            '.kit-item-button'
+        )
+        .forEach(button => {
+
+            button.classList.toggle(
+                'active',
+                button.dataset.kit ===
+                    key
+            );
+
+        });
+
+
+    document
+        .querySelectorAll(
+            '.kit-hotspot'
+        )
+        .forEach(hotspot => {
+
+            hotspot.classList.toggle(
+                'active',
+                hotspot.dataset.kit ===
+                    key
+            );
+
+        });
+
+}
+    document
+    .querySelectorAll(
+        '.kit-item-button'
+    )
+    .forEach(button => {
+
+        button.addEventListener(
+            'click',
+            () => {
+
+                selectKitItem(
+                    button.dataset.kit
+                );
+
+            }
+        );
+
+
+        button.addEventListener(
+            'mouseenter',
+            () => {
+
+                selectKitItem(
+                    button.dataset.kit
+                );
+
+            }
+        );
+
+    });
+
+
+document
+    .querySelectorAll(
+        '.kit-hotspot'
+    )
+    .forEach(hotspot => {
+
+        hotspot.addEventListener(
+            'click',
+            () => {
+
+                selectKitItem(
+                    hotspot.dataset.kit
+                );
+
+            }
+        );
+
+    });
+
+</script>
+
+<script src="../js/updates.js"></script>
+<script src="../js/components.js"></script>
+</body>
+
+</html>
