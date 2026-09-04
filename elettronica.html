@@ -1,0 +1,1908 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Electronic Engineering Turrin Elettronica: sviluppo hardware, sistemi embedded, firmware, prototipazione, test e integrazione hardware-software."
+  >
+
+  <title>
+    Electronic Engineering | Turrin Elettronica
+  </title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+  <style>
+
+    /* =========================================================
+       ELECTRONIC ENGINEERING PAGE
+       ========================================================= */
+
+    .electronics-page {
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+
+    .electronics-page *,
+    .electronics-page *::before,
+    .electronics-page *::after {
+      box-sizing: border-box;
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .electronics-hero {
+      position: relative;
+      overflow: hidden;
+
+      padding: 90px 0 82px;
+
+      background:
+        radial-gradient(
+          circle at 77% 24%,
+          rgba(43, 206, 151, .17),
+          transparent 29%
+        ),
+        linear-gradient(
+          135deg,
+          #041e1a 0%,
+          #063b31 48%,
+          #086d57 100%
+        );
+    }
+
+
+    .electronics-hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 620px;
+      height: 620px;
+
+      right: -270px;
+      bottom: -390px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.09);
+
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 0 70px rgba(255,255,255,.018),
+        0 0 0 140px rgba(255,255,255,.010);
+
+      pointer-events: none;
+    }
+
+
+    .electronics-hero-grid {
+      position: relative;
+      z-index: 1;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, .92fr)
+        minmax(420px, 1.08fr);
+
+      align-items: center;
+
+      gap: 70px;
+    }
+
+
+    .electronics-hero-copy {
+      max-width: 720px;
+    }
+
+
+    .electronics-kicker {
+      display: inline-flex;
+      align-items: center;
+
+      margin-bottom: 17px;
+
+      color: #73e0b8;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+
+    .electronics-hero h1 {
+      margin: 0;
+
+      color: #ffffff;
+
+      font-size:
+        clamp(43px, 5.6vw, 68px);
+
+      font-weight: 700;
+
+      line-height: 1.02;
+
+      letter-spacing: -.047em;
+    }
+
+
+    .electronics-hero h1 span {
+      color: #4fd3a3;
+    }
+
+
+    .electronics-hero-copy > p {
+      max-width: 680px;
+
+      margin: 24px 0 0;
+
+      color: rgba(255,255,255,.72);
+
+      font-size: 15px;
+      font-weight: 400;
+
+      line-height: 1.78;
+    }
+
+
+    .electronics-hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 30px;
+    }
+
+
+    .electronics-hero .btn-outline {
+      border-color: rgba(255,255,255,.34);
+      color: #ffffff;
+      background: rgba(255,255,255,.035);
+    }
+
+
+    .electronics-hero .btn-outline:hover {
+      border-color: rgba(255,255,255,.62);
+      background: rgba(255,255,255,.08);
+      color: #ffffff;
+    }
+
+
+    .electronics-hero-tags {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 29px;
+    }
+
+
+    .electronics-hero-tags span {
+      min-height: 29px;
+
+      display: inline-flex;
+      align-items: center;
+
+      padding: 0 10px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.11);
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,.04);
+
+      color:
+        rgba(255,255,255,.62);
+
+      font-size: 8.5px;
+      font-weight: 600;
+    }
+
+
+    .electronics-hero-visual {
+      position: relative;
+
+      min-height: 520px;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        rgba(255,255,255,.12);
+
+      border-radius: 24px;
+
+      background: #041f1a;
+
+      box-shadow:
+        0 28px 70px
+        rgba(0,0,0,.28);
+    }
+
+
+    .electronics-hero-visual img {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center center;
+    }
+
+
+    .electronics-hero-visual::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4,35,29,.00) 24%,
+          rgba(4,35,29,.13) 56%,
+          rgba(3,31,25,.88) 100%
+        );
+    }
+
+
+    .electronics-hero-card {
+      position: absolute;
+      z-index: 2;
+
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+
+      padding: 17px 18px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.15);
+
+      border-radius: 12px;
+
+      background:
+        rgba(4,43,35,.78);
+
+      backdrop-filter: blur(13px);
+
+      box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.16);
+    }
+
+
+    .electronics-hero-card span {
+      display: block;
+
+      color: #73e0b8;
+
+      font-size: 8px;
+      font-weight: 700;
+
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+
+    .electronics-hero-card strong {
+      display: block;
+
+      max-width: 470px;
+
+      margin-top: 6px;
+
+      color: #ffffff;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      line-height: 1.5;
+    }
+
+
+    /* =========================================================
+       COMMON
+       ========================================================= */
+
+    .electronics-section-head {
+      max-width: 790px;
+
+      margin-bottom: 34px;
+    }
+
+
+    .electronics-section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+
+      text-align: center;
+    }
+
+
+    .electronics-section-label {
+      display: inline-flex;
+
+      margin-bottom: 14px;
+
+      color: #0b8b69;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+
+    .electronics-section-head h2,
+    .electronics-process-copy h2,
+    .electronics-integration-copy h2,
+    .electronics-projects-copy h2 {
+      margin: 0;
+
+      color: #071b3a;
+
+      font-size:
+        clamp(31px, 3.8vw, 47px);
+
+      font-weight: 700;
+
+      line-height: 1.08;
+
+      letter-spacing: -.04em;
+    }
+
+
+    .electronics-section-head p,
+    .electronics-process-copy p,
+    .electronics-integration-copy p,
+    .electronics-projects-copy p {
+      margin: 14px 0 0;
+
+      color: #6c788c;
+
+      font-size: 13px;
+      font-weight: 400;
+
+      line-height: 1.78;
+    }
+
+
+    /* =========================================================
+       CAPABILITIES
+       ========================================================= */
+
+    .electronics-capabilities {
+      padding: 88px 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          #f4fbf8 0%,
+          #ffffff 100%
+        );
+    }
+
+
+    .electronics-capabilities-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+      gap: 15px;
+    }
+
+
+    .electronics-capability-card {
+      min-height: 270px;
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 22px;
+
+      border:
+        1px solid #dceae5;
+
+      border-radius: 14px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 10px 28px
+        rgba(24,75,59,.052);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+
+    .electronics-capability-card:hover {
+      transform: translateY(-4px);
+
+      border-color: #c6dfd6;
+
+      box-shadow:
+        0 18px 38px
+        rgba(24,75,59,.09);
+    }
+
+
+    .electronics-capability-icon {
+      width: 46px;
+      height: 46px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 11px;
+
+      background: #eaf8f3;
+      color: #0b8b69;
+    }
+
+
+    .electronics-capability-icon svg {
+      width: 22px;
+      height: 22px;
+
+      display: block;
+
+      fill: none;
+      stroke: currentColor;
+
+      stroke-width: 1.7;
+
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+
+    .electronics-capability-card h3 {
+      margin: 22px 0 0;
+
+      color: #24384d;
+
+      font-size: 17px;
+      font-weight: 700;
+
+      line-height: 1.25;
+    }
+
+
+    .electronics-capability-card p {
+      margin: 10px 0 0;
+
+      color: #748596;
+
+      font-size: 10.5px;
+      font-weight: 400;
+
+      line-height: 1.7;
+    }
+
+
+    .electronics-capability-list {
+      display: grid;
+
+      gap: 8px;
+
+      margin: 18px 0 0;
+
+      padding: 0;
+
+      list-style: none;
+    }
+
+
+    .electronics-capability-list li {
+      display: flex;
+      align-items: center;
+
+      gap: 7px;
+
+      color: #687b8c;
+
+      font-size: 9.5px;
+      line-height: 1.45;
+    }
+
+
+    .electronics-capability-list li::before {
+      content: "";
+
+      width: 5px;
+      height: 5px;
+
+      flex: 0 0 auto;
+
+      border-radius: 50%;
+
+      background: #16a177;
+    }
+
+
+    /* =========================================================
+       PROCESS
+       ========================================================= */
+
+    .electronics-process {
+      padding: 92px 0;
+
+      background: #ffffff;
+    }
+
+
+    .electronics-process-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, .82fr)
+        minmax(0, 1.18fr);
+
+      align-items: center;
+
+      gap: 70px;
+    }
+
+
+    .electronics-process-list {
+      display: grid;
+
+      gap: 12px;
+    }
+
+
+    .electronics-process-step {
+      display: grid;
+
+      grid-template-columns:
+        49px 1fr;
+
+      gap: 16px;
+
+      padding: 18px 19px;
+
+      border:
+        1px solid #e0e8e5;
+
+      border-radius: 12px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 8px 24px
+        rgba(24,60,49,.045);
+    }
+
+
+    .electronics-process-number {
+      width: 49px;
+      height: 49px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 11px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #08785b,
+          #11a77c
+        );
+
+      color: #ffffff;
+
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+
+    .electronics-process-step h3 {
+      margin: 1px 0 5px;
+
+      color: #273a4d;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+
+    .electronics-process-step p {
+      margin: 0;
+
+      color: #778898;
+
+      font-size: 9.5px;
+      line-height: 1.65;
+    }
+
+
+    /* =========================================================
+       INTEGRATION / ADVANTAGE
+       ========================================================= */
+
+    .electronics-integration {
+      padding: 92px 0;
+
+      background:
+        linear-gradient(
+          145deg,
+          #06251f,
+          #0a4437
+        );
+    }
+
+
+    .electronics-integration-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, .9fr)
+        minmax(0, 1.1fr);
+
+      align-items: center;
+
+      gap: 68px;
+    }
+
+
+    .electronics-integration-copy .electronics-section-label {
+      color: #6fe1b6;
+    }
+
+
+    .electronics-integration-copy h2 {
+      color: #ffffff;
+    }
+
+
+    .electronics-integration-copy h2 span {
+      color: #6fe1b6;
+    }
+
+
+    .electronics-integration-copy p {
+      color:
+        rgba(255,255,255,.66);
+    }
+
+
+    .electronics-integration-note {
+      margin-top: 21px;
+
+      padding: 15px 16px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.11);
+
+      border-radius: 10px;
+
+      background:
+        rgba(255,255,255,.045);
+
+      color:
+        rgba(255,255,255,.67);
+
+      font-size: 9.5px;
+      line-height: 1.65;
+    }
+
+
+    .electronics-integration-diagram {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 13px;
+    }
+
+
+    .electronics-integration-node {
+      min-height: 150px;
+
+      padding: 20px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.10);
+
+      border-radius: 13px;
+
+      background:
+        rgba(255,255,255,.05);
+    }
+
+
+    .electronics-integration-node span {
+      display: inline-flex;
+
+      margin-bottom: 13px;
+
+      color: #77e2ba;
+
+      font-size: 8px;
+      font-weight: 700;
+
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+
+    .electronics-integration-node strong {
+      display: block;
+
+      color: #ffffff;
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+
+    .electronics-integration-node p {
+      margin: 7px 0 0;
+
+      color:
+        rgba(255,255,255,.55);
+
+      font-size: 9.5px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       PROJECT TYPES
+       ========================================================= */
+
+    .electronics-projects {
+      padding: 92px 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff,
+          #f7faf9
+        );
+    }
+
+
+    .electronics-projects-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, .82fr)
+        minmax(0, 1.18fr);
+
+      gap: 70px;
+
+      align-items: start;
+    }
+
+
+    .electronics-projects-list {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 12px;
+    }
+
+
+    .electronics-project-card {
+      min-height: 145px;
+
+      padding: 18px;
+
+      border:
+        1px solid #dde7e3;
+
+      border-radius: 12px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 8px 25px
+        rgba(24,60,49,.045);
+    }
+
+
+    .electronics-project-card strong {
+      display: block;
+
+      color: #24394c;
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+
+    .electronics-project-card span {
+      display: block;
+
+      margin-top: 7px;
+
+      color: #788898;
+
+      font-size: 9.5px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       EXPERIENCE
+       ========================================================= */
+
+    .electronics-experience {
+      padding: 82px 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f2faf7,
+          #ffffff
+        );
+    }
+
+
+    .electronics-experience-inner {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, .8fr)
+        minmax(0, 1.2fr);
+
+      align-items: center;
+
+      gap: 55px;
+
+      padding: 35px;
+
+      border:
+        1px solid #d9e8e2;
+
+      border-radius: 18px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 14px 40px
+        rgba(21,61,49,.055);
+    }
+
+
+    .electronics-experience-copy h2 {
+      margin: 0;
+
+      color: #071b3a;
+
+      font-size:
+        clamp(27px, 3.2vw, 39px);
+
+      font-weight: 700;
+
+      line-height: 1.12;
+
+      letter-spacing: -.035em;
+    }
+
+
+    .electronics-experience-copy p {
+      margin: 13px 0 0;
+
+      color: #6f7f90;
+
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+
+    .electronics-experience-products {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 11px;
+    }
+
+
+    .electronics-product-proof {
+      padding: 17px;
+
+      border:
+        1px solid #e0e8e5;
+
+      border-radius: 11px;
+
+      background: #f9fcfb;
+    }
+
+
+    .electronics-product-proof strong {
+      display: block;
+
+      color: #08785b;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+
+    .electronics-product-proof span {
+      display: block;
+
+      margin-top: 5px;
+
+      color: #788797;
+
+      font-size: 9px;
+      line-height: 1.55;
+    }
+
+
+    /* =========================================================
+       CTA
+       ========================================================= */
+
+    .electronics-cta {
+      padding: 76px 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f1faf7,
+          #edf6ff
+        );
+    }
+
+
+    .electronics-cta-inner {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 40px;
+
+      padding: 36px 38px;
+
+      border:
+        1px solid #d8e7e2;
+
+      border-radius: 18px;
+
+      background: #ffffff;
+
+      box-shadow:
+        0 14px 40px
+        rgba(25,64,52,.06);
+    }
+
+
+    .electronics-cta h2 {
+      margin: 0;
+
+      color: #071b3a;
+
+      font-size: 28px;
+      font-weight: 700;
+
+      line-height: 1.2;
+    }
+
+
+    .electronics-cta p {
+      margin: 8px 0 0;
+
+      color: #718095;
+
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+
+    .electronics-cta-actions {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      flex: 0 0 auto;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media(max-width:1050px) {
+
+      .electronics-hero-grid,
+      .electronics-process-grid,
+      .electronics-integration-grid,
+      .electronics-projects-grid,
+      .electronics-experience-inner {
+        grid-template-columns: 1fr;
+      }
+
+
+      .electronics-hero-grid,
+      .electronics-process-grid,
+      .electronics-integration-grid,
+      .electronics-projects-grid,
+      .electronics-experience-inner {
+        gap: 45px;
+      }
+
+
+      .electronics-capabilities-grid {
+        grid-template-columns:
+          repeat(2, minmax(0,1fr));
+      }
+
+    }
+
+
+    @media(max-width:700px) {
+
+      .electronics-hero {
+        padding: 64px 0 58px;
+      }
+
+
+      .electronics-hero-visual {
+        min-height: 410px;
+      }
+
+
+      .electronics-capabilities,
+      .electronics-process,
+      .electronics-integration,
+      .electronics-projects {
+        padding: 68px 0;
+      }
+
+
+      .electronics-capabilities-grid,
+      .electronics-integration-diagram,
+      .electronics-projects-list,
+      .electronics-experience-products {
+        grid-template-columns: 1fr;
+      }
+
+
+      .electronics-experience {
+        padding: 58px 0;
+      }
+
+
+      .electronics-experience-inner {
+        padding: 25px;
+      }
+
+
+      .electronics-cta {
+        padding: 58px 0;
+      }
+
+
+      .electronics-cta-inner {
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: 28px 24px;
+      }
+
+
+      .electronics-cta-actions {
+        width: 100%;
+
+        flex-direction: column;
+      }
+
+
+      .electronics-cta-actions .btn {
+        width: 100%;
+      }
+
+    }
+
+
+    @media(max-width:480px) {
+
+      .electronics-hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+
+      .electronics-hero-actions .btn {
+        width: 100%;
+      }
+
+
+      .electronics-process-step {
+        grid-template-columns: 42px 1fr;
+      }
+
+
+      .electronics-process-number {
+        width: 42px;
+        height: 42px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div id="siteHeader" data-root="./"></div>
+
+
+<main class="electronics-page">
+
+
+  <!-- HERO -->
+
+  <section class="electronics-hero">
+
+    <div class="container electronics-hero-grid">
+
+      <div class="electronics-hero-copy reveal reveal-left">
+
+        <span class="electronics-kicker">
+          Electronic Engineering
+        </span>
+
+
+        <h1>
+          Dall'idea al
+          <span>sistema elettronico.</span>
+        </h1>
+
+
+        <p>
+          Progettiamo e sviluppiamo sistemi elettronici integrando
+          hardware, firmware e software in un unico processo tecnico,
+          dalla definizione dell'esigenza fino al test e all'evoluzione
+          della soluzione.
+        </p>
+
+
+        <div class="electronics-hero-actions">
+
+          <a
+            class="btn btn-primary"
+            href="contatti.html">
+
+            Parliamo del progetto
+            <span>→</span>
+
+          </a>
+
+
+          <a
+            class="btn btn-outline"
+            href="#competenze">
+
+            Scopri le competenze
+
+          </a>
+
+        </div>
+
+
+        <div class="electronics-hero-tags">
+
+          <span>Hardware Design</span>
+          <span>Embedded Systems</span>
+          <span>Firmware</span>
+          <span>Prototyping &amp; Testing</span>
+
+        </div>
+
+      </div>
+
+
+      <div class="electronics-hero-visual reveal reveal-right">
+
+        <img
+          src="images/home/electronic-engineering-wide.webp"
+          alt="Electronic Engineering e sviluppo di sistemi elettronici"
+        >
+
+
+        <div class="electronics-hero-card">
+
+          <span>
+            Integrated Engineering
+          </span>
+
+          <strong>
+            Hardware, firmware e software
+            progettati come parti dello stesso sistema.
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CAPABILITIES -->
+
+  <section
+    class="electronics-capabilities"
+    id="competenze">
+
+    <div class="container">
+
+      <div class="electronics-section-head center reveal reveal-up">
+
+        <span class="electronics-section-label">
+          Competenze
+        </span>
+
+        <h2>
+          Dalla progettazione al sistema completo.
+        </h2>
+
+        <p>
+          L'Electronic Engineering integra più livelli
+          dello sviluppo per costruire soluzioni affidabili,
+          evolute e pensate per l'utilizzo reale.
+        </p>
+
+      </div>
+
+
+      <div class="electronics-capabilities-grid" data-stagger>
+
+        <article class="electronics-capability-card reveal reveal-up">
+
+          <div class="electronics-capability-icon">
+
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+              <path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"></path>
+            </svg>
+
+          </div>
+
+
+          <h3>
+            Hardware Design
+          </h3>
+
+
+          <p>
+            Progettazione di sistemi elettronici
+            dedicati alle esigenze funzionali del progetto.
+          </p>
+
+
+          <ul class="electronics-capability-list">
+            <li>Architettura hardware</li>
+            <li>Interfacce elettroniche</li>
+            <li>Integrazione di dispositivi</li>
+            <li>Evoluzione del prodotto</li>
+          </ul>
+
+        </article>
+
+
+        <article class="electronics-capability-card reveal reveal-up">
+
+          <div class="electronics-capability-icon">
+
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 8h8v8H8z"></path>
+              <path d="M4 4h4M16 4h4M4 20h4M16 20h4"></path>
+            </svg>
+
+          </div>
+
+
+          <h3>
+            Embedded Systems
+          </h3>
+
+
+          <p>
+            Hardware e logica di controllo
+            sviluppati per lavorare insieme
+            all'interno dello stesso dispositivo.
+          </p>
+
+
+          <ul class="electronics-capability-list">
+            <li>Sistemi embedded</li>
+            <li>Controllo e comunicazione</li>
+            <li>Integrazione hardware-software</li>
+            <li>Funzioni dedicate</li>
+          </ul>
+
+        </article>
+
+
+        <article class="electronics-capability-card reveal reveal-up">
+
+          <div class="electronics-capability-icon">
+
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"></path>
+            </svg>
+
+          </div>
+
+
+          <h3>
+            Firmware Development
+          </h3>
+
+
+          <p>
+            Software embedded dedicato al controllo,
+            alla comunicazione e alla gestione
+            delle funzioni del dispositivo.
+          </p>
+
+
+          <ul class="electronics-capability-list">
+            <li>Logica embedded</li>
+            <li>Comunicazione</li>
+            <li>Gestione delle funzioni</li>
+            <li>Aggiornamento ed evoluzione</li>
+          </ul>
+
+        </article>
+
+
+        <article class="electronics-capability-card reveal reveal-up">
+
+          <div class="electronics-capability-icon">
+
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 17l4-4 3 3 6-8 3 3"></path>
+              <path d="M4 21h16"></path>
+            </svg>
+
+          </div>
+
+
+          <h3>
+            Prototyping &amp; Testing
+          </h3>
+
+
+          <p>
+            Prototipazione e verifica tecnica
+            per validare la soluzione
+            e migliorarne l'affidabilità.
+          </p>
+
+
+          <ul class="electronics-capability-list">
+            <li>Prototipazione</li>
+            <li>Verifica funzionale</li>
+            <li>Test del sistema</li>
+            <li>Miglioramento continuo</li>
+          </ul>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROCESS -->
+
+  <section class="electronics-process">
+
+    <div class="container electronics-process-grid">
+
+      <div class="electronics-process-copy reveal reveal-left">
+
+        <span class="electronics-section-label">
+          Metodo
+        </span>
+
+        <h2>
+          Dall'esigenza
+          alla soluzione elettronica.
+        </h2>
+
+        <p>
+          Ogni progetto parte dalla funzione che il sistema
+          deve svolgere. Hardware, firmware e interfacce
+          vengono quindi sviluppati come elementi
+          di un unico prodotto.
+        </p>
+
+      </div>
+
+
+      <div class="electronics-process-list reveal reveal-right">
+
+        <article class="electronics-process-step">
+
+          <span class="electronics-process-number">
+            01
+          </span>
+
+          <div>
+            <h3>Analisi</h3>
+            <p>
+              Definizione delle funzioni, dei vincoli,
+              delle interfacce e dell'ambiente operativo.
+            </p>
+          </div>
+
+        </article>
+
+
+        <article class="electronics-process-step">
+
+          <span class="electronics-process-number">
+            02
+          </span>
+
+          <div>
+            <h3>Progettazione</h3>
+            <p>
+              Struttura hardware, logica embedded
+              e integrazione software vengono definite
+              in modo coordinato.
+            </p>
+          </div>
+
+        </article>
+
+
+        <article class="electronics-process-step">
+
+          <span class="electronics-process-number">
+            03
+          </span>
+
+          <div>
+            <h3>Prototipo</h3>
+            <p>
+              La soluzione prende forma
+              e viene verificata attraverso
+              prove funzionali e tecniche.
+            </p>
+          </div>
+
+        </article>
+
+
+        <article class="electronics-process-step">
+
+          <span class="electronics-process-number">
+            04
+          </span>
+
+          <div>
+            <h3>Test &amp; evoluzione</h3>
+            <p>
+              Il sistema viene affinato,
+              aggiornato e migliorato
+              sulla base dei risultati ottenuti.
+            </p>
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- INTEGRATION -->
+
+  <section class="electronics-integration">
+
+    <div class="container electronics-integration-grid">
+
+      <div class="electronics-integration-copy reveal reveal-left">
+
+        <span class="electronics-section-label">
+          Il nostro vantaggio
+        </span>
+
+        <h2>
+          Elettronica che dialoga
+          con <span>software e applicazioni.</span>
+        </h2>
+
+        <p>
+          L'Electronic Engineering Turrin nasce
+          in una struttura che sviluppa anche software
+          professionale e nuove applicazioni digitali.
+          Questo permette di considerare il dispositivo
+          come parte di un sistema più ampio.
+        </p>
+
+
+        <div class="electronics-integration-note">
+          Quando il progetto lo richiede, dispositivo,
+          firmware, backend, software desktop,
+          web application o app mobile possono essere
+          progettati in modo coordinato.
+        </div>
+
+      </div>
+
+
+      <div class="electronics-integration-diagram reveal reveal-right">
+
+        <article class="electronics-integration-node">
+
+          <span>01</span>
+
+          <strong>
+            Electronic Hardware
+          </strong>
+
+          <p>
+            Dispositivo, interfacce
+            e componenti del sistema.
+          </p>
+
+        </article>
+
+
+        <article class="electronics-integration-node">
+
+          <span>02</span>
+
+          <strong>
+            Firmware
+          </strong>
+
+          <p>
+            Controllo, gestione
+            e comunicazione embedded.
+          </p>
+
+        </article>
+
+
+        <article class="electronics-integration-node">
+
+          <span>03</span>
+
+          <strong>
+            Software
+          </strong>
+
+          <p>
+            Applicazioni desktop
+            e strumenti operativi.
+          </p>
+
+        </article>
+
+
+        <article class="electronics-integration-node">
+
+          <span>04</span>
+
+          <strong>
+            Cloud / Mobile
+          </strong>
+
+          <p>
+            Backend, dati
+            e applicazioni collegate.
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROJECT TYPES -->
+
+  <section class="electronics-projects">
+
+    <div class="container electronics-projects-grid">
+
+      <div class="electronics-projects-copy reveal reveal-left">
+
+        <span class="electronics-section-label">
+          Applicazioni
+        </span>
+
+        <h2>
+          Per quali progetti?
+        </h2>
+
+        <p>
+          La divisione è pensata per progetti
+          in cui elettronica, controllo
+          e software devono lavorare insieme
+          in modo affidabile.
+        </p>
+
+      </div>
+
+
+      <div class="electronics-projects-list reveal reveal-right">
+
+        <article class="electronics-project-card">
+
+          <strong>
+            Dispositivi elettronici dedicati
+          </strong>
+
+          <span>
+            Sistemi progettati attorno
+            a una funzione o procedura specifica.
+          </span>
+
+        </article>
+
+
+        <article class="electronics-project-card">
+
+          <strong>
+            Interfacce hardware
+          </strong>
+
+          <span>
+            Elettronica dedicata
+            alla comunicazione tra sistemi
+            e dispositivi.
+          </span>
+
+        </article>
+
+
+        <article class="electronics-project-card">
+
+          <strong>
+            Sistemi embedded
+          </strong>
+
+          <span>
+            Hardware e firmware integrati
+            per controllo e automazione.
+          </span>
+
+        </article>
+
+
+        <article class="electronics-project-card">
+
+          <strong>
+            Hardware collegato a software
+          </strong>
+
+          <span>
+            Dispositivi integrati con
+            applicazioni desktop, web
+            o mobile.
+          </span>
+
+        </article>
+
+
+        <article class="electronics-project-card">
+
+          <strong>
+            Prototipi funzionali
+          </strong>
+
+          <span>
+            Sviluppo e verifica tecnica
+            della soluzione prima
+            della sua evoluzione.
+          </span>
+
+        </article>
+
+
+        <article class="electronics-project-card">
+
+          <strong>
+            Evoluzione di sistemi esistenti
+          </strong>
+
+          <span>
+            Miglioramento, nuove funzioni
+            e integrazione software.
+          </span>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXPERIENCE -->
+
+  <section class="electronics-experience">
+
+    <div class="container">
+
+      <div class="electronics-experience-inner reveal reveal-up">
+
+        <div class="electronics-experience-copy">
+
+          <span class="electronics-section-label">
+            Esperienza interna
+          </span>
+
+          <h2>
+            Una competenza costruita
+            sviluppando prodotti reali.
+          </h2>
+
+          <p>
+            L'esperienza maturata nei prodotti Turrin
+            dimostra la capacità di integrare hardware
+            e software all'interno di strumenti professionali.
+          </p>
+
+        </div>
+
+
+        <div class="electronics-experience-products">
+
+          <div class="electronics-product-proof">
+            <strong>MC3</strong>
+            <span>
+              Hardware e software dedicati
+              alla programmazione ECU / TCU.
+            </span>
+          </div>
+
+          <div class="electronics-product-proof">
+            <strong>T-Race Pro</strong>
+            <span>
+              Software professionale
+              per gestione e analisi delle mappe ECU.
+            </span>
+          </div>
+
+          <div class="electronics-product-proof">
+            <strong>Check ECU</strong>
+            <span>
+              Software professionale
+              per diagnosi e verifica.
+            </span>
+          </div>
+
+          <div class="electronics-product-proof">
+            <strong>Tuning Solution</strong>
+            <span>
+              Soluzioni software dedicate
+              alle funzioni disponibili sulle ECU.
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="electronics-cta">
+
+    <div class="container">
+
+      <div class="electronics-cta-inner reveal reveal-up">
+
+        <div>
+
+          <h2>
+            Hai un progetto elettronico da sviluppare?
+          </h2>
+
+          <p>
+            Raccontaci l'esigenza:
+            possiamo valutare insieme hardware,
+            firmware, software e integrazioni necessarie.
+          </p>
+
+        </div>
+
+
+        <div class="electronics-cta-actions">
+
+          <a
+            class="btn btn-outline"
+            href="azienda.html">
+
+            Scopri Turrin Elettronica
+
+          </a>
+
+
+          <a
+            class="btn btn-primary"
+            href="contatti.html">
+
+            Parliamo del progetto
+            <span>→</span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<div id="siteFooter"></div>
+
+
+<script src="js/components.js"></script>
+
+</body>
+
+</html>
