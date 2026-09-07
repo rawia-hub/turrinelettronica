@@ -1,0 +1,1275 @@
+<!doctype html>
+<html lang="it">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Turrin Elettronica integra Automotive Technologies, Electronic Engineering e Software Engineering per sviluppare prodotti, sistemi elettronici e soluzioni digitali professionali."
+  >
+
+  <title>Azienda | Turrin Elettronica</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style id="company-page-styles">
+
+    .company-page {
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .company-page *,
+    .company-page *::before,
+    .company-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* HERO */
+
+    .company-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 92px 0 84px;
+      background:
+        radial-gradient(circle at 78% 24%, rgba(7,89,216,.12), transparent 31%),
+        linear-gradient(135deg, #f7faff 0%, #ffffff 54%, #f2f6fd 100%);
+    }
+
+    .company-hero::after {
+      content: "";
+      position: absolute;
+      width: 470px;
+      height: 470px;
+      right: -200px;
+      bottom: -280px;
+      border: 1px solid rgba(7,89,216,.10);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 58px rgba(7,89,216,.022),
+        0 0 0 116px rgba(7,89,216,.013);
+      pointer-events: none;
+    }
+
+    .company-hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0,.96fr) minmax(420px,1.04fr);
+      align-items: center;
+      gap: 72px;
+    }
+
+    .company-label {
+      display: inline-flex;
+      margin-bottom: 15px;
+      color: #0759d8;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .company-hero h1 {
+      max-width: 760px;
+      margin: 0;
+      color: #071b3a;
+      font-size: clamp(42px,5.3vw,66px);
+      font-weight: 700;
+      line-height: 1.03;
+      letter-spacing: -.045em;
+    }
+
+    .company-hero h1 span {
+      color: #0759d8;
+    }
+
+    .company-hero-copy > p {
+      max-width: 690px;
+      margin: 23px 0 0;
+      color: #637389;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.78;
+    }
+
+    .company-hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 11px;
+      margin-top: 29px;
+    }
+
+    .company-identity-panel {
+      position: relative;
+      min-height: 500px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 80% 18%, rgba(77,159,255,.24), transparent 29%),
+        linear-gradient(145deg, #071b3a, #08366e);
+      box-shadow: 0 24px 65px rgba(20,47,83,.17);
+    }
+
+    .company-identity-panel::after {
+      content: "";
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      right: -145px;
+      bottom: -150px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 44px rgba(255,255,255,.022),
+        0 0 0 88px rgba(255,255,255,.013);
+      pointer-events: none;
+    }
+
+    .company-identity-kicker,
+    .company-identity-title,
+    .company-division-stack,
+    .company-identity-result {
+      position: relative;
+      z-index: 2;
+    }
+
+    .company-identity-kicker {
+      color: #79baff;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .company-identity-title {
+      max-width: 500px;
+      margin: 18px 0 0;
+      color: #ffffff;
+      font-size: clamp(29px,3.3vw,42px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -.035em;
+    }
+
+    .company-division-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 33px;
+    }
+
+    .company-division-strip {
+      min-height: 62px;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      align-items: center;
+      gap: 13px;
+      padding: 10px 13px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 11px;
+      background: rgba(255,255,255,.055);
+      color: #ffffff;
+    }
+
+    .company-division-strip > span {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .company-division-strip.automotive > span {
+      background: rgba(56,143,255,.16);
+      color: #7cbaff;
+    }
+
+    .company-division-strip.electronic > span {
+      background: rgba(49,201,149,.14);
+      color: #72e0ba;
+    }
+
+    .company-division-strip.software > span {
+      background: rgba(155,116,255,.16);
+      color: #c0a6ff;
+    }
+
+    .company-division-strip strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .company-division-strip small {
+      display: block;
+      margin-top: 3px;
+      color: rgba(255,255,255,.52);
+      font-size: 8.5px;
+      line-height: 1.45;
+    }
+
+    .company-identity-result {
+      margin-top: auto;
+      padding-top: 25px;
+    }
+
+    .company-identity-result span {
+      display: block;
+      color: #79baff;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .company-identity-result strong {
+      display: block;
+      margin-top: 5px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* EVOLUZIONE */
+
+    .company-evolution {
+      padding: 90px 0;
+      background: #ffffff;
+    }
+
+    .company-evolution-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr);
+      gap: 76px;
+      align-items: start;
+    }
+
+    .company-evolution h2,
+    .company-divisions h2,
+    .company-integration h2,
+    .company-process h2,
+    .company-values h2 {
+      margin: 0;
+      color: #071b3a;
+      font-size: clamp(31px,3.6vw,46px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.038em;
+    }
+
+    .company-evolution-copy p {
+      margin: 0 0 17px;
+      color: #66778c;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .company-evolution-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .company-stats {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 11px;
+      margin-top: 29px;
+    }
+
+    .company-stat {
+      padding: 17px;
+      border: 1px solid #dfe7f0;
+      border-radius: 11px;
+      background: #ffffff;
+    }
+
+    .company-stat strong {
+      display: block;
+      color: #0759d8;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .company-stat span {
+      display: block;
+      margin-top: 6px;
+      color: #758497;
+      font-size: 8.5px;
+      line-height: 1.45;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    /* DIVISIONI */
+
+    .company-divisions {
+      padding: 88px 0;
+      background: linear-gradient(180deg,#f7faff,#f5f8fc);
+    }
+
+    .company-section-head {
+      max-width: 790px;
+      margin-bottom: 34px;
+    }
+
+    .company-section-head p {
+      margin: 14px 0 0;
+      color: #6b7a8e;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .company-divisions-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 17px;
+    }
+
+    .company-division-card {
+      position: relative;
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      padding: 25px;
+      overflow: hidden;
+      border: 1px solid #dce5ef;
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 12px 34px rgba(23,49,84,.055);
+    }
+
+    .company-division-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 4px;
+    }
+
+    .company-division-card.automotive::before { background: #0759d8; }
+    .company-division-card.electronic::before { background: #0b8b69; }
+    .company-division-card.software::before { background: #6948c5; }
+
+    .company-division-badge {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 11px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .automotive .company-division-badge {
+      background: #edf4ff;
+      color: #0759d8;
+    }
+
+    .electronic .company-division-badge {
+      background: #eaf8f3;
+      color: #0b8b69;
+    }
+
+    .software .company-division-badge {
+      background: #f0ebff;
+      color: #6948c5;
+    }
+
+    .company-division-card h3 {
+      margin: 0;
+      color: #203751;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .company-division-card p {
+      margin: 11px 0 0;
+      color: #748296;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .company-division-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      width: max-content;
+      margin-top: auto;
+      padding-top: 22px;
+      color: #0759d8;
+      font-size: 10px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .company-division-card.electronic a { color: #0b8b69; }
+    .company-division-card.software a { color: #6948c5; }
+
+    /* ENGINEERING INTEGRATO */
+
+    .company-integration {
+      padding: 92px 0;
+      background: linear-gradient(145deg,#071b3a,#0a315f);
+    }
+
+    .company-integration-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.88fr) minmax(0,1.12fr);
+      align-items: center;
+      gap: 70px;
+    }
+
+    .company-integration .company-label {
+      color: #83bdff;
+    }
+
+    .company-integration h2 {
+      color: #ffffff;
+    }
+
+    .company-integration h2 span {
+      color: #83bdff;
+    }
+
+    .company-integration-copy p {
+      margin: 16px 0 0;
+      color: rgba(255,255,255,.65);
+      font-size: 12.5px;
+      line-height: 1.78;
+    }
+
+    .company-integration-note {
+      margin-top: 21px;
+      padding: 15px 16px;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 10px;
+      background: rgba(255,255,255,.045);
+      color: rgba(255,255,255,.68);
+      font-size: 9.5px;
+      line-height: 1.65;
+    }
+
+    .company-integration-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .company-integration-card {
+      min-height: 145px;
+      padding: 19px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 12px;
+      background: rgba(255,255,255,.05);
+    }
+
+    .company-integration-card span {
+      display: inline-flex;
+      margin-bottom: 12px;
+      color: #83bdff;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .company-integration-card strong {
+      display: block;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .company-integration-card p {
+      margin: 7px 0 0;
+      color: rgba(255,255,255,.54);
+      font-size: 9px;
+      line-height: 1.6;
+    }
+
+    /* METODO */
+
+    .company-process {
+      padding: 90px 0;
+      background: #ffffff;
+    }
+
+    .company-process-grid {
+      display: grid;
+      grid-template-columns: minmax(0,.82fr) minmax(0,1.18fr);
+      align-items: center;
+      gap: 70px;
+    }
+
+    .company-process-copy p {
+      margin: 16px 0 0;
+      color: #66778c;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .company-process-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .company-process-step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 15px;
+      padding: 18px;
+      border: 1px solid #dfe7f0;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(20,46,80,.043);
+    }
+
+    .company-process-number {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: #071b3a;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .company-process-step h3 {
+      margin: 1px 0 5px;
+      color: #263a55;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .company-process-step p {
+      margin: 0;
+      color: #778598;
+      font-size: 9.5px;
+      line-height: 1.65;
+    }
+
+    /* VALORI */
+
+    .company-values {
+      padding: 82px 0;
+      background: linear-gradient(180deg,#f7faff,#f2f6fb);
+    }
+
+    .company-values-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 13px;
+    }
+
+    .company-value {
+      min-height: 170px;
+      padding: 20px;
+      border: 1px solid #dfe7f0;
+      border-radius: 12px;
+      background: #ffffff;
+    }
+
+    .company-value strong {
+      display: block;
+      color: #203751;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .company-value p {
+      margin: 8px 0 0;
+      color: #748296;
+      font-size: 9.5px;
+      line-height: 1.65;
+    }
+
+    /* CTA */
+
+    .company-cta {
+      padding: 76px 0;
+      background: linear-gradient(135deg,#eef5ff,#f4f2ff);
+    }
+
+    .company-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 42px;
+      padding: 36px 38px;
+      border: 1px solid #dce6f1;
+      border-radius: 18px;
+      background: #ffffff;
+      box-shadow: 0 14px 40px rgba(21,49,83,.06);
+    }
+
+    .company-cta h2 {
+      margin: 0;
+      color: #071b3a;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .company-cta p {
+      margin: 8px 0 0;
+      color: #718095;
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .company-cta-actions {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 10px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1050px) {
+
+      .company-hero-grid,
+      .company-evolution-grid,
+      .company-integration-grid,
+      .company-process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .company-hero-grid,
+      .company-evolution-grid,
+      .company-integration-grid,
+      .company-process-grid {
+        gap: 44px;
+      }
+
+      .company-identity-panel {
+        min-height: 450px;
+      }
+
+      .company-divisions-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+      .company-division-card:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .company-values-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+    }
+
+    @media(min-width:701px) and (max-width:1050px) {
+
+      .company-evolution {
+        padding-top: 72px;
+        padding-bottom: 42px;
+      }
+
+      .company-divisions {
+        padding-top: 44px;
+        padding-bottom: 72px;
+      }
+
+      .company-process {
+        padding-top: 72px;
+        padding-bottom: 72px;
+      }
+
+    }
+
+    @media(max-width:700px) {
+
+      .company-hero {
+        padding: 58px 0 54px;
+      }
+
+      .company-hero-grid {
+        gap: 30px;
+      }
+
+      .company-hero h1 {
+        font-size: 37px;
+      }
+
+      .company-hero-copy > p {
+        font-size: 13px;
+      }
+
+      .company-identity-panel {
+        min-height: 390px;
+        padding: 24px;
+      }
+
+      .company-evolution,
+      .company-divisions,
+      .company-integration,
+      .company-process,
+      .company-values {
+        padding: 58px 0;
+      }
+
+      .company-stats,
+      .company-divisions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .company-division-card:last-child {
+        grid-column: auto;
+      }
+
+      .company-division-card {
+        min-height: 0;
+      }
+
+      .company-integration-grid-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .company-value {
+        min-height: 0;
+      }
+
+      .company-cta {
+        padding: 56px 0;
+      }
+
+      .company-cta-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 27px 23px;
+      }
+
+      .company-cta-actions {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .company-cta-actions .btn {
+        width: 100%;
+      }
+
+    }
+
+    @media(max-width:520px) {
+
+      .company-hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .company-hero-actions .btn {
+        width: 100%;
+      }
+
+      .company-process-step {
+        grid-template-columns: 42px 1fr;
+        padding: 15px 16px;
+      }
+
+      .company-process-number {
+        width: 42px;
+        height: 42px;
+      }
+
+      .company-values-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 9px;
+      }
+
+      .company-value {
+        padding: 15px;
+      }
+
+      .company-value p {
+        font-size: 8.6px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<div id="siteHeader" data-root="./"></div>
+
+<main class="company-page" id="top">
+
+  <section class="company-hero">
+
+    <div class="container company-hero-grid">
+
+      <div class="company-hero-copy reveal reveal-left">
+
+        <span class="company-label">
+          Turrin Elettronica
+        </span>
+
+        <h1>
+          Esperienza tecnica che
+          <span>continua a evolversi.</span>
+        </h1>
+
+        <p>
+          Da oltre 30 anni sviluppiamo tecnologia professionale.
+          L'esperienza maturata nell'automotive e nell'elettronica
+          oggi si amplia con una nuova divisione dedicata
+          allo sviluppo software e alle soluzioni digitali.
+        </p>
+
+        <div class="company-hero-actions">
+
+          <a class="btn btn-primary" href="#divisioni">
+            Scopri le divisioni
+            <span>→</span>
+          </a>
+
+          <a class="btn btn-outline" href="contatti.html">
+            Contattaci
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="reveal reveal-right">
+
+        <div class="company-identity-panel">
+
+          <span class="company-identity-kicker">
+            Integrated Engineering
+          </span>
+
+          <h2 class="company-identity-title">
+            Una sola struttura.
+            Tre competenze che lavorano insieme.
+          </h2>
+
+          <div class="company-division-stack">
+
+            <div class="company-division-strip automotive">
+              <span>01</span>
+              <div>
+                <strong>Automotive Technologies</strong>
+                <small>ECU, TCU, tuning, diagnosi e prodotti professionali.</small>
+              </div>
+            </div>
+
+            <div class="company-division-strip electronic">
+              <span>02</span>
+              <div>
+                <strong>Electronic Engineering</strong>
+                <small>Hardware, embedded, firmware, prototipazione e test.</small>
+              </div>
+            </div>
+
+            <div class="company-division-strip software">
+              <span>03</span>
+              <div>
+                <strong>Software Engineering</strong>
+                <small>Web, desktop, backend, database, cloud e Android.</small>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="company-identity-result">
+            <span>Turrin Elettronica</span>
+            <strong>Dall'idea al sistema completo.</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="company-evolution">
+
+    <div class="container company-evolution-grid">
+
+      <div class="reveal reveal-left">
+
+        <span class="company-label">
+          La nostra evoluzione
+        </span>
+
+        <h2>
+          Dall'automotive a una visione
+          tecnologica più ampia.
+        </h2>
+
+        <div class="company-stats">
+
+          <div class="company-stat">
+            <strong>30+</strong>
+            <span>Anni di esperienza</span>
+          </div>
+
+          <div class="company-stat">
+            <strong>3</strong>
+            <span>Divisioni integrate</span>
+          </div>
+
+          <div class="company-stat">
+            <strong>R&amp;D</strong>
+            <span>Ricerca e sviluppo</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="company-evolution-copy reveal reveal-right">
+
+        <p>
+          Turrin Elettronica ha costruito la propria esperienza
+          sviluppando strumenti e soluzioni professionali
+          per il settore automotive, integrando nel tempo
+          competenze elettroniche, hardware e software.
+        </p>
+
+        <p>
+          Questa esperienza costituisce oggi la base
+          per ampliare l'attività dell'azienda:
+          accanto ad Automotive Technologies nasce una struttura
+          dedicata all'Electronic Engineering e una nuova divisione
+          Software Engineering.
+        </p>
+
+        <p>
+          L'obiettivo non cambia: partire da un'esigenza concreta
+          e trasformarla in una soluzione tecnica affidabile,
+          evolutiva e adatta all'utilizzo professionale.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="company-divisions" id="divisioni">
+
+    <div class="container">
+
+      <div class="company-section-head reveal reveal-up">
+
+        <span class="company-label">
+          Le nostre divisioni
+        </span>
+
+        <h2>
+          Tre aree complementari.
+        </h2>
+
+        <p>
+          Automotive, elettronica e software condividono
+          competenze tecniche e un unico approccio progettuale.
+        </p>
+
+      </div>
+
+      <div class="company-divisions-grid" data-stagger>
+
+        <article class="company-division-card automotive reveal reveal-up">
+
+          <span class="company-division-badge">01</span>
+
+          <h3>Automotive Technologies</h3>
+
+          <p>
+            Prodotti hardware e software professionali
+            per programmazione ECU e TCU, remapping,
+            tuning, diagnosi, verifica e aggiornamenti.
+          </p>
+
+          <a href="automotive.html">
+            Scopri Automotive
+            <span>→</span>
+          </a>
+
+        </article>
+
+        <article class="company-division-card electronic reveal reveal-up">
+
+          <span class="company-division-badge">02</span>
+
+          <h3>Electronic Engineering</h3>
+
+          <p>
+            Progettazione hardware, sistemi embedded,
+            firmware, integrazione hardware-software,
+            prototipazione e test.
+          </p>
+
+          <a href="elettronica.html">
+            Scopri Electronic Engineering
+            <span>→</span>
+          </a>
+
+        </article>
+
+        <article class="company-division-card software reveal reveal-up">
+
+          <span class="company-division-badge">03</span>
+
+          <h3>Software Engineering</h3>
+
+          <p>
+            La nuova divisione dedicata ad applicazioni web,
+            software desktop, backend, API, database,
+            cloud e applicazioni Android.
+          </p>
+
+          <a href="software.html">
+            Scopri Software Engineering
+            <span>→</span>
+          </a>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="company-integration">
+
+    <div class="container company-integration-grid">
+
+      <div class="company-integration-copy reveal reveal-left">
+
+        <span class="company-label">
+          Engineering integrato
+        </span>
+
+        <h2>
+          Competenze diverse,
+          <span>un unico sistema.</span>
+        </h2>
+
+        <p>
+          Il valore della nuova struttura Turrin
+          è la possibilità di considerare hardware,
+          firmware, applicazioni e servizi digitali
+          come parti dello stesso progetto.
+        </p>
+
+        <div class="company-integration-note">
+          Quando l'esigenza lo richiede, le tre divisioni
+          possono lavorare in modo coordinato
+          dalla definizione del dispositivo
+          fino al software e ai servizi collegati.
+        </div>
+
+      </div>
+
+      <div class="company-integration-grid-cards reveal reveal-right">
+
+        <article class="company-integration-card">
+          <span>01</span>
+          <strong>Hardware</strong>
+          <p>Dispositivi, elettronica e interfacce fisiche.</p>
+        </article>
+
+        <article class="company-integration-card">
+          <span>02</span>
+          <strong>Firmware</strong>
+          <p>Controllo embedded, comunicazione e logica del dispositivo.</p>
+        </article>
+
+        <article class="company-integration-card">
+          <span>03</span>
+          <strong>Software</strong>
+          <p>Applicazioni desktop e strumenti professionali.</p>
+        </article>
+
+        <article class="company-integration-card">
+          <span>04</span>
+          <strong>Backend &amp; Cloud</strong>
+          <p>API, database, web application e servizi digitali collegati.</p>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="company-process">
+
+    <div class="container company-process-grid">
+
+      <div class="company-process-copy reveal reveal-left">
+
+        <span class="company-label">
+          Il nostro metodo
+        </span>
+
+        <h2>
+          Dall'esigenza concreta
+          alla soluzione.
+        </h2>
+
+        <p>
+          Il progetto parte dalla funzione che deve svolgere
+          e dal contesto in cui verrà utilizzato.
+          Da qui definiamo tecnologia, architettura,
+          sviluppo e verifiche necessarie.
+        </p>
+
+      </div>
+
+      <div class="company-process-list reveal reveal-right">
+
+        <article class="company-process-step">
+          <span class="company-process-number">01</span>
+          <div>
+            <h3>Analisi</h3>
+            <p>Definizione del problema, dei requisiti e dell'ambiente operativo.</p>
+          </div>
+        </article>
+
+        <article class="company-process-step">
+          <span class="company-process-number">02</span>
+          <div>
+            <h3>Progettazione</h3>
+            <p>Hardware, elettronica, firmware e software vengono strutturati secondo le esigenze del progetto.</p>
+          </div>
+        </article>
+
+        <article class="company-process-step">
+          <span class="company-process-number">03</span>
+          <div>
+            <h3>Sviluppo &amp; Test</h3>
+            <p>La soluzione viene sviluppata, verificata e affinata attraverso test tecnici e funzionali.</p>
+          </div>
+        </article>
+
+        <article class="company-process-step">
+          <span class="company-process-number">04</span>
+          <div>
+            <h3>Evoluzione</h3>
+            <p>Aggiornamenti e miglioramenti accompagnano prodotti e software nel tempo.</p>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="company-values">
+
+    <div class="container">
+
+      <div class="company-section-head reveal reveal-up">
+
+        <span class="company-label">
+          Il nostro approccio
+        </span>
+
+        <h2>
+          Tecnologia progettata
+          per essere utilizzata.
+        </h2>
+
+        <p>
+          Un approccio tecnico concreto,
+          orientato alla qualità del progetto,
+          all'evoluzione e alla continuità nel tempo.
+        </p>
+
+      </div>
+
+      <div class="company-values-grid" data-stagger>
+
+        <article class="company-value reveal reveal-up">
+          <strong>Competenza tecnica</strong>
+          <p>Esperienza diretta nello sviluppo di prodotti hardware e software professionali.</p>
+        </article>
+
+        <article class="company-value reveal reveal-up">
+          <strong>Integrazione</strong>
+          <p>Elettronica e software vengono considerati come componenti dello stesso sistema.</p>
+        </article>
+
+        <article class="company-value reveal reveal-up">
+          <strong>Ricerca &amp; sviluppo</strong>
+          <p>Evoluzione continua delle soluzioni e delle competenze tecniche interne.</p>
+        </article>
+
+        <article class="company-value reveal reveal-up">
+          <strong>Supporto</strong>
+          <p>Conoscenza diretta dei sistemi sviluppati per offrire un supporto tecnico più efficace.</p>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="company-cta">
+
+    <div class="container">
+
+      <div class="company-cta-inner reveal reveal-up">
+
+        <div>
+          <h2>Hai un progetto da sviluppare?</h2>
+          <p>
+            Raccontaci l'esigenza:
+            possiamo valutare insieme
+            la soluzione tecnica più adatta.
+          </p>
+        </div>
+
+        <div class="company-cta-actions">
+
+          <a class="btn btn-outline" href="#divisioni">
+            Scopri le divisioni
+          </a>
+
+          <a class="btn btn-primary" href="contatti.html">
+            Parliamo del progetto
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<div id="siteFooter"></div>
+
+<script src="js/components.js"></script>
+
+</body>
+</html>
