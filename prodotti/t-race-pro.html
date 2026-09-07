@@ -924,6 +924,86 @@
             .trace-page .trace-driver-connector span::after,
             .trace-page .trace-checksum-line::after { animation: none; }
         }
+/* =========================================================
+   T-RACE PRO - BUTTONS
+   ========================================================= */
+
+.trace-page .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+.trace-page .button-primary,
+.trace-page .button-secondary {
+    min-height: 46px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 0 19px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease;
+}
+
+
+/* PRIMARY */
+
+.trace-page .button-primary {
+    border: 1px solid #0759d8;
+
+    background: #0759d8;
+
+    color: #ffffff;
+}
+
+.trace-page .button-primary:hover {
+    transform: translateY(-2px);
+
+    border-color: #064bb5;
+
+    background: #064bb5;
+
+    color: #ffffff;
+}
+
+
+/* SECONDARY */
+
+.trace-page .button-secondary {
+    border: 1px solid #cbd8e7;
+
+    background: #ffffff;
+
+    color: #0759d8;
+}
+
+.trace-page .button-secondary:hover {
+    transform: translateY(-2px);
+
+    border-color: #0759d8;
+
+    background: #edf4ff;
+
+    color: #0759d8;
+}
     </style>
 </head>
 <body>
