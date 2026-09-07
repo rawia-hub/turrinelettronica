@@ -1700,7 +1700,7 @@ div {
 
 
     .mc3-page .package-detail-visual {
-        min-height: 220px;
+        min-height: 170px;
     }
 
 }
@@ -3149,6 +3149,36 @@ div {
     .mc3-page .mc3-updates-section {
         padding-top: 76px;
         padding-bottom: 76px;
+    }
+
+}
+        @media (min-width: 651px) and (max-width: 900px) {
+
+    .mc3-page .mc3-story-visual {
+        display: flex;
+
+        position: relative;
+        top: auto;
+
+        min-height: 280px;
+
+        margin-bottom: 10px;
+    }
+
+    .mc3-page .mc3-device-stage {
+        max-width: 330px;
+    }
+
+    .mc3-page .mc3-device-stage img {
+        width: 78%;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .mc3-page .mc3-story-visual {
+        display: none;
     }
 
 }
