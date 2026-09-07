@@ -904,6 +904,26 @@
 
     margin: 0;
 }
+    /* =========================================================
+   CONTATTI - TABLET POLISH
+   ========================================================= */
+
+@media (min-width: 701px) and (max-width: 1050px) {
+
+    .contact-side {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 18px;
+    }
+
+    .contact-live-card {
+        grid-column: 1 / -1;
+
+        min-height: 0;
+    }
+
+}
   </style>
 </head>
 
