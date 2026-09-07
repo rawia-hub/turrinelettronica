@@ -1617,7 +1617,113 @@
         display: none;
     }
 }
+/* =========================================================
+   T-RACE HERO - DESKTOP FINAL POLISH
+   ========================================================= */
 
+@media (min-width: 1181px) {
+
+    /* HERO PIU COMPATTA */
+
+    .trace-page .trace-hero.trace-hero-premium {
+        min-height: 660px;
+
+        padding-top: 82px;
+        padding-bottom: 72px;
+    }
+
+
+    /* ALLINEAMENTO CON IL RESTO DEL SITO */
+
+    .trace-page .trace-hero-premium .trace-hero-grid {
+        width: calc(100% - 64px);
+        max-width: 1500px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        grid-template-columns:
+            minmax(0, .90fr)
+            minmax(0, 1.10fr);
+
+        gap: 46px;
+    }
+
+
+    /* TESTO */
+
+    .trace-page .trace-hero-premium .trace-hero-content {
+        max-width: 610px;
+    }
+
+    .trace-page .trace-hero-premium h1 {
+        font-size: clamp(56px, 5vw, 76px);
+    }
+
+    .trace-page .trace-hero-premium h2 {
+        max-width: 590px;
+
+        font-size: clamp(32px, 3vw, 41px);
+    }
+
+    .trace-page .trace-hero-premium
+    .trace-hero-content > p {
+        max-width: 570px;
+    }
+
+
+    /* INTERFACCIA T-RACE */
+
+    .trace-page .trace-hero-premium
+    .trace-hero-visual {
+        min-height: 500px;
+    }
+
+    .trace-page .trace-interface-stage {
+        width: 101%;
+        max-width: 805px;
+
+        margin-right: 0;
+
+        transform: translateY(3px);
+    }
+
+
+    /* BADGE SUPERIORE
+       centrato rispetto all'interfaccia */
+
+    .trace-page .trace-badge-top {
+        top: -48px;
+        left: 50%;
+
+        transform: translateX(-50%);
+    }
+
+
+    /* BADGE CONFRONTO FILE */
+
+    .trace-page .trace-badge-left {
+        left: -18px;
+        bottom: -34px;
+    }
+
+
+    /* BADGE STAGE 1 */
+
+    .trace-page .trace-badge-right {
+        right: -12px;
+        bottom: -34px;
+    }
+
+
+    /* VANTAGGI SOTTO LE CTA */
+
+    .trace-page .trace-hero-trust {
+        margin-top: 42px;
+        padding-top: 24px;
+    }
+
+}
     </style>
 </head>
 <body>
