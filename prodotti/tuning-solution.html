@@ -3637,6 +3637,74 @@ div div span {
     }
 
 }
+        /* =========================================================
+   TUNING HERO - DESKTOP FINAL POLISH
+   ========================================================= */
+
+@media (min-width: 1190px) {
+
+    .tuning-page .tuning-hero {
+        min-height: 650px;
+
+        padding-top: 82px;
+        padding-bottom: 70px;
+    }
+
+
+    /* Mantiene tutto centrato come header e resto del sito */
+
+    .tuning-page .tuning-hero-grid {
+        width: calc(100% - 48px);
+        max-width: 1450px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        grid-template-columns:
+            minmax(0, .90fr)
+            minmax(0, 1.10fr);
+
+        gap: 46px;
+    }
+
+
+    /* TESTO */
+
+    .tuning-page .tuning-hero-content {
+        max-width: 610px;
+    }
+
+    .tuning-page .tuning-hero h1 {
+        font-size: clamp(56px, 5vw, 76px);
+    }
+
+    .tuning-page .tuning-hero h2 {
+        max-width: 590px;
+
+        font-size: clamp(32px, 3vw, 41px);
+    }
+
+    .tuning-page .tuning-hero p {
+        max-width: 570px;
+    }
+
+
+    /* INTERFACCIA */
+
+    .tuning-page .tuning-hero-visual {
+        min-height: 500px;
+    }
+
+    .tuning-page .tuning-interface-stage {
+        width: 103%;
+        max-width: 790px;
+
+        margin-right: -2%;
+
+        transform: translateY(4px);
+    }
+
+}
     </style>
 
 </head>
