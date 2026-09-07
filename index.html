@@ -3952,6 +3952,53 @@
     }
 
 }
+    /* TABLET - DIVISIONI */
+
+@media (min-width: 651px) and (max-width: 900px) {
+
+    .home-divisions-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .home-divisions-grid
+    .home-division-card:last-child {
+        grid-column: 1 / -1;
+
+        min-height: 340px;
+    }
+
+    .home-divisions-grid
+    .home-division-card:last-child
+    .home-division-card-content {
+        max-width: 52%;
+    }
+
+}
+    /* TABLET - PRODOTTI */
+
+@media (min-width: 651px) and (max-width: 1099px) {
+
+    .home-products-area .product-track {
+        gap: 16px;
+    }
+
+    .home-products-area .product-card {
+        flex:
+            0 0
+            calc(
+                (100% - 16px) / 2
+            );
+
+        width:
+            calc(
+                (100% - 16px) / 2
+            );
+
+        min-width: 0;
+    }
+
+}
   </style>
 
 </head>
