@@ -192,14 +192,21 @@
       font-size: 12px;
     }
 
-    .contact-quick-item span {
-      display: block;
-      overflow: hidden;
-      color: #748296;
-      font-size: 10px;
-      line-height: 1.45;
-      text-overflow: ellipsis;
-    }
+.contact-quick-item > span:last-child {
+    min-width: 0;
+}
+
+.contact-quick-item > span:last-child > span {
+    display: block;
+    overflow: hidden;
+
+    color: #748296;
+
+    font-size: 10px;
+    line-height: 1.45;
+
+    text-overflow: ellipsis;
+}
 
     .contact-main {
       padding: 84px 0 88px;
@@ -480,14 +487,17 @@
       letter-spacing: .055em;
     }
 
-    .contact-detail a,
-    .contact-detail span {
-      display: block;
-      color: #66768a;
-      font-size: 12px;
-      line-height: 1.6;
-      text-decoration: none;
-    }
+.contact-detail > div a,
+.contact-detail > div span {
+    display: block;
+
+    color: #66768a;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    text-decoration: none;
+}
 
     .contact-detail a:hover {
       color: #0759d8;
@@ -879,6 +889,21 @@
         height: 320px;
       }
     }
+    .contact-quick-icon,
+.contact-detail-icon {
+    display: grid;
+    place-items: center;
+
+    padding: 0;
+    overflow: visible;
+}
+
+.contact-quick-icon svg,
+.contact-detail-icon svg {
+    display: block;
+
+    margin: 0;
+}
   </style>
 </head>
 
@@ -1505,47 +1530,6 @@
             </div>
 
           </div>
-
-
-          <div class="contact-info-card contact-areas-card">
-
-            <h3>
-              Aree di interesse
-            </h3>
-
-            <div class="contact-area-links">
-
-              <a
-                class="contact-area-link automotive"
-                href="automotive.html">
-
-                <strong>Automotive Technologies</strong>
-                <span>Prodotti, ECU / TCU, tuning e diagnosi.</span>
-
-              </a>
-
-              <a
-                class="contact-area-link electronic"
-                href="elettronica.html">
-
-                <strong>Electronic Engineering</strong>
-                <span>Hardware, embedded, firmware e test.</span>
-
-              </a>
-
-              <a
-                class="contact-area-link software"
-                href="software.html">
-
-                <strong>Software Engineering</strong>
-                <span>Web, desktop, backend, cloud e Android.</span>
-
-              </a>
-
-            </div>
-
-          </div>
-
 
           <div class="contact-live-card">
 
