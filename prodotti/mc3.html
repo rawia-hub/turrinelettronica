@@ -3182,6 +3182,75 @@ div {
     }
 
 }
+@media (max-width: 520px) {
+
+    .mc3-page .package-selector {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+
+        width: 100%;
+    }
+
+    .mc3-page .package-button {
+        width: 100%;
+        min-height: 42px;
+
+        padding: 0 8px;
+
+        font-size: 9.5px;
+    }
+
+}
+@media (min-width: 360px) and (max-width: 600px) {
+
+    .mc3-page .license-benefits {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+    .mc3-page .license-benefit {
+        min-width: 0;
+
+        padding: 14px;
+    }
+
+    .mc3-page .license-benefit-icon {
+        width: 29px;
+        height: 29px;
+
+        font-size: 14px;
+    }
+
+    .mc3-page .license-benefit strong {
+        font-size: 10px;
+    }
+
+    .mc3-page .license-benefit p {
+        font-size: 8.5px;
+    }
+
+}
+@media (max-width: 520px) {
+
+    .mc3-page .hero-features {
+        gap: 8px;
+
+        margin-top: 25px;
+        padding-top: 16px;
+    }
+
+    .mc3-page .hero-features > div,
+    .mc3-page .hero-features > div + div {
+        padding: 9px 0;
+    }
+
+}
     </style>
 
 </head>
