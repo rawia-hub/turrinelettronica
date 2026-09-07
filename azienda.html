@@ -813,6 +813,68 @@
     }
 
 }
+    /* =========================================================
+   AZIENDA - SMARTPHONE POLISH
+   ========================================================= */
+
+@media (min-width: 360px) and (max-width: 520px) {
+
+    /* =====================================================
+       STATISTICHE 30+ / 3 / R&D
+       ===================================================== */
+
+    .company-stats {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+    .company-stat {
+        min-width: 0;
+
+        padding: 14px 10px;
+    }
+
+    .company-stat strong {
+        font-size: 21px;
+    }
+
+    .company-stat span {
+        font-size: 7.5px;
+
+        line-height: 1.4;
+    }
+
+
+    /* =====================================================
+       ENGINEERING INTEGRATO - 2 x 2
+       ===================================================== */
+
+    .company-integration-grid-cards {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+    .company-integration-card {
+        min-height: 125px;
+
+        padding: 14px;
+    }
+
+    .company-integration-card strong {
+        font-size: 10.5px;
+    }
+
+    .company-integration-card p {
+        font-size: 8.3px;
+
+        line-height: 1.55;
+    }
+
+}
   </style>
 
 </head>
