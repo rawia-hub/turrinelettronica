@@ -416,7 +416,7 @@ function initMobileMenu() {
 
                     const isMobile =
                         window.matchMedia(
-                            '(max-width: 900px)'
+                            '(max-width: 1050px)'
                         ).matches;
 
 
