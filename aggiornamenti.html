@@ -1088,7 +1088,110 @@
             }
 
         }
+/* =========================================================
+   AGGIORNAMENTI - TABLET POLISH
+   ========================================================= */
 
+@media (min-width: 651px) and (max-width: 1000px) {
+
+    /* HERO */
+
+    .updates-page-hero {
+        padding-top: 64px;
+        padding-bottom: 52px;
+    }
+
+
+    /* AREA AGGIORNAMENTI */
+
+    .updates-page {
+        padding-top: 52px;
+        padding-bottom: 72px;
+    }
+
+
+    /* RICERCA */
+
+    .updates-search,
+    .updates-search-box {
+        width: 100%;
+        max-width: none;
+    }
+
+    .updates-search input,
+    .updates-search-box input {
+        width: 100%;
+        min-height: 44px;
+    }
+
+
+    /* FILTRI */
+
+    .updates-filters {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+        margin-top: 18px;
+        margin-bottom: 30px;
+    }
+
+    .updates-filter {
+        min-height: 38px;
+
+        padding-left: 14px;
+        padding-right: 14px;
+
+        white-space: nowrap;
+    }
+
+
+    /* GRID */
+
+    .updates-page-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 18px;
+    }
+
+
+    /* CARD */
+
+    .updates-page-card {
+        min-width: 0;
+
+        border-radius: 14px;
+    }
+
+    .updates-page-card .te-update-image {
+        aspect-ratio: 16 / 9;
+    }
+
+    .updates-page-card .te-update-content {
+        padding: 18px;
+    }
+
+    .updates-page-card h2,
+    .updates-page-card h3 {
+        font-size: 17px;
+        line-height: 1.3;
+    }
+
+    .updates-page-card p {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+
+    /* CARICA ALTRI */
+
+    .updates-load-more {
+        margin-top: 38px;
+    }
+
+}
     </style>
 
 </head>
