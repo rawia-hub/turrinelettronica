@@ -2699,6 +2699,54 @@
     }
 
 }
+/* =========================================================
+   CHECK ECU - FIX OVERFLOW ORIZZONTALE
+   TABLET + SMARTPHONE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+
+        overflow-x: hidden;
+    }
+
+    .check-page {
+        width: 100%;
+        max-width: 100%;
+
+        overflow-x: clip;
+    }
+
+    .check-page section {
+        max-width: 100%;
+    }
+
+    .check-page .container {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+    .check-page .check-hero-grid,
+    .check-page .check-core-grid,
+    .check-page .offline-grid,
+    .check-page .module-grid,
+    .check-page .coverage-types-grid,
+    .check-page .shared-updates-carousel,
+    .check-page .shared-updates-track {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .check-page img {
+        max-width: 100%;
+    }
+}
     </style>
 
 </head>
