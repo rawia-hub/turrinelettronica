@@ -48,7 +48,228 @@
     overflow-x: hidden;
 }
 @media(max-width:900px){.legal-layout{grid-template-columns:1fr}.legal-aside{position:static}}
-@media(max-width:600px){.legal-hero{padding:58px 0 44px}.legal-content{padding:48px 0 64px}}
+/* =========================================================
+   PRIVACY POLICY - SMARTPHONE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* HERO */
+
+    .legal-hero {
+        padding: 48px 0 38px;
+    }
+
+    .legal-label {
+        margin-bottom: 10px;
+
+        font-size: 9px;
+        letter-spacing: .09em;
+    }
+
+    .legal-hero h1 {
+        font-size: 36px;
+        line-height: 1.05;
+    }
+
+    .legal-hero p {
+        max-width: 100%;
+
+        margin-top: 14px;
+
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+    .legal-updated {
+        margin-top: 15px;
+
+        padding: 6px 9px;
+
+        font-size: 8px;
+    }
+
+
+    /* CONTENUTO */
+
+    .legal-content {
+        padding: 42px 0 58px;
+    }
+
+    .legal-layout {
+        width: 100%;
+        min-width: 0;
+
+        grid-template-columns: minmax(0, 1fr);
+
+        gap: 28px;
+    }
+
+    .legal-article {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+    }
+
+
+    /* SEZIONI */
+
+    .legal-section {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+    }
+
+    .legal-section h2 {
+        margin-bottom: 11px;
+
+        font-size: 19px;
+        line-height: 1.25;
+    }
+
+    .legal-section h3 {
+        margin-top: 18px;
+
+        font-size: 14px;
+    }
+
+    .legal-section p,
+    .legal-section li {
+        font-size: 13px;
+        line-height: 1.7;
+
+        overflow-wrap: anywhere;
+    }
+
+    .legal-section p {
+        margin-bottom: 11px;
+    }
+
+    .legal-section ul {
+        padding-left: 19px;
+    }
+
+
+    /* =========================================
+       TABELLA -> CARD SU SMARTPHONE
+       ========================================= */
+
+    .legal-table-wrap {
+        width: 100%;
+
+        margin-top: 14px;
+
+        overflow: visible;
+
+        border: 0;
+        border-radius: 0;
+    }
+
+    .legal-table {
+        width: 100%;
+        min-width: 0;
+
+        display: block;
+
+        background: transparent;
+    }
+
+    .legal-table thead {
+        display: none;
+    }
+
+    .legal-table tbody {
+        display: grid;
+        gap: 10px;
+    }
+
+    .legal-table tr {
+        display: block;
+
+        overflow: hidden;
+
+        border: 1px solid #dfe7f0;
+        border-radius: 10px;
+
+        background: #ffffff;
+    }
+
+    .legal-table td {
+        display: block;
+
+        width: 100%;
+
+        padding: 12px 14px;
+
+        border-bottom: 1px solid #edf1f5;
+
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .legal-table td:last-child {
+        border-bottom: 0;
+    }
+
+    .legal-table td::before {
+        display: block;
+
+        margin-bottom: 5px;
+
+        color: #0759d8;
+
+        font-size: 8px;
+        font-weight: 900;
+
+        letter-spacing: .06em;
+        text-transform: uppercase;
+    }
+
+    .legal-table td:nth-child(1)::before {
+        content: "Finalità";
+    }
+
+    .legal-table td:nth-child(2)::before {
+        content: "Dati principali";
+    }
+
+    .legal-table td:nth-child(3)::before {
+        content: "Base giuridica";
+    }
+
+
+    /* AVVISO */
+
+    .legal-notice {
+        padding: 14px;
+
+        font-size: 11px;
+        line-height: 1.65;
+    }
+
+
+    /* TITOLARE */
+
+    .legal-aside {
+        width: 100%;
+
+        padding: 18px;
+
+        border-radius: 11px;
+    }
+
+    .legal-aside strong {
+        font-size: 13px;
+    }
+
+    .legal-aside p,
+    .legal-aside a {
+        font-size: 11px;
+        line-height: 1.65;
+
+        overflow-wrap: anywhere;
+    }
+
+}
 </style>
 </head>
 <body>
