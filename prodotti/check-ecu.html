@@ -2429,6 +2429,85 @@
                 box-shadow: 0 8px 22px rgba(20,45,80,.055);
             }
         }
+    @media (min-width: 651px) and (max-width: 1000px) {
+
+    .check-page .check-hero {
+        padding-top: 72px;
+        padding-bottom: 64px;
+    }
+
+    .check-page .check-hero-grid {
+        gap: 34px;
+    }
+
+    .check-page .check-hero-visual {
+        min-height: 330px;
+    }
+
+    .check-page .check-hero-image {
+        max-height: 315px;
+    }
+
+    .check-page .check-card-top {
+        right: 7%;
+        top: 12%;
+    }
+
+    .check-page .check-card-bottom {
+        left: 7%;
+        bottom: 10%;
+    }
+}
+        @media (min-width: 651px) and (max-width: 1000px) {
+
+    .check-page .check-offline {
+        padding-top: 72px;
+        padding-bottom: 72px;
+    }
+
+    .check-page .offline-grid {
+        gap: 30px;
+    }
+
+    .check-page .dongle-card {
+        min-height: 0;
+
+        display: grid;
+        grid-template-columns: 110px minmax(0,1fr);
+        grid-template-areas:
+            "label label"
+            "symbol copy";
+
+        align-items: center;
+
+        gap: 16px 25px;
+
+        padding: 25px 28px;
+    }
+
+    .check-page .dongle-label {
+        grid-area: label;
+    }
+
+    .check-page .dongle-symbol {
+        grid-area: symbol;
+
+        width: 82px;
+        height: 82px;
+
+        margin: 0;
+
+        border-radius: 20px;
+    }
+
+    .check-page .dongle-card > div:last-child {
+        grid-area: copy;
+    }
+
+    .check-page .dongle-card strong {
+        font-size: 18px;
+    }
+}
     </style>
 
 </head>
