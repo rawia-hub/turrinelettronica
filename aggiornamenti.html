@@ -1192,6 +1192,135 @@
     }
 
 }
+/* =========================================================
+   AGGIORNAMENTI - SMARTPHONE FINAL
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    /* HERO */
+
+    .updates-page-hero {
+        padding-top: 46px;
+        padding-bottom: 38px;
+    }
+
+    .updates-page-hero h1 {
+        font-size: 34px;
+        line-height: 1.05;
+        letter-spacing: -.035em;
+    }
+
+    .updates-page-hero p {
+        margin-top: 12px;
+
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+
+    /* CONTENUTO */
+
+    .updates-page {
+        padding-top: 38px;
+        padding-bottom: 58px;
+    }
+
+
+    /* FILTRI - UNA SOLA RIGA SCORREVOLE */
+
+    .updates-filters {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+
+        width: 100%;
+
+        gap: 7px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        padding-bottom: 5px;
+
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .updates-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .updates-filter {
+        flex: 0 0 auto;
+
+        min-height: 36px;
+
+        padding: 0 13px;
+
+        white-space: nowrap;
+
+        font-size: 10px;
+    }
+
+
+    /* GRID */
+
+    .updates-page-grid {
+        grid-template-columns: 1fr !important;
+
+        gap: 14px;
+    }
+
+
+    /* CARD */
+
+    .updates-page-card {
+        width: 100%;
+
+        border-radius: 13px;
+    }
+
+    .updates-page-card .te-update-image {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 16 / 9;
+    }
+
+    .updates-page-card .te-update-content {
+        padding: 16px;
+    }
+
+    .updates-page-card h2,
+    .updates-page-card h3 {
+        font-size: 16px;
+        line-height: 1.3;
+    }
+
+    .updates-page-card .te-update-content p {
+        font-size: 11px;
+        line-height: 1.55;
+    }
+
+    .updates-page-card .updates-read-more {
+        font-size: 10px;
+    }
+
+
+    /* CARICA ALTRI */
+
+    .updates-load-more {
+        margin-top: 28px;
+    }
+
+    .load-more-button {
+        width: 100%;
+        max-width: 210px;
+
+        min-height: 42px;
+    }
+
+}
     </style>
 
 </head>
