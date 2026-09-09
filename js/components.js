@@ -2592,10 +2592,10 @@ function initFloatingSupport() {
         online
     ) {
 
-        statusElement.classList.toggle(
+    /*    statusElement.classList.toggle(
             'is-offline',
             !online
-        );
+        );*/
 
 
         statusElement.classList.remove(
