@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
     <title>Richieste contatto | Turrin Elettronica</title>
 <link rel="icon" href="../images/favicon/favicon.ico">
 
@@ -882,25 +887,78 @@ function getStatusInfo(status) {
 }
 
 
-async function checkSession() {
+async function checkAdmin() {
 
+    /*
+     * Controllo utente autenticato.
+     */
     const {
-        data,
-        error
+        data: userData,
+        error: userError
     } =
         await supabaseClient
             .auth
-            .getSession();
+            .getUser();
+
+
+    const user =
+        userData?.user || null;
+
 
     if (
-        error ||
-        !data.session
+        userError ||
+        !user
     ) {
+
         window.location.href =
             'index.html';
 
         return false;
     }
+
+
+    /*
+     * Controllo che l'utente
+     * sia un amministratore.
+     */
+    const {
+        data: adminData,
+        error: adminError
+    } =
+        await supabaseClient
+            .from('chat_admins')
+            .select('user_id')
+            .eq(
+                'user_id',
+                user.id
+            )
+            .maybeSingle();
+
+
+    if (
+        adminError ||
+        !adminData
+    ) {
+
+        console.error(
+            'Accesso admin non autorizzato:',
+            adminError
+        );
+
+
+        await supabaseClient
+            .auth
+            .signOut({
+                scope: 'local'
+            });
+
+
+        window.location.href =
+            'index.html';
+
+        return false;
+    }
+
 
     return true;
 }
@@ -1603,7 +1661,12 @@ async function loadReplyHistory(
 async function sendAdminReply(
     item
 ) {
+    const isAdmin =
+        await checkAdmin();
 
+
+    if (!isAdmin)
+        return;
     const form =
         document.getElementById(
             'replyForm'
@@ -1825,6 +1888,12 @@ async function updateStatus(
     status
 ) {
 
+    const isAdmin =
+        await checkAdmin();
+
+
+    if (!isAdmin)
+        return;
     const {
         error
     } =
@@ -1944,6 +2013,12 @@ deleteConfirm.addEventListener(
         if (!pendingDeleteId)
             return;
 
+        const isAdmin =
+            await checkAdmin();
+
+
+        if (!isAdmin)
+            return;
         const id =
             pendingDeleteId;
 
@@ -2083,10 +2158,10 @@ logoutButton.addEventListener(
 
 async function start() {
 
-    const loggedIn =
-        await checkSession();
+    const isAdmin =
+        await checkAdmin();
 
-    if (!loggedIn)
+    if (!isAdmin)
         return;
 
     await Promise.all([
