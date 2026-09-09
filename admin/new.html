@@ -9,7 +9,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-
+    <meta name="robots" content="noindex, nofollow">
     <title>
         Nuovo aggiornamento | Turrin Elettronica
     </title>
@@ -809,32 +809,83 @@
 
 
         /* =====================================
-           CONTROLLO UTENTE
+           CONTROLLO ADMIN
            ===================================== */
-
-        async function checkUser() {
-
+        
+        async function checkAdmin() {
+        
+            /*
+             * Controlliamo prima che
+             * l'utente sia autenticato.
+             */
             const {
-                data,
-                error
+                data: userData,
+                error: userError
             } =
                 await supabaseClient
                     .auth
                     .getUser();
-
-
+        
+        
+            const user =
+                userData?.user || null;
+        
+        
             if (
-                error ||
-                !data.user
+                userError ||
+                !user
             ) {
-
+        
                 window.location.href =
                     'index.html';
-
+        
                 return false;
             }
-
-
+        
+        
+            /*
+             * Controlliamo poi che sia
+             * presente nella tabella admin.
+             */
+            const {
+                data: adminData,
+                error: adminError
+            } =
+                await supabaseClient
+                    .from('chat_admins')
+                    .select('user_id')
+                    .eq(
+                        'user_id',
+                        user.id
+                    )
+                    .maybeSingle();
+        
+        
+            if (
+                adminError ||
+                !adminData
+            ) {
+        
+                console.error(
+                    'Accesso admin non autorizzato:',
+                    adminError
+                );
+        
+        
+                await supabaseClient
+                    .auth
+                    .signOut({
+                        scope: 'local'
+                    });
+        
+        
+                window.location.href =
+                    'index.html';
+        
+                return false;
+            }
+        
+        
             return true;
         }
 
@@ -931,7 +982,13 @@
             async (event) => {
 
                 event.preventDefault();
-
+                const isAdmin =
+                    await checkAdmin();
+                
+                
+                if (!isAdmin) {
+                    return;
+                }
 
                 const option =
                     productSelect
@@ -1215,7 +1272,7 @@ if (imageFile) {
            AVVIO
            ===================================== */
 
-        checkUser();
+        checkAdmin();
 
     </script>
 
