@@ -1341,32 +1341,87 @@
            CONTROLLO LOGIN
            ===================================== */
 
-        async function checkSession() {
+async function checkSession() {
 
-            const {
-                data,
-                error
-            } =
-                await supabaseClient
-                    .auth
-                    .getSession();
-
-
-            if (
-                error ||
-                !data.session
-            ) {
-
-                window.location.href =
-                    'index.html';
-
-                return false;
-            }
+    /*
+     * Prima controlliamo che l'utente
+     * sia realmente autenticato.
+     */
+    const {
+        data: userData,
+        error: userError
+    } =
+        await supabaseClient
+            .auth
+            .getUser();
 
 
-            return true;
-        }
+    const user =
+        userData?.user || null;
 
+
+    if (
+        userError ||
+        !user
+    ) {
+
+        window.location.href =
+            'index.html';
+
+        return false;
+    }
+
+
+    /*
+     * Poi controlliamo che l'utente
+     * sia presente nella tabella
+     * degli amministratori.
+     */
+    const {
+        data: adminData,
+        error: adminError
+    } =
+        await supabaseClient
+            .from('chat_admins')
+            .select('user_id')
+            .eq(
+                'user_id',
+                user.id
+            )
+            .maybeSingle();
+
+
+    if (
+        adminError ||
+        !adminData
+    ) {
+
+        console.error(
+            'Accesso admin non autorizzato:',
+            adminError
+        );
+
+
+        /*
+         * Se è un normale utente Auth
+         * ma non è admin, lo disconnettiamo.
+         */
+        await supabaseClient
+            .auth
+            .signOut({
+                scope: 'local'
+            });
+
+
+        window.location.href =
+            'index.html';
+
+        return false;
+    }
+
+
+    return true;
+}
 
         /* =====================================
            CARICA AGGIORNAMENTI
