@@ -389,6 +389,35 @@
             background: rgba(255,255,255,.14);
         }
 
+        .password-admin-link {
+            min-height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 0 15px;
+            border: 1px solid rgba(255,255,255,.28);
+            border-radius: 7px;
+            background: rgba(255,255,255,.08);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: background .2s ease, border-color .2s ease, transform .2s ease;
+        }
+
+        .password-admin-link:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255,255,255,.50);
+            background: rgba(255,255,255,.14);
+        }
+
+        .password-admin-icon {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+
         .contact-admin-icon {
             width: 20px;
             height: 20px;
@@ -431,6 +460,7 @@
 
             .live-chat-admin-link,
             .contact-admin-link,
+            .password-admin-link,
             .logout-button {
                 min-height: 40px;
             }
@@ -962,6 +992,48 @@
                     hidden>
                     0
                 </span>
+
+            </a>
+
+            <a
+                class="password-admin-link"
+                href="imposta-password.html?mode=change"
+                aria-label="Cambia password">
+
+                <svg
+                    class="password-admin-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true">
+
+                    <rect
+                        x="5"
+                        y="10"
+                        width="14"
+                        height="10"
+                        rx="2"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+                    </rect>
+
+                    <path
+                        d="M8 10V7a4 4 0 0 1 8 0v3"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round">
+                    </path>
+
+                    <circle
+                        cx="12"
+                        cy="15"
+                        r="1.2"
+                        fill="currentColor">
+                    </circle>
+
+                </svg>
+
+                <span>Cambia password</span>
 
             </a>
 
