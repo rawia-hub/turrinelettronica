@@ -974,13 +974,6 @@ function setUpdateImageRatio(img) {
         );
     }
 }
-    document
-        .querySelectorAll(
-            '.update-card-image'
-        )
-        .forEach(
-            setUpdateImageRatio
-        );
     
     function initCarousel(
         track,
@@ -1795,7 +1788,13 @@ function setUpdateImageRatio(img) {
                         )
                 )
                 .join('');
-
+        track
+            .querySelectorAll(
+                '.shared-update-image img'
+            )
+            .forEach(
+                setUpdateImageRatio
+            );
 
         if (
             dotsContainer &&
