@@ -43,7 +43,9 @@ p {
 .home-division-card h3 {
     font-weight: 700;
 }
-
+.hide {
+  display:none;
+}
 .home-division-card > p {
     font-weight: 400;
 }
