@@ -207,7 +207,10 @@
                     );
             }
 
-
+            .shared-update-image.is-square {
+                aspect-ratio: 1 / 1;
+            }
+            
             .shared-update-image img {
                 width: 100%;
                 height: 100%;
@@ -591,13 +594,7 @@
 
         return sharedSupabase;
     }
-document
-    .querySelectorAll(
-        '.update-card-image img'
-    )
-    .forEach(
-        setUpdateImageRatio
-    );
+
 
     function escapeHtml(value) {
 
@@ -909,7 +906,7 @@ document
 function setUpdateImageRatio(img) {
 
     const container =
-        img.closest('.update-card-image');
+        img.closest('.shared-update-image');
 
     if (!container)
         return;
@@ -925,25 +922,44 @@ function setUpdateImageRatio(img) {
 
 
         if (
-            width > 0 &&
-            height > 0 &&
-            width === height
+            width === 0 ||
+            height === 0
         ) {
-
-            container.classList.add(
-                'is-square'
-            );
-
-        } else {
-
-            container.classList.remove(
-                'is-square'
-            );
+            return;
         }
+
+
+        const ratio =
+            width / height;
+
+
+        const isSquare =
+            Math.abs(
+                ratio - 1
+            ) < 0.02;
+
+
+        container.classList.toggle(
+            'is-square',
+            isSquare
+        );
+
+
+        console.log(
+            'Immagine:',
+            width,
+            'x',
+            height,
+            'quadrata:',
+            isSquare
+        );
     };
 
 
-    if (img.complete) {
+    if (
+        img.complete &&
+        img.naturalWidth > 0
+    ) {
 
         checkRatio();
 
@@ -958,7 +974,14 @@ function setUpdateImageRatio(img) {
         );
     }
 }
-
+    document
+        .querySelectorAll(
+            '.update-card-image'
+        )
+        .forEach(
+            setUpdateImageRatio
+        );
+    
     function initCarousel(
         track,
         dotsContainer
