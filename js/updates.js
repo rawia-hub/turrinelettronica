@@ -197,7 +197,7 @@
 
             .shared-update-image {
                 position: relative;
-                aspect-ratio: 16 / 10;
+                aspect-ratio: 4 / 5;
                 overflow: hidden;
                 background:
                     linear-gradient(
@@ -212,7 +212,7 @@
                 width: 100%;
                 height: 100%;
                 display: block;
-                object-fit: cover;
+                object-fit: contain;
                 user-select: none;
                 -webkit-user-select: none;
                 transition: transform .45s ease;
