@@ -207,9 +207,6 @@
                     );
             }
 
-            .shared-update-image.is-square {
-                aspect-ratio: 1 / 1;
-            }
             
             .shared-update-image img {
                 width: 100%;
@@ -903,77 +900,7 @@
             </article>
         `;
     }
-function setUpdateImageRatio(img) {
 
-    const container =
-        img.closest('.shared-update-image');
-
-    if (!container)
-        return;
-
-
-    const checkRatio = () => {
-
-        const width =
-            img.naturalWidth;
-
-        const height =
-            img.naturalHeight;
-
-
-        if (
-            width === 0 ||
-            height === 0
-        ) {
-            return;
-        }
-
-
-        const ratio =
-            width / height;
-
-
-        const isSquare =
-            Math.abs(
-                ratio - 1
-            ) < 0.02;
-
-
-        container.classList.toggle(
-            'is-square',
-            isSquare
-        );
-
-
-        console.log(
-            'Immagine:',
-            width,
-            'x',
-            height,
-            'quadrata:',
-            isSquare
-        );
-    };
-
-
-    if (
-        img.complete &&
-        img.naturalWidth > 0
-    ) {
-
-        checkRatio();
-
-    } else {
-
-        img.addEventListener(
-            'load',
-            checkRatio,
-            {
-                once: true
-            }
-        );
-    }
-}
     
     function initCarousel(
         track,
@@ -1788,13 +1715,7 @@ function setUpdateImageRatio(img) {
                         )
                 )
                 .join('');
-        track
-            .querySelectorAll(
-                '.shared-update-image img'
-            )
-            .forEach(
-                setUpdateImageRatio
-            );
+
 
         if (
             dotsContainer &&
