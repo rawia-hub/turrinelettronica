@@ -900,7 +900,58 @@
             </article>
         `;
     }
+function setUpdateImageRatio(img) {
 
+    const container =
+        img.closest('.update-card-image');
+
+    if (!container)
+        return;
+
+
+    const checkRatio = () => {
+
+        const width =
+            img.naturalWidth;
+
+        const height =
+            img.naturalHeight;
+
+
+        if (
+            width > 0 &&
+            height > 0 &&
+            width === height
+        ) {
+
+            container.classList.add(
+                'is-square'
+            );
+
+        } else {
+
+            container.classList.remove(
+                'is-square'
+            );
+        }
+    };
+
+
+    if (img.complete) {
+
+        checkRatio();
+
+    } else {
+
+        img.addEventListener(
+            'load',
+            checkRatio,
+            {
+                once: true
+            }
+        );
+    }
+}
 
     function initCarousel(
         track,
