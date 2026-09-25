@@ -591,7 +591,13 @@
 
         return sharedSupabase;
     }
-
+document
+    .querySelectorAll(
+        '.update-card-image img'
+    )
+    .forEach(
+        setUpdateImageRatio
+    );
 
     function escapeHtml(value) {
 
